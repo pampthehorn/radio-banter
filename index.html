@@ -43,8 +43,19 @@
     .profile-image img {
         max-width: 100%;
         border-radius: 5px;
-        box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
     }
+
+    .profile-image img:last-of-type {
+        position: absolute;
+        bottom: 0px; /* Adjust as needed */
+        right: 0px; /* Adjust as needed */
+        max-width: 50%; /* Adjust size as needed */
+        height: auto; /* Adjust size as needed */
+        z-index: 3; /* Ensures it's on top */
+        animation: none; /* Remove animation if not needed */
+        filter:invert(100%)
+    }
+
 
     .overlay-image {
         position: absolute;
@@ -79,10 +90,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Radio Banter</h1>
+        <h1 style="display:none">Radio Banter</h1>
         <div class="profile-image">
             <img src="radiobanterpic-orig.jpg" alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock">
                 <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room" class="overlay-image">
+                <img src="sephis-radio-banter-logo.png" alt="sephis logo">
         </div>
         <p>Funky three piece pub rock band from Glasgow, Scotland </p>
         <p>Rob on electric piano, whistles and vocals; Sephi on bass guitar; and Waldo on drum kit and singing.</p>
