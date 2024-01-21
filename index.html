@@ -21,16 +21,15 @@
         h1, h2 {
             text-align: center;
         }
-        .image-placeholder {
+        .profile-image {
             background-color: #444;
-            width: 100%;
-            height: 300px;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-bottom: 20px;
         }
+.profile-image img{
+    max-width:100%;
+}
+
         audio {
             width: 100%;
             margin-top: 20px;
@@ -40,12 +39,19 @@
 <body>
     <div class="container">
         <h1>Radio Banter</h1>
-        <div class="image-placeholder">
-            <p>Band Image Here</p>
+        <div class="profile-image">
+            <img src="radiobanterpic.jpg" alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock">
         </div>
-        <p>Glaswegian old school DIY officials from Nighshift, Hairband, Smack Wizards, Gummy Stumps, Anarchy 99 and Tarantula. Rob on electric piano, whistles and vocals; Sephi on bass guitar; and Waldo playing drum kit and singing. Radio Banter are a 3-piece contemporary pub rock band with original material and textures influenced by rock, nature, tradition, the moon and a friendly dog. "Never meant to be a real live band", Robert Sotelo Sotelo cracked open the practice room cocoon about a year ago and Radio Banter have been fluttering around the local bars ever since trying to have fun and unlock the secrets of music. Currently putting tracks together and promising a debut offering of high quality MP3s in time for a tour with Sotelo.</p>
+        <p>Glaswegian old school DIY officials from Nighshift, Hairband, Smack Wizards, Gummy Stumps, Anarchy 99 and Tarantula. Rob
+        on electric piano, whistles and vocals; Sephi on bass guitar; and Waldo playing drum kit and singing. Radio Banter are a
+        3-piece contemporary pub rock band with original material and textures influenced by rock nature, tradition, the moon
+        and a friendly dog. "Never meant to be a real live band", Robert Sotelo cracked open the practice room cocoon about a
+        year ago and Radio Banter have been fluttering around the local bars ever since trying to have fun and unlock the
+        secrets of music. We have had the pleasure of playing with Cowboy Builder, Lawsuit, 2-ply, R.Aggs, Galoshins,
+        Headcleaner. Currently putting tracks together and promising a debut offering of high quality MP3s in time for a
+        tour with Sotelo."</p>
         <audio controls>
-            <source src="demo.mp3" type="audio/mpeg">
+            <source src="demos/radiobanter-naturenurture-demo-jan2024.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
