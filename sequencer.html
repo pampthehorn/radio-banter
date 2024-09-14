@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Electronic Music Sequencer</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        #controls {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #sequencer {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            max-width: 80%;
+            margin: 20px auto;
+        }
+
+        .beat-button {
+            width: 100%;
+            height: 30px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .current-beat {
+            background-color: #ff4081 !important;
+            color: #ffffff;
+        }
+
+        .channel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        .channel-controls input[type="range"] {
+            width: 100px;
+        }
+
+        .channel-controls label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .active-channel {
+            background-color: #ff4081;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Electronic Music Sequencer</h1>
+
+    <div id="controls">
+        <button id="playPauseBtn">Play</button>
+        <button id="stopBtn">Stop</button>
+        <label>
+            Master Volume:
+            <input type="range" id="masterVolume" min="0" max="1" step="0.01" value="0.8">
+        </label>
+        <label>
+            BPM:
+            <input type="number" id="bpm" min="60" max="200" value="120">
+        </label>
+    </div>
+
+    <div id="channelParameters">
+        <!-- Channel controls will be dynamically inserted here -->
+    </div>
+
+    <div id="sequencer">
+        <!-- Sequencer controls will be dynamically inserted here -->
+    </div>
+
+    <script>
+        // Initialize Audio Context
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Master gain node
+        const masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.8;
+        masterGain.connect(audioCtx.destination);
+
+        // Channels and their parameters
+        const channels = [];
+        const numChannels = 8;
+        for (let i = 0; i < numChannels; i++) {
+            const channelGain = audioCtx.createGain();
+            channelGain.gain.value = 0.8; // Initial volume
+
+            // Stereo Panner Node
+            const panner = audioCtx.createStereoPanner();
+            panner.pan.value = 0; // Center pan
+
+            // Effect nodes
+            const effectGain = audioCtx.createGain();
+            effectGain.gain.value = 0.5; // Initial effect volume
+
+            // Reverb effect (using a simple convolution)
+            const convolver = audioCtx.createConvolver();
+
+            // Simple echo effect
+            const delay = audioCtx.createDelay();
+            delay.delayTime.value = 0.3; // 300 ms delay
+
+            // Connect effect chain
+            channelGain.connect(panner);
+            panner.connect(effectGain);
+
+            // Initialize effect chain
+            effectGain.connect(masterGain);
+
+            channels.push({
+                index: i,
+                volume: 0.8,
+                sustain: 0.5,
+                effect: 'none',
+                effectVolume: 0.5,
+                pitch: 1, // Added pitch parameter
+                pan: 0,   // Added pan parameter
+                channelGain: channelGain,
+                effectGain: effectGain,
+                panner: panner,
+                convolver: convolver,
+                delay: delay,
+                sound: null, // Will assign after channels array is complete
+            });
+        }
+
+        // Assign sound functions after channels are fully initialized
+        channels.forEach((channel, index) => {
+            channel.sound = createSound(index);
+        });
+
+        // Load an impulse response for the reverb
+        function loadReverbBuffer(convolver) {
+            fetch('https://cdn.jsdelivr.net/gh/mdn/webaudio-examples/real-time-analysis/glitch.wav')
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
+                .then(audioBuffer => {
+                    convolver.buffer = audioBuffer;
+                });
+        }
+
+        // Load impulse responses for each channel's convolver
+        channels.forEach(channel => {
+            loadReverbBuffer(channel.convolver);
+        });
+
+        // Create synthetic sounds for each channel
+        function createSound(index) {
+            return function (time, duration) {
+                const channel = channels[index];
+                const pitch = channel.pitch;
+                const sustain = channel.sustain;
+
+                let sourceNode;
+
+                if (index === 0) {
+                    // Kick drum
+                    const osc = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(150 * pitch, time);
+                    osc.frequency.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    gainNode.gain.setValueAtTime(channel.volume, time);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    osc.connect(gainNode);
+                    gainNode.connect(channel.channelGain);
+
+                    // Apply effects
+                    applyEffect(channel, gainNode);
+
+                    osc.start(time);
+                    osc.stop(time + duration);
+
+                    sourceNode = osc;
+
+                } else if (index === 1) {
+                    // Snare drum
+                    const noiseBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate * duration, audioCtx.sampleRate);
+                    const data = noiseBuffer.getChannelData(0);
+                    for (let i = 0; i < data.length; i++) {
+                        data[i] = (Math.random() * 2 - 1) * channel.volume;
+                    }
+                    const noise = audioCtx.createBufferSource();
+                    noise.buffer = noiseBuffer;
+
+                    const noiseFilter = audioCtx.createBiquadFilter();
+                    noiseFilter.type = 'highpass';
+                    noiseFilter.frequency.setValueAtTime(1000 * pitch, time);
+
+                    const gainNode = audioCtx.createGain();
+                    gainNode.gain.setValueAtTime(channel.volume, time);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    noise.connect(noiseFilter);
+                    noiseFilter.connect(gainNode);
+                    gainNode.connect(channel.channelGain);
+
+                    // Apply effects
+                    applyEffect(channel, gainNode);
+
+                    noise.start(time);
+                    noise.stop(time + duration);
+
+                    sourceNode = noise;
+
+                } else if (index === 2) {
+                    // Hi-hat
+                    const noiseBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate * duration, audioCtx.sampleRate);
+                    const data = noiseBuffer.getChannelData(0);
+                    for (let i = 0; i < data.length; i++) {
+                        data[i] = (Math.random() * 2 - 1) * channel.volume;
+                    }
+                    const noise = audioCtx.createBufferSource();
+                    noise.buffer = noiseBuffer;
+
+                    const noiseFilter = audioCtx.createBiquadFilter();
+                    noiseFilter.type = 'highpass';
+                    noiseFilter.frequency.setValueAtTime(5000 * pitch, time);
+
+                    const gainNode = audioCtx.createGain();
+                    gainNode.gain.setValueAtTime(channel.volume, time);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    noise.connect(noiseFilter);
+                    noiseFilter.connect(gainNode);
+                    gainNode.connect(channel.channelGain);
+
+                    // Apply effects
+                    applyEffect(channel, gainNode);
+
+                    noise.start(time);
+                    noise.stop(time + duration);
+
+                    sourceNode = noise;
+
+                } else if (index === 3) {
+                    // Cowbell
+                    const osc1 = audioCtx.createOscillator();
+                    const osc2 = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+
+                    osc1.type = 'square';
+                    osc1.frequency.setValueAtTime(800 * pitch, time);
+                    osc2.type = 'square';
+                    osc2.frequency.setValueAtTime(1000 * pitch, time);
+
+                    gainNode.gain.setValueAtTime(channel.volume, time);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    osc1.connect(gainNode);
+                    osc2.connect(gainNode);
+                    gainNode.connect(channel.channelGain);
+
+                    // Apply effects
+                    applyEffect(channel, gainNode);
+
+                    osc1.start(time);
+                    osc1.stop(time + duration);
+                    osc2.start(time);
+                    osc2.stop(time + duration);
+
+                    sourceNode = gainNode;
+
+                } else {
+                    // Original tones
+                    const osc = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+
+                    // Oscillator settings
+                    const waveforms = ['sine', 'square', 'sawtooth', 'triangle'];
+                    osc.type = waveforms[index % waveforms.length];
+                    osc.frequency.setValueAtTime(220 * (index + 1) * pitch, time);
+
+                    // Envelope
+                    gainNode.gain.setValueAtTime(0, time);
+                    gainNode.gain.linearRampToValueAtTime(channel.volume, time + 0.01);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration * sustain);
+
+                    // Connect nodes
+                    osc.connect(gainNode);
+                    gainNode.connect(channel.channelGain);
+
+                    // Apply effects
+                    applyEffect(channel, gainNode);
+
+                    osc.start(time);
+                    osc.stop(time + duration);
+
+                    sourceNode = osc;
+                }
+            };
+        }
+
+        // Apply effect to the gain node
+        function applyEffect(channel, sourceNode) {
+            const { effect, effectGain, convolver, delay } = channel;
+
+            // Disconnect previous connections
+            effectGain.disconnect();
+            convolver.disconnect();
+            delay.disconnect();
+
+            // Reset effectGain connection
+            effectGain.connect(masterGain);
+
+            if (effect === 'reverb') {
+                // Reverb effect
+                sourceNode.connect(effectGain);
+                effectGain.connect(convolver);
+                convolver.connect(masterGain);
+            } else if (effect === 'echo') {
+                // Echo effect
+                sourceNode.connect(effectGain);
+                effectGain.connect(delay);
+                delay.connect(masterGain);
+                delay.connect(effectGain); // Feedback loop for multiple echoes
+            } else {
+                // No effect
+                sourceNode.connect(effectGain);
+            }
+        }
+
+        // Sequencer settings
+        const beats = 64; // Updated to 64 beats
+        const sequence = [];
+
+        // Generate a random sequence
+        for (let i = 0; i < beats; i++) {
+            // Randomly decide whether to have a beat or not
+            if (Math.random() < 0.8) { // 80% chance to have a beat
+                const randomChannel = Math.floor(Math.random() * numChannels);
+                sequence.push(randomChannel);
+            } else {
+                sequence.push(null);
+            }
+        }
+
+        let isPlaying = false;
+        let currentBeat = 0;
+        let previousBeat = beats - 1;
+        let bpm = 500;
+        let intervalId;
+
+        // Build the interface
+        function buildInterface() {
+            const channelParamsDiv = document.getElementById('channelParameters');
+            for (let i = 0; i < numChannels; i++) {
+                const channelDiv = document.createElement('div');
+                channelDiv.className = 'channel-controls';
+                channelDiv.setAttribute('data-channel', i);
+                channelDiv.innerHTML = `
+                <h3>Channel ${i + 1}</h3>
+                <label>
+                    Volume:
+                    <input type="range" min="0" max="1" step="0.01" value="${channels[i].volume}" data-channel="${i}" data-param="volume">
+                </label>
+                <label>
+                    Sustain:
+                    <input type="range" min="0.1" max="1" step="0.01" value="${channels[i].sustain}" data-channel="${i}" data-param="sustain">
+                </label>
+                <label>
+                    Pitch:
+                    <input type="range" min="0.5" max="2" step="0.01" value="${channels[i].pitch}" data-channel="${i}" data-param="pitch">
+                </label>
+                <label>
+                    Pan:
+                    <input type="range" min="-1" max="1" step="0.01" value="${channels[i].pan}" data-channel="${i}" data-param="pan">
+                </label>
+                <label>
+                    Effect:
+                    <select data-channel="${i}" data-param="effect">
+                        <option value="none">None</option>
+                        <option value="reverb">Reverb</option>
+                        <option value="echo">Echo</option>
+                    </select>
+                </label>
+                <label>
+                    Effect Volume:
+                    <input type="range" min="0" max="1" step="0.01" value="${channels[i].effectVolume}" data-channel="${i}" data-param="effectVolume">
+                </label>
+            `;
+                channelParamsDiv.appendChild(channelDiv);
+            }
+
+            const sequencerDiv = document.getElementById('sequencer');
+            for (let i = 0; i < beats; i++) {
+                const button = document.createElement('button');
+                button.className = 'beat-button';
+                button.dataset.beat = i;
+
+                // Set the button text based on the random sequence
+                const channelIndex = sequence[i];
+                if (channelIndex === null) {
+                    button.textContent = 'Off';
+                } else {
+                    button.textContent = `Ch ${channelIndex + 1}`;
+                }
+
+                sequencerDiv.appendChild(button);
+            }
+        }
+
+        buildInterface();
+
+        // Event listeners
+        document.getElementById('playPauseBtn').addEventListener('click', () => {
+            if (!isPlaying) {
+                isPlaying = true;
+                document.getElementById('playPauseBtn').textContent = 'Pause';
+                playSequence();
+            } else {
+                isPlaying = false;
+                document.getElementById('playPauseBtn').textContent = 'Play';
+                pauseSequence();
+            }
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            stopSequence();
+        });
+
+        document.getElementById('masterVolume').addEventListener('input', (e) => {
+            masterGain.gain.value = e.target.value;
+        });
+
+        document.getElementById('bpm').addEventListener('input', (e) => {
+            bpm = e.target.value;
+            if (isPlaying) {
+                pauseSequence();
+                playSequence();
+            }
+        });
+
+        document.getElementById('channelParameters').addEventListener('input', (e) => {
+            const channelIndex = parseInt(e.target.dataset.channel);
+            const param = e.target.dataset.param;
+            const value = e.target.value;
+            const channel = channels[channelIndex];
+
+            if (param === 'volume') {
+                channel.volume = parseFloat(value);
+            } else if (param === 'sustain') {
+                channel.sustain = parseFloat(value);
+            } else if (param === 'effectVolume') {
+                channel.effectVolume = parseFloat(value);
+                channel.effectGain.gain.value = value;
+            } else if (param === 'pitch') {
+                channel.pitch = parseFloat(value);
+            } else if (param === 'pan') {
+                channel.pan = parseFloat(value);
+                channel.panner.pan.value = value;
+            }
+        });
+
+        document.getElementById('channelParameters').addEventListener('change', (e) => {
+            if (e.target.tagName === 'SELECT') {
+                const channelIndex = parseInt(e.target.dataset.channel);
+                const param = e.target.dataset.param;
+                const value = e.target.value;
+                const channel = channels[channelIndex];
+
+                if (param === 'effect') {
+                    channel.effect = value;
+                }
+            }
+        });
+
+        document.getElementById('sequencer').addEventListener('click', (e) => {
+            if (e.target.classList.contains('beat-button')) {
+                const beatIndex = parseInt(e.target.dataset.beat);
+                let currentChannel = sequence[beatIndex];
+                if (currentChannel === null) {
+                    currentChannel = 0;
+                } else {
+                    currentChannel = (currentChannel + 1) % (numChannels + 1);
+                }
+                if (currentChannel === numChannels) {
+                    sequence[beatIndex] = null;
+                    e.target.textContent = 'Off';
+                } else {
+                    sequence[beatIndex] = currentChannel;
+                    e.target.textContent = `Ch ${currentChannel + 1}`;
+                }
+            }
+        });
+
+        // Play sequence
+        function playSequence() {
+            const interval = (60 / bpm) * 1000;
+
+            // Reset previousBeat
+            previousBeat = (currentBeat - 1 + beats) % beats;
+
+            // Start immediate execution
+            playAndHighlightCurrentBeat();
+
+            intervalId = setInterval(() => {
+                playAndHighlightCurrentBeat();
+            }, interval);
+        }
+
+        function playAndHighlightCurrentBeat() {
+            // Remove highlight from previous beat
+            removeHighlight(previousBeat);
+
+            // Highlight current beat
+            highlightCurrentBeat();
+
+            // Play sound for current beat
+            const time = audioCtx.currentTime;
+            const channelIndex = sequence[currentBeat];
+            if (channelIndex !== null) {
+                const duration = (60 / bpm);
+                channels[channelIndex].sound(time, duration);
+
+                // Highlight the channel
+                highlightChannel(channelIndex, duration);
+            }
+
+            // Update previousBeat and currentBeat
+            previousBeat = currentBeat;
+            currentBeat = (currentBeat + 1) % beats;
+        }
+
+        // Highlight the channel being played
+        function highlightChannel(channelIndex, duration) {
+            const channelDiv = document.querySelector(`.channel-controls[data-channel="${channelIndex}"]`);
+            if (channelDiv) {
+                channelDiv.classList.add('active-channel');
+
+                // Remove the highlight after the duration
+                setTimeout(() => {
+                    channelDiv.classList.remove('active-channel');
+                }, duration * 1000); // Convert duration to milliseconds
+            }
+        }
+
+        // Pause sequence
+        function pauseSequence() {
+            clearInterval(intervalId);
+        }
+
+        // Stop sequence
+        function stopSequence() {
+            isPlaying = false;
+            document.getElementById('playPauseBtn').textContent = 'Play';
+            clearInterval(intervalId);
+            removeHighlight(previousBeat);
+            currentBeat = 0;
+            previousBeat = beats - 1;
+        }
+
+        // Highlight the current beat
+        function highlightCurrentBeat() {
+            const currentButton = document.querySelector(`button[data-beat="${currentBeat}"]`);
+            if (currentButton) {
+                currentButton.classList.add('current-beat');
+            }
+        }
+
+        // Remove highlight from the previous beat
+        function removeHighlight(beatIndex) {
+            const previousButton = document.querySelector(`button[data-beat="${beatIndex}"]`);
+            if (previousButton) {
+                previousButton.classList.remove('current-beat');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
