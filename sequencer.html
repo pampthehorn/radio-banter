@@ -39,15 +39,16 @@
             color: #fff;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
 
         .current-beat {
-            background-color: #ff4081 !important;
-            color: #ffffff;
+            border: 2px solid #ff4081 !important;
         }
 
         .channel-controls {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
             margin: 10px 0;
@@ -64,10 +65,68 @@
             gap: 5px;
         }
 
-        .active-channel {
-            background-color: #ff4081;
-            color: #ffffff;
+        .channel-controls button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Unique channel colors */
+        .channel-0.active-channel,
+        .beat-button.channel-0.active-beat {
+            background-color: #FF5733;
+            /* Red */
+        }
+
+        .channel-1.active-channel,
+        .beat-button.channel-1.active-beat {
+            background-color: #FFBD33;
+            /* Orange */
+        }
+
+        .channel-2.active-channel,
+        .beat-button.channel-2.active-beat {
+            background-color: #FFD133;
+            /* Yellow */
+        }
+
+        .channel-3.active-channel,
+        .beat-button.channel-3.active-beat {
+            background-color: #75FF33;
+            /* Lime */
+        }
+
+        .channel-4.active-channel,
+        .beat-button.channel-4.active-beat {
+            background-color: #33FF57;
+            /* Green */
+        }
+
+        .channel-5.active-channel,
+        .beat-button.channel-5.active-beat {
+            background-color: #33FFF0;
+            /* Cyan */
+        }
+
+        .channel-6.active-channel,
+        .beat-button.channel-6.active-beat {
+            background-color: #3375FF;
+            /* Blue */
+        }
+
+        .channel-7.active-channel,
+        .beat-button.channel-7.active-beat {
+            background-color: #9B33FF;
+            /* Purple */
+        }
+
+        /* Text color adjustment for better readability */
+        .active-channel,
+        .active-beat {
+            color: #ffffff;
         }
     </style>
 </head>
@@ -106,9 +165,30 @@
         masterGain.gain.value = 0.8;
         masterGain.connect(audioCtx.destination);
 
+        // Helper functions for randomization
+        function getRandomFloat(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function getRandomChoice(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
         // Channels and their parameters
         const channels = [];
         const numChannels = 8;
+        // Unique colors for each channel
+        const channelColors = [
+            '#FF5733', // Red
+            '#FFBD33', // Orange
+            '#FFD133', // Yellow
+            '#75FF33', // Lime
+            '#33FF57', // Green
+            '#33FFF0', // Cyan
+            '#3375FF', // Blue
+            '#9B33FF'  // Purple
+        ];
+
         for (let i = 0; i < numChannels; i++) {
             const channelGain = audioCtx.createGain();
             channelGain.gain.value = 0.8; // Initial volume
@@ -128,6 +208,26 @@
             const delay = audioCtx.createDelay();
             delay.delayTime.value = 0.3; // 300 ms delay
 
+            // Bitcrusher effect using WaveShaperNode
+            const bitcrusher = audioCtx.createWaveShaper();
+            bitcrusher.curve = makeBitcrusherCurve(4);
+            bitcrusher.oversample = 'none';
+
+            // Autowah effect using BiquadFilterNode and LFO
+            const autowahFilter = audioCtx.createBiquadFilter();
+            autowahFilter.type = 'lowpass';
+            autowahFilter.frequency.value = 500;
+            autowahFilter.Q.value = 10;
+
+            const lfo = audioCtx.createOscillator();
+            const lfoGain = audioCtx.createGain();
+            lfo.frequency.value = 5; // LFO frequency increased
+            lfoGain.gain.value = 1000; // Modulation depth increased
+
+            lfo.connect(lfoGain);
+            lfoGain.connect(autowahFilter.frequency);
+            lfo.start();
+
             // Connect effect chain
             channelGain.connect(panner);
             panner.connect(effectGain);
@@ -135,19 +235,34 @@
             // Initialize effect chain
             effectGain.connect(masterGain);
 
+            // Randomize channel parameters
+            const randomVolume = getRandomFloat(0.5, 1);
+            const randomSustain = getRandomFloat(0.1, 1);
+            const randomPitch = getRandomFloat(0.5, 2);
+            const randomPan = getRandomFloat(-1, 1);
+            const randomEffect = getRandomChoice(['none', 'reverb', 'echo', 'bitcrusher', 'autowah']);
+            const randomEffectVolume = getRandomFloat(0, 1);
+            const randomWaveType = getRandomChoice(['sine', 'square', 'sawtooth', 'triangle']);
+
             channels.push({
                 index: i,
-                volume: 0.8,
-                sustain: 0.5,
-                effect: 'none',
-                effectVolume: 0.5,
-                pitch: 1, // Added pitch parameter
-                pan: 0,   // Added pan parameter
+                volume: randomVolume,
+                sustain: randomSustain,
+                effect: randomEffect,
+                effectVolume: randomEffectVolume,
+                pitch: randomPitch,
+                pan: randomPan,
+                waveType: randomWaveType,
                 channelGain: channelGain,
                 effectGain: effectGain,
                 panner: panner,
                 convolver: convolver,
                 delay: delay,
+                bitcrusher: bitcrusher,
+                autowahFilter: autowahFilter,
+                lfo: lfo,
+                lfoGain: lfoGain,
+                color: channelColors[i], // Assign unique color
                 sound: null, // Will assign after channels array is complete
             });
         }
@@ -188,7 +303,7 @@
                     const osc = audioCtx.createOscillator();
                     const gainNode = audioCtx.createGain();
 
-                    osc.type = 'sine';
+                    osc.type = channel.waveType;
                     osc.frequency.setValueAtTime(150 * pitch, time);
                     osc.frequency.exponentialRampToValueAtTime(50, time + duration * sustain);
 
@@ -267,9 +382,9 @@
                     const osc2 = audioCtx.createOscillator();
                     const gainNode = audioCtx.createGain();
 
-                    osc1.type = 'square';
+                    osc1.type = channel.waveType;
+                    osc2.type = channel.waveType;
                     osc1.frequency.setValueAtTime(600 * pitch, time);
-                    osc2.type = 'square';
                     osc2.frequency.setValueAtTime(800 * pitch, time);
 
                     gainNode.gain.setValueAtTime(channel.volume * 0.8, time);
@@ -293,12 +408,14 @@
 
         // Apply effect to the gain node
         function applyEffect(channel, sourceNode) {
-            const { effect, effectGain, convolver, delay } = channel;
+            const { effect, effectGain, convolver, delay, bitcrusher, autowahFilter } = channel;
 
             // Disconnect previous connections
             effectGain.disconnect();
             convolver.disconnect();
             delay.disconnect();
+            bitcrusher.disconnect();
+            autowahFilter.disconnect();
 
             // Reset effectGain connection
             effectGain.connect(masterGain);
@@ -314,10 +431,31 @@
                 effectGain.connect(delay);
                 delay.connect(masterGain);
                 delay.connect(effectGain); // Feedback loop for multiple echoes
+            } else if (effect === 'bitcrusher') {
+                // Bitcrusher effect
+                sourceNode.connect(effectGain);
+                effectGain.connect(bitcrusher);
+                bitcrusher.connect(masterGain);
+            } else if (effect === 'autowah') {
+                // Autowah effect
+                sourceNode.connect(effectGain);
+                effectGain.connect(autowahFilter);
+                autowahFilter.connect(masterGain);
             } else {
                 // No effect
                 sourceNode.connect(effectGain);
             }
+        }
+
+        // Function to create bitcrusher curve
+        function makeBitcrusherCurve(bits) {
+            const samples = 1 << bits;
+            const curve = new Float32Array(samples);
+            const step = 2 / samples;
+            for (let i = 0; i < samples; ++i) {
+                curve[i] = -1 + step * i;
+            }
+            return curve;
         }
 
         // Sequencer settings
@@ -346,8 +484,17 @@
             const channelParamsDiv = document.getElementById('channelParameters');
             for (let i = 0; i < numChannels; i++) {
                 const channelDiv = document.createElement('div');
-                channelDiv.className = 'channel-controls';
+                channelDiv.className = `channel-controls channel-${i}`; // Add unique class for each channel
                 channelDiv.setAttribute('data-channel', i);
+
+                // Build the effect options with the current effect selected
+                const effects = ['none', 'reverb', 'echo', 'bitcrusher', 'autowah'];
+                let effectOptions = '';
+                effects.forEach(effect => {
+                    const selected = effect === channels[i].effect ? 'selected' : '';
+                    effectOptions += `<option value="${effect}" ${selected}>${effect.charAt(0).toUpperCase() + effect.slice(1)}</option>`;
+                });
+
                 channelDiv.innerHTML = `
                 <h3>Channel ${i + 1}</h3>
                 <label>
@@ -369,14 +516,16 @@
                 <label>
                     Effect:
                     <select data-channel="${i}" data-param="effect">
-                        <option value="none">None</option>
-                        <option value="reverb">Reverb</option>
-                        <option value="echo">Echo</option>
+                        ${effectOptions}
                     </select>
                 </label>
                 <label>
                     Effect Volume:
                     <input type="range" min="0" max="1" step="0.01" value="${channels[i].effectVolume}" data-channel="${i}" data-param="effectVolume">
+                </label>
+                <label>
+                    Wave Type:
+                    <button data-channel="${i}" data-param="waveType">${channels[i].waveType}</button>
                 </label>
             `;
                 channelParamsDiv.appendChild(channelDiv);
@@ -388,12 +537,14 @@
                 button.className = 'beat-button';
                 button.dataset.beat = i;
 
-                // Set the button text based on the random sequence
+                // Set the button text and color based on the random sequence
                 const channelIndex = sequence[i];
                 if (channelIndex === null) {
                     button.textContent = 'Off';
+                    button.style.backgroundColor = '#333';
                 } else {
                     button.textContent = `Ch ${channelIndex + 1}`;
+                    button.classList.add(`channel-${channelIndex}`);
                 }
 
                 sequencerDiv.appendChild(button);
@@ -465,6 +616,19 @@
             }
         });
 
+        // Handle wave type button clicks
+        document.getElementById('channelParameters').addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON' && e.target.dataset.param === 'waveType') {
+                const channelIndex = parseInt(e.target.dataset.channel);
+                const channel = channels[channelIndex];
+                const waveTypes = ['sine', 'square', 'sawtooth', 'triangle'];
+                let currentIndex = waveTypes.indexOf(channel.waveType);
+                currentIndex = (currentIndex + 1) % waveTypes.length;
+                channel.waveType = waveTypes[currentIndex];
+                e.target.textContent = channel.waveType;
+            }
+        });
+
         document.getElementById('sequencer').addEventListener('click', (e) => {
             if (e.target.classList.contains('beat-button')) {
                 const beatIndex = parseInt(e.target.dataset.beat);
@@ -477,9 +641,12 @@
                 if (currentChannel === numChannels) {
                     sequence[beatIndex] = null;
                     e.target.textContent = 'Off';
+                    e.target.style.backgroundColor = '#333';
+                    e.target.className = 'beat-button';
                 } else {
                     sequence[beatIndex] = currentChannel;
                     e.target.textContent = `Ch ${currentChannel + 1}`;
+                    e.target.className = `beat-button channel-${currentChannel}`;
                 }
             }
         });
@@ -513,8 +680,9 @@
                 const duration = (60 / bpm);
                 channels[channelIndex].sound(time, duration);
 
-                // Highlight the channel
+                // Highlight the channel and beat button
                 highlightChannel(channelIndex, duration);
+                highlightBeatButton(currentBeat, channelIndex, duration);
             }
 
             // Update previousBeat and currentBeat
@@ -526,12 +694,25 @@
         function highlightChannel(channelIndex, duration) {
             const channelDiv = document.querySelector(`.channel-controls[data-channel="${channelIndex}"]`);
             if (channelDiv) {
-                channelDiv.classList.add('active-channel');
+                channelDiv.classList.add('active-channel', `channel-${channelIndex}`);
 
                 // Remove the highlight after the duration
                 setTimeout(() => {
                     channelDiv.classList.remove('active-channel');
                 }, duration * 1000); // Convert duration to milliseconds
+            }
+        }
+
+        // Highlight the beat button being played
+        function highlightBeatButton(beatIndex, channelIndex, duration) {
+            const beatButton = document.querySelector(`.beat-button[data-beat="${beatIndex}"]`);
+            if (beatButton) {
+                beatButton.classList.add('active-beat', `channel-${channelIndex}`);
+
+                // Remove the highlight after the duration
+                setTimeout(() => {
+                    beatButton.classList.remove('active-beat');
+                }, duration * 1000);
             }
         }
 
