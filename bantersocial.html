@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Banter Social</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        header p {font-size:1rem;}
+
+        /* Feed Container */
+        .feed-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Each Post */
+        .post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .post-content {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .post-media img,
+        .post-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* --- New overlay/fading image styles (from your snippet) --- */
+        .profile-image {
+            position: relative;
+            /* So absolute-positioned images can stack */
+        }
+
+        .profile-image img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        /* This targets the last image in the .profile-image */
+        .profile-image img:last-of-type {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            max-width: 50%;
+            height: auto;
+            z-index: 3;
+            animation: none;
+            filter: invert(100%);
+        }
+
+        .overlay-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            animation: fadeInOut 99s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Action buttons */
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            margin-right: 15px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
+        }
+
+        .action-count {
+            margin-left: 5px;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .feed-container {
+                padding: 10px;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Banter Social
+        <p>your life. our banter.</p>
+    </header>
+
+    <div class="feed-container">
+
+        <!-- Post 1 (Updated with overlayed transparency/fading images) -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">BS</div>
+                <div class="username">BanterUser1</div>
+            </div>
+            <div class="post-content">
+                Check out this photo I took earlier today!
+            </div>
+            <div class="post-media">
+                <div class="profile-image">
+                    <!-- Replace these src paths with your actual file locations or URLs -->
+                    <img src="radiobanterpic-orig.jpg"
+                        alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock">
+                    <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room"
+                        class="overlay-image">
+                    <img src="sephis-radio-banter-logo.png" alt="sephis logo">
+                </div>
+            </div>
+            <div class="post-actions">
+                <div class="action-btn like-btn">Like<span class="action-count"> 12</span></div>
+                <div class="action-btn">Reply<span class="action-count"> 3</span></div>
+            </div>
+        </div>
+
+        <!-- Post 2 (Video auto-plays only when fully visible) -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">AB</div>
+                <div class="username">AccordionBanter</div>
+            </div>
+            <div class="post-content">
+                Here's a short clip from my walk this morning! Listen to that sweet sound.
+            </div>
+            <div class="post-media">
+                <video controls loop playsinline>
+                    <source src="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4"
+                        type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="post-actions">
+                <div class="action-btn like-btn">Like<span class="action-count"> 23</span></div>
+                <div class="action-btn">Reply<span class="action-count"> 5</span></div>
+            </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">JD</div>
+                <div class="username">JustDerek</div>
+            </div>
+            <div class="post-content">
+                I'm loving this new platform! It's like the opposite of serious. #BanterSocial
+            </div>
+            <div class="post-actions">
+                <div class="action-btn like-btn">Like<span class="action-count"> 8</span></div>
+                <div class="action-btn">Reply<span class="action-count"> 2</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1) LIKE BUTTON FUNCTIONALITY
+            var likeButtons = document.querySelectorAll('.like-btn');
+            likeButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var countSpan = btn.querySelector('.action-count');
+                    var currentCount = parseInt(countSpan.textContent.trim(), 10);
+                    currentCount += 1;
+                    countSpan.textContent = ' ' + currentCount;
+                });
+            });
+
+            // 2) VIDEO PLAY/PAUSE WHEN FULLY IN VIEW
+            var videos = document.querySelectorAll('video');
+            var observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.play();
+                        } else {
+                            entry.target.pause();
+                        }
+                    });
+                },
+                {
+                    threshold: 1.0
+                }
+            );
+
+            videos.forEach(function (video) {
+                observer.observe(video);
+            });
+        });
+    </script>
+</body>
+
+</html>
