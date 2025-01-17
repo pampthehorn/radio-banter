@@ -167,8 +167,8 @@
 
 <body>
     <header>
-        Banter Social
-        <p>your life. our banter.</p>
+        BANTER SOCIAL
+        <p>The source of music.</p>
     </header>
 
     <div class="feed-container">
@@ -193,8 +193,8 @@
                 </div>
             </div>
             <div class="post-actions">
-                <div class="action-btn like-btn">Like<span class="action-count"> 12</span></div>
-                <div class="action-btn">Reply<span class="action-count"> 3</span></div>
+                <div class="action-btn like-btn">♥<span class="action-count"> 12</span></div>
+                <!-- <div class="action-btn">Reply<span class="action-count"> 3</span></div> -->
             </div>
         </div>
 
@@ -205,7 +205,7 @@
                 <div class="username">AccordionBanter</div>
             </div>
             <div class="post-content">
-                Here's a short clip from my walk this morning! Listen to that sweet sound.
+                Here's a short clip from our jam this morning! Listen to that sweet sound. 🥁
             </div>
             <div class="post-media">
                 <video controls loop playsinline>
@@ -215,8 +215,8 @@
                 </video>
             </div>
             <div class="post-actions">
-                <div class="action-btn like-btn">Like<span class="action-count"> 23</span></div>
-                <div class="action-btn">Reply<span class="action-count"> 5</span></div>
+                <div class="action-btn like-btn">♥<span class="action-count"> 23</span></div>
+                <!-- <div class="action-btn">Reply<span class="action-count"> 5</span></div> -->
             </div>
         </div>
 
@@ -227,11 +227,11 @@
                 <div class="username">JustDerek</div>
             </div>
             <div class="post-content">
-                I'm loving this new platform! It's like the opposite of serious. #BanterSocial
+                When you go down the DMT light tunnel to meet the alien priestess and she shows you the origin of music #BanterSocial
             </div>
             <div class="post-actions">
-                <div class="action-btn like-btn">Like<span class="action-count"> 8</span></div>
-                <div class="action-btn">Reply<span class="action-count"> 2</span></div>
+                <div class="action-btn like-btn">♥<span class="action-count"> 8</span></div>
+                <!-- <div class="action-btn">Reply<span class="action-count"> 2</span></div> -->
             </div>
         </div>
 
@@ -240,12 +240,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 1) LIKE BUTTON FUNCTIONALITY
+            var increment = 2;
             var likeButtons = document.querySelectorAll('.like-btn');
             likeButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     var countSpan = btn.querySelector('.action-count');
                     var currentCount = parseInt(countSpan.textContent.trim(), 10);
-                    currentCount += 1;
+                    currentCount += increment;
+                    increment = increment*increment;
                     countSpan.textContent = ' ' + currentCount;
                 });
             });
