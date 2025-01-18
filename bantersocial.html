@@ -1,280 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Banter Social</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        background-color: rgba(186, 130, 194, 0.5);
-        }
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, maximum-scale=1.0, user-scalable=yes"
+  />
+  <title>Banter Social</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: rgba(186, 130, 194, 0.1);
+    }
 
-        /* Header */
-        header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
+    /* Header */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
 
-        header p {font-size:1rem;}
+    header p {
+      font-size: 1rem;
+    }
 
-        /* Feed Container */
-        .feed-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    /* Main Layout Wrapper */
+    .main-content {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-        /* Each Post */
-        .post {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 15px;
-        }
+    /* Feed Container */
+    .feed-container {
+      max-width: 600px;
+      width: 100%;
+      margin-right: 20px;
+    }
 
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+    /* Trending Pane */
+    .trending-pane {
+      width: 250px;
+      min-width: 220px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      box-sizing: border-box;
+    }
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: bold;
-        }
+    .trending-pane h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
 
-        .username {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+    .trending-pane ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        .post-content {
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
+    .trending-pane li {
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: bold;
+    }
 
-        .post-media img,
-        .post-media video {
-            max-width: 100%;
-            border-radius: 8px;
-            display: block;
-        }
+    /* Each Post */
+    .post {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
 
-        /* --- New overlay/fading image styles (from your snippet) --- */
-        .profile-image {
-            position: relative;
-            /* So absolute-positioned images can stack */
-        }
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-        .profile-image img {
-            max-width: 100%;
-            border-radius: 5px;
-        }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: bold;
+    }
 
-        /* This targets the last image in the .profile-image */
-        .profile-image img:last-of-type {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            max-width: 50%;
-            height: auto;
-            z-index: 3;
-            animation: none;
-            filter: invert(100%);
-        }
+    .username {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
 
-        .overlay-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            animation: fadeInOut 99s ease-in-out infinite;
-        }
+    .post-content {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
 
-        @keyframes fadeInOut {
+    .post-media img,
+    .post-media video {
+      max-width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
 
-            0%,
-            100% {
-                opacity: 0;
-            }
+    /* --- Overlay/fading image styles --- */
+    .profile-image {
+      position: relative;
+      /* So absolute-positioned images can stack */
+    }
 
-            50% {
-                opacity: 1;
-            }
-        }
+    .profile-image img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
 
-        /* Action buttons */
-        .post-actions {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin-top: 10px;
-        }
+    /* This targets the last image in the .profile-image */
+    .profile-image img:last-of-type {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      max-width: 50%;
+      height: auto;
+      z-index: 3;
+      animation: none;
+      filter: invert(100%);
+    }
 
-        .action-btn {
-            margin-right: 15px;
-            color: rgb(0, 162, 255);
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
+    .overlay-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      animation: fadeInOut 99s ease-in-out infinite;
+    }
 
-        .action-btn:hover {
-            text-decoration: underline;
-        }
+    @keyframes fadeInOut {
+      0%,
+      100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
 
-        .action-count {
-            margin-left: 5px;
-            color: #666;
-        }
+    /* Action buttons */
+    .post-actions {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 10px;
+    }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .feed-container {
-                padding: 10px;
-            }
+    .action-btn {
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
 
-            .avatar {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .action-count {
+      margin-left: 5px;
+      color: #666;
+    }
+
+    .like-icon {
+      color: rgb(0, 162, 255);
+      font-size: 1.5rem;
+    }
+
+    /* Repost icon (no built-in spin) */
+    .repost-icon {
+      font-size: 1.5rem;
+      color: #e67e22;
+    }
+
+    /*
+     * This class can be applied to ANY element
+     * to spin it once around
+     */
+    .twirl {
+      animation: spin 0.6s linear;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .main-content {
+        flex-direction: column;
+      }
+      .feed-container {
+        margin-right: 0;
+        max-width: 100%;
+      }
+      .trending-pane {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <!-- 👪-->✓ BANTER SOCIAL
-        <!-- <p>The only thing what's real.</p> -->
-    </header>
+  <header>
+    ✓ BANTER SOCIAL
+  </header>
 
+  <div class="main-content">
+    <!-- FEED COLUMN -->
     <div class="feed-container">
 
-        <!-- Post 1 (Updated with overlayed transparency/fading images) -->
-        <div class="post">
-            <div class="post-header">
-                <div class="avatar">CS</div>
-                <div class="username">SpiceyC</div>
-            </div>
-            <div class="post-content">
-                Check out this photo I took earlier today!
-            </div>
-            <div class="post-media">
-                <div class="profile-image">
-                    <!-- Replace these src paths with your actual file locations or URLs -->
-                    <img src="radiobanterpic-orig.jpg"
-                        alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock">
-                    <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room"
-                        class="overlay-image">
-                    <img src="sephis-radio-banter-logo.png" alt="sephis logo">
-                </div>
-            </div>
-            <div class="post-actions">
-                <div class="action-btn like-btn">♡<span class="action-count"> 12</span></div>
-                <!-- <div class="action-btn">Reply<span class="action-count"> 3</span></div> -->
-            </div>
+      <!-- Post 1 (Updated with overlayed transparency/fading images) -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">CS</div>
+          <div class="username">SpiceyC</div>
         </div>
-
-        <!-- Post 2 (Video auto-plays only when fully visible) -->
-        <div class="post">
-            <div class="post-header">
-                <div class="avatar">RA</div>
-                <div class="username">RobAlexbanter</div>
-            </div>
-            <div class="post-content">
-                Here's a short clip from our jam this morning, since you were prying! Listen to that sweet sound. 👀🥁
-            </div>
-            <div class="post-media">
-                <video controls loop playsinline>
-                    <source src="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4"
-                        type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="post-actions">
-                <div class="action-btn like-btn">♡<span class="action-count"> 23</span></div>
-                <!-- <div class="action-btn">Reply<span class="action-count"> 5</span></div> -->
-            </div>
+        <div class="post-content">
+          Check out this photo I took earlier today!
         </div>
-
-        <!-- Post 3 -->
-        <div class="post">
-            <div class="post-header">
-                <div class="avatar">AB</div>
-                <div class="username">AlienBaws420</div>
-            </div>
-            <div class="post-content">
-                #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music 👽👽👽 #BanterSocial
-            </div>
-            <div class="post-actions">
-                <div class="action-btn like-btn">♡<span class="action-count"> 8</span></div>
-                <!-- <div class="action-btn">Reply<span class="action-count"> 2</span></div> -->
-            </div>
+        <div class="post-media">
+          <div class="profile-image">
+            <!-- Replace these src paths with your actual file locations or URLs -->
+            <img
+              src="radiobanterpic-orig.jpg"
+              alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock"
+            />
+            <img
+              src="radiobanterpic.jpg"
+              alt="band grouped together normally in an old damp practise room"
+              class="overlay-image"
+            />
+            <img
+              src="sephis-radio-banter-logo.png"
+              alt="sephis logo"
+            />
+          </div>
         </div>
+        <div class="post-actions">
+          <div class="action-btn like-btn">
+            <span class="like-icon">❤</span>
+            <span class="action-count"> 23</span>
+          </div>
+          <div class="action-btn repost-btn">
+            <span class="repost-icon">🔁</span>
+          </div>
+        </div>
+      </div>
 
+      <!-- Post 2 (Video auto-plays only when fully visible) -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">RA</div>
+          <div class="username">RobAlexbanter</div>
+        </div>
+        <div class="post-content">
+          Here's a short clip from our jam this morning, since you were prying! 
+          Listen to that sweet sound. 👀🥁
+        </div>
+        <div class="post-media">
+          <video controls loop playsinline>
+            <source
+              src="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="post-actions">
+          <div class="action-btn like-btn">
+            <span class="like-icon">❤</span>
+            <span class="action-count"> 23</span>
+          </div>
+          <div class="action-btn repost-btn">
+            <span class="repost-icon">🔁</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">AB</div>
+          <div class="username">AlienBaws420</div>
+        </div>
+        <div class="post-content">
+          #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music 👽👽👽 #BanterSocial
+        </div>
+        <div class="post-actions">
+          <div class="action-btn like-btn">
+            <span class="like-icon">❤</span>
+            <span class="action-count"> 23</span>
+          </div>
+          <div class="action-btn repost-btn">
+            <span class="repost-icon">🔁</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // 1) LIKE BUTTON FUNCTIONALITY
-            var increment = 2;
-            var likeButtons = document.querySelectorAll('.like-btn');
-            likeButtons.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    var countSpan = btn.querySelector('.action-count');
-                    var currentCount = parseInt(countSpan.textContent.trim(), 10);
-                    currentCount += increment;
-                    increment = increment*increment;
-                    countSpan.textContent = ' ' + currentCount;
-                });
-            });
+    <!-- TRENDING PANE -->
+    <div class="trending-pane">
+      <h2>Trending</h2>
+      <ul>
+        <li>#Music</li>
+        <li>#Spicey</li>
+        <li>#Friends</li>
+        <li>#FunTimes</li>
+        <li>#Banter</li>
+      </ul>
+    </div>
+  </div>
 
-            // 2) VIDEO PLAY/PAUSE WHEN FULLY IN VIEW
-            var videos = document.querySelectorAll('video');
-            var observer = new IntersectionObserver(
-                function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.play();
-                        } else {
-                            entry.target.pause();
-                        }
-                    });
-                },
-                {
-                    threshold: 1.0
-                }
-            );
+  <script>
+    // Check if element is in the current viewport
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
 
-            videos.forEach(function (video) {
-                observer.observe(video);
-            });
+    // Return a random visible element in the viewport
+    function getRandomVisibleElement() {
+      const allElements = document.querySelectorAll('*');
+      // Filter to only those that are currently in the viewport
+      const visibleElements = [...allElements].filter(isInViewport);
+      if (visibleElements.length === 0) return null;
+
+      const randomIndex = Math.floor(Math.random() * visibleElements.length);
+      return visibleElements[randomIndex];
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1) LIKE BUTTON FUNCTIONALITY
+      let increment = 2;
+      const likeButtons = document.querySelectorAll('.like-btn');
+      likeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const countSpan = btn.querySelector('.action-count');
+          let currentCount = parseInt(countSpan.textContent.trim(), 10);
+          currentCount += increment;
+          increment = increment * increment;
+          countSpan.textContent = ' ' + currentCount;
         });
-    </script>
-</body>
+      });
 
+      // 2) VIDEO PLAY/PAUSE WHEN FULLY IN VIEW
+      const videos = document.querySelectorAll('video');
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.play();
+            } else {
+              entry.target.pause();
+            }
+          });
+        },
+        {
+          threshold: 1.0
+        }
+      );
+
+      videos.forEach(function (video) {
+        observer.observe(video);
+      });
+
+      // 3) REPOST: Pick a random element in the viewport to twirl
+      const repostButtons = document.querySelectorAll('.repost-btn');
+      repostButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const randomEl = getRandomVisibleElement();
+          if (randomEl) {
+            randomEl.classList.add('twirl');
+            // Remove the 'twirl' class after the animation completes
+            setTimeout(function () {
+              randomEl.classList.remove('twirl');
+            }, 600); // matches .twirl animation duration
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>
