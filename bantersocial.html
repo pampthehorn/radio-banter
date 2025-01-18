@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, maximum-scale=1.0, user-scalable=yes"
   />
-  <title>Banter Social</title>
+  <title>✓ Banter Social</title>
   <style>
     /* Global Styles */
     body {
@@ -21,12 +21,13 @@
       background-color: #ffffff;
       border-bottom: 1px solid #ddd;
       padding: 20px;
-      text-align: center;
+      text-align: left;
       font-size: 1.5rem;
       font-weight: bold;
       position: sticky;
       top: 0;
       z-index: 999;
+      text-shadow: hotpink 0px 0 20px;
     }
 
     header p {
@@ -192,6 +193,7 @@
     .like-icon {
       color: rgb(0, 162, 255);
       font-size: 1.5rem;
+      text-shadow: hotpink 0px 0 20px;
     }
 
     /* Repost icon (no built-in spin) */
@@ -316,6 +318,82 @@
         </div>
       </div>
 
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CN</div>
+                    <div class="username">CalebNichols</div>
+                </div>
+                <div class="post-content">
+                    radio banter killing it the other night 🔪🔪🔪
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair1.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 23</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CN</div>
+                    <div class="username">CalebNichols</div>
+                </div>
+                <div class="post-content">
+                    radio banter killing it the other night 🔪🔪🔪
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 213</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">D</div>
+                    <div class="username">ElonsDawg420</div>
+                </div>
+                <div class="post-content">
+                    since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from Mars???") on every lamp post. 
+                    🪐🪐🪐 🐶
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 423</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
       <!-- Post 3 -->
       <div class="post">
         <div class="post-header">
@@ -328,7 +406,7 @@
         <div class="post-actions">
           <div class="action-btn like-btn">
             <span class="like-icon">❤</span>
-            <span class="action-count"> 23</span>
+            <span class="action-count"> 0</span>
           </div>
           <div class="action-btn repost-btn">
             <span class="repost-icon">🔁</span>
@@ -415,10 +493,9 @@
           const randomEl = getRandomVisibleElement();
           if (randomEl) {
             randomEl.classList.add('twirl');
-            // Remove the 'twirl' class after the animation completes
             setTimeout(function () {
               randomEl.classList.remove('twirl');
-            }, 600); // matches .twirl animation duration
+            }, 600);
           }
         });
       });
