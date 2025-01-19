@@ -119,7 +119,8 @@
         }
 
         .post-media img,
-        .post-media video {
+        .post-media video,
+        .post-media iframe {
             max-width: 100%;
             border-radius: 8px;
             display: block;
@@ -203,9 +204,8 @@
         }
 
         /*
-     * This class can be applied to ANY element
-     * to spin it once around
-     */
+         * This class can be applied to ANY element to spin it once around
+         */
         .twirl {
             animation: spin 0.6s linear;
         }
@@ -253,20 +253,48 @@
         <div class="feed-container">
 
             <!-- Post 1 (Updated with overlayed transparency/fading images) -->
+
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="avatar">CN</div>
+                                <div class="username">CalebNichols</div>
+                            </div>
+                            <div class="post-content">
+                                And Radio Banter! Love you so.
+                            </div>
+                            <div class="post-media">
+                                <video controls loop playsinline>
+                                    <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
+                                        type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="post-actions">
+                                <div class="action-btn like-btn">
+                                    <span class="like-icon">❤</span>
+                                    <span class="action-count"> 213</span>
+                                </div>
+                                <div class="action-btn repost-btn">
+                                    <span class="repost-icon">🔁</span>
+                                </div>
+                            </div>
+                        </div>
+
+
             <div class="post">
                 <div class="post-header">
                     <div class="avatar">CS</div>
                     <div class="username">SpiceyC</div>
                 </div>
                 <div class="post-content">
-                    Check out this photo I took earlier today!
+                    Check out this photo I took of Radio Banter the toe tapping band from Glasgow, Scotland! 🎶🎶
                 </div>
                 <div class="post-media">
                     <div class="profile-image">
                         <!-- Replace these src paths with your actual file locations or URLs -->
                         <img src="radiobanterpic-orig.jpg"
                             alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock" />
-                        <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room"
+                        <img src="radiobanterpic.jpg" alt="band grouped together in an old damp practise room"
                             class="overlay-image" />
                         <img src="sephis-radio-banter-logo.png" alt="sephis logo" />
                     </div>
@@ -282,11 +310,36 @@
                 </div>
             </div>
 
+                        <div class="post">
+                            <div class="post-header">
+                    <div class="avatar">CS</div>
+                    <div class="username">SpiceyC</div>
+                            </div>
+                            <div class="post-content">
+                                Check out this awesome clip I found on YouTube!
+                            </div>
+                            <div class="post-media">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Ip91Mq4OOg0" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="post-actions">
+                                <div class="action-btn like-btn">
+                                    <span class="like-icon">❤</span>
+                                    <span class="action-count"> 1</span>
+                                </div>
+                                <div class="action-btn repost-btn">
+                                    <span class="repost-icon">🔁</span>
+                                </div>
+                            </div>
+                        </div>
+
             <!-- Post 2 (Video auto-plays only when fully visible) -->
             <div class="post">
                 <div class="post-header">
-                    <div class="avatar">RA</div>
-                    <div class="username">RobAlexbanter</div>
+                    <div class="avatar">RB</div>
+                    <div class="username">RadioBanter</div>
                 </div>
                 <div class="post-content">
                     Here's a short clip from our jam this morning, since you were prying!
@@ -310,6 +363,27 @@
                     </div>
                 </div>
             </div>
+
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="avatar">D</div>
+                                <div class="username">ElonsDawg420</div>
+                            </div>
+                            <div class="post-content">
+                                since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
+                                Mars???") on every lamp post.
+                                🪐🪐🪐 🐶
+                            </div>
+                            <div class="post-actions">
+                                <div class="action-btn like-btn">
+                                    <span class="like-icon">❤</span>
+                                    <span class="action-count"> 423</span>
+                                </div>
+                                <div class="action-btn repost-btn">
+                                    <span class="repost-icon">🔁</span>
+                                </div>
+                            </div>
+                        </div>
 
 
             <div class="post">
@@ -339,57 +413,10 @@
             </div>
 
 
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">CN</div>
-                    <div class="username">CalebNichols</div>
-                </div>
-                <div class="post-content">
-                    radio banter killing it the other night 🔪🔪🔪
-                </div>
-                <div class="post-media">
-                    <video controls loop playsinline>
-                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
-                            type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 213</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">D</div>
-                    <div class="username">ElonsDawg420</div>
-                </div>
-                <div class="post-content">
-                    since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
-                    Mars???") on every lamp post.
-                    🪐🪐🪐 🐶
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 423</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
 
 
             <!-- Post 3 -->
-            <div class="post">
+            <!-- <div class="post">
                 <div class="post-header">
                     <div class="avatar">AB</div>
                     <div class="username">AlienBaws420</div>
@@ -407,7 +434,10 @@
                         <span class="repost-icon">🔁</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+    
+
         </div>
 
         <!-- TRENDING PANE -->
@@ -433,17 +463,6 @@
                 rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
             );
-        }
-
-        // Return a random visible element in the viewport
-        function getRandomVisibleElement() {
-            const allElements = document.querySelectorAll('*');
-            // Filter to only those that are currently in the viewport
-            const visibleElements = [...allElements].filter(isInViewport);
-            if (visibleElements.length === 0) return null;
-
-            const randomIndex = Math.floor(Math.random() * visibleElements.length);
-            return visibleElements[randomIndex];
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -481,17 +500,19 @@
                 observer.observe(video);
             });
 
-            // 3) REPOST: Pick a random element in the viewport to twirl
+            // 3) REPOST: SPIN EVERY ELEMENT ON THE SCREEN
+            //    (instead of picking a random element)
             const repostButtons = document.querySelectorAll('.repost-btn');
             repostButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
-                    const randomEl = getRandomVisibleElement();
-                    if (randomEl) {
-                        randomEl.classList.add('twirl');
+                    // Select all elements on the page
+                    const allElements = document.querySelectorAll('*');
+                    allElements.forEach(function (elem) {
+                        elem.classList.add('twirl');
                         setTimeout(function () {
-                            randomEl.classList.remove('twirl');
+                            elem.classList.remove('twirl');
                         }, 600);
-                    }
+                    });
                 });
             });
         });
