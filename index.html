@@ -1,136 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Banter - premier glasgow band</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: rgba(186, 130, 194, 0.5);
-        /* Dark, earthy purple */
-        color: #000000;
-        /* Vibrant yellow for contrast */
-        margin: 0;
-        padding: 20px;
-        line-height: 1.6;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        background-color: #ffffff;
-        /* Deep, dark green */
-        border: 1px solid rgba(186, 130, 194, 1);
-        /* Rustic brown border */
-        box-shadow: 0px 0px 15px 5px rgba(186, 130, 194, 0.5);
-        border-radius: 10px;
-    }
-
-    h1 {
-        text-align: center;
-        color: #000000;
-        /* Bright red */
-    }
-
-       .profile-image {
-        position: relative;
-        /* Other styles... */
-    }
-
-    .profile-image img {
-        max-width: 100%;
-        border-radius: 5px;
-    }
-
-    .profile-image img:last-of-type {
-        position: absolute;
-        bottom: 0px; /* Adjust as needed */
-        right: 0px; /* Adjust as needed */
-        max-width: 50%; /* Adjust size as needed */
-        height: auto; /* Adjust size as needed */
-        z-index: 3; /* Ensures it's on top */
-        animation: none; /* Remove animation if not needed */
-        filter:invert(100%)
-    }
-
-
-    .overlay-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 5px; /* To match the first image */
-        animation: fadeInOut 99s ease-in-out infinite;
-    }
-
-    @keyframes fadeInOut {
-        0%, 100% {
-            opacity: 0;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
+    <title>✓ Banter Social</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgba(186, 130, 194, 0.1);
         }
-        50% {
-            opacity: 1;
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            text-shadow: hotpink 0px 0 20px;
         }
-    }
 
-    audio {
-        width: 100%;
-        margin-top: 20px;
-    }
+        header p {
+            font-size: 1rem;
+        }
 
-    p {
-        color: #000000;
-    }
+        /* Main Layout Wrapper */
+        .main-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    img {max-width:100%;}
+        /* Feed Container */
+        .feed-container {
+            max-width: 600px;
+            width: 100%;
+            margin-right: 20px;
+        }
 
-</style>
+        /* Trending Pane */
+        .trending-pane {
+            width: 250px;
+            min-width: 220px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
 
+        .trending-pane h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .trending-pane ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .trending-pane li {
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        /* Each Post */
+        .post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .post-content {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .post-media img,
+        .post-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* --- Overlay/fading image styles --- */
+        .profile-image {
+            position: relative;
+            /* So absolute-positioned images can stack */
+        }
+
+        .profile-image img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        /* This targets the last image in the .profile-image */
+        .profile-image img:last-of-type {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            max-width: 50%;
+            height: auto;
+            z-index: 3;
+            animation: none;
+            filter: invert(100%);
+        }
+
+        .overlay-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            animation: fadeInOut 99s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Action buttons */
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .action-count {
+            margin-left: 5px;
+            color: #666;
+        }
+
+        .like-icon {
+            color: rgb(0, 162, 255);
+            font-size: 1.5rem;
+            text-shadow: hotpink 0px 0 20px;
+        }
+
+        /* Repost icon (no built-in spin) */
+        .repost-icon {
+            font-size: 1.5rem;
+            color: #e67e22;
+        }
+
+        /*
+     * This class can be applied to ANY element
+     * to spin it once around
+     */
+        .twirl {
+            animation: spin 0.6s linear;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .feed-container {
+                margin-right: 0;
+                max-width: 100%;
+            }
+
+            .trending-pane {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 style="display:none">Radio Banter</h1>
-        <div class="profile-image">
-            <img src="radiobanterpic-orig.jpg" alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock">
-                <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room" class="overlay-image">
-                <img src="sephis-radio-banter-logo.png" alt="sephis logo">
+    <header>
+        ✓ BANTER SOCIAL
+    </header>
+
+    <div class="main-content">
+        <!-- FEED COLUMN -->
+        <div class="feed-container">
+
+            <!-- Post 1 (Updated with overlayed transparency/fading images) -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CS</div>
+                    <div class="username">SpiceyC</div>
+                </div>
+                <div class="post-content">
+                    Check out this photo I took earlier today!
+                </div>
+                <div class="post-media">
+                    <div class="profile-image">
+                        <!-- Replace these src paths with your actual file locations or URLs -->
+                        <img src="radiobanterpic-orig.jpg"
+                            alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock" />
+                        <img src="radiobanterpic.jpg" alt="band grouped together normally in an old damp practise room"
+                            class="overlay-image" />
+                        <img src="sephis-radio-banter-logo.png" alt="sephis logo" />
+                    </div>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 23</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 2 (Video auto-plays only when fully visible) -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">RA</div>
+                    <div class="username">RobAlexbanter</div>
+                </div>
+                <div class="post-content">
+                    Here's a short clip from our jam this morning, since you were prying!
+                    Listen to that sweet sound. 👀🥁
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source
+                            src="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 23</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CN</div>
+                    <div class="username">CalebNichols</div>
+                </div>
+                <div class="post-content">
+                    radio banter killing it the other night 🔪🔪🔪
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair1.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 23</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CN</div>
+                    <div class="username">CalebNichols</div>
+                </div>
+                <div class="post-content">
+                    radio banter killing it the other night 🔪🔪🔪
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 213</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">D</div>
+                    <div class="username">ElonsDawg420</div>
+                </div>
+                <div class="post-content">
+                    since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
+                    Mars???") on every lamp post.
+                    🪐🪐🪐 🐶
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 423</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Post 3 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">AB</div>
+                    <div class="username">AlienBaws420</div>
+                </div>
+                <div class="post-content">
+                    #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music
+                    👽👽👽 #BanterSocial
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 0</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p><strong>Radio Banter</strong>: original bar rock music played by three furry cats in Glasgow, Scotland </p>
-        <!-- <p>Rob on electric piano, whistles and vocals; Sephi on bass guitar; and Waldo on drum kit and singing.</p> -->
-        <!-- <p>Original celtic grooves; drum, bass and piano pop trio with tunes about political and cosmic concerns, music, ghosts. </p> -->
 
-        <!-- <img src="posters/headcleaner-final-show-bloc.jpg"> -->
-        <!-- <img src="posters/oort-clod--radio-banter--essen--oldhairdressers.jpg"/>
-         <img src="posters/palfun.jpg"> -->
-        <img src="posters/calebnichols.jpeg">
-
-        <p> "Never meant to be a real live band", Doig came in to our lives about a
-        year ago and said we should be a band.</p> 
-        
-        <p style="display:none">"We have played with Dawson, Cowboy Builder, Lawsuit, 2-plyHeadcleaner.</p>
-    
-    <!-- <p>Radio Banter are from a family of old school DIY Glasgow with people from Hairband, Smack Wizards, Gummy Stumps, Nighshift, Anarchy 99 and Tarantula.</p> -->
-   
-
-    <p><strong>Tech spec</strong><br/>
-    Waldo: drum kit / vocal mic<br/>
-    Sephi: bass guitar amp/di<br/>
-    Rob: keyboard/vocals/whistle mixer amp/di</p>
-
-            <!-- <p><strong>Live set at the Burnt Barns in Glasgow October 2023</strong></p>
-
-        <audio controls>
-            <source src="demos/radiobanter-burntbarns-halloween2023.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio> -->
-
-        <p>contact: persephonelock@hotmail.com</p>
+        <!-- TRENDING PANE -->
+        <div class="trending-pane">
+            <h2>Trending</h2>
+            <ul>
+                <li>#Music</li>
+                <li>#Spicey</li>
+                <li>#Friends</li>
+                <li>#FunTimes</li>
+                <li>#Banter</li>
+            </ul>
+        </div>
     </div>
+
     <script>
-        // Your JavaScript code here (if needed)
+        // Check if element is in the current viewport
+        function isInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Return a random visible element in the viewport
+        function getRandomVisibleElement() {
+            const allElements = document.querySelectorAll('*');
+            // Filter to only those that are currently in the viewport
+            const visibleElements = [...allElements].filter(isInViewport);
+            if (visibleElements.length === 0) return null;
+
+            const randomIndex = Math.floor(Math.random() * visibleElements.length);
+            return visibleElements[randomIndex];
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1) LIKE BUTTON FUNCTIONALITY
+            let increment = 2;
+            const likeButtons = document.querySelectorAll('.like-btn');
+            likeButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const countSpan = btn.querySelector('.action-count');
+                    let currentCount = parseInt(countSpan.textContent.trim(), 10);
+                    currentCount += increment;
+                    increment = increment * increment;
+                    countSpan.textContent = ' ' + currentCount;
+                });
+            });
+
+            // 2) VIDEO PLAY/PAUSE WHEN FULLY IN VIEW
+            const videos = document.querySelectorAll('video');
+            const observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.play();
+                        } else {
+                            entry.target.pause();
+                        }
+                    });
+                },
+                {
+                    threshold: 1.0
+                }
+            );
+
+            videos.forEach(function (video) {
+                observer.observe(video);
+            });
+
+            // 3) REPOST: Pick a random element in the viewport to twirl
+            const repostButtons = document.querySelectorAll('.repost-btn');
+            repostButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const randomEl = getRandomVisibleElement();
+                    if (randomEl) {
+                        randomEl.classList.add('twirl');
+                        setTimeout(function () {
+                            randomEl.classList.remove('twirl');
+                        }, 600);
+                    }
+                });
+            });
+        });
     </script>
 </body>
+
 </html>
