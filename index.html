@@ -26,10 +26,30 @@
             top: 0;
             z-index: 999;
             text-shadow: hotpink 0px 0 20px;
+            /* Ensures the signup link can float to the right without changing the existing layout */
+            position: relative;
         }
 
         header p {
             font-size: 1rem;
+        }
+
+        /* "Sign up here" CTA in top-right of header */
+        .signup-cta {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #000;
+            background-color: hotpink;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        .signup-cta:hover {
+            background-color: #ff99dd;
         }
 
         /* Main Layout Wrapper */
@@ -43,7 +63,7 @@
 
         /* Feed Container */
         .feed-container {
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             margin-right: 20px;
         }
@@ -204,8 +224,8 @@
         }
 
         /*
-         * This class can be applied to ANY element to spin it once around
-         */
+     * This class can be applied to ANY element to spin it once around
+     */
         .twirl {
             animation: spin 0.6s linear;
         }
@@ -240,46 +260,81 @@
                 font-size: 1rem;
             }
         }
+
+        /* ------------------ MODAL STYLES ------------------ */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 9999;
+            /* Above everything else */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <header>
         ✓ BANTER SOCIAL
+        <!-- Sign up CTA in top-right (absolute) -->
+        <a href="#" class="signup-cta" id="openModalBtn">Sign up here</a>
     </header>
 
     <div class="main-content">
         <!-- FEED COLUMN -->
         <div class="feed-container">
 
-            <!-- Post 1 (Updated with overlayed transparency/fading images) -->
-
-                        <div class="post">
-                            <div class="post-header">
-                                <div class="avatar">CN</div>
-                                <div class="username">CalebNichols</div>
-                            </div>
-                            <div class="post-content">
-                                And Radio Banter! Love you so.
-                            </div>
-                            <div class="post-media">
-                                <video controls loop playsinline>
-                                    <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
-                                        type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="post-actions">
-                                <div class="action-btn like-btn">
-                                    <span class="like-icon">❤</span>
-                                    <span class="action-count"> 213</span>
-                                </div>
-                                <div class="action-btn repost-btn">
-                                    <span class="repost-icon">🔁</span>
-                                </div>
-                            </div>
-                        </div>
-
+            <!-- Post 1 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">CN</div>
+                    <div class="username">CalebNichols</div>
+                </div>
+                <div class="post-content">
+                    And Radio Banter! Love you so.
+                </div>
+                <div class="post-media">
+                    <video controls loop playsinline>
+                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 213</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="post">
                 <div class="post-header">
@@ -291,7 +346,6 @@
                 </div>
                 <div class="post-media">
                     <div class="profile-image">
-                        <!-- Replace these src paths with your actual file locations or URLs -->
                         <img src="radiobanterpic-orig.jpg"
                             alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock" />
                         <img src="radiobanterpic.jpg" alt="band grouped together in an old damp practise room"
@@ -310,32 +364,33 @@
                 </div>
             </div>
 
-                        <div class="post">
-                            <div class="post-header">
+            <div class="post">
+                <div class="post-header">
                     <div class="avatar">CS</div>
                     <div class="username">SpiceyC</div>
-                            </div>
-                            <div class="post-content">
-                                Check out this awesome clip I found on YouTube!
-                            </div>
-                            <div class="post-media">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Ip91Mq4OOg0" title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="post-actions">
-                                <div class="action-btn like-btn">
-                                    <span class="like-icon">❤</span>
-                                    <span class="action-count"> 1</span>
-                                </div>
-                                <div class="action-btn repost-btn">
-                                    <span class="repost-icon">🔁</span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="post-content">
+                    Check out this awesome clip I found on YouTube!
+                </div>
+                <div class="post-media">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ip91Mq4OOg0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 1</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Post 2 (Video auto-plays only when fully visible) -->
+            <!-- Post 2 -->
             <div class="post">
                 <div class="post-header">
                     <div class="avatar">RB</div>
@@ -364,27 +419,26 @@
                 </div>
             </div>
 
-                        <div class="post">
-                            <div class="post-header">
-                                <div class="avatar">D</div>
-                                <div class="username">ElonsDog</div>
-                            </div>
-                            <div class="post-content">
-                                since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
-                                Mars???") on every lamp post.
-                                🪐🪐🪐 🐶
-                            </div>
-                            <div class="post-actions">
-                                <div class="action-btn like-btn">
-                                    <span class="like-icon">❤</span>
-                                    <span class="action-count"> 423</span>
-                                </div>
-                                <div class="action-btn repost-btn">
-                                    <span class="repost-icon">🔁</span>
-                                </div>
-                            </div>
-                        </div>
-
+            <div class="post">
+                <div class="post-header">
+                    <div class="avatar">D</div>
+                    <div class="username">ElonsDog</div>
+                </div>
+                <div class="post-content">
+                    since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
+                    Mars???") on every lamp post.
+                    🪐🪐🪐 🐶
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn like-btn">
+                        <span class="like-icon">❤</span>
+                        <span class="action-count"> 423</span>
+                    </div>
+                    <div class="action-btn repost-btn">
+                        <span class="repost-icon">🔁</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="post">
                 <div class="post-header">
@@ -412,40 +466,34 @@
                 </div>
             </div>
 
-
-
-
-            <!-- Post 3 -->
-            <!-- <div class="post">
-                <div class="post-header">
-                    <div class="avatar">AB</div>
-                    <div class="username">AlienBaws420</div>
-                </div>
-                <div class="post-content">
-                    #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music
-                    👽👽👽 #BanterSocial
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 0</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div> -->
-
-    
-
+            <!-- Hidden Post 3 sample (commented out) -->
+            <!--
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">AB</div>
+          <div class="username">AlienBaws420</div>
+        </div>
+        <div class="post-content">
+          #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music
+          👽👽👽 #BanterSocial
+        </div>
+        <div class="post-actions">
+          <div class="action-btn like-btn">
+            <span class="like-icon">❤</span>
+            <span class="action-count"> 0</span>
+          </div>
+          <div class="action-btn repost-btn">
+            <span class="repost-icon">🔁</span>
+          </div>
+        </div>
+      </div>
+      -->
         </div>
 
         <!-- TRENDING PANE -->
         <div class="trending-pane">
-            <h2>Trending</h2>
-
             <p>radiobanternet@gmail.com</p>
-
+            <h2>Trending</h2>
             <ul>
                 <li>#GrownInLove</li>
                 <li>#TheGroove</li>
@@ -453,6 +501,97 @@
                 <li>#SoulFunkJazzRock</li>
                 <li>#Dogs</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- MODAL THAT CONTAINS THE MAILCHIMP FORM -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModalBtn">&times;</span>
+
+            <!-- BEGIN Mailchimp Signup Form -->
+            <div id="mc_embed_shell">
+                <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+                <style type="text/css">
+                    #mc_embed_signup {
+                        background: #fff;
+                        clear: left;
+                        font: 14px Helvetica, Arial, sans-serif;
+                        width: 600px;
+                    }
+                </style>
+
+                <div id="mc_embed_signup">
+                    <form
+                        action="https://gmail.us15.list-manage.com/subscribe/post?u=7c63c18aba01af6bb7e677bc4&amp;id=b60110bcb4&amp;f_id=002c93e1f0"
+                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                        target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <h2>Subscribe</h2>
+                            <p>sign up here and you will be first to hear about our new tunes and upcoming gigs.</p>
+                            <!-- <div class="indicates-required">
+                                <span class="asterisk">*</span> indicates required
+                            </div> -->
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
+                                </label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required=""
+                                    value="" />
+                            </div>
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <!-- real people should not fill this in - do not remove this or risk form bot signups -->
+                                <input type="text" name="b_7c63c18aba01af6bb7e677bc4_b60110bcb4" tabindex="-1"
+                                    value="" />
+                            </div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
+                                        value="Subscribe" />
+                                    <!-- <p style="margin: 0px auto;">
+                                        <a href="http://eepurl.com/i7-uis"
+                                            title="Mailchimp - email marketing made easy and fun">
+                                            <span
+                                                style="display: inline-block; background-color: transparent; border-radius: 4px;"><img
+                                                    class="refferal_badge"
+                                                    src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
+                                                    alt="Intuit Mailchimp"
+                                                    style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;" /></span>
+                                        </a>
+                                    </p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <script type="text/javascript"
+                    src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                <script type="text/javascript">
+                    (function ($) {
+                        window.fnames = new Array();
+                        window.ftypes = new Array();
+                        fnames[0] = "EMAIL";
+                        ftypes[0] = "email";
+                        fnames[1] = "FNAME";
+                        ftypes[1] = "text";
+                        fnames[2] = "LNAME";
+                        ftypes[2] = "text";
+                        fnames[3] = "ADDRESS";
+                        ftypes[3] = "address";
+                        fnames[4] = "PHONE";
+                        ftypes[4] = "phone";
+                        fnames[5] = "BIRTHDAY";
+                        ftypes[5] = "birthday";
+                        fnames[6] = "COMPANY";
+                        ftypes[6] = "text";
+                    }(jQuery));
+                    var $mcj = jQuery.noConflict(true);
+                </script>
+            </div>
+            <!-- END Mailchimp Signup Form -->
         </div>
     </div>
 
@@ -498,17 +637,14 @@
                     threshold: 1.0
                 }
             );
-
             videos.forEach(function (video) {
                 observer.observe(video);
             });
 
             // 3) REPOST: SPIN EVERY ELEMENT ON THE SCREEN
-            //    (instead of picking a random element)
             const repostButtons = document.querySelectorAll('.repost-btn');
             repostButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
-                    // Select all elements on the page
                     const allElements = document.querySelectorAll('*');
                     allElements.forEach(function (elem) {
                         elem.classList.add('twirl');
@@ -517,6 +653,24 @@
                         }, 600);
                     });
                 });
+            });
+
+            // 4) MODAL FUNCTIONALITY FOR THE MAILCHIMP FORM
+            const modal = document.getElementById('myModal');
+            const openBtn = document.getElementById('openModalBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+
+            openBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+            closeBtn.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+            window.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
             });
         });
     </script>
