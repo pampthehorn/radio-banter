@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
+    <title>RB chris white sessions wip</title>
+    <style>
+        /* Overall page styling */
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for the player */
+        .player {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ASCII art logo styling */
+        header pre {
+            color: #FF5500;
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* Track title display */
+        .track-info {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        /* Controls styling */
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #FF5500;
+            border: none;
+            color: #ffffff;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #e64e00;
+        }
+
+        /* Progress bar and time display styling */
+        .progress-wrapper {
+            margin: 15px 0;
+        }
+
+        .progress-container {
+            background: #333;
+            cursor: pointer;
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: #FF5500;
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+        }
+
+        .time-display {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Playlist styling */
+        .playlist {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #181818;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .playlist ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .playlist li {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .playlist li:last-child {
+            border-bottom: none;
+        }
+
+        .playlist li:hover {
+            background-color: #FF5500;
+            color: #121212;
+        }
+
+        .playlist li.active {
+            background-color: #FF5500;
+            color: #121212;
+        }
+
+        .download-link {
+            font-size: 12px;
+            color: #FF5500;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="player">
+        <header>
+            <pre>
+▗▄▄▖ ▗▄▖ ▗▄▄▄ ▗▄▄▄▖ ▗▄▖
+▐▌ ▐▌▐▌ ▐▌▐▌ █ █ ▐▌ ▐▌
+▐▛▀▚▖▐▛▀▜▌▐▌ █ █ ▐▌ ▐▌
+▐▌ ▐▌▐▌ ▐▌▐▙▄▄▀▗▄█▄▖▝▚▄▞▘
+
+
+
+▗▄▄▖ ▗▄▖ ▗▖ ▗▖▗▄▄▄▖▗▄▄▄▖▗▄▄▖
+▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌ █ ▐▌ ▐▌ ▐▌
+▐▛▀▚▖▐▛▀▜▌▐▌ ▝▜▌ █ ▐▛▀▀▘▐▛▀▚▖
+▐▙▄▞▘▐▌ ▐▌▐▌ ▐▌ █ ▐▙▄▄▖▐▌ ▐▌
+            </pre>
+        </header>
+
+        <div class="track-info" id="trackTitle">Loading...</div>
+
+        <div class="controls">
+            <button id="prevBtn">Prev</button>
+            <button id="playPauseBtn">Play</button>
+            <button id="nextBtn">Next</button>
+        </div>
+
+        <!-- Progress bar and time display -->
+        <div class="progress-wrapper">
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+        </div>
+
+        <div class="playlist" id="playlist">
+            <ul id="playlistList">
+                <!-- Playlist items will be injected here -->
+            </ul>
+        </div>
+
+        <!-- Hidden HTML5 audio element -->
+        <audio id="audioPlayer"></audio>
+    </div>
+
+    <script>
+        // List of tracks with relative paths for GitHub Pages
+      const tracks = [
+            {
+                title: "13 grown in love.m4a",
+                src: "tracks/13 grown in love.m4a"
+            },
+            {
+                title: "23 financial crash.m4a",
+                src: "tracks/23 financial crash.m4a"
+            },
+            {
+                title: "27 nature nurture.m4a",
+                src: "tracks/27 nature nurture.m4a"
+            },
+            {
+                title: "29 doctor.m4a",
+                src: "tracks/29 doctor.m4a"
+            },
+            {
+                title: "32 end of an era.m4a",
+                src: "tracks/32 end of an era.m4a"
+            },
+            {
+                title: "33 richmond.m4a",
+                src: "tracks/33 richmond.m4a"
+            },
+            {
+                title: "34 thegroove.mp3",
+                src: "tracks/34 thegroove.mp3"
+            },
+            {
+                title: "35 ghostie.mp3",
+                src: "tracks/35 ghostie.mp3"
+            },
+            {
+                title: "36 instrumental.mp3",
+                src: "tracks/36 instrumental.mp3"
+            },
+            {
+                title: "38 harshbutfair.mp3",
+                src: "tracks/38 harshbutfair.mp3"
+            }
+        ];
+
+
+        let currentTrack = 0;
+        const audioPlayer = document.getElementById("audioPlayer");
+        const trackTitle = document.getElementById("trackTitle");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const playlistList = document.getElementById("playlistList");
+        const progressBar = document.getElementById("progressBar");
+        const progressContainer = document.getElementById("progressContainer");
+        const timeDisplay = document.getElementById("timeDisplay");
+
+        // Load a track by its index in the tracks array
+        function loadTrack(index) {
+            if (index >= 0 && index < tracks.length) {
+                currentTrack = index;
+                audioPlayer.src = tracks[index].src;
+                trackTitle.textContent = tracks[index].title;
+                updatePlaylistHighlight();
+                audioPlayer.load();
+            }
+        }
+
+        // Play the current track and update the button text
+        function playTrack() {
+            audioPlayer.play();
+            playPauseBtn.textContent = "Pause";
+        }
+
+        // Pause playback and update the button text
+        function pauseTrack() {
+            audioPlayer.pause();
+            playPauseBtn.textContent = "Play";
+        }
+
+        // Toggle play/pause when the button is clicked
+        playPauseBtn.addEventListener("click", function () {
+            if (audioPlayer.paused) {
+                playTrack();
+            } else {
+                pauseTrack();
+            }
+        });
+
+        // Play the next track in the list
+        document.getElementById("nextBtn").addEventListener("click", function () {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            loadTrack(currentTrack);
+            playTrack();
+        });
+
+        // Play the previous track in the list
+        document.getElementById("prevBtn").addEventListener("click", function () {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            loadTrack(currentTrack);
+            playTrack();
+        });
+
+        // Automatically play the next track when the current one ends
+        audioPlayer.addEventListener("ended", function () {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            loadTrack(currentTrack);
+            playTrack();
+        });
+
+        // Update progress bar and time display
+        audioPlayer.addEventListener("timeupdate", function () {
+            if (audioPlayer.duration) {
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = progressPercent + "%";
+                timeDisplay.textContent = formatTime(audioPlayer.currentTime) + " / " + formatTime(audioPlayer.duration);
+            }
+        });
+
+        // Click on progress bar to seek
+        progressContainer.addEventListener("click", function (e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audioPlayer.duration;
+            audioPlayer.currentTime = (clickX / width) * duration;
+        });
+
+        // Format time in minutes:seconds
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return minutes + ":" + (secs < 10 ? "0" + secs : secs);
+        }
+
+        // Generate playlist items with a download link per track
+        function generatePlaylist() {
+            tracks.forEach((track, index) => {
+                const li = document.createElement("li");
+
+                const titleSpan = document.createElement("span");
+                titleSpan.textContent = track.title;
+                li.appendChild(titleSpan);
+
+                const downloadLink = document.createElement("a");
+                downloadLink.href = track.src;
+                downloadLink.download = "";
+                downloadLink.textContent = "Download";
+                downloadLink.className = "download-link";
+                // Prevent the li click event when clicking the download link
+                downloadLink.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                });
+                li.appendChild(downloadLink);
+
+                li.addEventListener("click", function () {
+                    loadTrack(index);
+                    playTrack();
+                });
+                playlistList.appendChild(li);
+            });
+            updatePlaylistHighlight();
+        }
+
+        // Update the active playlist item highlighting
+        function updatePlaylistHighlight() {
+            const items = playlistList.getElementsByTagName("li");
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove("active");
+            }
+            if (items[currentTrack]) {
+                items[currentTrack].classList.add("active");
+            }
+        }
+
+        // Initialise by generating the playlist and loading the first track
+        generatePlaylist();
+        loadTrack(currentTrack);
+    </script>
+</body>
+
+</html>
