@@ -163,13 +163,12 @@
 
         <div class="track-info" id="trackTitle">Loading...</div>
 
-        <div class="controls">
+        <div class="controls"> 
             <button id="prevBtn">Prev</button>
             <button id="playPauseBtn">Play</button>
             <button id="nextBtn">Next</button>
         </div>
 
-        <!-- Progress bar and time display -->
         <div class="progress-wrapper">
             <div class="progress-container" id="progressContainer">
                 <div class="progress-bar" id="progressBar"></div>
@@ -179,59 +178,28 @@
 
         <div class="playlist" id="playlist">
             <ul id="playlistList">
-                <!-- Playlist items will be injected here -->
-            </ul>
+                </ul>
         </div>
 
-        <!-- Hidden HTML5 audio element -->
         <audio id="audioPlayer"></audio>
     </div>
 
     <script>
-        // List of tracks with relative paths for GitHub Pages
-      const tracks = [
-            {
-                title: "13 growninlove.mp3",
-                src: "tracks/13 growninlove.mp3"
-            },
-            {
-                title: "23 financial crash.m4a",
-                src: "tracks/23 financial crash.m4a"
-            },
-            {
-                title: "27 nature nurture.m4a",
-                src: "tracks/27 nature nurture.m4a"
-            },
-            {
-                title: "37 doctor.m4a",
-                src: "tracks/37 doctor.m4a"
-            },
-            {
-                title: "32 end of an era.m4a",
-                src: "tracks/32 end of an era.m4a"
-            },
-            {
-                title: "33 richmond.m4a",
-                src: "tracks/33 richmond.m4a"
-            },
-            {
-                title: "34 thegroove.mp3",
-                src: "tracks/34 thegroove.mp3"
-            },
-            {
-                title: "35 ghostie.mp3",
-                src: "tracks/35 ghostie.mp3"
-            },
-            {
-                title: "36 instrumental.mp3",
-                src: "tracks/36 instrumental.mp3"
-            },
-            {
-                title: "38 harshbutfair.mp3",
-                src: "tracks/38 harshbutfair.mp3"
-            }
+        // List of tracks with relative paths
+        const tracks = [
+            { title: "the groove 19 july mix", src: "20250718mixes/the groove 19 july mix.mp3" },
+            { title: "growing in love 19 july mix", src: "20250718mixes/growing in love 19 july mix.mp3" },
+            { title: "instrumental 18 july mix", src: "20250718mixes/instrumental 18 july mix.mp3" },
+            { title: "doctor 18 july mix", src: "20250718mixes/doctor 18 july mix.mp3" },
+            { title: "ghosty 19 july mix", src: "20250718mixes/ghosty 19 july mix.mp3" },
+            { title: "harsh but fair 18 july mix", src: "20250718mixes/harsh but fair 18 july mix.mp3" },
+            { title: "end of an era 19 july mix", src: "20250718mixes/end of an era 19 july mix.mp3" },
+            { title: "richmond 19 july mix", src: "20250718mixes/richmond 19 july mix.mp3" },
+            { title: "nature 19 july mix", src: "20250718mixes/nature 19 july mix.mp3" },
+            { title: "finacial 19 july mix", src: "20250718mixes/finacial 19 july mix.mp3" },
+            { title: "doctor OG 18 july mix", src: "20250718mixes/doctor OG 18 july mix.mp3" },
+            { title: "richmond OG bass 19 july mix", src: "20250718mixes/richmond OG bass 19 july mix.mp3" }
         ];
-
 
         let currentTrack = 0;
         const audioPlayer = document.getElementById("audioPlayer");
