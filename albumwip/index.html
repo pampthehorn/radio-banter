@@ -3,36 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
     <title>RB chris white sessions wip</title>
     <style>
         /* Overall page styling */
         body {
-            background-color: #121212;
-            color: #f5f5f5;
+            background-color: #f5f5f5; /* Light theme background */
+            color: #121212; /* Light theme text color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Allow content to stack and scroll */
+            justify-content: flex-start; /* Align content to the top */
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Ensure body takes full viewport height */
         }
 
         /* Container for the player */
         .player {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
+            background-color: #ffffff; /* Light theme player background */
+            border: 1px solid #ccc; /* Light theme border */
             border-radius: 8px;
             padding: 20px;
             width: 320px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            margin-top: 20px; /* Add some top margin */
+            margin-bottom: 20px; /* Add some bottom margin */
         }
 
         /* ASCII art logo styling */
         header pre {
-            color: #FF5500;
+            color: #007bff; /* Light theme header color */
             font-size: 14px;
             margin: 0;
             line-height: 1.2;
@@ -50,7 +53,7 @@
         }
 
         button {
-            background-color: #FF5500;
+            background-color: #007bff; /* Light theme button color */
             border: none;
             color: #ffffff;
             padding: 10px 15px;
@@ -61,7 +64,7 @@
         }
 
         button:hover {
-            background-color: #e64e00;
+            background-color: #0056b3; /* Lighter hover for light theme */
         }
 
         /* Progress bar and time display styling */
@@ -70,7 +73,7 @@
         }
 
         .progress-container {
-            background: #333;
+            background: #e0e0e0; /* Light theme progress container */
             cursor: pointer;
             height: 8px;
             border-radius: 4px;
@@ -78,7 +81,7 @@
         }
 
         .progress-bar {
-            background: #FF5500;
+            background: #007bff; /* Light theme progress bar */
             height: 100%;
             width: 0%;
             border-radius: 4px;
@@ -93,12 +96,12 @@
         .playlist {
             margin-top: 20px;
             text-align: left;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: #181818;
-            border: 1px solid #333;
+            /* Removed max-height and overflow-y for full display */
+            background-color: #f0f0f0; /* Light theme playlist background */
+            border: 1px solid #ccc; /* Light theme playlist border */
             border-radius: 4px;
             padding: 10px;
+            width: 320px; /* Ensure playlist has a defined width */
         }
 
         .playlist ul {
@@ -110,7 +113,7 @@
         .playlist li {
             padding: 8px;
             cursor: pointer;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #ddd; /* Lighter border for light theme */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -121,18 +124,18 @@
         }
 
         .playlist li:hover {
-            background-color: #FF5500;
+            background-color: #e0f7fa; /* Light blue hover for light theme */
             color: #121212;
         }
 
         .playlist li.active {
-            background-color: #FF5500;
+            background-color: #e0f7fa; /* Light blue active for light theme */
             color: #121212;
         }
 
         .download-link {
             font-size: 12px;
-            color: #FF5500;
+            color: #007bff; /* Light theme download link color */
             text-decoration: none;
             margin-left: 10px;
         }
@@ -147,23 +150,30 @@
     <div class="player">
         <header>
             <pre>
-▗▄▄▖ ▗▄▖ ▗▄▄▄ ▗▄▄▄▖ ▗▄▖
-▐▌ ▐▌▐▌ ▐▌▐▌ █ █ ▐▌ ▐▌
-▐▛▀▚▖▐▛▀▜▌▐▌ █ █ ▐▌ ▐▌
-▐▌ ▐▌▐▌ ▐▌▐▙▄▄▀▗▄█▄▖▝▚▄▞▘
-
-
-
-▗▄▄▖ ▗▄▖ ▗▖ ▗▖▗▄▄▄▖▗▄▄▄▖▗▄▄▖
-▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌ █ ▐▌ ▐▌ ▐▌
-▐▛▀▚▖▐▛▀▜▌▐▌ ▝▜▌ █ ▐▛▀▀▘▐▛▀▚▖
-▐▙▄▞▘▐▌ ▐▌▐▌ ▐▌ █ ▐▙▄▄▖▐▌ ▐▌
+⠀⠀⢀⡠⠒⠈⠛⠊⠋⠑⠦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡎⠀⡀⠀⠀⠰⡀⠀⠐⣪⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡧⠀⠉⣓⠴⠊⠉⠉⢫⠀⠀⠉⣉⣲⠀⠀⠀⠀⠀⣄⠀⠴⠄⡀⡀⠀⠀⠀
+⠀⢀⡿⠓⠊⠀⠠⠾⠟⠁⠘⡖⠐⠚⣇⣀⢀⣀⠤⠖⠒⠒⠠⢄⡀⠀⠈⠑⡄⠀
+⣠⠯⠀⠀⠀⠀⠀⠀⠀⣠⠜⠀⠀⠀⢸⢆⠀⠈⠁⠀⠀⠀⠀⠀⠁⠀⠀⠀⠈⠄
+⢷⡤⠂⢀⠀⠀⣀⡠⠔⠁⠀⠀⠀⠀⡜⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸
+⠈⠻⠭⠶⠚⠛⡄⠀⠀⠀⠀⠀⠀⠈⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣵⠠⠤⠀⠀⠀⠀⡠⠔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸
+⠀⠀⠀⠀⠀⠀⠻⡤⠄⢀⡠⠄⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⠀⠀⡸
+⠀⠀⠀⠀⠀⠀⠀⢱⠖⠮⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢀⠞⡞⠀⡀⡅
+⠀⠀⠀⠀⠀⠀⠀⠈⣗⠂⠤⠀⠀⠀⠀⠀⠀⢀⠀⠤⡔⠁⠀⠀⡠⡾⠠⠮⡾⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢱⡩⠁⢄⠀⠀⠀⣀⠄⠂⠀⡴⠓⢶⠚⢹⡇⡇⠀⢀⡷⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⡗⠒⠀⣽⠉⠙⣦⠄⠀⣾⠁⠀⡼⠀⠈⡇⢹⠀⢸⠃⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⡿⠀⠀⢻⠀⠀⢯⠀⠀⡇⠀⢠⡇⢸⠀⠈⢇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⠋⠀⡏⢀⠀⡟⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⠚⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
             </pre>
         </header>
 
         <div class="track-info" id="trackTitle">Loading...</div>
 
-        <div class="controls"> 
+        <div class="controls">
             <button id="prevBtn">Prev</button>
             <button id="playPauseBtn">Play</button>
             <button id="nextBtn">Next</button>
@@ -175,30 +185,33 @@
             </div>
             <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
         </div>
-
-        <div class="playlist" id="playlist">
-            <ul id="playlistList">
-                </ul>
-        </div>
-
-        <audio id="audioPlayer"></audio>
+    </div>
+    <div class="playlist" id="playlist">
+        <ul id="playlistList">
+        </ul>
     </div>
 
+    <audio id="audioPlayer"></audio>
+
     <script>
-        // List of tracks with relative paths
+        // List of tracks with relative paths - UPDATED
         const tracks = [
-            { title: "the groove 19 july mix", src: "20250718mixes/the groove 19 july mix.mp3" },
-            { title: "growing in love 19 july mix", src: "20250718mixes/growing in love 19 july mix.mp3" },
-            { title: "instrumental 18 july mix", src: "20250718mixes/instrumental 18 july mix.mp3" },
-            { title: "doctor 18 july mix", src: "20250718mixes/doctor 18 july mix.mp3" },
-            { title: "ghosty 19 july mix", src: "20250718mixes/ghosty 19 july mix.mp3" },
-            { title: "harsh but fair 18 july mix", src: "20250718mixes/harsh but fair 18 july mix.mp3" },
-            { title: "end of an era 19 july mix", src: "20250718mixes/end of an era 19 july mix.mp3" },
-            { title: "richmond 19 july mix", src: "20250718mixes/richmond 19 july mix.mp3" },
-            { title: "nature 19 july mix", src: "20250718mixes/nature 19 july mix.mp3" },
-            { title: "finacial 19 july mix", src: "20250718mixes/finacial 19 july mix.mp3" },
-            { title: "doctor OG 18 july mix", src: "20250718mixes/doctor OG 18 july mix.mp3" },
-            { title: "richmond OG bass 19 july mix", src: "20250718mixes/richmond OG bass 19 july mix.mp3" }
+                        { title: "the groove 24 july mix", src: "20250724mixes/the groove 24 july mix.mp3" },
+                        { title: "growing in love 24 july mix", src: "20250724mixes/growing in love 24 july mix.mp3" },
+            { title: "instrumental 24 july mix", src: "20250724mixes/instrumental 24 july mix.mp3" },
+            { title: "doctor edit 24 july mix", src: "20250724mixes/doctor edit 24 july mix.mp3" },
+                        { title: "ghosty 24 july mix", src: "20250724mixes/ghosty 24 july mix.mp3" },
+            { title: "harsh but fair 24 july mix", src: "20250724mixes/harsh but fair 24 july mix.mp3" },
+            { title: "end of an era 24 july mix edit", src: "20250724mixes/end of an era 24 july mix edit.mp3" },
+            { title: "richmond OG bass 24 july mix oil edit", src: "20250724mixes/richmond OG bass 24 july mix oil edit.mp3" },
+            { title: "financial 24 july mix", src: "20250724mixes/financial 24 july mix.mp3" },
+            { title: "nature 24 july mix", src: "20250724mixes/nature 24 july mix.mp3" },
+            { title: "finacial 24 july mix no bass", src: "20250724mixes/finacial 24 july mix no bass.mp3" },
+            { title: "doctor edit instrumental 24 july mix", src: "20250724mixes/doctor edit instrumental 24 july mix.mp3" },
+            { title: "richmond OG bass 24 july mix oil edit no end vocal", src: "20250724mixes/richmond OG bass 24 july mix oil edit no end vocal.mp3" }
+
+
+
         ];
 
         let currentTrack = 0;
@@ -209,6 +222,33 @@
         const progressBar = document.getElementById("progressBar");
         const progressContainer = document.getElementById("progressContainer");
         const timeDisplay = document.getElementById("timeDisplay");
+
+        let wakeLock = null; // Variable to store the wake lock sentinel
+
+        // Function to request a wake lock
+        async function requestWakeLock() {
+            if ('wakeLock' in navigator) {
+                try {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                    console.log('Screen wake lock active');
+                    wakeLock.addEventListener('release', () => {
+                        console.log('Screen wake lock released');
+                    });
+                } catch (err) {
+                    console.error(`${err.name}, ${err.message}`);
+                }
+            } else {
+                console.log('Wake Lock API not supported by this browser.');
+            }
+        }
+
+        // Function to release the wake lock
+        function releaseWakeLock() {
+            if (wakeLock) {
+                wakeLock.release();
+                wakeLock = null;
+            }
+        }
 
         // Load a track by its index in the tracks array
         function loadTrack(index) {
@@ -225,12 +265,14 @@
         function playTrack() {
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
+            requestWakeLock(); // Request wake lock when playing
         }
 
         // Pause playback and update the button text
         function pauseTrack() {
             audioPlayer.pause();
             playPauseBtn.textContent = "Play";
+            releaseWakeLock(); // Release wake lock when pausing
         }
 
         // Toggle play/pause when the button is clicked
@@ -258,6 +300,7 @@
 
         // Automatically play the next track when the current one ends
         audioPlayer.addEventListener("ended", function () {
+            releaseWakeLock(); // Release wake lock when track ends
             currentTrack = (currentTrack + 1) % tracks.length;
             loadTrack(currentTrack);
             playTrack();
@@ -330,6 +373,20 @@
         // Initialise by generating the playlist and loading the first track
         generatePlaylist();
         loadTrack(currentTrack);
+
+        // Release wake lock if the page becomes hidden (e.g., app switched)
+        document.addEventListener('visibilitychange', () => {
+            if (wakeLock !== null && document.visibilityState === 'hidden') {
+                releaseWakeLock();
+            }
+        });
+
+        // Re-request wake lock if the page becomes visible and audio is playing
+        document.addEventListener('visibilitychange', () => {
+            if (audioPlayer.paused === false && document.visibilityState === 'visible') {
+                requestWakeLock();
+            }
+        });
     </script>
 </body>
 
