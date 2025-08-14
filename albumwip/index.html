@@ -107,10 +107,20 @@
             font-size: 12px;
             margin-top: 5px;
         }
+        
+        /* Section heading for alternate list */
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 320px;
+            text-align: left;
+            padding-left: 10px;
+        }
 
         /* Playlist styling */
         .playlist {
-            margin-top: 20px;
+            margin-top: 0; /* Adjusted margin */
             text-align: left;
             background-color: #ffffff;
             /* White playlist background */
@@ -188,7 +198,7 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⢱⡩⠁⢄⠀⠀⠀⣀⠄⠂⠀⡴⠓⢶⠚⢹⡇⡇⠀⢀⡷⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡗⠒⠀⣽⠉⠙⣦⠄⠀⣾⠁⠀⡼⠀⠈⡇⢹⠀⢸⠃⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⡿⠀⠀⢻⠀⠀⢯⠀⠀⡇⠀⢠⡇⢸⠀⠈⢇⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⠋⠀⡏⢀⠀⡟⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⋋⠀⡏⢀⠀⡟⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⠚⠁⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -214,28 +224,38 @@
       <div class="playlist" id="playlist">
             <ul id="playlistList">
                 </ul>
-          </div>
+      </div>
+
+      <h2>Alternate Versions</h2>
+      <div class="playlist" id="alternatePlaylist">
+            <ul id="alternatePlaylistList">
+                </ul>
+      </div>
 
       <audio id="audioPlayer"></audio>
 
      
     <script>
-        const tracks = [
-            { title: "The Groove", src: "20250724mixes/nu the groove 6 aug mix even less huh and whistle.mp3" },
-            { title: "Growing in Love", src: "20250724mixes/nu growing in love 6 aug mix less whistle.mp3" },
-            { title: "Instrumental", src: "20250724mixes/instrumental 24 july mix.mp3" },
-            { title: "Doctor", src: "20250724mixes/nu doctor edit instrumental 6 aug mix.mp3" },
-            { title: "Ghostie", src: "20250724mixes/nu ghosty 6 aug mix with end synth.mp3" },
-            { title: "Harsh But Fair", src: "20250724mixes/harsh but fair 24 july mix.mp3" },
-            { title: "End of an Era", src: "20250724mixes/end of an era 24 july mix edit.mp3" },
-            { title: "Richmond", src: "20250724mixes/nu richmond bass dub 6 AUG mix oil edit.mp3" },
-            { title: "Financial Crash", src: "20250724mixes/nu finacial 6 aug whistle just at end.mp3" },
-            { title: "Nature Nurture", src: "20250724mixes/rb aug nature nuture oberdubs aug25.m4a" }
-            // { title: "finacial 24 july mix no bass", src: "20250724mixes/finacial 24 july mix no bass.mp3" },
-            // { title: "doctor edit instrumental 24 july mix", src: "20250724mixes/doctor edit instrumental 24 july mix.mp3" },
-            // { title: "doctor edit 24 july mix", src: "20250724mixes/doctor edit 24 july mix.mp3" },
-            // { title: "nature 24 july mix", src: "20250724mixes/nature 24 july mix.mp3" },
-            // { title: "richmond OG bass 24 july mix oil edit no end vocal", src: "20250724mixes/richmond OG bass 24 july mix oil edit no end vocal.mp3" }
+        // Main playlist tracks
+        const mainTracks = [
+            { title: "Nature Nurture", src: "20250814masters/nature radio banter 14 aug 2025 master session.mp3" },
+            { title: "Doctor", src: "20250814masters/doctor radio banter 14 aug 2025 master session.mp3" },
+            { title: "Growing in Love (No Whistle)", src: "20250814masters/growing NO WHISTLE radio banter 14 aug 2025 master session.mp3" },
+            { title: "Harsh But Fair", src: "20250814masters/harsh but fair radio banter 14 aug 2025 master session.mp3" },
+            { title: "Ghosty", src: "20250814masters/ghosty radio banter 14 aug 2025 master session.mp3" },
+            { title: "Instrumental", src: "20250814masters/instrumental radio banter 14 aug 2025 master session.mp3" },
+            { title: "Richmond", src: "20250814masters/richmond radio banter 14 aug 2025 master session.mp3" },
+            { title: "End of an Era", src: "20250814masters/end of an era radio banter 14 aug 2025 master session.mp3" },
+            { title: "Groove (Faster)", src: "20250814masters/groove FASTER radio banter 14 aug 2025 master session.mp3" },
+            { title: "Financial Crash (Faster)", src: "20250814masters/financial crash FASTER radio banter 14 aug 2025 master session.mp3" }
+         
+        ];
+
+        // Alternate versions playlist
+        const alternateTracks = [
+            { title: "Financial Crash (OG)", src: "20250814masters/financial crash OG radio banter 14 aug 2025 master session.mp3" },
+            { title: "Growing (With Whistle)", src: "20250814masters/growing WITH WHISTLE radio banter 14 aug 2025 master session.mp3" },
+            { title: "Groove (OG speed)", src: "20250814masters/groove OG radio banter 14 aug 2025 master session.mp3" }
         ];
 
         let currentTrack = 0;
@@ -243,13 +263,13 @@
         const trackTitle = document.getElementById("trackTitle");
         const playPauseBtn = document.getElementById("playPauseBtn");
         const playlistList = document.getElementById("playlistList");
+        const alternatePlaylistList = document.getElementById("alternatePlaylistList");
         const progressBar = document.getElementById("progressBar");
         const progressContainer = document.getElementById("progressContainer");
         const timeDisplay = document.getElementById("timeDisplay");
 
-        let wakeLock = null; // Variable to store the wake lock sentinel
+        let wakeLock = null;
 
-        // Function to request a wake lock
         async function requestWakeLock() {
             if ('wakeLock' in navigator) {
                 try {
@@ -266,40 +286,47 @@
             }
         }
 
-        // Function to release the wake lock
         function releaseWakeLock() {
             if (wakeLock) {
                 wakeLock.release();
                 wakeLock = null;
             }
         }
-
-        // Load a track by its index in the tracks array
+        
+        // Load a track from the main playlist
         function loadTrack(index) {
-            if (index >= 0 && index < tracks.length) {
+            if (index >= 0 && index < mainTracks.length) {
                 currentTrack = index;
-                audioPlayer.src = tracks[index].src;
-                trackTitle.textContent = 'Radio Banter - ' + tracks[index].title;
+                const track = mainTracks[index];
+                audioPlayer.src = track.src;
+                trackTitle.textContent = 'Radio Banter - ' + track.title;
                 updatePlaylistHighlight();
                 audioPlayer.load();
             }
         }
+        
+        // Load a specific track object (used for alternate list)
+        function loadSpecificTrack(track) {
+            audioPlayer.src = track.src;
+            trackTitle.textContent = 'Radio Banter - ' + track.title;
+            // Deselect any item in the main playlist
+            currentTrack = -1; 
+            updatePlaylistHighlight();
+            audioPlayer.load();
+        }
 
-        // Play the current track and update the button text
         function playTrack() {
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
-            requestWakeLock(); // Request wake lock when playing
+            requestWakeLock();
         }
 
-        // Pause playback and update the button text
         function pauseTrack() {
             audioPlayer.pause();
             playPauseBtn.textContent = "Play";
-            releaseWakeLock(); // Release wake lock when pausing
+            releaseWakeLock();
         }
 
-        // Toggle play/pause when the button is clicked
         playPauseBtn.addEventListener("click", function () {
             if (audioPlayer.paused) {
                 playTrack();
@@ -308,29 +335,33 @@
             }
         });
 
-        // Play the next track in the list
+        // Next/Prev buttons only cycle through the main playlist
         document.getElementById("nextBtn").addEventListener("click", function () {
-            currentTrack = (currentTrack + 1) % tracks.length;
-            loadTrack(currentTrack);
+            const nextIndex = (currentTrack + 1) % mainTracks.length;
+            loadTrack(nextIndex);
             playTrack();
         });
 
-        // Play the previous track in the list
         document.getElementById("prevBtn").addEventListener("click", function () {
-            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-            loadTrack(currentTrack);
+            const prevIndex = (currentTrack - 1 + mainTracks.length) % mainTracks.length;
+            loadTrack(prevIndex);
             playTrack();
         });
 
-        // Automatically play the next track when the current one ends
+        // Autoplay logic: stops after the last track of the main playlist
         audioPlayer.addEventListener("ended", function () {
-            releaseWakeLock(); // Release wake lock when track ends
-            currentTrack = (currentTrack + 1) % tracks.length;
-            loadTrack(currentTrack);
-   playTrack();
+            releaseWakeLock();
+            if (currentTrack < mainTracks.length - 1) {
+                currentTrack++;
+                loadTrack(currentTrack);
+                playTrack();
+            } else {
+                // Last song of main playlist finished, so stop.
+                pauseTrack();
+                audioPlayer.currentTime = 0; // Reset for next play
+            }
         });
 
-        // Update progress bar and time display
         audioPlayer.addEventListener("timeupdate", function () {
             if (audioPlayer.duration) {
                 const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -339,7 +370,6 @@
             }
         });
 
-        // Click on progress bar to seek
         progressContainer.addEventListener("click", function (e) {
             const width = this.clientWidth;
             const clickX = e.offsetX;
@@ -347,67 +377,73 @@
             audioPlayer.currentTime = (clickX / width) * duration;
         });
 
-        // Format time in minutes:seconds
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return minutes + ":" + (secs < 10 ? "0" + secs : secs);
         }
 
-        // Generate playlist items with a download link per track
-        function generatePlaylist() {
-            tracks.forEach((track, index) => {
-                const li = document.createElement("li");
+        // Generic function to create a list item
+        function createPlaylistItem(track, clickHandler) {
+            const li = document.createElement("li");
 
-                const titleSpan = document.createElement("span");
-                titleSpan.textContent = track.title;
-                li.appendChild(titleSpan);
+            const titleSpan = document.createElement("span");
+            titleSpan.textContent = track.title;
+            li.appendChild(titleSpan);
 
-                const downloadLink = document.createElement("a");
-                downloadLink.href = track.src;
-                downloadLink.download = "";
-                downloadLink.textContent = "Download";
-                downloadLink.className = "download-link";
-                // Prevent the li click event when clicking the download link
-                downloadLink.addEventListener("click", function (e) {
-                    e.stopPropagation();
-                });
-                li.appendChild(downloadLink);
+            const downloadLink = document.createElement("a");
+            downloadLink.href = track.src;
+            downloadLink.download = "";
+            downloadLink.textContent = "Download";
+            downloadLink.className = "download-link";
+            downloadLink.addEventListener("click", e => e.stopPropagation());
+            li.appendChild(downloadLink);
 
-                li.addEventListener("click", function () {
+            li.addEventListener("click", clickHandler);
+            return li;
+        }
+
+        // Generate both playlists
+        function generatePlaylists() {
+            // Main playlist
+            mainTracks.forEach((track, index) => {
+                const li = createPlaylistItem(track, () => {
                     loadTrack(index);
                     playTrack();
                 });
                 playlistList.appendChild(li);
             });
+
+            // Alternate playlist
+            alternateTracks.forEach((track, index) => {
+                const li = createPlaylistItem(track, () => {
+                    loadSpecificTrack(track);
+                    playTrack();
+                });
+                alternatePlaylistList.appendChild(li);
+            });
             updatePlaylistHighlight();
         }
 
-        // Update the active playlist item highlighting
+        // Update active highlight only for the main playlist
         function updatePlaylistHighlight() {
             const items = playlistList.getElementsByTagName("li");
             for (let i = 0; i < items.length; i++) {
                 items[i].classList.remove("active");
             }
-            if (items[currentTrack]) {
+            if (currentTrack >= 0 && items[currentTrack]) {
                 items[currentTrack].classList.add("active");
             }
         }
 
-        // Initialise by generating the playlist and loading the first track
-        generatePlaylist();
+        // Initialisation
+        generatePlaylists();
         loadTrack(currentTrack);
 
-        // Release wake lock if the page becomes hidden (e.g., app switched)
         document.addEventListener('visibilitychange', () => {
             if (wakeLock !== null && document.visibilityState === 'hidden') {
                 releaseWakeLock();
-            }
-        });
-
-        // Re-request wake lock if the page becomes visible and audio is playing
-        document.addEventListener('visibilitychange', () => {
-            if (audioPlayer.paused === false && document.visibilityState === 'visible') {
+            } else if (!audioPlayer.paused && document.visibilityState === 'visible') {
                 requestWakeLock();
             }
         });
