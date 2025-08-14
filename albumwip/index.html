@@ -2,41 +2,49 @@
 <html lang="en">
 
 <head>
+     
     <meta charset="UTF-8">
+     
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
-    <title>RB chris white sessions wip</title>
-    <style>
+      <title>RB chris white sessions wip</title>
+      <style>
         /* Overall page styling */
         body {
-            background-color: #f5f5f5; /* Light theme background */
-            color: #121212; /* Light theme text color */
+            background-color: #ffffff;
+            /* White background */
+            color: #000000;
+            /* Black text color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column; /* Allow content to stack and scroll */
-            justify-content: flex-start; /* Align content to the top */
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            min-height: 100vh; /* Ensure body takes full viewport height */
+            min-height: 100vh;
         }
 
         /* Container for the player */
         .player {
-            background-color: #ffffff; /* Light theme player background */
-            border: 1px solid #ccc; /* Light theme border */
+            background-color: #ffffff;
+            /* White player background */
+            border: 1px solid #000000;
+            /* Black border */
             border-radius: 8px;
             padding: 20px;
             width: 320px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-            margin-top: 20px; /* Add some top margin */
-            margin-bottom: 20px; /* Add some bottom margin */
+            box-shadow: none;
+            /* Removed shadow for a flat look */
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         /* ASCII art logo styling */
         header pre {
-            color: #007bff; /* Light theme header color */
-            font-size: 6px;
+            color: #000000;
+            /* Black header color */
+            font-size: 8px;
             margin: 0;
             line-height: 1.2;
         }
@@ -53,9 +61,12 @@
         }
 
         button {
-            background-color: #007bff; /* Light theme button color */
-            border: none;
-            color: #ffffff;
+            background-color: #ffffff;
+            /* White button background */
+            border: 1px solid #000000;
+            /* Black border */
+            color: #000000;
+            /* Black text */
             padding: 10px 15px;
             margin: 5px;
             border-radius: 4px;
@@ -64,7 +75,10 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* Lighter hover for light theme */
+            background-color: #000000;
+            /* Black hover background */
+            color: #ffffff;
+            /* White text on hover */
         }
 
         /* Progress bar and time display styling */
@@ -73,7 +87,8 @@
         }
 
         .progress-container {
-            background: #e0e0e0; /* Light theme progress container */
+            background: #e0e0e0;
+            /* Light gray progress container */
             cursor: pointer;
             height: 8px;
             border-radius: 4px;
@@ -81,7 +96,8 @@
         }
 
         .progress-bar {
-            background: #007bff; /* Light theme progress bar */
+            background: #000000;
+            /* Black progress bar */
             height: 100%;
             width: 0%;
             border-radius: 4px;
@@ -96,12 +112,13 @@
         .playlist {
             margin-top: 20px;
             text-align: left;
-            /* Removed max-height and overflow-y for full display */
-            background-color: #f0f0f0; /* Light theme playlist background */
-            border: 1px solid #ccc; /* Light theme playlist border */
+            background-color: #ffffff;
+            /* White playlist background */
+            border: 1px solid #000000;
+            /* Black playlist border */
             border-radius: 4px;
             padding: 10px;
-            width: 320px; /* Ensure playlist has a defined width */
+            width: 320px;
         }
 
         .playlist ul {
@@ -113,7 +130,8 @@
         .playlist li {
             padding: 8px;
             cursor: pointer;
-            border-bottom: 1px solid #ddd; /* Lighter border for light theme */
+            border-bottom: 1px solid #dddddd;
+            /* Lighter gray border */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -124,31 +142,37 @@
         }
 
         .playlist li:hover {
-            background-color: #e0f7fa; /* Light blue hover for light theme */
-            color: #121212;
+            background-color: #f0f0f0;
+            /* Light gray hover */
+            color: #000000;
         }
 
         .playlist li.active {
-            background-color: #e0f7fa; /* Light blue active for light theme */
-            color: #121212;
+            background-color: #f0f0f0;
+            /* Light gray active */
+            color: #000000;
         }
 
         .download-link {
             font-size: 12px;
-            color: #007bff; /* Light theme download link color */
-            text-decoration: none;
+            color: #000000;
+            /* Black download link color */
+            text-decoration: underline;
+            /* Underline to show it's a link */
             margin-left: 10px;
         }
 
         .download-link:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            /* Remove underline on hover for feedback */
         }
     </style>
 </head>
 
 <body>
-    <div class="player">
-        <header>
+      <div class="player">
+            <header>
+                 
             <pre>
 ⠀⠀⢀⡠⠒⠈⠛⠊⠋⠑⠦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⡎⠀⡀⠀⠀⠰⡀⠀⠐⣪⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -168,52 +192,50 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⠚⠁⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-            </pre>
+      </pre>
+               
         </header>
 
-        <div class="track-info" id="trackTitle">Loading...</div>
+            <div class="track-info" id="trackTitle">Loading...</div>
 
-        <div class="controls">
-            <button id="prevBtn">Prev</button>
-            <button id="playPauseBtn">Play</button>
-            <button id="nextBtn">Next</button>
-        </div>
+            <div class="controls">
+                  <button id="prevBtn">Prev</button>
+                  <button id="playPauseBtn">Play</button>
+                  <button id="nextBtn">Next</button>
+                </div>
 
-        <div class="progress-wrapper">
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
-        </div>
-    </div>
-    <div class="playlist" id="playlist">
-        <ul id="playlistList">
-        </ul>
-    </div>
+            <div class="progress-wrapper">
+                  <div class="progress-container" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                      </div>
+                  <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+                </div>
+          </div>
+      <div class="playlist" id="playlist">
+            <ul id="playlistList">
+                </ul>
+          </div>
 
-    <audio id="audioPlayer"></audio>
+      <audio id="audioPlayer"></audio>
 
+     
     <script>
-        // List of tracks with relative paths - UPDATED
         const tracks = [
-                        { title: "the groove 24 july mix", src: "20250724mixes/nu the groove 6 aug mix even less huh and whistle.mp3" },
-                        { title: "growing in love 24 july mix", src: "20250724mixes/nu growing in love 6 aug mix less whistle.mp3" },
-            { title: "instrumental 24 july mix", src: "20250724mixes/instrumental 24 july mix.mp3" },
-            { title: "doctor rob home vox", src: "20250724mixes/nu doctor edit instrumental 6 aug mix.mp3" },
-                        { title: "ghosty 24 july mix", src: "20250724mixes/nu ghosty 6 aug mix with end synth.mp3" },
-            { title: "harsh but fair 24 july mix", src: "20250724mixes/harsh but fair 24 july mix.mp3" },
-            { title: "end of an era 24 july mix edit", src: "20250724mixes/end of an era 24 july mix edit.mp3" },
-            { title: "richmond OG bass 24 july mix oil edit", src: "20250724mixes/nu richmond bass dub 6 AUG mix oil edit.mp3" },
-            { title: "financial 24 july mix", src: "20250724mixes/nu finacial 6 aug whistle just at end.mp3" },
-            { title: "nature 24 july mix wiv clav od", src: "20250724mixes/rb aug nature nuture oberdubs aug25.m4a" },
-            { title: "finacial 24 july mix no bass", src: "20250724mixes/finacial 24 july mix no bass.mp3" },
-            { title: "doctor edit instrumental 24 july mix", src: "20250724mixes/doctor edit instrumental 24 july mix.mp3" },
-            { title: "doctor edit 24 july mix", src: "20250724mixes/doctor edit 24 july mix.mp3" },
-            { title: "nature 24 july mix", src: "20250724mixes/nature 24 july mix.mp3" },
-            { title: "richmond OG bass 24 july mix oil edit no end vocal", src: "20250724mixes/richmond OG bass 24 july mix oil edit no end vocal.mp3" }
-
-
-
+            { title: "The Groove", src: "20250724mixes/nu the groove 6 aug mix even less huh and whistle.mp3" },
+            { title: "Growing in Love", src: "20250724mixes/nu growing in love 6 aug mix less whistle.mp3" },
+            { title: "Instrumental", src: "20250724mixes/instrumental 24 july mix.mp3" },
+            { title: "Doctor", src: "20250724mixes/nu doctor edit instrumental 6 aug mix.mp3" },
+            { title: "Ghostie", src: "20250724mixes/nu ghosty 6 aug mix with end synth.mp3" },
+            { title: "Harsh But Fair", src: "20250724mixes/harsh but fair 24 july mix.mp3" },
+            { title: "End of an Era", src: "20250724mixes/end of an era 24 july mix edit.mp3" },
+            { title: "Richmond", src: "20250724mixes/nu richmond bass dub 6 AUG mix oil edit.mp3" },
+            { title: "Financial Crash", src: "20250724mixes/nu finacial 6 aug whistle just at end.mp3" },
+            { title: "Nature Nurture", src: "20250724mixes/rb aug nature nuture oberdubs aug25.m4a" }
+            // { title: "finacial 24 july mix no bass", src: "20250724mixes/finacial 24 july mix no bass.mp3" },
+            // { title: "doctor edit instrumental 24 july mix", src: "20250724mixes/doctor edit instrumental 24 july mix.mp3" },
+            // { title: "doctor edit 24 july mix", src: "20250724mixes/doctor edit 24 july mix.mp3" },
+            // { title: "nature 24 july mix", src: "20250724mixes/nature 24 july mix.mp3" },
+            // { title: "richmond OG bass 24 july mix oil edit no end vocal", src: "20250724mixes/richmond OG bass 24 july mix oil edit no end vocal.mp3" }
         ];
 
         let currentTrack = 0;
@@ -257,7 +279,7 @@
             if (index >= 0 && index < tracks.length) {
                 currentTrack = index;
                 audioPlayer.src = tracks[index].src;
-                trackTitle.textContent = tracks[index].title;
+                trackTitle.textContent = 'Radio Banter - ' + tracks[index].title;
                 updatePlaylistHighlight();
                 audioPlayer.load();
             }
@@ -305,7 +327,7 @@
             releaseWakeLock(); // Release wake lock when track ends
             currentTrack = (currentTrack + 1) % tracks.length;
             loadTrack(currentTrack);
-            playTrack();
+   playTrack();
         });
 
         // Update progress bar and time display
