@@ -108,16 +108,6 @@
             margin-top: 5px;
         }
         
-        /* Section heading for alternate list */
-        h2 {
-            font-size: 18px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            width: 320px;
-            text-align: left;
-            padding-left: 10px;
-        }
-
         /* Playlist styling */
         .playlist {
             margin-top: 0; /* Adjusted margin */
@@ -226,36 +216,22 @@
                 </ul>
       </div>
 
-      <h2>Alternate mixes</h2>
-      <div class="playlist" id="alternatePlaylist">
-            <ul id="alternatePlaylistList">
-                </ul>
-      </div>
-
       <audio id="audioPlayer"></audio>
 
      
     <script>
         // Main playlist tracks
         const mainTracks = [
-            { title: "Nature Nurture", src: "20250814masters/nature radio banter 14 aug 2025 master session.mp3" },
-            { title: "Growing in Love", src: "20250814masters/growing NO WHISTLE radio banter 14 aug 2025 master session.mp3" },
-            { title: "Harsh But Fair", src: "20250814masters/harsh but fair radio banter 14 aug 2025 master session.mp3" },
-            { title: "Richmond", src: "20250814masters/richmond radio banter 14 aug 2025 master session.mp3" },
-            { title: "End of an Era", src: "20250814masters/end of an era radio banter 14 aug 2025 master session.mp3" },
-            { title: "Ghostie", src: "20250814masters/ghosty radio banter 14 aug 2025 master session.mp3" },
-            { title: "Doctor", src: "20250814masters/doctor radio banter 14 aug 2025 master session.mp3" },
-            { title: "Instrumental", src: "20250814masters/instrumental radio banter 14 aug 2025 master session.mp3" },
-            { title: "The Groove", src: "20250814masters/groove OG radio banter 14 aug 2025 master session.mp3" },
-            { title: "Financial Crash", src: "20250814masters/financial crash FASTER radio banter 14 aug 2025 master session.mp3" }
-         
-        ];
-
-        // Alternate versions playlist
-        const alternateTracks = [
-            { title: "Financial Crash (OG)", src: "20250814masters/financial crash OG radio banter 14 aug 2025 master session.mp3" },
-            { title: "Growing (With Whistle)", src: "20250814masters/growing WITH WHISTLE radio banter 14 aug 2025 master session.mp3" },
-            { title: "Groove (faster)", src: "20250814masters/groove FASTER radio banter 14 aug 2025 master session.mp3" },
+            { title: "Nature Nurture", src: "20250823masters/01 Nature Nurture.mp3" },
+            { title: "Growing in Love", src: "20250823masters/02 Growing in Love.mp3" },
+            { title: "Harsh but Fair", src: "20250823masters/03 Harsh but Fair.mp3" },
+            { title: "Richmond", src: "20250823masters/04 Richmond.mp3" },
+            { title: "End of an Era", src: "20250823masters/05 End of an Era.mp3" },
+            { title: "Ghosty", src: "20250823masters/06 Ghosty.mp3" },
+            { title: "Doctor", src: "20250823masters/07 Doctor.mp3" },
+            { title: "Instrumental", src: "20250823masters/08 Instrumental.mp3" },
+            { title: "The Groove", src: "20250823masters/09 The Groove.mp3" },
+            { title: "Financial Crash", src: "20250823masters/10 Financial Crash.mp3" }
         ];
 
         let currentTrack = 0;
@@ -263,7 +239,6 @@
         const trackTitle = document.getElementById("trackTitle");
         const playPauseBtn = document.getElementById("playPauseBtn");
         const playlistList = document.getElementById("playlistList");
-        const alternatePlaylistList = document.getElementById("alternatePlaylistList");
         const progressBar = document.getElementById("progressBar");
         const progressContainer = document.getElementById("progressContainer");
         const timeDisplay = document.getElementById("timeDisplay");
@@ -305,16 +280,6 @@
             }
         }
         
-        // Load a specific track object (used for alternate list)
-        function loadSpecificTrack(track) {
-            audioPlayer.src = track.src;
-            trackTitle.textContent = 'Radio Banter - ' + track.title;
-            // Deselect any item in the main playlist
-            currentTrack = -1; 
-            updatePlaylistHighlight();
-            audioPlayer.load();
-        }
-
         function playTrack() {
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
@@ -403,9 +368,8 @@
             return li;
         }
 
-        // Generate both playlists
-        function generatePlaylists() {
-            // Main playlist
+        // Generate the main playlist
+        function generatePlaylist() {
             mainTracks.forEach((track, index) => {
                 const li = createPlaylistItem(track, () => {
                     loadTrack(index);
@@ -413,19 +377,10 @@
                 });
                 playlistList.appendChild(li);
             });
-
-            // Alternate playlist
-            alternateTracks.forEach((track, index) => {
-                const li = createPlaylistItem(track, () => {
-                    loadSpecificTrack(track);
-                    playTrack();
-                });
-                alternatePlaylistList.appendChild(li);
-            });
             updatePlaylistHighlight();
         }
 
-        // Update active highlight only for the main playlist
+        // Update active highlight for the playlist
         function updatePlaylistHighlight() {
             const items = playlistList.getElementsByTagName("li");
             for (let i = 0; i < items.length; i++) {
@@ -437,7 +392,7 @@
         }
 
         // Initialisation
-        generatePlaylists();
+        generatePlaylist();
         loadTrack(currentTrack);
 
         document.addEventListener('visibilitychange', () => {
