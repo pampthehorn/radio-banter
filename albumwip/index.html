@@ -2,12 +2,10 @@
 <html lang="en">
 
 <head>
-     
     <meta charset="UTF-8">
-     
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
-      <title>RB chris white sessions wip</title>
-      <style>
+    <title>Radio Banter - Whipstaff Manor Sessions</title>
+    <style>
         /* Overall page styling */
         body {
             background-color: #ffffff;
@@ -107,10 +105,11 @@
             font-size: 12px;
             margin-top: 5px;
         }
-        
+
         /* Playlist styling */
         .playlist {
-            margin-top: 0; /* Adjusted margin */
+            margin-top: 0;
+            /* Adjusted margin */
             text-align: left;
             background-color: #ffffff;
             /* White playlist background */
@@ -166,13 +165,24 @@
             text-decoration: none;
             /* Remove underline on hover for feedback */
         }
+
+        section#lyrics {
+            margin-top: 20px;
+            max-width: 600px;
+            padding: 10px;
+            background-color: #ffffff;
+            /* White background for lyrics */
+            text-align: center;
+            border: 1px solid #000000;
+            /* Black border */
+            border-radius: 8px;
+        }
     </style>
 </head>
 
 <body>
-      <div class="player">
-            <header>
-                 
+    <div class="player">
+        <header>
             <pre>
 ⠀⠀⢀⡠⠒⠈⠛⠊⠋⠑⠦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⡎⠀⡀⠀⠀⠰⡀⠀⠐⣪⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -192,53 +202,62 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⠚⠁⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      </pre>
-               
+            </pre>
         </header>
 
-            <div class="track-info" id="trackTitle">Loading...</div>
+        <div class="track-info" id="trackTitle">Loading...</div>
 
-            <div class="controls">
-                  <button id="prevBtn">Prev</button>
-                  <button id="playPauseBtn">Play</button>
-                  <button id="nextBtn">Next</button>
-                </div>
+        <div class="controls">
+            <button id="prevBtn">Prev</button>
+            <button id="playPauseBtn">Play</button>
+            <button id="nextBtn">Next</button>
+        </div>
 
-            <div class="progress-wrapper">
-                  <div class="progress-container" id="progressContainer">
-                        <div class="progress-bar" id="progressBar"></div>
-                      </div>
-                  <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
-                </div>
-          </div>
-      <div class="playlist" id="playlist">
-            <ul id="playlistList">
-                </ul>
-      </div>
+        <div class="progress-wrapper">
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+        </div>
+    </div>
+    <div class="playlist" id="playlist">
+        <ul id="playlistList">
+        </ul>
+    </div>
 
-      <audio id="audioPlayer"></audio>
+    <audio id="audioPlayer"></audio>
 
-     <section id="lyrics">
+    <section id="lyrics">
         <div>
             <h2>Nature/Nurture</h2>
             <p>
                 is it nature is nature<br>
-                this funky rhythm that funky beat<br>
+                this funky feeling that funky beat<br>
                 is it nature or is it nurture<br>
                 the reason for this rhythm in my feet<br>
                 is it nature or is it nurture<br>
                 People are so angry in the street<br>
                 is it nature or is it nurture<br>
                 the reason people are voting with their feet<br>
-                Don't be rude, don't be rude<br>
-                is it nature or is it nurture<br>
+            </p>
+
+            <p>
+                Don't be rude, don't be rude
+            </p>
+
+            <p> is it nature or is it nurture<br>
                 to criticise your mother's point of view<br>
                 is it nature or is it nurture<br>
                 to read beyond the headlines of the news<br>
+            </p>
+
+            <p>
                 Part of me felt we done too much<br>
                 Part of me felt we never done enough<br>
                 Part of me felt we done too much<br>
                 Part of me felt we never done enough<br>
+            </p>
+            <p>
                 Dont be rude, don't be rude
             </p>
         </div>
@@ -256,14 +275,22 @@
                 give them shade<br>
                 use a trowel<br>
                 use a spade<br>
-                aw man it's every day<br>
+            </p>
+
+            <p>aw man it's every day<br>
                 put my shoes on<br>
                 and it starts to rain<br>
                 Let's see how it looks in an hour<br>
+            </p>
+
+            <p>
                 it's not always<br>
                 The shoots will find their way<br>
                 It's not always<br>
                 The shrubs will see the day<br>
+            </p>
+
+            <p>
                 Oh no what to do<br>
                 I've grown in love with you
             </p>
@@ -286,6 +313,9 @@
             <h2>Richmond</h2>
             <p>
                 D C G x 4<br>
+            </p>
+
+            <p>
                 if we [D]don't come off the [C]gas that we [G]emit<br>
                 and we [D]say we'll buy [C]carbon [G]offsets<br>
                 is that [D]really us [C]playing our [G]part<br>
@@ -296,11 +326,17 @@
                 [D]children seeking [C]refuge at your [G]door<br>
                 They'll be asking [D] why they only [C]getting their [G]bit<br>
                 when we've [D]taken all the [C]sweetness [G]out of it<br>
+            </p>
+
+            <p>
                 [F]if we don't stop [Em]ourselves<br>
                 [F]we don't leave anybody [G]else<br>
                 [D]the [C]chance to[G]<br>
                 the [F]opportunity<br>
                 [B]not [G]to<br>
+            </p>
+
+            <p>
                 Em Bm<br>
                 Em Bm Am<br>
                 [twice through]
@@ -308,40 +344,60 @@
         </div>
         <div>
             <h2>End of an Era</h2>
+        </div>
+
+        <div>
+            <h2>Ghostie</h2>
             <p>
-                Ghosty<br>
                 the moon lit a bed of freshly fell snow<br>
                 my family slept and i ate soup by the stove<br>
-                who's that knockin on ma door<br>
+                who's that knockin on ma door<br><br />
                 out there's a young man in old man's clothes<br>
                 claims he lives here and my love is his<br>
-                who's that knockin on ma door<br>
-                from his top pocket pulls a picture of ma love<br>
-                that's it now i've had enough<br>
-                go walking in the snow<br>
+                i send him walking in the snow man<br><br />
+
+
                 i can't sleep so i go back outside<br>
                 where did he come from, which way did he go<br>
-                didn't leave footprints in the snow<br>
-                <br>
-                Doctor<br>
+                there are no footprints in the snow<br><br>
+
+            </p>
+        </div>
+
+        <div>
+            <h2>Doctor</h2>
+            <p>
+                I feel (C) so lazy (F) doctor can you (G) diagnose (C) why<br>
+                I'll sing (C) anything I (F) got til it (G) gets me a (C)line
+            </p>
+            <p>
+                I feel (C) so crazy (F) lately are you (G) loving me (C) why<br>
+                I'll do (C) anything (F) for you papa (G) you gave me my (C)life
+            </p>
+            <p>
                 (Em) oh my (C) God I (Bm) am so (C) tired<br>
                 (Em) even (C) though I have (G) slept for 12 (Bm) hours<br>
                 (Em) often (C) that is (Bm) just what (C) happens<br>
                 (Em) you over- (C) -sleep and it (G) makes you more (Bm) tired<br>
                 (Em) you over- (C) -sleep and it (Bm) makes you more (C) tired<br>
-                I feel (C) so lazy (F) doctor can you (G) diagnose (C) why<br>
-                I'll say (C) anything I (F) got to if you (G) give me my (C) line
             </p>
+
+            <p>Jesus christ I am so hungry<br />
+                Gonna go home now I've spent all my money</p>
+
         </div>
         <div>
             <h2>The Groove</h2>
             <p>
-                You've got to get in to the groove<br>
+            <p> You've got to get in to the groove<br>
                 That's the whole point of this song<br>
                 This song is so groovy<br>
                 They're making it in to a movie<br>
+            </p>
+
+            <p>
                 So when I die<br>
-                There will be starts<br>
+                There will be stars<br>
                 In the sky<br>
                 When I die<br>
                 You've got to get in to the groove
@@ -354,14 +410,17 @@
                 I took the decision<br>
                 It's all because of me<br>
                 It's my responsibility<br>
+            </p>
+            <p>
                 I need some inspiration<br>
                 to make a meal<br>
                 Is there any point though<br>
                 When all you want's a pie
-            </p>    </div>
+            </p>
+        </div>
 
 
-     </section>
+    </section>
 
 
     <script>
@@ -412,7 +471,7 @@
                 wakeLock = null;
             }
         }
-        
+
         // Load a track from the main playlist
         function loadTrack(index) {
             if (index >= 0 && index < mainTracks.length) {
@@ -424,7 +483,7 @@
                 audioPlayer.load();
             }
         }
-        
+
         function playTrack() {
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
@@ -494,11 +553,11 @@
         }
 
         // Generic function to create a list item
-        function createPlaylistItem(track, clickHandler) {
+        function createPlaylistItem(track, index, clickHandler) {
             const li = document.createElement("li");
 
             const titleSpan = document.createElement("span");
-            titleSpan.textContent = track.title;
+            titleSpan.textContent = (index + 1) + ". " + track.title;
             li.appendChild(titleSpan);
 
             const downloadLink = document.createElement("a");
@@ -516,7 +575,7 @@
         // Generate the main playlist
         function generatePlaylist() {
             mainTracks.forEach((track, index) => {
-                const li = createPlaylistItem(track, () => {
+                const li = createPlaylistItem(track, index, () => {
                     loadTrack(index);
                     playTrack();
                 });
