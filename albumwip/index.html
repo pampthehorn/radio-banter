@@ -25,8 +25,8 @@
             min-height: 100vh;
         }
 
-        footer pre{
-            font-size:0px;
+        footer pre {
+            font-size: 0px;
         }
 
         .content-wrapper {
@@ -213,7 +213,37 @@
             text-align: center;
             border: 1px solid #000000;
             border-radius: 8px;
+            position: relative;
+            touch-action: pan-y;
         }
+
+        .lyrics-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid black;
+            color: black;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .lyrics-nav-btn:hover {
+            background-color: black;
+            color: white;
+        }
+
+        #lyricsPrevBtn {
+            left: 10px;
+        }
+
+        #lyricsNextBtn {
+            right: 10px;
+        }
+
 
         #lyrics>div {
             display: none;
@@ -288,6 +318,8 @@
         <audio id="audioPlayer"></audio>
 
         <section id="lyrics">
+            <button id="lyricsPrevBtn" class="lyrics-nav-btn">&#10094;</button>
+            <button id="lyricsNextBtn" class="lyrics-nav-btn">&#10095;</button>
             <div id="lyrics-nature-nurture">
                 <h2>Nature/Nurture</h2>
                 <div class="lyrics-content">
@@ -545,16 +577,19 @@
                 </div>
             </div>
         </section>
-        <p>recorded, mixed & mastered by Chris White<br />artwork by <a href='https://www.instagram.com/painepoetry/'
-                target="_blank">Lily Payne</a><br />photograph by <Baz
-                href='https://www.instagram.com/remain_in_light_/' target="_blank">Baz</a></p>
+        <p><strong>Radio Banter</strong> are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
+            <br />Rob Alexander (electric piano / vocals)
+        </p>
+
+
 
         <img src="../ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image">
 
-        <p><strong>Radio Banter</strong> are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
-            <br />Rob Alexander (electric piano / vocals)</p>
+        <p>recorded, mixed & mastered by Chris White<br />artwork by <a href='https://www.instagram.com/painepoetry/'
+                target="_blank">Lily Payne</a><br />photograph by <a href='https://www.instagram.com/remain_in_light_/'
+                target="_blank">Baz</a></p>
 
-            <p>contact <a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
+        <p>contact <a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
 
         <footer>
             <pre>
@@ -573,7 +608,7 @@
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡗⠒⠀⣽⠉⠙⣦⠄⠀⣾⠁⠀⡼⠀⠈⡇⢹⠀⢸⠃⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⡿⠀⠀⢻⠀⠀⢯⠀⠀⡇⠀⢠⡇⢸⠀⠈⢇⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⋋⠀⡏⢀⠀⡟⠀
-                      ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⠚⠁⠀
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⚚⠁⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
             </pre>
@@ -594,7 +629,6 @@
             { title: "Financial Crash", src: "20250823masters/10 Financial Crash.mp3", image: "lily/financialcrash.jpg", lyricsId: "lyrics-financial-crash" }
         ];
 
-
         const sliderImages = [
             "lily/instrumental2.jpg",
             ...mainTracks.map(track => track.image),
@@ -604,11 +638,14 @@
 
         const uniqueSliderImages = [...new Set(sliderImages)];
 
-        let currentImageIndex = 0;
-        let hasStartedPlaying = false; // New flag to track if playback has started
-
-
+        // --- STATE VARIABLES ---
         let currentTrack = 0;
+        let currentImageIndex = 0;
+        let currentLyricsIndex = 0;
+        let hasStartedPlaying = false;
+        let wakeLock = null;
+
+        // --- DOM ELEMENTS ---
         const audioPlayer = document.getElementById("audioPlayer");
         const trackTitle = document.getElementById("trackTitle");
         const playPauseBtn = document.getElementById("playPauseBtn");
@@ -617,33 +654,29 @@
         const progressContainer = document.getElementById("progressContainer");
         const timeDisplay = document.getElementById("timeDisplay");
         const trackImage = document.getElementById("trackImage");
-        const allLyricsDivs = document.querySelectorAll("#lyrics > div");
+        const lyricsContainer = document.getElementById("lyrics");
+        const allLyricsDivs = document.querySelectorAll("#lyrics > div[id^='lyrics-']");
+        const lyricsPrevBtn = document.getElementById("lyricsPrevBtn");
+        const lyricsNextBtn = document.getElementById("lyricsNextBtn");
 
-        let wakeLock = null;
-
+        // --- WAKE LOCK FUNCTIONS ---
         async function requestWakeLock() {
             if ('wakeLock' in navigator) {
                 try {
                     wakeLock = await navigator.wakeLock.request('screen');
-                    console.log('Screen wake lock active');
-                    wakeLock.addEventListener('release', () => {
-                        console.log('Screen wake lock released');
-                    });
                 } catch (err) {
                     console.error(`${err.name}, ${err.message}`);
                 }
-            } else {
-                console.log('Wake Lock API not supported by this browser.');
             }
         }
 
         function releaseWakeLock() {
             if (wakeLock) {
-                wakeLock.release();
-                wakeLock = null;
+                wakeLock.release().then(() => { wakeLock = null; });
             }
         }
 
+        // --- IMAGE SLIDER FUNCTIONS ---
         function nextImage() {
             currentImageIndex = (currentImageIndex + 1) % uniqueSliderImages.length;
             trackImage.src = uniqueSliderImages[currentImageIndex];
@@ -654,6 +687,52 @@
             trackImage.src = uniqueSliderImages[currentImageIndex];
         }
 
+        // --- LYRICS SLIDER FUNCTIONS ---
+        function showLyrics(index) {
+            if (index >= 0 && index < allLyricsDivs.length) {
+                currentLyricsIndex = index;
+                allLyricsDivs.forEach(div => div.classList.remove('active'));
+                if (allLyricsDivs[index]) {
+                    allLyricsDivs[index].classList.add('active');
+                }
+            }
+        }
+
+        function nextLyrics() {
+            const nextIndex = (currentLyricsIndex + 1) % mainTracks.length;
+            showLyrics(nextIndex);
+        }
+
+        function prevLyrics() {
+            const prevIndex = (currentLyricsIndex - 1 + mainTracks.length) % mainTracks.length;
+            showLyrics(prevIndex);
+        }
+
+        // --- UI UPDATE FUNCTION ---
+        function updatePlayerUI() {
+            const isPlaying = !audioPlayer.paused;
+            const track = mainTracks[currentTrack];
+
+            // Update main header title with icon
+            trackTitle.textContent = (isPlaying ? '▶ ' : '▷ ') + 'Radio Banter - ' + track.title;
+
+            // Update playlist icons and active class
+            const items = playlistList.getElementsByTagName("li");
+            Array.from(items).forEach((item, index) => {
+                const icon = item.querySelector(".play-icon");
+                if (icon) {
+                    if (index === currentTrack) {
+                        item.classList.add("active");
+                        icon.textContent = isPlaying ? "▶ " : "▷ ";
+                    } else {
+                        item.classList.remove("active");
+                        icon.textContent = "▷ ";
+                    }
+                }
+            });
+        }
+
+        // --- PLAYER & TRACK FUNCTIONS ---
         function nextTrack() {
             const nextIndex = (currentTrack + 1) % mainTracks.length;
             loadTrack(nextIndex);
@@ -671,9 +750,7 @@
                 currentTrack = index;
                 const track = mainTracks[index];
                 audioPlayer.src = track.src;
-                trackTitle.textContent = 'Radio Banter - ' + track.title;
 
-                // Only update the image if playback has started
                 if (hasStartedPlaying) {
                     trackImage.src = track.image;
                     const imageIndexInSlider = uniqueSliderImages.indexOf(track.image);
@@ -682,20 +759,13 @@
                     }
                 }
 
-                updatePlaylistHighlight();
-
-                allLyricsDivs.forEach(div => div.classList.remove('active'));
-                const currentLyrics = document.getElementById(track.lyricsId);
-                if (currentLyrics) {
-                    currentLyrics.classList.add('active');
-                }
-
+                showLyrics(index); // Sync lyrics with the current track
                 audioPlayer.load();
+                updatePlayerUI();
             }
         }
 
         function playTrack() {
-            // On first play, change flag and update image to the current track's image
             if (!hasStartedPlaying) {
                 hasStartedPlaying = true;
                 const track = mainTracks[currentTrack];
@@ -708,93 +778,38 @@
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
             requestWakeLock();
+            updatePlayerUI();
         }
 
         function pauseTrack() {
             audioPlayer.pause();
             playPauseBtn.textContent = "Play";
             releaseWakeLock();
+            updatePlayerUI();
         }
-
-        playPauseBtn.addEventListener("click", function () {
-            if (audioPlayer.paused) {
-                playTrack();
-            } else {
-                pauseTrack();
-            }
-        });
-
-
-        document.getElementById("nextBtn").addEventListener("click", nextTrack);
-        document.getElementById("prevBtn").addEventListener("click", prevTrack);
-
-        document.getElementById("imgNextBtn").addEventListener("click", nextImage);
-        document.getElementById("imgPrevBtn").addEventListener("click", prevImage);
-
-        // --- SWIPE FUNCTIONALITY START ---
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        function handleSwipe() {
-            const swipeThreshold = 50; // Minimum distance for a swipe
-            if (touchEndX < touchStartX - swipeThreshold) {
-                nextImage(); // Swiped left
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                prevImage(); // Swiped right
-            }
-        }
-
-        trackImage.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        trackImage.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-        // --- SWIPE FUNCTIONALITY END ---
-
-
-        audioPlayer.addEventListener("ended", function () {
-            releaseWakeLock();
-            if (currentTrack < mainTracks.length - 1) {
-                currentTrack++;
-                loadTrack(currentTrack);
-                playTrack();
-            } else {
-                pauseTrack();
-                audioPlayer.currentTime = 0;
-            }
-        });
-
-        audioPlayer.addEventListener("timeupdate", function () {
-            if (audioPlayer.duration) {
-                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                progressBar.style.width = progressPercent + "%";
-                timeDisplay.textContent = formatTime(audioPlayer.currentTime) + " / " + formatTime(audioPlayer.duration);
-            }
-        });
-
-        progressContainer.addEventListener("click", function (e) {
-            const width = this.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audioPlayer.duration;
-            audioPlayer.currentTime = (clickX / width) * duration;
-        });
 
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
-            return minutes + ":" + (secs < 10 ? "0" + secs : secs);
+            return minutes + ":" + (secs < 10 ? "0" : "") + secs;
         }
 
+        // --- PLAYLIST FUNCTIONS ---
         function createPlaylistItem(track, index, clickHandler) {
             const li = document.createElement("li");
 
-            const titleSpan = document.createElement("span");
-            titleSpan.textContent = (index + 1) + ". " + track.title;
-            li.appendChild(titleSpan);
+            // Container for icon and title text
+            const titleWrapper = document.createElement("span");
+
+            const iconSpan = document.createElement("span");
+            iconSpan.className = "play-icon";
+            iconSpan.textContent = "▷ "; // Default icon
+            titleWrapper.appendChild(iconSpan);
+
+            const titleText = document.createTextNode((index + 1) + ". " + track.title);
+            titleWrapper.appendChild(titleText);
+
+            li.appendChild(titleWrapper);
 
             const downloadLink = document.createElement("a");
             downloadLink.href = track.src;
@@ -816,21 +831,48 @@
                 });
                 playlistList.appendChild(li);
             });
-            updatePlaylistHighlight();
         }
 
-        function updatePlaylistHighlight() {
-            const items = playlistList.getElementsByTagName("li");
-            for (let i = 0; i < items.length; i++) {
-                items[i].classList.remove("active");
-            }
-            if (currentTrack >= 0 && items[currentTrack]) {
-                items[currentTrack].classList.add("active");
-            }
-        }
+        // --- EVENT LISTENERS ---
+        playPauseBtn.addEventListener("click", () => {
+            audioPlayer.paused ? playTrack() : pauseTrack();
+        });
 
-        generatePlaylist();
-        loadTrack(currentTrack);
+        document.getElementById("nextBtn").addEventListener("click", nextTrack);
+        document.getElementById("prevBtn").addEventListener("click", prevTrack);
+
+        document.getElementById("imgNextBtn").addEventListener("click", nextImage);
+        document.getElementById("imgPrevBtn").addEventListener("click", prevImage);
+
+        lyricsNextBtn.addEventListener("click", nextLyrics);
+        lyricsPrevBtn.addEventListener("click", prevLyrics);
+
+        audioPlayer.addEventListener("ended", () => {
+            releaseWakeLock();
+            if (currentTrack < mainTracks.length - 1) {
+                nextTrack();
+            } else {
+                pauseTrack();
+                audioPlayer.currentTime = 0;
+            }
+        });
+
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (audioPlayer.duration) {
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = progressPercent + "%";
+                timeDisplay.textContent = formatTime(audioPlayer.currentTime) + " / " + formatTime(audioPlayer.duration);
+            }
+        });
+
+        progressContainer.addEventListener("click", function (e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audioPlayer.duration;
+            if (duration) {
+                audioPlayer.currentTime = (clickX / width) * duration;
+            }
+        });
 
         document.addEventListener('visibilitychange', () => {
             if (wakeLock !== null && document.visibilityState === 'hidden') {
@@ -839,6 +881,35 @@
                 requestWakeLock();
             }
         });
+
+        // --- SWIPE FUNCTIONALITY ---
+        function setupSwipe(element, onSwipeLeft, onSwipeRight) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 50; // Minimum distance for a swipe
+
+            element.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            element.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    onSwipeLeft(); // Swiped left
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    onSwipeRight(); // Swiped right
+                }
+            });
+        }
+
+        setupSwipe(trackImage, nextImage, prevImage);
+        setupSwipe(lyricsContainer, nextLyrics, prevLyrics);
+
+
+        // --- INITIALIZATION ---
+        generatePlaylist();
+        loadTrack(0);
     </script>
 </body>
 
