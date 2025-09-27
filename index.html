@@ -2,680 +2,696 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
-    <title>✓ Banter Social</title>
+    <title>Radio Banter - Coming Soon</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Radio Banter" />
+    <link rel="manifest" href="/site.webmanifest" />
     <style>
-        /* Global Styles */
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: rgba(186, 130, 194, 0.1);
-        }
-
-        /* Header */
-        header {
             background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
-            padding: 20px;
-            text-align: left;
-            font-size: 1.5rem;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            text-shadow: hotpink 0px 0 20px;
-            /* Ensures the signup link can float to the right without changing the existing layout */
-            position: relative;
-        }
-
-        header p {
-            font-size: 1rem;
-        }
-
-        /* "Sign up here" CTA in top-right of header */
-        .signup-cta {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            color: #000;
-            background-color: hotpink;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-weight: normal;
-        }
-
-        .signup-cta:hover {
-            background-color: #ff99dd;
-        }
-
-        /* Main Layout Wrapper */
-        .main-content {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* Feed Container */
-        .feed-container {
-            max-width: 800px;
-            width: 100%;
-            margin-right: 20px;
-        }
-
-        /* Trending Pane */
-        .trending-pane {
-            width: 250px;
-            min-width: 220px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .trending-pane h2 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-
-        .trending-pane ul {
-            list-style: none;
-            padding: 0;
+            color: #000000;
+            font-family: Arial, sans-serif;
             margin: 0;
-        }
-
-        .trending-pane li {
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
-        }
-
-        /* Each Post */
-        .post {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 15px;
-        }
-
-        .post-header {
+            padding: 20px 0;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            margin-bottom: 10px;
+            min-height: 100vh;
         }
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin-right: 10px;
+        footer pre {
+            font-size: 0px;
+        }
+
+        .content-wrapper {
+            width: 95%;
+            max-width: 900px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: bold;
+            gap: 20px;
         }
 
-        .username {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .post-content {
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .post-media img,
-        .post-media video,
-        .post-media iframe {
-            max-width: 100%;
-            border-radius: 8px;
-            display: block;
-        }
-
-        /* --- Overlay/fading image styles --- */
-        .profile-image {
-            position: relative;
-            /* So absolute-positioned images can stack */
-        }
-
-        .profile-image img {
-            max-width: 100%;
-            border-radius: 5px;
-        }
-
-        /* This targets the last image in the .profile-image */
-        .profile-image img:last-of-type {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            max-width: 50%;
-            height: auto;
-            z-index: 3;
-            animation: none;
-            filter: invert(100%);
-        }
-
-        .overlay-image {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .full-width-image {
             width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            animation: fadeInOut 99s ease-in-out infinite;
+            height: auto;
+            display: block;
+            border: 1px solid #000;
+            border-radius: 8px;
         }
 
-        @keyframes fadeInOut {
 
-            0%,
-            100% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
+        .player {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: none;
         }
 
-        /* Action buttons */
-        .post-actions {
+        .image-container {
+            position: relative;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .track-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            touch-action: pan-y;
+            /* Prevents page scroll while swiping horizontally */
+        }
+
+        .img-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid black;
+            color: black;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        .img-nav-btn:hover {
+            background-color: black;
+            color: white;
+        }
+
+        #imgPrevBtn {
+            left: 10px;
+        }
+
+        #imgNextBtn {
+            right: 10px;
+        }
+
+
+        header pre {
+            color: #000000;
+            font-size: 8px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .track-info {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            color: #000000;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        button:disabled,
+        button:disabled:hover {
+            background-color: #f0f0f0;
+            color: #cccccc;
+            cursor: not-allowed;
+            border-color: #cccccc;
+        }
+
+        .playlist {
+            text-align: left;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .playlist ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .playlist li {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid #dddddd;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            margin-top: 10px;
         }
 
-        .action-btn {
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
+        .playlist li:last-child {
+            border-bottom: none;
         }
 
-        .action-count {
-            margin-left: 5px;
-            color: #666;
+        .playlist li:hover,
+        .playlist li.active {
+            background-color: #f0f0f0;
+            color: #000000;
         }
 
-        .like-icon {
-            color: rgb(0, 162, 255);
-            font-size: 1.5rem;
-            text-shadow: hotpink 0px 0 20px;
-        }
-
-        /* Repost icon (no built-in spin) */
-        .repost-icon {
-            font-size: 1.5rem;
-            color: #e67e22;
-        }
-
-        /*
-     * This class can be applied to ANY element to spin it once around
-     */
-        .twirl {
-            animation: spin 0.6s linear;
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 800px) {
-            .main-content {
-                flex-direction: column;
-            }
-
-            .feed-container {
-                margin-right: 0;
-                max-width: 100%;
-            }
-
-            .trending-pane {
-                width: 100%;
-                margin-top: 20px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .avatar {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-
-        /* ------------------ MODAL STYLES ------------------ */
-        .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            z-index: 9999;
-            /* Above everything else */
-            left: 0;
-            top: 0;
+        section#lyrics {
             width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            /* Black w/ opacity */
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
+            box-sizing: border-box;
             padding: 20px;
-            width: 90%;
-            max-width: 600px;
+            background-color: #ffffff;
+            text-align: center;
+            border: 1px solid #000000;
+            border-radius: 8px;
             position: relative;
-            border-radius: 5px;
+            touch-action: pan-y;
         }
 
-        .modal-close {
+        .lyrics-nav-btn {
             position: absolute;
-            right: 10px;
-            top: 10px;
-            font-size: 28px;
-            font-weight: bold;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid black;
+            color: black;
             cursor: pointer;
+            padding: 5px 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .lyrics-nav-btn:hover {
+            background-color: black;
+            color: white;
+        }
+
+        #lyricsPrevBtn {
+            left: 10px;
+        }
+
+        #lyricsNextBtn {
+            right: 10px;
+        }
+
+
+        #lyrics>div {
+            display: none;
+        }
+
+        #lyrics>div.active {
+            display: block;
+        }
+
+        .lyrics-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lyrics-text {
+            text-align: left;
+        }
+
+        .lyrics-image {
+            max-width: 250px;
+            height: auto;
+
+        }
+
+        @media (min-width: 600px) {
+            .lyrics-content {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        ✓ BANTER SOCIAL
-        <!-- Sign up CTA in top-right (absolute) -->
-        <a href="#" class="signup-cta" id="openModalBtn">Sign up here</a>
-    </header>
+    <div class="content-wrapper">
 
-    <div class="main-content">
-        <!-- FEED COLUMN -->
-        <div class="feed-container">
+        <div class="player">
+            <header>
+                <div class="image-container">
+                    <img src="albumwip/lily/instrumental2.jpg" alt="Track Artwork" id="trackImage" class="track-image">
+                    <button id="imgPrevBtn" class="img-nav-btn">&#10094;</button>
+                    <button id="imgNextBtn" class="img-nav-btn">&#10095;</button>
+                </div>
+            </header>
 
-            <!-- Post 1 -->
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">CN</div>
-                    <div class="username">CalebNichols</div>
-                </div>
-                <div class="post-content">
-                    And Radio Banter! Love you so.
-                </div>
-                <div class="post-media">
-                    <video controls loop playsinline>
-                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair2.mp4"
-                            type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 213</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
+            <div class="track-info" id="trackTitle">Radio Banter - Whipstaff Manor Sessions</div>
+
+            <div class="controls">
+                <button id="playPauseBtn" disabled>Coming Soon</button>
             </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">CS</div>
-                    <div class="username">SpiceyC</div>
-                </div>
-                <div class="post-content">
-                    Check out this photo I took of Radio Banter the toe tapping band from Glasgow, Scotland! 🎶🎶
-                </div>
-                <div class="post-media">
-                    <div class="profile-image">
-                        <img src="radiobanterpic-orig.jpg"
-                            alt="band nativity photograph with ron in a robe, sephi as an angel, waldo as a jock" />
-                        <img src="radiobanterpic.jpg" alt="band grouped together in an old damp practise room"
-                            class="overlay-image" />
-                        <img src="sephis-radio-banter-logo.png" alt="sephis logo" />
-                    </div>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 23</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">CS</div>
-                    <div class="username">SpiceyC</div>
-                </div>
-                <div class="post-content">
-                    Check out this awesome clip I found on YouTube!
-                </div>
-                <div class="post-media">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ip91Mq4OOg0"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 1</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 2 -->
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">RB</div>
-                    <div class="username">RadioBanter</div>
-                </div>
-                <div class="post-content">
-                    Here's a short clip from our jam this morning, since you were prying!
-                    Listen to that sweet sound. 👀🥁
-                </div>
-                <a href=""
-                   download="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4">download</a>
-                    <img src="radiobanter-washingtonstreet-accordion.jpg" alt="accordion player" />
-                <div class="post-media">
-                    <video controls loop playsinline>
-                        <source
-                            src="https://pampthehorn.github.io/radio-banter/radiobanter-washingtonstreet-accordion.mp4"
-                            type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 23</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">D</div>
-                    <div class="username">ElonsDog</div>
-                </div>
-                <div class="post-content">
-                    since the millenium I wee (he's a: genius / engineer / inventor / saviour. "omg is he actually from
-                    Mars???") on every lamp post.
-                    🪐🪐🪐 🐶
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 423</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="avatar">CN</div>
-                    <div class="username">CalebNichols</div>
-                </div>
-                <div class="post-content">
-                    radio banter killing it the other night 🔪🔪🔪
-                </div>
-                <div class="post-media">
-                    <video controls loop playsinline>
-                        <source src="https://pampthehorn.github.io/radio-banter/videos/calebnichols_oldhair1.mp4"
-                            type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="post-actions">
-                    <div class="action-btn like-btn">
-                        <span class="like-icon">❤</span>
-                        <span class="action-count"> 23</span>
-                    </div>
-                    <div class="action-btn repost-btn">
-                        <span class="repost-icon">🔁</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hidden Post 3 sample (commented out) -->
-            <!--
-      <div class="post">
-        <div class="post-header">
-          <div class="avatar">AB</div>
-          <div class="username">AlienBaws420</div>
         </div>
-        <div class="post-content">
-          #TFW you go down the light tunnel, meet the alien priestess and they show you the origin of music
-          👽👽👽 #BanterSocial
-        </div>
-        <div class="post-actions">
-          <div class="action-btn like-btn">
-            <span class="like-icon">❤</span>
-            <span class="action-count"> 0</span>
-          </div>
-          <div class="action-btn repost-btn">
-            <span class="repost-icon">🔁</span>
-          </div>
-        </div>
-      </div>
-      -->
-        </div>
-
-        <!-- TRENDING PANE -->
-        <div class="trending-pane">
-            <p>radiobanternet@gmail.com</p>
-            <h2>Trending</h2>
-            <ul>
-                <li>#GrownInLove</li>
-                <li>#TheGroove</li>
-                <li>#JustStopOil</li>
-                <li>#SoulFunkJazzRock</li>
-                <li>#Dogs</li>
+        <div class="playlist" id="playlist">
+            <ul id="playlistList">
             </ul>
         </div>
-    </div>
 
-    <!-- MODAL THAT CONTAINS THE MAILCHIMP FORM -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" id="closeModalBtn">&times;</span>
-
-            <!-- BEGIN Mailchimp Signup Form -->
-            <div id="mc_embed_shell">
-                <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-                <style type="text/css">
-                    #mc_embed_signup {
-                        background: #fff;
-                        clear: left;
-                        font: 14px Helvetica, Arial, sans-serif;
-                        width: 600px;
-                    }
-                </style>
-
-                <div id="mc_embed_signup">
-                    <form
-                        action="https://gmail.us15.list-manage.com/subscribe/post?u=7c63c18aba01af6bb7e677bc4&amp;id=b60110bcb4&amp;f_id=002c93e1f0"
-                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                        target="_blank">
-                        <div id="mc_embed_signup_scroll">
-                            <h2>Subscribe</h2>
-                            <p>sign up here and you will be first to hear about our new tunes and upcoming gigs.</p>
-                            <!-- <div class="indicates-required">
-                                <span class="asterisk">*</span> indicates required
-                            </div> -->
-                            <div class="mc-field-group">
-                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
-                                </label>
-                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required=""
-                                    value="" />
-                            </div>
-                            <div id="mce-responses" class="clear foot">
-                                <div class="response" id="mce-error-response" style="display: none;"></div>
-                                <div class="response" id="mce-success-response" style="display: none;"></div>
-                            </div>
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                                <!-- real people should not fill this in - do not remove this or risk form bot signups -->
-                                <input type="text" name="b_7c63c18aba01af6bb7e677bc4_b60110bcb4" tabindex="-1"
-                                    value="" />
-                            </div>
-                            <div class="optionalParent">
-                                <div class="clear foot">
-                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
-                                        value="Subscribe" />
-                                    <!-- <p style="margin: 0px auto;">
-                                        <a href="http://eepurl.com/i7-uis"
-                                            title="Mailchimp - email marketing made easy and fun">
-                                            <span
-                                                style="display: inline-block; background-color: transparent; border-radius: 4px;"><img
-                                                    class="refferal_badge"
-                                                    src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
-                                                    alt="Intuit Mailchimp"
-                                                    style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;" /></span>
-                                        </a>
-                                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+        <section id="lyrics">
+            <button id="lyricsPrevBtn" class="lyrics-nav-btn">&#10094;</button>
+            <button id="lyricsNextBtn" class="lyrics-nav-btn">&#10095;</button>
+            <div id="lyrics-nature-nurture">
+                <h2>Nature/Nurture</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/naturenurture.jpg" alt="Nature/Nurture Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            is it nature is nature<br>
+                            this funky feeling that funky beat<br>
+                            is it nature or is it nurture<br>
+                            the reason for this rhythm in my feet<br>
+                            is it nature or is it nurture<br>
+                            People are so angry in the street<br>
+                            is it nature or is it nurture<br>
+                            the reason people are voting with their feet<br>
+                        </p>
+                        <p>
+                            Don't be rude, don't be rude
+                        </p>
+                        <p> is it nature or is it nurture<br>
+                            to criticise your mother's point of view<br>
+                            is it nature or is it nurture<br>
+                            to read beyond the headlines of the news<br>
+                        </p>
+                        <p>
+                            Part of me felt we done too much<br>
+                            Part of me felt we never done enough<br>
+                            Part of me felt we done too much<br>
+                            Part of me felt we never done enough<br>
+                        </p>
+                        <p>
+                            Dont be rude, don't be rude
+                        </p>
+                    </div>
                 </div>
-                <script type="text/javascript"
-                    src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-                <script type="text/javascript">
-                    (function ($) {
-                        window.fnames = new Array();
-                        window.ftypes = new Array();
-                        fnames[0] = "EMAIL";
-                        ftypes[0] = "email";
-                        fnames[1] = "FNAME";
-                        ftypes[1] = "text";
-                        fnames[2] = "LNAME";
-                        ftypes[2] = "text";
-                        fnames[3] = "ADDRESS";
-                        ftypes[3] = "address";
-                        fnames[4] = "PHONE";
-                        ftypes[4] = "phone";
-                        fnames[5] = "BIRTHDAY";
-                        ftypes[5] = "birthday";
-                        fnames[6] = "COMPANY";
-                        ftypes[6] = "text";
-                    }(jQuery));
-                    var $mcj = jQuery.noConflict(true);
-                </script>
             </div>
-            <!-- END Mailchimp Signup Form -->
-        </div>
-    </div>
 
+            <div id="lyrics-growing-in-love">
+                <h2>Growing in Love</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/growinginlove1.jpg" alt="Growing in Love Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            Oh no what to do<br>
+                            i've gone and grown feelings for you<br>
+                            I'm gonna have to<br>
+                            water them now<br>
+                            keep them fed<br>
+                            pull the weeds from<br>
+                            From their bed<br>
+                            give them sunshine<br>
+                            give them shade<br>
+                            use a trowel<br>
+                            use a spade<br>
+                        </p>
+                        <p>aw man it's every day<br>
+                            put my shoes on<br>
+                            and it starts to rain<br>
+                            Let's see how it looks in an hour<br>
+                        </p>
+                        <p>
+                            it's not always<br>
+                            The shoots will find their way<br>
+                            It's not always<br>
+                            The shrubs will see the day<br>
+                        </p>
+                        <p>
+                            Oh no what to do<br>
+                            I've grown in love with you
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-harsh-but-fair">
+                <h2>Harsh but fair</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/harshbutfair.jpg" alt="Harsh but Fair Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            People tell me<br>
+                            Because of my age<br>
+                            I should reign it in<br>
+                            I should pare it back<br>
+                            People tell me people tell me people tell me<br>
+                            To look out of the window<br>
+                            At what do you see<br>
+                            The war is still raging<br>
+                            There'll never be peace
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-richmond">
+                <h2>Richmond</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/richmond.jpg" alt="Richmond Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            D C G x 4<br>
+                        </p>
+                        <p>
+                            if we [D]don't come off the [C]gas that we [G]emit<br>
+                            and we [D]say we'll buy [C]carbon [G]offsets<br>
+                            is that [D]really us [C]playing our [G]part<br>
+                            is it [D]wise to [C]be so [G]smart<br>
+                            if we [D]don't [C]just stop [G]oil<br>
+                            the whole [D]sea's gang [C]come to the [G]boil<br>
+                            there'll be [D]mammals washed [C]up on our [G]shore<br>
+                            [D]children seeking [C]refuge at your [G]door<br>
+                            They'll be asking [D] why they only [C]getting their [G]bit<br>
+                            when we've [D]taken all the [C]sweetness [G]out of it<br>
+                        </p>
+                        <p>
+                            [F]if we don't stop [Em]ourselves<br>
+                            [F]we don't leave anybody [G]else<br>
+                            [D]the [C]chance to[G]<br>
+                            the [F]opportunity<br>
+                            [B]not [G]to<br>
+                        </p>
+                        <p>
+                            Em Bm<br>
+                            Em Bm Am<br>
+                            [twice through]
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-end-of-an-era">
+                <h2>End of an Era</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/endofanera.jpg" alt="End of an Era Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            Oops nope we’ll that’s unfortch’<br />
+                            I forgot to pack the propane torch<br />
+                            Do you need a good bag from the bakery<br />
+                            Before telling us your tales of bravery<br />
+                            Stories of old from oh so many years ago<br />
+                            Isn’t hindsight a wonderful thing<br />
+                            when one has found one’s flow
+                        </p>
+                        <p>
+                            The realms in which we are being<br />
+                            Sometimes seeing is believing<br />
+                            Yet, how can one quell this emotional swell?<br />
+                            Please pass the magic potion,<br />
+                            we can cancel out the spell<br />
+                            Only time will really tell<br />
+                            Could this be<br />
+                            The end of an era?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-ghostie">
+                <h2>Ghostie</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/ghostie.jpg" alt="Ghostie Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            the moon lit a bed of freshly fell snow<br>
+                            my family slept and i ate soup by the stove<br>
+                            who's that knockin on ma door<br><br />
+                            out there's a young man in old man's clothes<br>
+                            claims he lives here and my love is his<br>
+                            i send him walking in the snow man<br><br />
+                            i can't sleep so i go back outside<br>
+                            where did he come from, which way did he go<br>
+                            there are no footprints in the snow<br><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-doctor">
+                <h2>Doctor</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/doctor.jpg" alt="Doctor Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            I feel (C) so lazy (F) doctor can you (G) diagnose (C) why<br>
+                            I'll sing (C) anything I (F) got til it (G) gets me a (C)line
+                        </p>
+                        <p>
+                            I feel (C) so crazy (F) lately are you (G) loving me (C) why<br>
+                            I'll do (C) anything (F) for you papa (G) you gave me my (C)life
+                        </p>
+                        <p>
+                            (Em) oh my (C) God I (Bm) am so (C) tired<br>
+                            (Em) even (C) though I have (G) slept for 12 (Bm) hours<br>
+                            (Em) often (C) that is (Bm) just what (C) happens<br>
+                            (Em) you over- (C) -sleep and it (G) makes you more (Bm) tired<br>
+                            (Em) you over- (C) -sleep and it (Bm) makes you more (C) tired<br>
+                        </p>
+                        <p>Jesus christ I am so hungry<br />
+                            Gonna go home now I've spent all my money</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-instrumental">
+                <h2>Instrumental</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/instrumental1.jpg" alt="Instrumental Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            (Instrumental Track)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-the-groove">
+                <h2>The Groove</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/thegroove.jpg" alt="The Groove Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p> You've got to get in to the groove<br>
+                            That's the whole point of this song<br>
+                            This song is so groovy<br>
+                            They're making it in to a movie<br>
+                        </p>
+                        <p>
+                            So when I die<br>
+                            There will be stars<br>
+                            In the sky<br>
+                            When I die<br>
+                            You've got to get in to the groove
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lyrics-financial-crash">
+                <h2>Financial Crash</h2>
+                <div class="lyrics-content">
+                    <img src="albumwip/lily/financialcrash.jpg" alt="Financial Crash Artwork" class="lyrics-image">
+                    <div class="lyrics-text">
+                        <p>
+                            It's all my fault<br>
+                            I took the decision<br>
+                            It's all because of me<br>
+                            It's my responsibility<br>
+                        </p>
+                        <p>
+                            I need some inspiration<br>
+                            to make a meal<br>
+                            Is there any point though<br>
+                            When all you want's a pie
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <p><strong>Radio Banter</strong> are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
+            <br />Rob Alexander (electric piano / vocals)
+        </p>
+
+        <img src="ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image">
+
+        <p>recorded, mixed & mastered by Chris White<br />artwork by <a href='https://www.instagram.com/painepoetry/'
+                target="_blank">Lily Payne</a><br />photograph by <a href='https://www.instagram.com/remain_in_light_/'
+                target="_blank">Baz</a></p>
+
+        <p>contact <a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
+
+        <footer>
+            <pre>
+                      ⠀⠀⢀⡠⠒⠈⠛⠊⠋⠑⠦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                      ⠀⠀⡎⠀⡀⠀⠀⠰⡀⠀⠐⣪⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                      ⠀⠀⡧⠀⠉⣓⠴⠊⠉⠉⢫⠀⠀⠉⣉⣲⠀⠀⠀⠀⠀⣄⠀⠴⠄⡀⡀⠀⠀⠀
+                      ⠀⢀⡿⠓⠊⠀⠠⠾⠟⠁⠘⡖⠐⠚⣇⣀⢀⣀⠤⠖⠒⠒⠠⢄⡀⠀⠈⠑⡄⠀
+                    ⣠⠯⠀⠀⠀⠀⠀⠀⠀⣠⠜⠀⠀⠀⢸⢆⠀⠈⠁⠀⠀⠀⠀⠀⠁⠀⠀⠀⠈⠄
+                    ⢷⡤⠂⢀⠀⠀⣀⡠⠔⠁⠀⠀⠀⠀⡜⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸
+                    ⠈⠻⠭⠶⠚⠛⡄⠀⠀⠀⠀⠀⠀⠈⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⣵⠠⠤⠀⠀⠀⠀⡠⠔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸
+                    ⠀⠀⠀⠀⠀⠀⠻⡤⠄⢀⡠⠄⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⠀⠀⡸
+                    ⠀⠀⠀⠀⠀⠀⠀⢱⠖⠮⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢀⠞⡞⠀⡀⡅
+                    ⠀⠀⠀⠀⠀⠀⠀⠈⣗⠂⠤⠀⠀⠀⠀⠀⠀⢀⠀⠤⡔⠁⠀⠀⡠⡾⠠⠮⡾⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⢱⡩⠁⢄⠀⠀⠀⣀⠄⠂⠀⡴⠓⢶⠚⢹⡇⡇⠀⢀⡷⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡗⠒⠀⣽⠉⠙⣦⠄⠀⣾⠁⠀⡼⠀⠈⡇⢹⠀⢸⠃⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⡿⠀⠀⢻⠀⠀⢯⠀⠀⡇⠀⢠⡇⢸⠀⠈⢇⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⋋⠀⡏⢀⠀⡟⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⚚⠁⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            </pre>
+        </footer>
+
+    </div>
     <script>
-        // Check if element is in the current viewport
-        function isInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
+        const tracklist = [
+            { title: "Nature Nurture", image: "albumwip/lily/naturenurture.jpg", lyricsId: "lyrics-nature-nurture" },
+            { title: "Growing in Love", image: "albumwip/lily/growinginlove1.jpg", lyricsId: "lyrics-growing-in-love" },
+            { title: "Harsh but Fair", image: "albumwip/lily/harshbutfair.jpg", lyricsId: "lyrics-harsh-but-fair" },
+            { title: "Richmond", image: "albumwip/lily/richmond.jpg", lyricsId: "lyrics-richmond" },
+            { title: "End of an Era", image: "albumwip/lily/endofanera.jpg", lyricsId: "lyrics-end-of-an-era" },
+            { title: "Ghostie", image: "albumwip/lily/ghostie.jpg", lyricsId: "lyrics-ghostie" },
+            { title: "Doctor", image: "albumwip/lily/doctor.jpg", lyricsId: "lyrics-doctor" },
+            { title: "Instrumental", image: "albumwip/lily/instrumental1.jpg", lyricsId: "lyrics-instrumental" },
+            { title: "The Groove", image: "albumwip/lily/thegroove.jpg", lyricsId: "lyrics-the-groove" },
+            { title: "Financial Crash", image: "albumwip/lily/financialcrash.jpg", lyricsId: "lyrics-financial-crash" }
+        ];
+
+        const sliderImages = [
+            "albumwip/lily/instrumental2.jpg",
+            ...tracklist.map(track => track.image),
+            "albumwip/lily/band-cover.jpg",
+            "albumwip/lily/tracknames.jpg",
+            "albumwip/lily/growinginlove2.jpg"
+        ];
+
+        const uniqueSliderImages = [...new Set(sliderImages)];
+
+        // --- STATE VARIABLES ---
+        let currentImageIndex = 0;
+        let currentLyricsIndex = 0;
+
+        // --- DOM ELEMENTS ---
+        const trackImage = document.getElementById("trackImage");
+        const lyricsContainer = document.getElementById("lyrics");
+        const allLyricsDivs = document.querySelectorAll("#lyrics > div[id^='lyrics-']");
+        const lyricsPrevBtn = document.getElementById("lyricsPrevBtn");
+        const lyricsNextBtn = document.getElementById("lyricsNextBtn");
+        const playlistList = document.getElementById("playlistList");
+
+        // --- IMAGE SLIDER FUNCTIONS ---
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % uniqueSliderImages.length;
+            trackImage.src = uniqueSliderImages[currentImageIndex];
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // 1) LIKE BUTTON FUNCTIONALITY
-            let increment = 2;
-            const likeButtons = document.querySelectorAll('.like-btn');
-            likeButtons.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    const countSpan = btn.querySelector('.action-count');
-                    let currentCount = parseInt(countSpan.textContent.trim(), 10);
-                    currentCount += increment;
-                    increment = increment * increment;
-                    countSpan.textContent = ' ' + currentCount;
-                });
-            });
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + uniqueSliderImages.length) % uniqueSliderImages.length;
+            trackImage.src = uniqueSliderImages[currentImageIndex];
+        }
 
-            // 2) VIDEO PLAY/PAUSE WHEN FULLY IN VIEW
-            const videos = document.querySelectorAll('video');
-            const observer = new IntersectionObserver(
-                function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.play();
-                        } else {
-                            entry.target.pause();
-                        }
-                    });
-                },
-                {
-                    threshold: 1.0
+        // --- LYRICS SLIDER FUNCTIONS ---
+        function showLyrics(index) {
+            if (index >= 0 && index < allLyricsDivs.length) {
+                currentLyricsIndex = index;
+                allLyricsDivs.forEach(div => div.classList.remove('active'));
+                if (allLyricsDivs[index]) {
+                    allLyricsDivs[index].classList.add('active');
                 }
-            );
-            videos.forEach(function (video) {
-                observer.observe(video);
-            });
 
-            // 3) REPOST: SPIN EVERY ELEMENT ON THE SCREEN
-            const repostButtons = document.querySelectorAll('.repost-btn');
-            repostButtons.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    const allElements = document.querySelectorAll('*');
-                    allElements.forEach(function (elem) {
-                        elem.classList.add('twirl');
-                        setTimeout(function () {
-                            elem.classList.remove('twirl');
-                        }, 600);
-                    });
+                // Also update playlist active state
+                const items = playlistList.getElementsByTagName("li");
+                Array.from(items).forEach((item, i) => {
+                    item.classList.toggle("active", i === index);
                 });
-            });
+            }
+        }
 
-            // 4) MODAL FUNCTIONALITY FOR THE MAILCHIMP FORM
-            const modal = document.getElementById('myModal');
-            const openBtn = document.getElementById('openModalBtn');
-            const closeBtn = document.getElementById('closeModalBtn');
+        function nextLyrics() {
+            const nextIndex = (currentLyricsIndex + 1) % tracklist.length;
+            showLyrics(nextIndex);
+        }
 
-            openBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                modal.style.display = 'block';
+        function prevLyrics() {
+            const prevIndex = (currentLyricsIndex - 1 + tracklist.length) % tracklist.length;
+            showLyrics(prevIndex);
+        }
+
+        // --- PLAYLIST FUNCTION ---
+        function generatePlaylist() {
+            tracklist.forEach((track, index) => {
+                const li = document.createElement("li");
+                li.textContent = (index + 1) + ". " + track.title;
+                li.addEventListener("click", () => {
+                    showLyrics(index);
+                    const lyricsDiv = document.getElementById(track.lyricsId);
+                    if (lyricsDiv) {
+                        lyricsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+                playlistList.appendChild(li);
             });
-            closeBtn.addEventListener('click', function () {
-                modal.style.display = 'none';
-            });
-            window.addEventListener('click', function (event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
+        }
+
+        // --- EVENT LISTENERS ---
+        document.getElementById("imgNextBtn").addEventListener("click", nextImage);
+        document.getElementById("imgPrevBtn").addEventListener("click", prevImage);
+
+        lyricsNextBtn.addEventListener("click", nextLyrics);
+        lyricsPrevBtn.addEventListener("click", prevLyrics);
+
+        // --- SWIPE FUNCTIONALITY ---
+        function setupSwipe(element, onSwipeLeft, onSwipeRight) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 50; // Minimum distance for a swipe
+
+            element.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            element.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    onSwipeLeft(); // Swiped left
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    onSwipeRight(); // Swiped right
                 }
             });
-        });
+        }
+
+        setupSwipe(trackImage, nextImage, prevImage);
+        setupSwipe(lyricsContainer, nextLyrics, prevLyrics);
+
+        // --- INITIALIZATION ---
+        generatePlaylist();
+        showLyrics(0); // Show the first track's lyrics and highlight it in the playlist
     </script>
 </body>
 
