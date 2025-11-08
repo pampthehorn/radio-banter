@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSUTF8NEW Version="1.6.2">
+    <DOCUMENT ANZPAGES="24" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" PRESET="0" BleedTop="8.50393700787402" BleedLeft="8.50393700787402" BleedRight="8.50393700787402" BleedBottom="8.50393700787402" ORIENTATION="0" PAGESIZE="Custom" FIRSTNUM="1" BOOK="1" AUTOSPALTEN="1" ABSTSPALTEN="11" UNITS="1" DFONT="Arial Regular" DSIZE="12" DCOL="1" DGAP="0" TabFill="" TabWidth="36" TextDistLeft="0" TextDistRight="0" TextDistBottom="0" TextDistTop="0" FirstLineOffset="1" AUTHOR="" COMMENTS="" KEYWORDS="" PUBLISHER="" DOCDATE="" DOCTYPE="" DOCFORMAT="" DOCIDENT="" DOCSOURCE="" DOCLANGINFO="" DOCRELATION="" DOCCOVER="" DOCRIGHTS="" DOCCONTRIB="" TITLE="" SUBJECT="" VHOCH="33" VHOCHSC="66" VTIEF="33" VTIEFSC="66" VKAPIT="75" BASEGRID="14.4" BASEO="0" AUTOL="100" UnderlinePos="-1" UnderlineWidth="-1" StrikeThruPos="-1" StrikeThruWidth="-1" GROUPC="1" HCMS="0" DPSo="0" DPSFo="0" DPuse="0" DPgam="0" DPbla="1" DPPr="ISO Coated v2 300% (basICColor)" DPIn="sRGB display profile (ICC v2.2)" DPInCMYK="ISO Coated v2 300% (basICColor)" DPIn2="sRGB display profile (ICC v2.2)" DPIn3="ISO Coated v2 300% (basICColor)" DISc="1" DIIm="0" ALAYER="0" LANGUAGE="en_GB" AUTOMATIC="1" AUTOCHECK="0" GUIDELOCK="0" SnapToGuides="0" SnapToGrid="0" SnapToElement="0" MINGRID="20.0012598425197" MAJGRID="100.00062992126" SHOWGRID="1" SHOWGUIDES="1" showcolborders="1" SHOWFRAME="1" SHOWControl="0" SHOWLAYERM="0" SHOWMARGIN="1" SHOWBASE="0" SHOWPICT="1" SHOWLINK="0" rulerMode="1" showrulers="1" showBleed="1" rulerXoffset="0" rulerYoffset="0" GuideRad="10" GRAB="4" POLYC="4" POLYF="0.502045814642449" POLYR="0" POLYIR="0" POLYCUR="0" POLYOCUR="0" POLYS="0" arcStartAngle="30" arcSweepAngle="300" spiralStartAngle="0" spiralEndAngle="1080" spiralFactor="1.2" AutoSave="1" AutoSaveTime="600000" AutoSaveCount="1" AutoSaveKeep="0" AUtoSaveInDocDir="1" AutoSaveDir="" ScratchBottom="20.0012598425197" ScratchLeft="100.00062992126" ScratchRight="100.00062992126" ScratchTop="20.0012598425197" GapHorizontal="0" GapVertical="39.9996850393701" StartArrow="0" EndArrow="0" PEN="Black" BRUSH="None" PENLINE="Black" PENTEXT="Black" StrokeText="Black" TextBackGround="None" TextLineColor="None" TextBackGroundShade="100" TextLineShade="100" TextPenShade="100" TextStrokeShade="100" STIL="1" STILLINE="1" WIDTH="1" WIDTHLINE="1" PENSHADE="100" LINESHADE="100" BRUSHSHADE="100" CPICT="None" PICTSHADE="100" CSPICT="None" PICTSSHADE="100" PICTSCX="1" PICTSCY="1" PSCALE="1" PASPECT="1" EmbeddedPath="0" HalfRes="1" dispX="10.0006299212598" dispY="10.0006299212598" constrain="15" MINORC="#00ff00" MAJORC="#00ff00" GuideC="#000080" BaseC="#c0c0c0" renderStack="2 0 4 1 3" GridType="0" PAGEC="#ffffff" MARGC="#0000ff" RANDF="0" currentProfile="PDF 1.4" calligraphicPenFillColor="Black" calligraphicPenLineColor="Black" calligraphicPenFillColorShade="100" calligraphicPenLineColorShade="100" calligraphicPenLineWidth="1" calligraphicPenAngle="0" calligraphicPenWidth="10" calligraphicPenStyle="1">
+        <CheckProfile Name="PDF 1.3" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF 1.4" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF 1.5" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF 1.6" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="0" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-1a" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="1" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-3" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="1" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-4" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="1" checkFontNotEmbedded="1" checkFontIsOpenType="0" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PostScript" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="0" checkFontIsOpenType="0" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <COLOR NAME="Black" SPACE="CMYK" C="0" M="0" Y="0" K="100"/>
+        <COLOR NAME="Registration" SPACE="CMYK" C="100" M="100" Y="100" K="100" Register="1"/>
+        <COLOR NAME="White" SPACE="CMYK" C="0" M="0" Y="0" K="0"/>
+        <HYPHEN/>
+        <CHARSTYLE CNAME="Default Character Style" DefaultStyle="1" FONT="Arial Regular" FONTSIZE="12" FONTFEATURES="" FEATURES="inherit" FCOLOR="Black" FSHADE="100" HyphenWordMin="3" SCOLOR="Black" BGCOLOR="None" BGSHADE="100" SSHADE="100" TXTSHX="5" TXTSHY="-5" TXTOUT="1" TXTULP="-0.1" TXTULW="-0.1" TXTSTP="-0.1" TXTSTW="-0.1" SCALEH="100" SCALEV="100" BASEO="0" KERN="0" LANGUAGE="en_GB"/>
+        <STYLE NAME="Default Paragraph Style" DefaultStyle="1" ALIGN="0" DIRECTION="0" LINESPMode="0" LINESP="15" INDENT="0" RMARGIN="0" FIRST="0" VOR="0" NACH="0" ParagraphEffectOffset="0" DROP="0" DROPLIN="2" Bullet="0" Numeration="0" HyphenConsecutiveLines="2" BCOLOR="None" BSHADE="100"/>
+        <TableStyle NAME="Default Table Style" DefaultStyle="1" FillColor="None" FillShade="100">
+            <TableBorderLeft>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderLeft>
+            <TableBorderRight>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderRight>
+            <TableBorderTop>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderTop>
+            <TableBorderBottom>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderBottom>
+        </TableStyle>
+        <CellStyle NAME="Default Cell Style" DefaultStyle="1" FillColor="None" FillShade="100" LeftPadding="1" RightPadding="1" TopPadding="1" BottomPadding="1">
+            <TableBorderLeft>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderLeft>
+            <TableBorderRight>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderRight>
+            <TableBorderTop>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderTop>
+            <TableBorderBottom>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderBottom>
+        </CellStyle>
+        <LAYERS NUMMER="0" LEVEL="0" NAME="Background" SICHTBAR="1" DRUCKEN="1" EDIT="1" SELECT="0" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#000000"/>
+        <Printer firstUse="0" toFile="0" useAltPrintCommand="0" outputSeparations="0" useSpotColors="1" useColor="1" mirrorH="0" mirrorV="0" useICC="0" doGCR="0" doClip="0" setDevParam="0" useDocBleeds="1" cropMarks="0" bleedMarks="0" registrationMarks="0" colorMarks="0" includePDFMarks="1" PSLevel="3" PrintEngine="4" markLength="20.0012598425197" markOffset="0" BleedTop="8.50393700787402" BleedLeft="8.50393700787402" BleedRight="8.50393700787402" BleedBottom="8.50393700787402" printer="Panasonic KX-MB2000E" filename="" separationName="All" printerCommand="">
+            <Separation Name="Cyan"/>
+            <Separation Name="Magenta"/>
+            <Separation Name="Yellow"/>
+            <Separation Name="Black"/>
+        </Printer>
+        <PDF firstUse="0" Thumbnails="0" Articles="0" Bookmarks="0" Compress="1" CMethod="0" Quality="0" EmbedPDF="0" MirrorH="0" MirrorV="0" Clip="0" rangeSel="0" rangeTxt="" RotateDeg="0" PresentMode="0" RecalcPic="0" FontEmbedding="0" Grayscale="0" RGBMode="1" UseProfiles="0" UseProfiles2="0" Binding="0" PicRes="300" Resolution="300" Version="14" Intent="1" Intent2="0" SolidP="sRGB display profile (ICC v2.2)" ImageP="sRGB display profile (ICC v2.2)" PrintP="ISO Coated v2 300% (basICColor)" InfoString="" BTop="0" BLeft="0" BRight="0" BBottom="0" useDocBleeds="0" cropMarks="0" bleedMarks="0" registrationMarks="0" colorMarks="0" docInfoMarks="0" markLength="20.0012598425197" markOffset="0" ImagePr="0" PassOwner="" PassUser="" Permissions="-4" Encrypt="0" UseLayers="0" UseLpi="0" UseSpotColors="1" doMultiFile="0" displayBookmarks="0" displayFullscreen="0" displayLayers="0" displayThumbs="0" hideMenuBar="0" hideToolBar="0" fitWindow="0" openAfterExport="0" PageLayout="0" openAction="">
+            <Subset Name="Arial Black"/>
+            <Subset Name="Arial Bold"/>
+            <Subset Name="Arial Regular"/>
+            <LPI Color="" Frequency="133" Angle="45" SpotFunction="3"/>
+            <LPI Color="Black" Frequency="133" Angle="45" SpotFunction="3"/>
+            <LPI Color="Cyan" Frequency="133" Angle="105" SpotFunction="3"/>
+            <LPI Color="Magenta" Frequency="133" Angle="75" SpotFunction="3"/>
+            <LPI Color="Yellow" Frequency="133" Angle="90" SpotFunction="3"/>
+        </PDF>
+        <DocItemAttributes/>
+        <TablesOfContents/>
+        <NotesStyles>
+            <notesStyle Name="Default" Start="1" Endnotes="0" Type="Type_1_2_3" Range="0" Prefix="" Suffix=")" AutoHeight="1" AutoWidth="1" AutoRemove="1" AutoWeld="1" SuperNote="1" SuperMaster="1" MarksStyle="" NotesStyle=""/>
+        </NotesStyles>
+        <PageSets>
+            <Set Name="Single Page" FirstPage="0" Rows="1" Columns="1"/>
+            <Set Name="Facing Pages" FirstPage="1" Rows="1" Columns="2">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+            <Set Name="3-Fold" FirstPage="0" Rows="1" Columns="3">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Middle"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+            <Set Name="4-Fold" FirstPage="0" Rows="1" Columns="4">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Middle Left"/>
+                <PageNames Name="Middle Right"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+        </PageSets>
+        <Sections>
+            <Section Number="0" Name="Section 1" From="0" To="23" Type="Type_1_2_3" Start="1" Reversed="0" Active="1" FillChar="0" FieldWidth="0"/>
+        </Sections>
+        <MASTERPAGE PAGEXPOS="100.00062992126" PAGEYPOS="20.0012598425197" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="40" BORDERRIGHT="40" BORDERTOP="40" BORDERBOTTOM="40" NUM="0" NAM="Normal Left" MNAM="" Size="Custom" Orientation="0" LEFT="1" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <MASTERPAGE PAGEXPOS="100.00062992126" PAGEYPOS="20.0012598425197" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="40" BORDERRIGHT="40" BORDERTOP="40" BORDERBOTTOM="40" NUM="1" NAM="Normal Right" MNAM="" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="20.0012598425197" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="0" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="414.331653543307" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="1" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="414.331653543307" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="2" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="808.662047244095" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="3" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="808.662047244095" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="4" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="1202.99244094488" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="5" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="1202.99244094488" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="6" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="1597.32283464567" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="7" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="1597.32283464567" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="8" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="1991.65322834646" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="9" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="1991.65322834646" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="10" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="2385.98362204724" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="11" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="2385.98362204724" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="12" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="2780.31401574803" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="13" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="2780.31401574803" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="14" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="3174.64440944882" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="15" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="3174.64440944882" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="16" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="3568.97480314961" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="17" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="3568.97480314961" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="18" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="3963.3051968504" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="19" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="3963.3051968504" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="20" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="4357.63559055118" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="21" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="454.331338582677" PAGEYPOS="4357.63559055118" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="22" NAM="" MNAM="Normal Right" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="4751.96598425197" PAGEWIDTH="354.330708661417" PAGEHEIGHT="354.330708661417" BORDERLEFT="28.3464566929134" BORDERRIGHT="28.3464566929134" BORDERTOP="28.3464566929134" BORDERBOTTOM="28.3464566929134" NUM="23" NAM="" MNAM="Normal Left" Size="Custom" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGEOBJECT XPOS="445.162729658793" YPOS="12.1627296587927" OwnPage="0" ItemID="5222720" PTYPE="2" WIDTH="372.003254593176" HEIGHT="370.673175853018" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.150001312335958" LOCALSCY="0.150001312335958" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/band-cover.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L372.003 0 L372.003 370.673 L0 370.673 L0 0 Z" copath="M0 0 L372.003 0 L372.003 370.673 L0 370.673 L0 0 Z" gXpos="90.8313910761155" gYpos="12.161469816268" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="481.496062992126" YPOS="442.096326688877" OwnPage="2" ItemID="333636576" PTYPE="4" WIDTH="298.819527559055" HEIGHT="298.219578822934" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L298.82 0 L298.82 298.22 L0 298.22 L0 0 Z" copath="M0 0 L298.82 0 L298.82 298.22 L0 298.22 L0 0 Z" gXpos="127.164724409449" gYpos="4033.59144479911" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <ITEXT FONTSIZE="12" CH="Radio Banter are"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <ITEXT FONT="Arial Bold" FONTSIZE="12" CH="Chris Wallace"/>
+                <ITEXT FONTSIZE="12" CH=" drums / vocals"/>
+                <para ALIGN="1" LINESP="12"/>
+                <ITEXT FONT="Arial Bold" FONTSIZE="12" CH="Sephi Lock"/>
+                <ITEXT FONTSIZE="12" CH=" bass guitar"/>
+                <para ALIGN="1" LINESP="12"/>
+                <ITEXT FONT="Arial Bold" FONTSIZE="12" CH="Rob Alexander"/>
+                <ITEXT FONTSIZE="12" CH=" vocals / electric piano"/>
+                <breakline/>
+                <para ALIGN="1" LINESP="12"/>
+                <breakline/>
+                <ITEXT FONTSIZE="12" CH="All songs and music by Radio Banter"/>
+                <breakline/>
+                <breakline/>
+                <ITEXT FONTSIZE="12" CH="All tracks produced by "/>
+                <ITEXT FONT="Arial Bold" FONTSIZE="12" CH="Chris White"/>
+                <breakline/>
+                <para ALIGN="1" LINESP="12"/>
+                <ITEXT FONTSIZE="12" CH="All artwork by "/>
+                <ITEXT FONT="Arial Bold" FONTSIZE="12" CH="Lily Payne"/>
+                <breakframe/>
+                <breakline/>
+                <trail ALIGN="1" LINESP="12"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="128.354960629921" YPOS="4780.82813648294" OwnPage="23" ItemID="294709712" PTYPE="4" WIDTH="298.474435695538" HEIGHT="298" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L298.474 0 L298.474 298 L0 298 L0 0 Z" copath="M0 0 L298.474 0 L298.474 298 L0 298 L0 0 Z" gXpos="-225.976377952756" gYpos="7496.1024671916" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Radio Banter"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <ITEXT CH="1/ Nature nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <ITEXT CH="2/ Grown in love"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <ITEXT CH="3/ Harsh but fair"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <ITEXT CH="4/ Richmond"/>
+                <breakline/>
+                <ITEXT CH="5/ End of an era"/>
+                <breakline/>
+                <ITEXT CH="6/ Ghostie"/>
+                <breakline/>
+                <ITEXT CH="7/ Doctor"/>
+                <breakline/>
+                <ITEXT CH="8/ Instrumental"/>
+                <breakline/>
+                <ITEXT CH="9/ The groove"/>
+                <breakline/>
+                <ITEXT CH="10/ Financial crash"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="12"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="96.62352172795" YPOS="411.82813648294" OwnPage="1" ItemID="331548736" PTYPE="2" WIDTH="361.333333333333" HEIGHT="373" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.145698924731183" LOCALSCY="0.145698924731183" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/instrumental1.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L361.333 0 L361.333 373 L0 373 L0 0 Z" copath="M0 0 L361.333 0 L361.333 373 L0 373 L0 0 Z" gXpos="96.6228918066901" gYpos="-4320.13784776904" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="91.6241516492099" YPOS="806.221102362205" OwnPage="3" ItemID="87729392" PTYPE="2" WIDTH="363.99874015748" HEIGHT="371.275590551181" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.146773685547371" LOCALSCY="0.146773685547371" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/naturenurture.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L363.999 0 L363.999 371.276 L0 371.276 L0 0 Z" copath="M0 0 L363.999 0 L363.999 371.276 L0 371.276 L0 0 Z" gXpos="91.62352172795" gYpos="1923.38582677165" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.354960629921" YPOS="837.426720389665" OwnPage="4" ItemID="294714256" PTYPE="4" WIDTH="297.267931176769" HEIGHT="296.734749426608" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L297.268 0 L297.268 296.735 L0 296.735 L0 0 Z" copath="M0 0 L297.268 0 L297.268 296.735 L0 296.735 L0 0 Z" gXpos="128.023622047244" gYpos="4669.86703535029" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Nature nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="this funky feeling that funky beat"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature or is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the reason for this rhythm in my feet"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature or is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="people are so angry in the street"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature or is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="people are just voting with their feet"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="don't be rude, don't be rude"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature or is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="to argue with your mother's point of view"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it nature or is it nurture"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="to read beyond the headlines of the news"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="part of me felt we done too much"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="part of me felt we never done enough"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="147.62415164921" YPOS="1212.55149606299" OwnPage="5" ItemID="327020368" PTYPE="2" WIDTH="321.664776902887" HEIGHT="320.943307086614" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.129569360955436" LOCALSCY="0.129569360955436" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/growinginlove1.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L321.665 0 L321.665 320.943 L0 320.943 L0 0 Z" copath="M0 0 L321.665 0 L321.665 320.943 L0 320.943 L0 0 Z" gXpos="147.62352172795" gYpos="3205.93700787401" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.67779527559" YPOS="1230.16146981627" OwnPage="6" ItemID="295090752" PTYPE="4" WIDTH="297.637795275591" HEIGHT="300" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L297.638 0 L297.638 300 L0 300 L0 0 Z" copath="M0 0 L297.638 0 L297.638 300 L0 300 L0 0 Z" gXpos="128.346456692913" gYpos="5938.82257217848" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Growing in love"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="oh no what to do"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i've gone and grown feelings for you"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i'm gonna have to"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="water them now"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="keep them fed"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="pull the weeds from"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="from their bed"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="give them sunshine"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="give them shade"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="use a trowel"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="use a spade"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="aw man it's every day"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="put my shoes on"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="and it starts to rain"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="let's see how it looks in an hour"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="it's not always"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the shoots will find their way"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="it's not always"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the shrubs will see the day"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="oh no what to do"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i've grown in love with you"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="99.288928552097" YPOS="1590.82813648294" OwnPage="7" ItemID="328813072" PTYPE="2" WIDTH="355.333963254593" HEIGHT="365.329343832021" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.143279823892981" LOCALSCY="0.143279823892981" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/harshbutfair.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L355.334 0 L355.334 365.329 L0 365.329 L0 0 Z" copath="M0 0 L355.334 0 L355.334 365.329 L0 365.329 L0 0 Z" gXpos="99.2882986308371" gYpos="4460.43443569553" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.67779527559" YPOS="1625.08750779124" OwnPage="8" ItemID="5572320" PTYPE="4" WIDTH="297.637795275591" HEIGHT="297.073962025034" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L297.638 0 L297.638 297.074 L0 297.074 L0 0 Z" copath="M0 0 L297.638 0 L297.638 297.074 L0 297.074 L0 0 Z" gXpos="128.346456692913" gYpos="7209.96939755502" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Harsh but fair"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="people tell me"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="because of my age"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i should reign it in"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i should pare it back"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="people tell me people tell me people tell me"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="to look out of the window"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="and what do you see"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the war is still raging"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="there'll never be peace"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="91.6241516492099" YPOS="1983.21228346457" OwnPage="9" ItemID="326307520" PTYPE="2" WIDTH="361.99874015748" HEIGHT="371.275590551181" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.145967233934468" LOCALSCY="0.145967233934468" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/richmond.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L361.999 0 L361.999 371.276 L0 371.276 L0 0 Z" copath="M0 0 L361.999 0 L361.999 371.276 L0 371.276 L0 0 Z" gXpos="91.62352172795" gYpos="5729.03937007874" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="485.354960629921" YPOS="2020.41790149203" OwnPage="10" ItemID="5568784" PTYPE="4" WIDTH="294.267931176769" HEIGHT="297.743568324246" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L294.268 0 L294.268 297.744 L0 297.744 L0 0 Z" copath="M0 0 L294.268 0 L294.268 297.744 L0 297.744 L0 0 Z" gXpos="131.023622047244" gYpos="8481.52057865738" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Richmond"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="if we don't come off the gas that we emit"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="and all we do are these carbon offsets"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is that really us playing our part"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is it wise to be so smart"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="if we don't just stop oil"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the whole sea's gang come to a boil"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="there'll be mammals washed up on our shores"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="children seeking refuge at our doors"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="and they'll be asking why do we only get our bit"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="once you've taken all the good things out of it"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="if we don't stop ourselves"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="we don't leave anybody else"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the chance to"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the opportunity"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="not to"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="93.6241516492099" YPOS="2378.54267716535" OwnPage="11" ItemID="162405776" PTYPE="2" WIDTH="359.99874015748" HEIGHT="369.618792650919" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.145160782321565" LOCALSCY="0.145160782321565" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/endofanera.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L359.999 0 L359.999 369.619 L0 369.619 L0 0 Z" copath="M0 0 L359.999 0 L359.999 369.619 L0 369.619 L0 0 Z" gXpos="93.62352172795" gYpos="7000.5905511811" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.354960629921" YPOS="2414.74829519281" OwnPage="12" ItemID="323240752" PTYPE="4" WIDTH="297.96062992126" HEIGHT="297.219578822934" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L297.961 0 L297.961 297.22 L0 297.22 L0 0 Z" copath="M0 0 L297.961 0 L297.961 297.22 L0 297.22 L0 0 Z" gXpos="128.023622047244" gYpos="9116.79616920856" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="End of an era"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="oops nope well that’s unfortch’"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i forgot to pack the propane torch"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="do you need a good bag from the bakery"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="before telling us your tales of bravery"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="stories of old from oh so many years ago"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="isn’t hindsight a wonderful thing"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="when one has found one’s flow"/>
+                <para ALIGN="1" LINESP="11"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the realms in which we are being"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="sometimes seeing is believing"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="yet, how can one quell this emotional swell?"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="please pass the magic potion,"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="we can cancel out the spell"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="only time will really tell"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="could this be"/>
+                <para ALIGN="1" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the end of an era?"/>
+                <trail ALIGN="1" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="90.6241516492099" YPOS="2771.87307086614" OwnPage="13" ItemID="165428432" PTYPE="2" WIDTH="363.707186933467" HEIGHT="371.621732283465" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.146656123763495" LOCALSCY="0.146656123763495" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/ghostie.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L363.707 0 L363.707 371.622 L0 371.622 L0 0 Z" copath="M0 0 L363.707 0 L363.707 371.622 L0 371.622 L0 0 Z" gXpos="90.62352172795" gYpos="6364.31496062992" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.67779527559" YPOS="2808.0786888936" OwnPage="14" ItemID="329064160" PTYPE="4" WIDTH="296.278429864433" HEIGHT="297.416114256005" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L296.278 0 L296.278 297.416 L0 297.416 L0 0 Z" copath="M0 0 L296.278 0 L296.278 297.416 L0 297.416 L0 0 Z" gXpos="128.346456692913" gYpos="7845.2449881062" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Ghostie"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="the moon lit a bed of freshly fell snow"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="my family slept as i made them soup by the stove"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="someone's knockin on my door"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="out there's a young man wearing old man's clothes"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="he says he lives here and my love is his"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i send him walking in the snow man"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i can't sleep so i go back outside"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="where did he come from, which way did he go"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="there are no footprints in the snow"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="56.2895584733568" YPOS="3168.49480314961" OwnPage="15" ItemID="164040848" PTYPE="2" WIDTH="396.711071447903" HEIGHT="425.333333333333" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.159964141712864" LOCALSCY="0.159964141712864" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/doctor.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L396.711 0 L396.711 425.333 L0 425.333 L0 0 Z" copath="M0 0 L396.711 0 L396.711 425.333 L0 425.333 L0 0 Z" gXpos="56.2889285520969" gYpos="5096.05511811023" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="482.67779527559" YPOS="3204.16146981627" OwnPage="16" ItemID="162582320" PTYPE="4" WIDTH="297.637795275591" HEIGHT="296" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L297.638 0 L297.638 296 L0 296 L0 0 Z" copath="M0 0 L297.638 0 L297.638 296 L0 296 L0 0 Z" gXpos="128.346456692913" gYpos="6576.44619422572" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Doctor"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i feel so lazy doctor can you diagnose why"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i'll sing anything i got til it gets me a line"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i feel so crazy lately are you loving me why"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i'll do anything for you papa you gave me my life"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="oh my god i am so tired"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="even though i have slept for 12 hours"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="often that is just what happens"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="you oversleep and it makes you more tired"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="you oversleep and it makes you more tired"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="jesus christ i am so hungry"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="gonna go home now i've spent all my money"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="90.6241516492098" YPOS="3567.53385826772" OwnPage="17" ItemID="320936256" PTYPE="2" WIDTH="363.37647827205" HEIGHT="373.627611548556" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.146522773496794" LOCALSCY="0.146522773496794" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/thegroove.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L363.376 0 L363.376 373.628 L0 373.628 L0 0 Z" copath="M0 0 L363.376 0 L363.376 373.628 L0 373.628 L0 0 Z" gXpos="90.62352172795" gYpos="2559.66141732283" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="483.354960629921" YPOS="3596.73947629518" OwnPage="18" ItemID="326275520" PTYPE="4" WIDTH="296.267301255509" HEIGHT="297.421993521096" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L296.267 0 L296.267 297.422 L0 297.422 L0 0 Z" copath="M0 0 L296.267 0 L296.267 297.422 L0 297.422 L0 0 Z" gXpos="129.023622047244" gYpos="4033.59144479911" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="The groove"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="you've got to get in to the groove"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="that's the whole point of this song"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="this song is so groovy"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="they're making it in to a movie"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="so when i die"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="there will be stars"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="in the sky"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="when i die"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="you've got to get in to the groove"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="91.6241516492098" YPOS="3953.8642519685" OwnPage="19" ItemID="320930592" PTYPE="2" WIDTH="361.99811023622" HEIGHT="372.275590551182" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.14596697993396" LOCALSCY="0.14596697993396" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/financialcrash.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L361.998 0 L361.998 372.276 L0 372.276 L0 0 Z" copath="M0 0 L361.998 0 L361.998 372.276 L0 372.276 L0 0 Z" gXpos="91.62352172795" gYpos="1281.11023622047" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="483.354960629921" YPOS="3991.06986999596" OwnPage="20" ItemID="332783664" PTYPE="4" WIDTH="296.267301255509" HEIGHT="299.091599820308" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L296.267 0 L296.267 299.092 L0 299.092 L0 0 Z" copath="M0 0 L296.267 0 L296.267 299.092 L0 299.092 L0 0 Z" gXpos="129.023622047244" gYpos="2763.04026369675" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <breakline/>
+                <breakline/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="10"/>
+                <ITEXT FONT="Arial Black" FONTSIZE="11" CH="Financial Crash"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="it's all my fault"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i took the decision"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="it's all because of me"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="it's my responsibility"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="i need some inspiration"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="to make a meal"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="is there any point though"/>
+                <para ALIGN="1" DIRECTION="0" LINESP="11"/>
+                <ITEXT FONTSIZE="11" CH="when all you want's a pie"/>
+                <trail ALIGN="1" DIRECTION="0" LINESP="11"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="91.4966929133858" YPOS="4353.49480314961" OwnPage="21" ItemID="320939088" PTYPE="2" WIDTH="362.834645669291" HEIGHT="370" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.146304292608585" LOCALSCY="0.146304292608585" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/instrumental2.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L362.835 0 L362.835 370 L0 370 L0 0 Z" copath="M0 0 L362.835 0 L362.835 370 L0 370 L0 0 Z" gXpos="91.4960629921259" gYpos="3827.5127559055" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+        <PAGEOBJECT XPOS="481.62226188543" YPOS="4385.9820472441" OwnPage="21" ItemID="332628976" PTYPE="2" WIDTH="299.333333333333" HEIGHT="297.637795275591" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="0.120257695060845" LOCALSCY="0.120257695060845" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="0" RATIO="1" Pagenumber="0" PFILE="lily/tracknames.jpg" PRFILE="Embedded sRGB IEC61966-2.1" IRENDER="0" EPROF="Embedded sRGB IEC61966-2.1" path="M0 0 L299.333 0 L299.333 297.638 L0 297.638 L0 0 Z" copath="M0 0 L299.333 0 L299.333 297.638 L0 297.638 L0 0 Z" gXpos="127.290923302753" gYpos="48.346456692908" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1"/>
+    </DOCUMENT>
+</SCRIBUSUTF8NEW>
