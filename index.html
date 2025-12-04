@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
-    <title>Radio Banter - Coming Soon</title>
+    <title>Radio Banter - Whipstaff Manor Sessions</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Radio Banter" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap" rel="stylesheet">
+
     <style>
         body {
             background-color: #ffffff;
             color: #000000;
-            font-family: Arial, sans-serif;
+            font-family: "Frank Ruhl Libre", "Frank Ruehl CLM", serif;
             margin: 0;
             padding: 20px 0;
             display: flex;
@@ -25,104 +30,135 @@
             min-height: 100vh;
         }
 
-        footer pre {
-            font-size: 0px;
-        }
-
         .content-wrapper {
             width: 95%;
-            max-width: 900px;
+            max-width: 1000px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
         }
 
-        .full-width-image {
+        /* --- SPLIT STAGE LAYOUT --- */
+        .split-stage {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            height: auto;
-            display: block;
-            border: 1px solid #000;
+            border: none;
             border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            margin-bottom: 20px;
         }
 
+        .stage-panel {
+            flex: 1;
+            padding: 0;
+            position: relative;
+            /* Changed min-height to auto for mobile to prevent huge gaps if content is short */
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
 
-        .player {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
+        .stage-left {
+            border-bottom: none;
+            justify-content: center;
+            /* Ensure the image container has some height on mobile */
+            min-height: 300px;
+        }
+
+        .stage-right {
+            background-color: #fff;
+            /* UPDATED: Default (Mobile) behavior is to let content grow. 
+               No max-height, No overflow-y here. */
+            height: auto;
+            overflow: visible;
+        }
+
+        @media (min-width: 768px) {
+            .split-stage {
+                flex-direction: row;
+                align-items: stretch;
+            }
+
+            .stage-panel {
+                /* Restore min-height for desktop columns */
+                min-height: 300px;
+            }
+
+            .stage-left {
+                border-bottom: none;
+                border-right: none;
+                width: 50%;
+            }
+
+            .stage-right {
+                width: 50%;
+                /* UPDATED: Only apply scrollbar constraints on Desktop */
+                overflow-y: auto;
+                max-height: 600px;
+            }
+        }
+
+        /* Image Styling within Panels */
+        .panel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            /* prevent image from collapsing */
+            min-height: 300px;
+        }
+
+        /* Text Content Styling within Right Panel */
+        .text-content-wrapper {
+            padding: 40px;
+            text-align: center;
             width: 100%;
             box-sizing: border-box;
-            text-align: center;
-            box-shadow: none;
+            margin: auto;
         }
 
-        .image-container {
-            position: relative;
-            max-width: 100%;
-            margin-bottom: 10px;
+        .text-content-wrapper h2 {
+            margin-top: 0;
         }
 
-        .track-image {
+        .text-content-wrapper p {
+            line-height: 1.6;
+            margin-bottom: 1.5em;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- PLAYER CONTROLS --- */
+        .player-controls-container {
             width: 100%;
-            height: auto;
-            display: block;
-            touch-action: pan-y;
-            /* Prevents page scroll while swiping horizontally */
-        }
-
-        .img-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.7);
-            border: 1px solid black;
-            color: black;
-            cursor: pointer;
-            padding: 5px 10px;
-            font-size: 18px;
-            border-radius: 4px;
-        }
-
-        .img-nav-btn:hover {
-            background-color: black;
-            color: white;
-        }
-
-        #imgPrevBtn {
-            left: 10px;
-        }
-
-        #imgNextBtn {
-            right: 10px;
-        }
-
-
-        header pre {
-            color: #000000;
-            font-size: 8px;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .track-info {
-            margin-top: 15px;
-            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .controls {
-            margin-top: 20px;
+            margin: 10px 0;
         }
 
         button {
-            background-color: #ffffff;
-            border: 1px solid #000000;
+            background-color: silver;
+            border: none;
             color: #000000;
             padding: 10px 15px;
             margin: 5px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
+            font-weight: bold;
         }
 
         button:hover {
@@ -130,18 +166,35 @@
             color: #ffffff;
         }
 
-        button:disabled,
-        button:disabled:hover {
-            background-color: #f0f0f0;
-            color: #cccccc;
-            cursor: not-allowed;
-            border-color: #cccccc;
+        .progress-wrapper {
+            margin: 15px 0;
         }
 
+        .progress-container {
+            background: #e0e0e0;
+            cursor: pointer;
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: #000000;
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+        }
+
+        .time-display {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* --- PLAYLIST STYLES --- */
         .playlist {
             text-align: left;
             background-color: #ffffff;
-            border: 1px solid #000000;
+            border: none;
             border-radius: 4px;
             padding: 10px;
             width: 100%;
@@ -157,9 +210,9 @@
         .playlist li {
             padding: 8px;
             cursor: pointer;
-            border-bottom: 1px solid #dddddd;
+            border-bottom: none;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
         }
 
@@ -170,80 +223,26 @@
         .playlist li:hover,
         .playlist li.active {
             background-color: #f0f0f0;
+        }
+
+        .download-link {
+            font-size: 12px;
             color: #000000;
+            text-decoration: underline;
+            margin-left: 10px;
         }
 
-        section#lyrics {
+        /* --- MERCH & FOOTER --- */
+        .full-width-image {
             width: 100%;
-            box-sizing: border-box;
-            padding: 20px;
-            background-color: #ffffff;
-            text-align: center;
-            border: 1px solid #000000;
-            border-radius: 8px;
-            position: relative;
-            touch-action: pan-y;
-        }
-
-        .lyrics-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.7);
-            border: 1px solid black;
-            color: black;
-            cursor: pointer;
-            padding: 5px 10px;
-            font-size: 18px;
-            border-radius: 4px;
-            z-index: 10;
-        }
-
-        .lyrics-nav-btn:hover {
-            background-color: black;
-            color: white;
-        }
-
-        #lyricsPrevBtn {
-            left: 10px;
-        }
-
-        #lyricsNextBtn {
-            right: 10px;
-        }
-
-
-        #lyrics>div {
-            display: none;
-        }
-
-        #lyrics>div.active {
-            display: block;
-        }
-
-        .lyrics-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .lyrics-text {
-            text-align: left;
-        }
-
-        .lyrics-image {
-            max-width: 250px;
             height: auto;
-
+            display: block;
+            border: none;
+            border-radius: 8px;
         }
 
-        @media (min-width: 600px) {
-            .lyrics-content {
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
-            }
+        a {
+            color: inherit;
         }
     </style>
 </head>
@@ -251,446 +250,458 @@
 <body>
     <div class="content-wrapper">
 
-        <div class="player">
-            <header>
-                <div class="image-container">
-                    <img src="albumwip/lily/band-cover.jpg" alt="Track Artwork" id="trackImage" class="track-image">
-                    <button id="imgPrevBtn" class="img-nav-btn">&#10094;</button>
-                    <button id="imgNextBtn" class="img-nav-btn">&#10095;</button>
-                </div>
-            </header>
+        <div class="split-stage">
+            <div class="stage-panel stage-left">
+                <img src="lily/band-cover.jpg" alt="Album Cover" class="panel-image">
+            </div>
 
-            <!-- <div class="track-info" id="trackTitle">Radio Banter - Whipstaff Manor Sessions</div>
+            <div class="stage-panel stage-right">
+                <div id="introContent" class="text-content-wrapper">
+                    <h1 style="display:none">Radio Banter</h1>
+                    <img src="RadioBanterCDText.png" style="max-width:100%;width:120px">
+                    <p>
+                        10 track CD with cardboard wallet and lyric booklet illustrated by <a
+                            href='https://www.instagram.com/painepoetry/' target="_blank">Lily Paine</a> available
+                        for preorder for £5.00 (+£3 UK postage)
+                    </p>
+
+                    <form method="post" action="https://www.paypal.com/cgi-bin/webscr" class="paypal-button"
+                        target="_blank">
+                        <input name="business" type="hidden" value="pampthehorn@gmail.com">
+                        <input name="cmd" type="hidden" value="_xclick">
+                        <input name="item_name" type="hidden" value="Radio Banter - album CD">
+                        <input name="amount" type="hidden" value="5.00">
+                        <input name="currency_code" type="hidden" value="GBP">
+                        <input name="shipping" type="hidden" value="3.00">
+                        <input name="return" type="hidden" value="https://radiobanter.net">
+                        <input type="image" name="submit"
+                            src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_buynow_107x26.png"
+                            alt="Buy Now">
+                        <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"
+                            border="0">
+                    </form>
+                    <p>
+                        Engineired, mixed and mastered by Chris White (Nightshift) at Pillar Studio, Glasgow Southside.
+                    </p>
+                    <p>
+                        Please join us in celebration on Thursday 8th January at Sharmanka Puppet Theatre, Trongate,
+                        Glasgow; we perform with our friends The Chop. Tickets available soon.
+                    </p>
+                    <p><a href="/cdn-cgi/l/email-protection#95e7f4f1fcfaf7f4fbe1f0e7fbf0e1d5f2f8f4fcf9bbf6faf8"><span
+                                class="__cf_email__"
+                                data-cfemail="b0c2d1d4d9dfd2d1dec4d5c2ded5c4f0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</span></a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="dynamicStage" class="split-stage hidden">
+            <div class="stage-panel stage-left">
+                <img src="" alt="Track Artwork" id="trackArtImage" class="panel-image">
+            </div>
+
+            <div class="stage-panel stage-right" id="lyricsPanelScroll">
+
+                <div id="lyricsContent" class="text-content-wrapper">
+                    <div id="dynamicLyricsTitle"></div>
+                    <div id="dynamicLyricsBody"></div>
+                </div>
+
+                <img src="" alt="Secondary Artwork" id="secondaryImage" class="panel-image hidden">
+            </div>
+        </div>
+
+        <div class="player-controls-container">
+            <div class="track-info" id="trackTitle"></div>
 
             <div class="controls">
-                <button id="playPauseBtn" disabled>Coming Soon</button>
-            </div> -->
+                <button id="prevBtn">Prev</button>
+                <button id="playPauseBtn">Play</button>
+                <button id="nextBtn">Next</button>
+            </div>
+
+            <div class="progress-wrapper">
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+            </div>
         </div>
+
         <div class="playlist" id="playlist">
-            <ul id="playlistList">
-            </ul>
+            <ul id="playlistList"></ul>
         </div>
 
-        <section id="lyrics" style="display:none">
-            <button id="lyricsPrevBtn" class="lyrics-nav-btn">&#10094;</button>
-            <button id="lyricsNextBtn" class="lyrics-nav-btn">&#10095;</button>
-            <div id="lyrics-nature-nurture">
-                <h2>Nature/Nurture</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/naturenurture.jpg" alt="Nature/Nurture Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            is it nature is nature<br>
-                            this funky feeling that funky beat<br>
-                            is it nature or is it nurture<br>
-                            the reason for this rhythm in my feet<br>
-                            is it nature or is it nurture<br>
-                            People are so angry in the street<br>
-                            is it nature or is it nurture<br>
-                            the reason people are voting with their feet<br>
-                        </p>
-                        <p>
-                            Don't be rude, don't be rude
-                        </p>
-                        <p> is it nature or is it nurture<br>
-                            to criticise your mother's point of view<br>
-                            is it nature or is it nurture<br>
-                            to read beyond the headlines of the news<br>
-                        </p>
-                        <p>
-                            Part of me felt we done too much<br>
-                            Part of me felt we never done enough<br>
-                            Part of me felt we done too much<br>
-                            Part of me felt we never done enough<br>
-                        </p>
-                        <p>
-                            Dont be rude, don't be rude
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <audio id="audioPlayer"></audio>
 
-            <div id="lyrics-growing-in-love">
-                <h2>Growing in Love</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/growinginlove1.jpg" alt="Growing in Love Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            Oh no what to do<br>
-                            i've gone and grown feelings for you<br>
-                            I'm gonna have to<br>
-                            water them now<br>
-                            keep them fed<br>
-                            pull the weeds from<br>
-                            From their bed<br>
-                            give them sunshine<br>
-                            give them shade<br>
-                            use a trowel<br>
-                            use a spade<br>
-                        </p>
-                        <p>aw man it's every day<br>
-                            put my shoes on<br>
-                            and it starts to rain<br>
-                            Let's see how it looks in an hour<br>
-                        </p>
-                        <p>
-                            it's not always<br>
-                            The shoots will find their way<br>
-                            It's not always<br>
-                            The shrubs will see the day<br>
-                        </p>
-                        <p>
-                            Oh no what to do<br>
-                            I've grown in love with you
-                        </p>
-                    </div>
-                </div>
+        <div style="display:none;">
+            <div id="raw-lyrics-nature-nurture">
+                <p>is it nature is it nurture<br>this funky feeling that funky beat<br>is it nature or is it
+                    nurture<br>the reason for this rhythm in my feet<br>is it nature or is it nurture<br>people are so
+                    angry in the street<br>is it nature or is it nurture<br>people are just voting with their feet</p>
+                <p>don't be rude, don't be rude</p>
+                <p>is it nature or is it nurture<br>to argue with your mother's point of view<br>is it nature or is it
+                    nurture<br>to read beyond the headlines of the news</p>
+                <p>part of me felt we done too much<br>part of me felt we never done enough</p>
             </div>
+            <div id="raw-lyrics-growing-in-love">
+                <p>Oh no what to do<br>i've gone and grown feelings for you<br>i'm gonna have to<br>water them now, keep
+                    them fed<br>pull the weeds from, from their bed<br>give them sunshine, give them shade<br>use a
+                    trowel, use a spade</p>
+                <p>aw man it's every day<br>put my shoes on<br>and it starts to rain<br>let's see how it looks in an
+                    hour</p>
+                <p>it's not always<br>the shoots will find their way<br>it's not always<br>the shrubs will see the day
+                </p>
+                <p>oh no what to do<br>i've grown in love with you</p>
+            </div>
+            <div id="raw-lyrics-harsh-but-fair">
+                <p>people tell me<br>because of my age<br>i should reign it in<br>i should pare it back<br>people tell
+                    me people tell me people tell me</p>
+                <p>to look out of the window<br>and what do you see<br>the war is still raging<br>there'll never be
+                    peace</p>
+            </div>
+            <div id="raw-lyrics-richmond">
+                <p>if we don't come off the gas that we emit<br>and all we do are these carbon offsets<br>is that really
+                    us playing our part<br>is it wise to be so smart<br>if we don't just stop oil<br>the whole sea's
+                    gang come to a boil<br>there'll be mammals washed up on our shores<br>children seeking refuge at our
+                    doors<br>and they'll be asking why do we only get our bit<br>once you've taken all the good things
+                    out of it</p>
+                <p>if we don't stop ourselves<br>we don't leave anybody else<br>the chance to<br>the opportunity<br>not
+                    to</p>
+            </div>
+            <div id="raw-lyrics-end-of-an-era">
+                <p>oops nope well that’s unfortch’<br>i forgot to pack the propane torch<br>do you need a good bag from
+                    the bakery<br>before telling us your tales of bravery<br>stories of old from oh so many years
+                    ago<br>isn’t hindsight a wonderful thing<br>when one has found one’s flow</p>
+                <p>the realms in which we are being<br>sometimes seeing is believing<br>yet, how can one quell this
+                    emotional swell?<br>please pass the magic potion,<br>we can cancel out the spell<br>only time will
+                    really tell<br>could this be<br>the end of an era?</p>
+            </div>
+            <div id="raw-lyrics-ghostie">
+                <p>the moon lit a bed of freshly fell snow<br>my family slept as i made them soup by the
+                    stove<br>someone's knockin on my door</p>
+                <p>out there's a young man wearing old man's clothes<br>he says he lives here and my love is his<br>i
+                    send him walking in the snow man</p>
+                <p>i can't sleep so i go back outside<br>where did he come from, which way did he go<br>there are no
+                    footprints in the snow</p>
+            </div>
+            <div id="raw-lyrics-doctor">
+                <p>i feel so lazy doctor can you diagnose why<br>i'll sing anything i got til it gets me a line</p>
+                <p>i feel so crazy lately are you loving me why<br>i'll do anything for you papa you gave me my life</p>
+                <p>oh my god i am so tired<br>even though i have slept for 12 hours<br>often that is just what
+                    happens<br>you oversleep and it makes you more tired<br>you oversleep and it makes you more tired
+                </p>
+                <p>jesus christ i am so hungry<br>gonna go home now i've spent all my money</p>
+            </div>
+            <div id="raw-lyrics-instrumental">
+            </div>
+            <div id="raw-lyrics-the-groove">
+                <p>you've got to get in to the groove<br>that's the whole point of this song<br>this song is so
+                    groovy<br>they're making it in to a movie</p>
+                <p>so when i die<br>there will be stars<br>in the sky<br>when i die<br>you've got to get in to the
+                    groove</p>
+            </div>
+            <div id="raw-lyrics-financial-crash">
+                <p>it's all my fault<br>i took the decision<br>it's all because of me<br>it's my responsibility</p>
+                <p>i need some inspiration<br>to make a meal<br>is there any point though<br>when all you want's a pie
+                </p>
+            </div>
+        </div>
 
-            <div id="lyrics-harsh-but-fair">
-                <h2>Harsh but fair</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/harshbutfair.jpg" alt="Harsh but Fair Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            People tell me<br>
-                            Because of my age<br>
-                            I should reign it in<br>
-                            I should pare it back<br>
-                            People tell me people tell me people tell me<br>
-                            To look out of the window<br>
-                            At what do you see<br>
-                            The war is still raging<br>
-                            There'll never be peace
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            <div id="lyrics-richmond">
-                <h2>Richmond</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/richmond.jpg" alt="Richmond Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            D C G x 4<br>
-                        </p>
-                        <p>
-                            if we [D]don't come off the [C]gas that we [G]emit<br>
-                            and we [D]say we'll buy [C]carbon [G]offsets<br>
-                            is that [D]really us [C]playing our [G]part<br>
-                            is it [D]wise to [C]be so [G]smart<br>
-                            if we [D]don't [C]just stop [G]oil<br>
-                            the whole [D]sea's gang [C]come to the [G]boil<br>
-                            there'll be [D]mammals washed [C]up on our [G]shore<br>
-                            [D]children seeking [C]refuge at your [G]door<br>
-                            They'll be asking [D] why they only [C]getting their [G]bit<br>
-                            when we've [D]taken all the [C]sweetness [G]out of it<br>
-                        </p>
-                        <p>
-                            [F]if we don't stop [Em]ourselves<br>
-                            [F]we don't leave anybody [G]else<br>
-                            [D]the [C]chance to[G]<br>
-                            the [F]opportunity<br>
-                            [B]not [G]to<br>
-                        </p>
-                        <p>
-                            Em Bm<br>
-                            Em Bm Am<br>
-                            [twice through]
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            <div id="lyrics-end-of-an-era">
-                <h2>End of an Era</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/endofanera.jpg" alt="End of an Era Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            Oops nope we’ll that’s unfortch’<br />
-                            I forgot to pack the propane torch<br />
-                            Do you need a good bag from the bakery<br />
-                            Before telling us your tales of bravery<br />
-                            Stories of old from oh so many years ago<br />
-                            Isn’t hindsight a wonderful thing<br />
-                            when one has found one’s flow
-                        </p>
-                        <p>
-                            The realms in which we are being<br />
-                            Sometimes seeing is believing<br />
-                            Yet, how can one quell this emotional swell?<br />
-                            Please pass the magic potion,<br />
-                            we can cancel out the spell<br />
-                            Only time will really tell<br />
-                            Could this be<br />
-                            The end of an era?
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="lyrics-ghostie">
-                <h2>Ghostie</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/ghostie.jpg" alt="Ghostie Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            the moon lit a bed of freshly fell snow<br>
-                            my family slept and i ate soup by the stove<br>
-                            who's that knockin on ma door<br><br />
-                            out there's a young man in old man's clothes<br>
-                            claims he lives here and my love is his<br>
-                            i send him walking in the snow man<br><br />
-                            i can't sleep so i go back outside<br>
-                            where did he come from, which way did he go<br>
-                            there are no footprints in the snow<br><br>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="lyrics-doctor">
-                <h2>Doctor</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/doctor.jpg" alt="Doctor Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            I feel (C) so lazy (F) doctor can you (G) diagnose (C) why<br>
-                            I'll sing (C) anything I (F) got til it (G) gets me a (C)line
-                        </p>
-                        <p>
-                            I feel (C) so crazy (F) lately are you (G) loving me (C) why<br>
-                            I'll do (C) anything (F) for you papa (G) you gave me my (C)life
-                        </p>
-                        <p>
-                            (Em) oh my (C) God I (Bm) am so (C) tired<br>
-                            (Em) even (C) though I have (G) slept for 12 (Bm) hours<br>
-                            (Em) often (C) that is (Bm) just what (C) happens<br>
-                            (Em) you over- (C) -sleep and it (G) makes you more (Bm) tired<br>
-                            (Em) you over- (C) -sleep and it (Bm) makes you more (C) tired<br>
-                        </p>
-                        <p>Jesus christ I am so hungry<br />
-                            Gonna go home now I've spent all my money</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="lyrics-instrumental">
-                <h2>Instrumental</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/instrumental1.jpg" alt="Instrumental Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            (Instrumental Track)
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="lyrics-the-groove">
-                <h2>The Groove</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/thegroove.jpg" alt="The Groove Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p> You've got to get in to the groove<br>
-                            That's the whole point of this song<br>
-                            This song is so groovy<br>
-                            They're making it in to a movie<br>
-                        </p>
-                        <p>
-                            So when I die<br>
-                            There will be stars<br>
-                            In the sky<br>
-                            When I die<br>
-                            You've got to get in to the groove
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="lyrics-financial-crash">
-                <h2>Financial Crash</h2>
-                <div class="lyrics-content">
-                    <img src="albumwip/lily/financialcrash.jpg" alt="Financial Crash Artwork" class="lyrics-image">
-                    <div class="lyrics-text">
-                        <p>
-                            It's all my fault<br>
-                            I took the decision<br>
-                            It's all because of me<br>
-                            It's my responsibility<br>
-                        </p>
-                        <p>
-                            I need some inspiration<br>
-                            to make a meal<br>
-                            Is there any point though<br>
-                            When all you want's a pie
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <p><strong>Radio Banter</strong>, from Glasgow, Scotland, are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
+        <p><strong>Radio Banter</strong> are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
             <br />Rob Alexander (electric piano / vocals)
         </p>
 
-        <!-- <img src="ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image"> -->
+        <img src="../ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image">
 
-        <p>artwork by <a href='https://www.instagram.com/painepoetry/'
-                target="_blank">Lily Payne</a><br />photograph by <a href='https://www.instagram.com/remain_in_light_/'
-                target="_blank">Baz</a></p>
+        <p>Photograph by <a href='https://www.instagram.com/remain_in_light_/' target="_blank">Baz</a></p>
 
-        <p>contact <a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
 
-        <footer>
-            <pre>
-                      ⠀⠀⢀⡠⠒⠈⠛⠊⠋⠑⠦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                      ⠀⠀⡎⠀⡀⠀⠀⠰⡀⠀⠐⣪⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                      ⠀⠀⡧⠀⠉⣓⠴⠊⠉⠉⢫⠀⠀⠉⣉⣲⠀⠀⠀⠀⠀⣄⠀⠴⠄⡀⡀⠀⠀⠀
-                      ⠀⢀⡿⠓⠊⠀⠠⠾⠟⠁⠘⡖⠐⠚⣇⣀⢀⣀⠤⠖⠒⠒⠠⢄⡀⠀⠈⠑⡄⠀
-                    ⣠⠯⠀⠀⠀⠀⠀⠀⠀⣠⠜⠀⠀⠀⢸⢆⠀⠈⠁⠀⠀⠀⠀⠀⠁⠀⠀⠀⠈⠄
-                    ⢷⡤⠂⢀⠀⠀⣀⡠⠔⠁⠀⠀⠀⠀⡜⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸
-                    ⠈⠻⠭⠶⠚⠛⡄⠀⠀⠀⠀⠀⠀⠈⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                    ⠀⠀⠀⠀⠀⠀⣵⠠⠤⠀⠀⠀⠀⡠⠔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸
-                    ⠀⠀⠀⠀⠀⠀⠻⡤⠄⢀⡠⠄⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⠀⠀⡸
-                    ⠀⠀⠀⠀⠀⠀⠀⢱⠖⠮⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢀⠞⡞⠀⡀⡅
-                    ⠀⠀⠀⠀⠀⠀⠀⠈⣗⠂⠤⠀⠀⠀⠀⠀⠀⢀⠀⠤⡔⠁⠀⠀⡠⡾⠠⠮⡾⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⢱⡩⠁⢄⠀⠀⠀⣀⠄⠂⠀⡴⠓⢶⠚⢹⡇⡇⠀⢀⡷⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡗⠒⠀⣽⠉⠙⣦⠄⠀⣾⠁⠀⡼⠀⠈⡇⢹⠀⢸⠃⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⡿⠀⠀⢻⠀⠀⢯⠀⠀⡇⠀⢠⡇⢸⠀⠈⢇⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠂⠀⡇⠀⠀⢸⡆⠀⣾⠀⠀⠓⠓⋋⠀⡏⢀⠀⡟⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⢀⡿⠀⠀⢸⠇⠀⡏⠀⠀⠀⠀⠀⠈⠓⠚⚚⠁⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⢼⣰⣀⡼⠃⠀⢀⡞⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣞⣰⣀⡜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-            </pre>
-        </footer>
 
     </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        const tracklist = [
-            { title: "Nature Nurture", image: "albumwip/lily/naturenurture.jpg", lyricsId: "lyrics-nature-nurture" },
-            { title: "Growing in Love", image: "albumwip/lily/growinginlove1.jpg", lyricsId: "lyrics-growing-in-love" },
-            { title: "Harsh but Fair", image: "albumwip/lily/harshbutfair.jpg", lyricsId: "lyrics-harsh-but-fair" },
-            { title: "Richmond", image: "albumwip/lily/richmond.jpg", lyricsId: "lyrics-richmond" },
-            { title: "End of an Era", image: "albumwip/lily/endofanera.jpg", lyricsId: "lyrics-end-of-an-era" },
-            { title: "Ghostie", image: "albumwip/lily/ghostie.jpg", lyricsId: "lyrics-ghostie" },
-            { title: "Doctor", image: "albumwip/lily/doctor.jpg", lyricsId: "lyrics-doctor" },
-            { title: "Instrumental", image: "albumwip/lily/instrumental1.jpg", lyricsId: "lyrics-instrumental" },
-            { title: "The Groove", image: "albumwip/lily/thegroove.jpg", lyricsId: "lyrics-the-groove" },
-            { title: "Financial Crash", image: "albumwip/lily/financialcrash.jpg", lyricsId: "lyrics-financial-crash" }
+        const mainTracks = [
+            { title: "Nature Nurture", src: "20250823masters/01 Nature Nurture.mp3", image: "lily/naturenurture.jpg", lyricsId: "raw-lyrics-nature-nurture" },
+            { title: "Growing in Love", src: "20250823masters/02 Growing in Love.mp3", image: "lily/growinginlove1.jpg", lyricsId: "raw-lyrics-growing-in-love" },
+            { title: "Harsh but Fair", src: "20250823masters/03 Harsh but Fair.mp3", image: "lily/harshbutfair.jpg", lyricsId: "raw-lyrics-harsh-but-fair" },
+            { title: "Richmond", src: "20250823masters/04 Richmond.mp3", image: "lily/richmond.jpg", lyricsId: "raw-lyrics-richmond" },
+            { title: "End of an Era", src: "20250823masters/05 End of an Era.mp3", image: "lily/endofanera.jpg", lyricsId: "raw-lyrics-end-of-an-era" },
+            { title: "Ghostie", src: "20250823masters/06 Ghosty.mp3", image: "lily/ghostie.jpg", lyricsId: "raw-lyrics-ghostie" },
+            { title: "Doctor", src: "20250823masters/07 Doctor.mp3", image: "lily/doctor.jpg", lyricsId: "raw-lyrics-doctor" },
+            { title: "Instrumental", src: "20250823masters/08 Instrumental.mp3", image: "lily/instrumental1.jpg", lyricsId: "raw-lyrics-instrumental" },
+            { title: "The Groove", src: "20250823masters/09 The Groove.mp3", image: "lily/thegroove.jpg", lyricsId: "raw-lyrics-the-groove" },
+            { title: "Financial Crash", src: "20250823masters/10 Financial Crash.mp3", image: "lily/financialcrash.jpg", lyricsId: "raw-lyrics-financial-crash" }
         ];
-
-        const sliderImages = [
-            "albumwip/lily/instrumental2.jpg",
-            ...tracklist.map(track => track.image),
-            "albumwip/lily/band-cover.jpg",
-            "albumwip/lily/tracknames.jpg",
-            "albumwip/lily/growinginlove2.jpg"
-        ];
-
-        const uniqueSliderImages = [...new Set(sliderImages)];
 
         // --- STATE VARIABLES ---
-        let currentImageIndex = 0;
-        let currentLyricsIndex = 0;
+        let currentTrack = 0;
+        let isIntroMode = true; // Tracks if we are showing the welcome text or the player/lyrics
+        let wakeLock = null;
 
         // --- DOM ELEMENTS ---
-        const trackImage = document.getElementById("trackImage");
-        const lyricsContainer = document.getElementById("lyrics");
-        const allLyricsDivs = document.querySelectorAll("#lyrics > div[id^='lyrics-']");
-        const lyricsPrevBtn = document.getElementById("lyricsPrevBtn");
-        const lyricsNextBtn = document.getElementById("lyricsNextBtn");
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playPauseBtn = document.getElementById("playPauseBtn");
         const playlistList = document.getElementById("playlistList");
+        const progressBar = document.getElementById("progressBar");
+        const progressContainer = document.getElementById("progressContainer");
+        const timeDisplay = document.getElementById("timeDisplay");
+        const trackTitleDisplay = document.getElementById("trackTitle");
 
-        // --- IMAGE SLIDER FUNCTIONS ---
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % uniqueSliderImages.length;
-            trackImage.src = uniqueSliderImages[currentImageIndex];
-        }
+        // Stage Elements (Dynamic Section only)
+        const dynamicStage = document.getElementById("dynamicStage");
+        const trackArtImage = document.getElementById("trackArtImage"); // Left Panel of Dynamic Stage
 
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + uniqueSliderImages.length) % uniqueSliderImages.length;
-            trackImage.src = uniqueSliderImages[currentImageIndex];
-        }
+        const lyricsPanelScroll = document.getElementById("lyricsPanelScroll"); // Right Panel Container
+        const lyricsContent = document.getElementById("lyricsContent");
+        const secondaryImage = document.getElementById("secondaryImage");
 
-        // --- LYRICS SLIDER FUNCTIONS ---
-        function showLyrics(index) {
-            if (index >= 0 && index < allLyricsDivs.length) {
-                currentLyricsIndex = index;
-                allLyricsDivs.forEach(div => div.classList.remove('active'));
-                if (allLyricsDivs[index]) {
-                    allLyricsDivs[index].classList.add('active');
+        const dynamicLyricsTitle = document.getElementById("dynamicLyricsTitle");
+        const dynamicLyricsBody = document.getElementById("dynamicLyricsBody");
+
+        // --- WAKE LOCK FUNCTIONS ---
+        async function requestWakeLock() {
+            if ('wakeLock' in navigator) {
+                try {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                } catch (err) {
+                    console.error(`${err.name}, ${err.message}`);
                 }
-
-                // Also update playlist active state
-                const items = playlistList.getElementsByTagName("li");
-                Array.from(items).forEach((item, i) => {
-                    item.classList.toggle("active", i === index);
-                });
             }
         }
 
-        function nextLyrics() {
-            const nextIndex = (currentLyricsIndex + 1) % tracklist.length;
-            showLyrics(nextIndex);
+        function releaseWakeLock() {
+            if (wakeLock) {
+                wakeLock.release().then(() => { wakeLock = null; });
+            }
         }
 
-        function prevLyrics() {
-            const prevIndex = (currentLyricsIndex - 1 + tracklist.length) % tracklist.length;
-            showLyrics(prevIndex);
+        // --- UI UPDATE FUNCTION ---
+        function switchModeToPlayer() {
+            if (isIntroMode) {
+                isIntroMode = false;
+                // Reveal the 2nd stage (Image + Lyrics)
+                dynamicStage.classList.remove("hidden");
+                // Note: We do NOT hide the Top Stage (Cover + Buy text) anymore
+                updateStageContent();
+                playPauseBtn.textContent = "Play";
+            }
         }
 
-        // --- PLAYLIST FUNCTION ---
-        function generatePlaylist() {
-            tracklist.forEach((track, index) => {
-                const li = document.createElement("li");
-                li.textContent = (index + 1) + ". " + track.title;
-                li.addEventListener("click", () => {
-                    showLyrics(index);
-                    const lyricsDiv = document.getElementById(track.lyricsId);
-                    if (lyricsDiv) {
-                        lyricsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        function updateStageContent() {
+            const track = mainTracks[currentTrack];
+
+            // 1. Update Left Panel of DYNAMIC Stage
+            if (track.title === "Instrumental") {
+                trackArtImage.src = "lily/instrumental1.jpg";
+            } else {
+                trackArtImage.src = track.image;
+            }
+
+            // 2. Update Right Panel of DYNAMIC Stage
+            if (!isIntroMode) {
+                if (track.title === "Instrumental") {
+                    // INSTRUMENTAL MODE: Show 2nd Image, Hide Lyrics
+                    lyricsContent.classList.add("hidden");
+                    secondaryImage.classList.remove("hidden");
+                    secondaryImage.src = "lily/instrumental2.jpg";
+                } else {
+                    // STANDARD MODE: Show Lyrics, Hide 2nd Image
+                    secondaryImage.classList.add("hidden");
+                    lyricsContent.classList.remove("hidden");
+
+                    // Populate Lyrics
+                    dynamicLyricsTitle.innerHTML = `<h2>${track.title}</h2>`;
+                    const rawLyrics = document.getElementById(track.lyricsId);
+                    if (rawLyrics) {
+                        dynamicLyricsBody.innerHTML = rawLyrics.innerHTML;
+                    } else {
+                        dynamicLyricsBody.innerHTML = "<p>Lyrics not available.</p>";
                     }
+                    // Reset scroll to top of lyrics panel
+                    lyricsPanelScroll.scrollTop = 0;
+                }
+            }
+        }
+
+        function updatePlayerUI() {
+            const isPlaying = !audioPlayer.paused;
+            const track = mainTracks[currentTrack];
+
+            trackTitleDisplay.textContent = (isPlaying ? '▶ ' : '▷ ') + 'Radio Banter - ' + track.title;
+
+            // Update playlist icons
+            const items = playlistList.getElementsByTagName("li");
+            Array.from(items).forEach((item, index) => {
+                const icon = item.querySelector(".play-icon");
+                if (icon) {
+                    if (index === currentTrack) {
+                        item.classList.add("active");
+                        icon.textContent = isPlaying ? "▶ " : "▷ ";
+                    } else {
+                        item.classList.remove("active");
+                        icon.textContent = "▷ ";
+                    }
+                }
+            });
+        }
+
+        // --- PLAYER & TRACK FUNCTIONS ---
+        function nextTrack() {
+            const wasPlaying = !audioPlayer.paused;
+            const nextIndex = (currentTrack + 1) % mainTracks.length;
+
+            if (isIntroMode) switchModeToPlayer();
+
+            loadTrack(nextIndex);
+
+            if (wasPlaying) {
+                playTrack();
+            }
+        }
+
+        function prevTrack() {
+            const wasPlaying = !audioPlayer.paused;
+            const prevIndex = (currentTrack - 1 + mainTracks.length) % mainTracks.length;
+
+            if (isIntroMode) switchModeToPlayer();
+
+            loadTrack(prevIndex);
+
+            if (wasPlaying) {
+                playTrack();
+            }
+        }
+
+        function loadTrack(index) {
+            if (index >= 0 && index < mainTracks.length) {
+                currentTrack = index;
+                const track = mainTracks[index];
+                audioPlayer.src = track.src;
+
+                // Update the visible stage (images/lyrics) immediately
+                updateStageContent();
+
+                audioPlayer.load();
+                updatePlayerUI();
+            }
+        }
+
+        function playTrack() {
+            // First time play clicked? Switch UI
+            if (isIntroMode) {
+                switchModeToPlayer();
+            }
+
+            audioPlayer.play();
+            playPauseBtn.textContent = "Pause";
+            requestWakeLock();
+            updatePlayerUI();
+        }
+
+        function pauseTrack() {
+            audioPlayer.pause();
+            playPauseBtn.textContent = "Play";
+            releaseWakeLock();
+            updatePlayerUI();
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return minutes + ":" + (secs < 10 ? "0" : "") + secs;
+        }
+
+        // --- PLAYLIST GENERATION ---
+        function createPlaylistItem(track, index, clickHandler) {
+            const li = document.createElement("li");
+
+            const titleWrapper = document.createElement("span");
+            const iconSpan = document.createElement("span");
+            iconSpan.className = "play-icon";
+            iconSpan.textContent = "▷ ";
+            titleWrapper.appendChild(iconSpan);
+            const titleText = document.createTextNode((index + 1) + ". " + track.title);
+            titleWrapper.appendChild(titleText);
+            li.appendChild(titleWrapper);
+
+            const downloadLink = document.createElement("a");
+            downloadLink.href = track.src;
+            downloadLink.download = "";
+            downloadLink.textContent = "Download";
+            downloadLink.className = "download-link";
+            downloadLink.addEventListener("click", e => e.stopPropagation());
+            li.appendChild(downloadLink);
+
+            li.addEventListener("click", clickHandler);
+            return li;
+        }
+
+        function generatePlaylist() {
+            mainTracks.forEach((track, index) => {
+                const li = createPlaylistItem(track, index, () => {
+                    loadTrack(index);
+                    playTrack();
                 });
                 playlistList.appendChild(li);
             });
         }
 
         // --- EVENT LISTENERS ---
-        document.getElementById("imgNextBtn").addEventListener("click", nextImage);
-        document.getElementById("imgPrevBtn").addEventListener("click", prevImage);
+        playPauseBtn.addEventListener("click", () => {
+            if (audioPlayer.paused) {
+                playTrack();
+            } else {
+                pauseTrack();
+            }
+        });
 
-        lyricsNextBtn.addEventListener("click", nextLyrics);
-        lyricsPrevBtn.addEventListener("click", prevLyrics);
+        document.getElementById("nextBtn").addEventListener("click", nextTrack);
+        document.getElementById("prevBtn").addEventListener("click", prevTrack);
 
-        // --- SWIPE FUNCTIONALITY ---
-        function setupSwipe(element, onSwipeLeft, onSwipeRight) {
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const swipeThreshold = 50; // Minimum distance for a swipe
+        audioPlayer.addEventListener("ended", () => {
+            releaseWakeLock();
+            if (currentTrack < mainTracks.length - 1) {
+                const nextIndex = (currentTrack + 1) % mainTracks.length;
+                loadTrack(nextIndex);
+                playTrack();
+            } else {
+                pauseTrack();
+                audioPlayer.currentTime = 0;
+            }
+        });
 
-            element.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (audioPlayer.duration) {
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = progressPercent + "%";
+                timeDisplay.textContent = formatTime(audioPlayer.currentTime) + " / " + formatTime(audioPlayer.duration);
+            }
+        });
 
-            element.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchEndX < touchStartX - swipeThreshold) {
-                    onSwipeLeft(); // Swiped left
-                }
-                if (touchEndX > touchStartX + swipeThreshold) {
-                    onSwipeRight(); // Swiped right
-                }
-            });
-        }
+        progressContainer.addEventListener("click", function (e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audioPlayer.duration;
+            if (duration) {
+                audioPlayer.currentTime = (clickX / width) * duration;
+            }
+        });
 
-        setupSwipe(trackImage, nextImage, prevImage);
-        setupSwipe(lyricsContainer, nextLyrics, prevLyrics);
+        document.addEventListener('visibilitychange', () => {
+            if (wakeLock !== null && document.visibilityState === 'hidden') {
+                releaseWakeLock();
+            } else if (!audioPlayer.paused && document.visibilityState === 'visible') {
+                requestWakeLock();
+            }
+        });
 
         // --- INITIALIZATION ---
         generatePlaylist();
-        showLyrics(0); // Show the first track's lyrics and highlight it in the playlist
+        audioPlayer.src = mainTracks[0].src;
     </script>
 </body>
 
