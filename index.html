@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=yes" />
-    <title>Radio Banter - Whipstaff Manor Sessions</title>
+    <title>Radio Banter - Band in Glasgow, Scotland</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -39,7 +39,6 @@
             gap: 20px;
         }
 
-        /* --- SPLIT STAGE LAYOUT --- */
         .split-stage {
             display: flex;
             flex-direction: column;
@@ -55,7 +54,6 @@
             flex: 1;
             padding: 0;
             position: relative;
-            /* Changed min-height to auto for mobile to prevent huge gaps if content is short */
             min-height: auto;
             display: flex;
             flex-direction: column;
@@ -66,14 +64,11 @@
         .stage-left {
             border-bottom: none;
             justify-content: center;
-            /* Ensure the image container has some height on mobile */
             min-height: 300px;
         }
 
         .stage-right {
             background-color: #fff;
-            /* UPDATED: Default (Mobile) behavior is to let content grow. 
-               No max-height, No overflow-y here. */
             height: auto;
             overflow: visible;
         }
@@ -82,41 +77,38 @@
             .split-stage {
                 flex-direction: row;
                 align-items: stretch;
+                height: 550px;
             }
 
             .stage-panel {
-                /* Restore min-height for desktop columns */
-                min-height: 300px;
+                height: 100%;
+                min-height: 0;
             }
 
             .stage-left {
                 border-bottom: none;
                 border-right: none;
                 width: 50%;
+                overflow: hidden;
             }
 
             .stage-right {
                 width: 50%;
-                /* UPDATED: Only apply scrollbar constraints on Desktop */
+                height: 100%;
                 overflow-y: auto;
-                max-height: 600px;
             }
         }
 
-        /* Image Styling within Panels */
         .panel-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
-            /* prevent image from collapsing */
-            min-height: 300px;
         }
 
-        /* Text Content Styling within Right Panel */
         .text-content-wrapper {
             padding: 40px;
-            text-align: center;
+            text-align: left;
             width: 100%;
             box-sizing: border-box;
             margin: auto;
@@ -135,7 +127,6 @@
             display: none !important;
         }
 
-        /* --- PLAYER CONTROLS --- */
         .player-controls-container {
             width: 100%;
             border: none;
@@ -190,15 +181,8 @@
             margin-top: 5px;
         }
 
-        /* --- PLAYLIST STYLES --- */
         .playlist {
-            text-align: left;
-            background-color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
+       
         }
 
         .playlist ul {
@@ -230,9 +214,9 @@
             color: #000000;
             text-decoration: underline;
             margin-left: 10px;
+            display: none;
         }
 
-        /* --- MERCH & FOOTER --- */
         .full-width-image {
             width: 100%;
             height: auto;
@@ -262,7 +246,7 @@
                     <p>
                         10 track CD with cardboard wallet and lyric booklet illustrated by <a
                             href='https://www.instagram.com/painepoetry/' target="_blank">Lily Paine</a> available
-                        for preorder for £5.00 (+£3 UK postage)
+                        to preorder for £5.00 (+£3 UK postage).
                     </p>
 
                     <form method="post" action="https://www.paypal.com/cgi-bin/webscr" class="paypal-button"
@@ -281,11 +265,13 @@
                             border="0">
                     </form>
                     <p>
-                        Engineired, mixed and mastered by <strong>Chris White</strong> (Nightshift) at Pillar Studio, Glasgow Southside.
+                        Engineired, mixed and mastered by <strong>Chris White</strong> (Nightshift) at Pillar Studio,
+                        Glasgow Southside.
                     </p>
                     <p>
                         Please join us on <strong>Thursday 8th January at Sharmanka Puppet Theatre</strong>, Trongate,
-                        Glasgow; we will perform live, also with our marvellous friends The Chop. Tickets available soon.
+                        Glasgow; we will perform live, also with our marvellous friends The Chop. Tickets available
+                        from <a href="https://www.ticketsource.co.uk/sharmanka">https://www.ticketsource.co.uk/sharmanka</a>.
                     </p>
                     <p><a href="mailto:radiobanternet@gmail.com">radiobanternet@gmail.com</a>
                     </p>
@@ -294,7 +280,7 @@
             </div>
         </div>
 
-        <div id="dynamicStage" class="split-stage hidden">
+        <div id="dynamicStage" class="split-stage">
             <div class="stage-panel stage-left">
                 <img src="" alt="Track Artwork" id="trackArtImage" class="panel-image">
             </div>
@@ -408,15 +394,22 @@
         </div>
 
 
+<div>
+<p>Additional accordion (3), xaphoon (1&5), tongue drum (8) and penny whistle (9&10)
+by Rob Alexander; trombone (1), guitar (5) and bongos (9) by Chris Wallace;
+guitalele (6) and guitar (8) by Chris White.</p>  
+<p>Recorded throughout July 2025 at Pillar Studio, Glasgow, Scotland</p>
+<p>Songs and music by Radio Banter Engineering, mixing and mastering by Chris White</p>
+<p>Artwork by Lily Payne</p>
 
         <p><strong>Radio Banter</strong> are <br /> Chris Wallace (drums / vocals), <br />Sephi Lock (bass guitar),
-            <br />Rob Alexander (electric piano / vocals)
+            <br />Rob Alexander (vocals / electric piano)
         </p>
 
         <img src="ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image">
 
         <p>Photograph by <a href='https://www.instagram.com/remain_in_light_/' target="_blank">Baz</a></p>
-
+</div>
 
 
     </div>
@@ -435,12 +428,9 @@
             { title: "Financial Crash", src: "20250823masters/10 Financial Crash.mp3", image: "lily/financialcrash.jpg", lyricsId: "raw-lyrics-financial-crash" }
         ];
 
-        // --- STATE VARIABLES ---
         let currentTrack = 0;
-        let isIntroMode = true; // Tracks if we are showing the welcome text or the player/lyrics
         let wakeLock = null;
 
-        // --- DOM ELEMENTS ---
         const audioPlayer = document.getElementById("audioPlayer");
         const playPauseBtn = document.getElementById("playPauseBtn");
         const playlistList = document.getElementById("playlistList");
@@ -449,18 +439,16 @@
         const timeDisplay = document.getElementById("timeDisplay");
         const trackTitleDisplay = document.getElementById("trackTitle");
 
-        // Stage Elements (Dynamic Section only)
         const dynamicStage = document.getElementById("dynamicStage");
-        const trackArtImage = document.getElementById("trackArtImage"); // Left Panel of Dynamic Stage
+        const trackArtImage = document.getElementById("trackArtImage");
 
-        const lyricsPanelScroll = document.getElementById("lyricsPanelScroll"); // Right Panel Container
+        const lyricsPanelScroll = document.getElementById("lyricsPanelScroll");
         const lyricsContent = document.getElementById("lyricsContent");
         const secondaryImage = document.getElementById("secondaryImage");
 
         const dynamicLyricsTitle = document.getElementById("dynamicLyricsTitle");
         const dynamicLyricsBody = document.getElementById("dynamicLyricsBody");
 
-        // --- WAKE LOCK FUNCTIONS ---
         async function requestWakeLock() {
             if ('wakeLock' in navigator) {
                 try {
@@ -477,51 +465,34 @@
             }
         }
 
-        // --- UI UPDATE FUNCTION ---
-        function switchModeToPlayer() {
-            if (isIntroMode) {
-                isIntroMode = false;
-                // Reveal the 2nd stage (Image + Lyrics)
-                dynamicStage.classList.remove("hidden");
-                // Note: We do NOT hide the Top Stage (Cover + Buy text) anymore
-                updateStageContent();
-                playPauseBtn.textContent = "Play";
-            }
-        }
 
-        function updateStageContent() {
-            const track = mainTracks[currentTrack];
+        function updateStageContent(trackIndex) {
+            if (trackIndex === undefined) trackIndex = currentTrack;
 
-            // 1. Update Left Panel of DYNAMIC Stage
+            const track = mainTracks[trackIndex];
+
             if (track.title === "Instrumental") {
                 trackArtImage.src = "lily/instrumental1.jpg";
             } else {
                 trackArtImage.src = track.image;
             }
 
-            // 2. Update Right Panel of DYNAMIC Stage
-            if (!isIntroMode) {
-                if (track.title === "Instrumental") {
-                    // INSTRUMENTAL MODE: Show 2nd Image, Hide Lyrics
-                    lyricsContent.classList.add("hidden");
-                    secondaryImage.classList.remove("hidden");
-                    secondaryImage.src = "lily/instrumental2.jpg";
-                } else {
-                    // STANDARD MODE: Show Lyrics, Hide 2nd Image
-                    secondaryImage.classList.add("hidden");
-                    lyricsContent.classList.remove("hidden");
+            if (track.title === "Instrumental") {
+                lyricsContent.classList.add("hidden");
+                secondaryImage.classList.remove("hidden");
+                secondaryImage.src = "lily/instrumental2.jpg";
+            } else {
+                secondaryImage.classList.add("hidden");
+                lyricsContent.classList.remove("hidden");
 
-                    // Populate Lyrics
-                    dynamicLyricsTitle.innerHTML = `<h2>${track.title}</h2>`;
-                    const rawLyrics = document.getElementById(track.lyricsId);
-                    if (rawLyrics) {
-                        dynamicLyricsBody.innerHTML = rawLyrics.innerHTML;
-                    } else {
-                        dynamicLyricsBody.innerHTML = "<p>Lyrics not available.</p>";
-                    }
-                    // Reset scroll to top of lyrics panel
-                    lyricsPanelScroll.scrollTop = 0;
+                dynamicLyricsTitle.innerHTML = `<h2>${track.title}</h2>`;
+                const rawLyrics = document.getElementById(track.lyricsId);
+                if (rawLyrics) {
+                    dynamicLyricsBody.innerHTML = rawLyrics.innerHTML;
+                } else {
+                    dynamicLyricsBody.innerHTML = "<p>Lyrics not available.</p>";
                 }
+                lyricsPanelScroll.scrollTop = 0;
             }
         }
 
@@ -531,7 +502,6 @@
 
             trackTitleDisplay.textContent = (isPlaying ? '▶ ' : '▷ ') + 'Radio Banter - ' + track.title;
 
-            // Update playlist icons
             const items = playlistList.getElementsByTagName("li");
             Array.from(items).forEach((item, index) => {
                 const icon = item.querySelector(".play-icon");
@@ -547,15 +517,10 @@
             });
         }
 
-        // --- PLAYER & TRACK FUNCTIONS ---
         function nextTrack() {
             const wasPlaying = !audioPlayer.paused;
             const nextIndex = (currentTrack + 1) % mainTracks.length;
-
-            if (isIntroMode) switchModeToPlayer();
-
             loadTrack(nextIndex);
-
             if (wasPlaying) {
                 playTrack();
             }
@@ -564,11 +529,7 @@
         function prevTrack() {
             const wasPlaying = !audioPlayer.paused;
             const prevIndex = (currentTrack - 1 + mainTracks.length) % mainTracks.length;
-
-            if (isIntroMode) switchModeToPlayer();
-
             loadTrack(prevIndex);
-
             if (wasPlaying) {
                 playTrack();
             }
@@ -580,8 +541,7 @@
                 const track = mainTracks[index];
                 audioPlayer.src = track.src;
 
-                // Update the visible stage (images/lyrics) immediately
-                updateStageContent();
+                updateStageContent(currentTrack);
 
                 audioPlayer.load();
                 updatePlayerUI();
@@ -589,11 +549,6 @@
         }
 
         function playTrack() {
-            // First time play clicked? Switch UI
-            if (isIntroMode) {
-                switchModeToPlayer();
-            }
-
             audioPlayer.play();
             playPauseBtn.textContent = "Pause";
             requestWakeLock();
@@ -613,7 +568,6 @@
             return minutes + ":" + (secs < 10 ? "0" : "") + secs;
         }
 
-        // --- PLAYLIST GENERATION ---
         function createPlaylistItem(track, index, clickHandler) {
             const li = document.createElement("li");
 
@@ -635,6 +589,18 @@
             li.appendChild(downloadLink);
 
             li.addEventListener("click", clickHandler);
+
+
+            if (window.innerWidth > 768) {
+                li.addEventListener("mouseenter", () => {
+                    updateStageContent(index);
+                });
+
+                li.addEventListener("mouseleave", () => {
+                    updateStageContent(currentTrack);
+                });
+            }
+
             return li;
         }
 
@@ -648,7 +614,6 @@
             });
         }
 
-        // --- EVENT LISTENERS ---
         playPauseBtn.addEventListener("click", () => {
             if (audioPlayer.paused) {
                 playTrack();
@@ -697,9 +662,10 @@
             }
         });
 
-        // --- INITIALIZATION ---
         generatePlaylist();
         audioPlayer.src = mainTracks[0].src;
+
+        updateStageContent(0);
     </script>
 </body>
 
