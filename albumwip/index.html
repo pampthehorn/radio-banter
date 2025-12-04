@@ -60,12 +60,15 @@
             min-height: 300px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            /* CHANGED: Switched from center to flex-start to prevent top-clipping on overflow */
+            justify-content: flex-start;
             align-items: center;
         }
 
         .stage-left {
             border-bottom: none;
+            /* We can keep center alignment for images as they scale to fit usually */
+            justify-content: center;
         }
 
         .stage-right {
@@ -106,6 +109,9 @@
             text-align: center;
             width: 100%;
             box-sizing: border-box;
+            /* CHANGED: This auto margin centers the content vertically if there is space, 
+               but allows it to sit at the top if there is overflow. */
+            margin: auto;
         }
 
         .text-content-wrapper h2 {
@@ -273,7 +279,7 @@
                         Please join us in celebration on Thursday 8th January at Sharmanka Puppet Theatre, Trongate,
                         Glasgow; we perform with our friends The Chop. Tickets available soon.
                     </p>
-                            <p><a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
+                    <p><a href='mailto:radiobanternet@gmail.com'>radiobanternet@gmail.com</a></p>
 
                 </div>
             </div>
