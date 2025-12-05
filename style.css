@@ -1,20 +1,31 @@
 #mc_embed_signup {
-
     width: 100%;
+    /* Ensure Mailchimp container doesn't bring in a white background */
+    background: transparent !important;
 }
 
 body {
-    background-color: #ffffff;
-    color: #000000;
+    /* CHANGE: Background black, text white */
+    background-color: #000000;
+    color: #ffffff;
     font-family: "Frank Ruhl Libre", "Frank Ruehl CLM", serif;
     margin: 0;
-
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+}
+
+/* CHANGE: Make links white so they are visible */
+a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #cccccc;
 }
 
 .content-wrapper {
@@ -35,8 +46,9 @@ body {
     border: none;
     border-radius: 8px;
     overflow: hidden;
-    background-color: #fff;
     margin-bottom: 20px;
+    /* Optional: Add a subtle dark border to define the stage area */
+    border: 1px solid #222;
 }
 
 .stage-panel {
@@ -54,10 +66,11 @@ body {
     border-bottom: none;
     justify-content: center;
     min-height: 300px;
+    /* Optional: slight background difference for the artwork area */
+    background-color: #050505;
 }
 
 .stage-right {
-    background-color: #fff;
     height: auto;
     overflow: visible;
 }
@@ -98,6 +111,8 @@ body {
     .split-stage {
         border-radius: 0;
         margin-bottom: 0;
+        border: none;
+        /* Remove border on mobile for cleaner look */
     }
 
     .text-content-wrapper,
@@ -114,12 +129,18 @@ body {
     }
 }
 
+/* CHANGE: This inverts the colors of the main artwork PNGs */
 .panel-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
-    background-color: #fff;
+    filter: invert(1);
+}
+
+/* CHANGE: Specific rule to invert the "Radio Banter" text image in the intro */
+#introContent>img {
+    filter: invert(1);
 }
 
 .text-content-wrapper {
@@ -161,10 +182,14 @@ body {
     gap: 10px;
 }
 
+/* CHANGE: Updated standard buttons for dark mode */
 button {
-    background-color: silver;
-    border: none;
-    color: #000000;
+    background-color: #333333;
+    /* Dark grey background */
+    border: 1px solid #444;
+    /* Subtle border */
+    color: #ffffff;
+    /* White text */
     padding: 10px 20px;
     margin: 5px;
     border-radius: 4px;
@@ -175,27 +200,32 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
+/* CHANGE: Hover state for standard buttons (invert contrast) */
 button:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
 }
 
 .progress-wrapper {
     margin: 15px 0;
 }
 
+/* CHANGE: Darker track background for progress bar */
 .progress-container {
-    background: #e0e0e0;
+    background: #333333;
     cursor: pointer;
     height: 8px;
     border-radius: 4px;
     position: relative;
 }
 
+/* CHANGE: White progress bar indicating playback */
 .progress-bar {
-    background: #000000;
+    background: #ffffff;
     height: 100%;
     width: 0%;
     border-radius: 4px;
@@ -216,10 +246,11 @@ button:hover {
     padding: 0;
 }
 
+/* CHANGE: Darker separators for playlist items */
 .playlist li {
     padding: 12px 8px;
     cursor: pointer;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #333333;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -229,9 +260,10 @@ button:hover {
     border-bottom: none;
 }
 
+/* CHANGE: Dark grey hover state for playlist items */
 .playlist li:hover,
 .playlist li.active {
-    background-color: #f0f0f0;
+    background-color: #222222;
 }
 
 .playlist li span:last-child {
@@ -242,7 +274,8 @@ button:hover {
 
 .download-link {
     font-size: 12px;
-    color: #000000;
+    color: #ffffff;
+    /* Changed to white */
     text-decoration: underline;
     margin-left: 10px;
     display: none;
@@ -254,36 +287,75 @@ button:hover {
     display: block;
     border: none;
     border-radius: 8px;
+    /* Ensure the band photo JPG is NOT inverted */
+    filter: none;
 }
 
+/* CHANGE: Redesigned PayPal button for dark theme */
 .paypal-btn {
-    background-color: #FFC439;
-    color: #000000;
-    border: none;
+    background-color: #444444;
+    /* Dark background */
+    color: #ffffff;
+    /* White text */
+    border: 1px solid #555;
     border-radius: 24px;
     padding: 12px 30px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    /* Subtle white shadow */
+    transition: all 0.3s;
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
 
+/* CHANGE: Hover state for PayPal button */
 .paypal-btn:hover {
-    background-color: #F4BB37;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #000;
+    background-color: #666666;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    color: #fff;
 }
 
 .paypal-logo-svg {
     height: 20px;
     width: auto;
+    /* Optional: Invert PayPal logo color if it's black, or keep original colors */
+    /* filter: invert(1) grayscale(1) brightness(10); */
+    /* Uncomment to make logo white */
 }
 
 .paypal-button-container {
     width: 100%;
     text-align: left;
 }
+
+#nextBtn,
+#prevBtn {
+    display: none;
+}
+
+/* === MAILCHIMP OVERRIDES === */
+/* These are necessary because Mailchimp loads its own stylesheet that fights ours.
+   We use !important to force our dark theme styles. */
+
+#mc_embed_signup .mc-field-group input {
+    background-color: #222 !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+}
+
+#mc_embed_signup .button {
+    background-color: #333 !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+    transition: all 0.3s ease !important;
+}
+
+#mc_embed_signup .button:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+/* =========================== */
