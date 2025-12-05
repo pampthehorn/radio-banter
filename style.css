@@ -1,11 +1,9 @@
 #mc_embed_signup {
     width: 100%;
-    /* Ensure Mailchimp container doesn't bring in a white background */
     background: transparent !important;
 }
 
 body {
-    /* CHANGE: Background black, text white */
     background-color: #000000;
     color: #ffffff;
     font-family: "Frank Ruhl Libre", "Frank Ruehl CLM", serif;
@@ -18,7 +16,6 @@ body {
     min-height: 100vh;
 }
 
-/* CHANGE: Make links white so they are visible */
 a {
     color: #ffffff;
     text-decoration: underline;
@@ -47,7 +44,6 @@ a:hover {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
-    /* Optional: Add a subtle dark border to define the stage area */
     border: 1px solid #222;
 }
 
@@ -66,8 +62,7 @@ a:hover {
     border-bottom: none;
     justify-content: center;
     min-height: 300px;
-    /* Optional: slight background difference for the artwork area */
-    background-color: #050505;
+    background-color: black;
 }
 
 .stage-right {
@@ -112,7 +107,6 @@ a:hover {
         border-radius: 0;
         margin-bottom: 0;
         border: none;
-        /* Remove border on mobile for cleaner look */
     }
 
     .text-content-wrapper,
@@ -129,7 +123,6 @@ a:hover {
     }
 }
 
-/* CHANGE: This inverts the colors of the main artwork PNGs */
 .panel-image {
     width: 100%;
     height: 100%;
@@ -138,7 +131,6 @@ a:hover {
     filter: invert(1);
 }
 
-/* CHANGE: Specific rule to invert the "Radio Banter" text image in the intro */
 #introContent>img {
     filter: invert(1);
 }
@@ -182,14 +174,10 @@ a:hover {
     gap: 10px;
 }
 
-/* CHANGE: Updated standard buttons for dark mode */
 button {
     background-color: #333333;
-    /* Dark grey background */
     border: 1px solid #444;
-    /* Subtle border */
     color: #ffffff;
-    /* White text */
     padding: 10px 20px;
     margin: 5px;
     border-radius: 4px;
@@ -203,7 +191,6 @@ button {
     transition: all 0.3s ease;
 }
 
-/* CHANGE: Hover state for standard buttons (invert contrast) */
 button:hover {
     background-color: #ffffff;
     color: #000000;
@@ -214,7 +201,6 @@ button:hover {
     margin: 15px 0;
 }
 
-/* CHANGE: Darker track background for progress bar */
 .progress-container {
     background: #333333;
     cursor: pointer;
@@ -223,7 +209,6 @@ button:hover {
     position: relative;
 }
 
-/* CHANGE: White progress bar indicating playback */
 .progress-bar {
     background: #ffffff;
     height: 100%;
@@ -246,7 +231,6 @@ button:hover {
     padding: 0;
 }
 
-/* CHANGE: Darker separators for playlist items */
 .playlist li {
     padding: 12px 8px;
     cursor: pointer;
@@ -260,7 +244,6 @@ button:hover {
     border-bottom: none;
 }
 
-/* CHANGE: Dark grey hover state for playlist items */
 .playlist li:hover,
 .playlist li.active {
     background-color: #222222;
@@ -275,7 +258,6 @@ button:hover {
 .download-link {
     font-size: 12px;
     color: #ffffff;
-    /* Changed to white */
     text-decoration: underline;
     margin-left: 10px;
     display: none;
@@ -287,16 +269,12 @@ button:hover {
     display: block;
     border: none;
     border-radius: 8px;
-    /* Ensure the band photo JPG is NOT inverted */
     filter: none;
 }
 
-/* CHANGE: Redesigned PayPal button for dark theme */
 .paypal-btn {
     background-color: #444444;
-    /* Dark background */
     color: #ffffff;
-    /* White text */
     border: 1px solid #555;
     border-radius: 24px;
     padding: 12px 30px;
@@ -304,14 +282,12 @@ button:hover {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-    /* Subtle white shadow */
     transition: all 0.3s;
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
 
-/* CHANGE: Hover state for PayPal button */
 .paypal-btn:hover {
     background-color: #666666;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
@@ -321,9 +297,7 @@ button:hover {
 .paypal-logo-svg {
     height: 20px;
     width: auto;
-    /* Optional: Invert PayPal logo color if it's black, or keep original colors */
-    /* filter: invert(1) grayscale(1) brightness(10); */
-    /* Uncomment to make logo white */
+
 }
 
 .paypal-button-container {
@@ -336,9 +310,7 @@ button:hover {
     display: none;
 }
 
-/* === MAILCHIMP OVERRIDES === */
-/* These are necessary because Mailchimp loads its own stylesheet that fights ours.
-   We use !important to force our dark theme styles. */
+
 
 #mc_embed_signup .mc-field-group input {
     background-color: #222 !important;
@@ -358,4 +330,3 @@ button:hover {
     color: #000 !important;
 }
 
-/* =========================== */
