@@ -1,6 +1,6 @@
 let currentTrack = 0;
 let wakeLock = null;
-
+let bookletIndex = 0;
 const audioPlayer = document.getElementById("audioPlayer");
 const playPauseBtn = document.getElementById("playPauseBtn");
 const playlistList = document.getElementById("playlistList");
@@ -71,6 +71,7 @@ function updatePlayerUI() {
   const isPlaying = !audioPlayer.paused;
   const track = mainTracks[currentTrack];
 
+  // Update Top Text
   trackTitleDisplay.textContent =
     (isPlaying ? "▶ " : "▷ ") + "Radio Banter - " + track.title;
 
@@ -78,12 +79,13 @@ function updatePlayerUI() {
   Array.from(items).forEach((item, index) => {
     const icon = item.querySelector(".play-icon");
     if (icon) {
+      // ALWAYS keep the hollow triangle to prevent iOS emoji conversion
+      icon.textContent = "▷ ";
+
       if (index === currentTrack) {
-        item.classList.add("active");
-        icon.textContent = isPlaying ? "▶ " : "▷ ";
+        item.classList.add("active"); // CSS handles the highlight/glow
       } else {
         item.classList.remove("active");
-        icon.textContent = "▷ ";
       }
     }
   });
@@ -110,10 +112,11 @@ function prevTrack() {
 function loadTrack(index) {
   if (index >= 0 && index < mainTracks.length) {
     currentTrack = index;
+    bookletIndex = index; // Sync booklet with audio when track changes
     const track = mainTracks[index];
     audioPlayer.src = track.src;
 
-    updateStageContent(currentTrack);
+    updateStageContent(bookletIndex); // Pass bookletIndex explicitly
 
     audioPlayer.load();
     updatePlayerUI();
@@ -144,18 +147,23 @@ function createPlaylistItem(track, index, clickHandler) {
   const li = document.createElement("li");
 
   const titleWrapper = document.createElement("span");
+
+  // Create the icon span
   const iconSpan = document.createElement("span");
   iconSpan.className = "play-icon";
-  iconSpan.textContent = "▷ ";
+  iconSpan.textContent = "▷ "; // Static text
   titleWrapper.appendChild(iconSpan);
-  const titleText = document.createTextNode(index + 1 + ". " + track.title);
+
+  // Add Title
+  const titleText = document.createTextNode(track.title + "\u00A0\u00A0");
   titleWrapper.appendChild(titleText);
+
   li.appendChild(titleWrapper);
 
+  // Add Duration
   const durationSpan = document.createElement("span");
   durationSpan.textContent = track.duration;
-  durationSpan.style.color = "#666";
-  durationSpan.style.fontSize = "0.9em";
+  // duration styling is now handled in CSS
   li.appendChild(durationSpan);
 
   const downloadLink = document.createElement("a");
@@ -201,6 +209,19 @@ playPauseBtn.addEventListener("click", () => {
 
 document.getElementById("nextBtn").addEventListener("click", nextTrack);
 document.getElementById("prevBtn").addEventListener("click", prevTrack);
+
+// Booklet Navigation Logic
+document.getElementById("bookletPrevBtn").addEventListener("click", () => {
+  // Move back one page, wrap around if needed
+  bookletIndex = (bookletIndex - 1 + mainTracks.length) % mainTracks.length;
+  updateStageContent(bookletIndex);
+});
+
+document.getElementById("bookletNextBtn").addEventListener("click", () => {
+  // Move forward one page, wrap around if needed
+  bookletIndex = (bookletIndex + 1) % mainTracks.length;
+  updateStageContent(bookletIndex);
+});
 
 audioPlayer.addEventListener("ended", () => {
   releaseWakeLock();
@@ -252,22 +273,17 @@ updateStageContent(0);
 // GOOGLE ANALYTICS TRACKING LOGIC
 // ==========================================
 
-// State variables to prevent duplicate events
 let hasLoggedStart = false;
 let trackedMilestones = new Set();
 
-// 1. Hook into the existing loadTrack function to reset tracking
 const originalLoadTrack = loadTrack;
 loadTrack = function (index) {
-  // Reset tracking flags for the new song
   hasLoggedStart = false;
   trackedMilestones.clear();
 
-  // Call the original function
   originalLoadTrack(index);
 };
 
-// 2. Track "Song Start" (Only fires once per song load)
 audioPlayer.addEventListener("play", () => {
   if (!hasLoggedStart) {
     const track = mainTracks[currentTrack];
@@ -281,7 +297,6 @@ audioPlayer.addEventListener("play", () => {
   }
 });
 
-// 3. Track Duration & Progress (10%, 25%, 50%, 75%, 90%)
 audioPlayer.addEventListener("timeupdate", () => {
   if (!audioPlayer.duration) return;
 
@@ -290,7 +305,6 @@ audioPlayer.addEventListener("timeupdate", () => {
   );
   const track = mainTracks[currentTrack];
 
-  // Define milestones we want to track
   const milestones = [10, 25, 50, 75, 90];
 
   milestones.forEach((milestone) => {
@@ -308,7 +322,6 @@ audioPlayer.addEventListener("timeupdate", () => {
   });
 });
 
-// 4. Track "Song Complete"
 audioPlayer.addEventListener("ended", () => {
   const track = mainTracks[currentTrack];
   gtag("event", "audio_complete", {
@@ -319,14 +332,9 @@ audioPlayer.addEventListener("ended", () => {
   });
 });
 
-// 5. Track Downloads
-// We need to attach listeners to the download links generated in generatePlaylist
-// We use a MutationObserver or event delegation because those links are created dynamically.
 document.getElementById("playlistList").addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("download-link")) {
-    // Find the track title from the parent LI text or index
     const li = e.target.closest("li");
-    // Simple way to get text without the "Download" part
     const rawText = li.textContent.replace("Download", "").trim();
 
     gtag("event", "file_download", {
@@ -338,7 +346,6 @@ document.getElementById("playlistList").addEventListener("click", function (e) {
   }
 });
 
-// 6. Track External Link Clicks (Instagram/Tickets)
 document.addEventListener("click", function (e) {
   const link = e.target.closest("a");
   if (

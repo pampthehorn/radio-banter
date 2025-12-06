@@ -221,38 +221,98 @@ button:hover {
     margin-top: 5px;
 }
 
+/* --- Playlist: Side-by-Side Styling --- */
 .playlist {
-    width: 250px;
+    width: 100%;
+    /* Remove fixed width */
+    max-width: 1000px;
+    margin-bottom: 30px;
 }
 
 .playlist ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    /* This makes them go side-by-side */
+    flex-wrap: wrap;
+    /* This makes them wrap to new lines */
+    justify-content: center;
+    /* Centers items */
+    gap: 10px;
+    /* Space between tracks */
 }
 
 .playlist li {
-    padding: 12px 8px;
+    padding: 10px 15px;
     cursor: pointer;
-    border-bottom: 1px solid #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    border: 1px solid #333;
 
-.playlist li:last-child {
-    border-bottom: none;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+    width: auto;
 }
 
 .playlist li:hover,
 .playlist li.active {
-    background-color: #222222;
+    background-color: #333;
+    border-color: #666;
+}
+
+.playlist li:last-child {
+    border-bottom: 1px solid #333;
+    /* Resetting the old style */
 }
 
 .playlist li span:last-child {
     padding-left: 10px;
-    min-width: 40px;
-    text-align: right;
+    min-width: auto;
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* --- iOS Icon Fix --- */
+/* We don't change character, we just change color */
+.play-icon {
+    font-style: normal;
+    margin-right: 5px;
+    opacity: 0.5;
+    /* Dim when not playing */
+}
+
+/* When the specific track is active */
+.playlist li.active .play-icon {
+    color: #fff;
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    /* Glow effect */
+}
+
+/* --- Booklet Independent Controls --- */
+.booklet-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.booklet-controls button {
+    background: transparent;
+    border: 1px solid #444;
+    font-size: 18px;
+    padding: 5px 15px;
+    margin: 0;
+}
+
+.booklet-label {
+    font-size: 0.9em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .download-link {
