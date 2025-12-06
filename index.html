@@ -52,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap" rel="stylesheet">
     <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    <link href="style.css?v1" rel="stylesheet" type="text/css">
+    <link href="style.css?v2" rel="stylesheet" type="text/css">
 
     <script type="application/ld+json">
     {
@@ -165,7 +165,7 @@
 
 
 
-        <div class="player-controls-container">
+        <!-- <div class="player-controls-container">
             <div class="track-info" id="trackTitle"></div>
 
             <div class="controls">
@@ -180,7 +180,7 @@
                 </div>
                 <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
             </div>
-        </div>
+        </div> -->
 
         <div class="playlist" id="playlist">
             <ul id="playlistList"></ul>
@@ -191,17 +191,23 @@
                 <img src="" alt="Track Artwork" id="trackArtImage" class="panel-image">
             </div>
 
-            <div class="stage-panel stage-right" id="lyricsPanelScroll">
-
-                <div id="lyricsContent" class="text-content-wrapper">
-                    <div id="dynamicLyricsTitle"></div>
-                    <div id="dynamicLyricsBody"></div>
-                </div>
-
-                <img src="" alt="Secondary Artwork" id="secondaryImage" class="panel-image hidden">
+        <div class="stage-panel stage-right" id="lyricsPanelScroll">
+            <div id="lyricsContent" class="text-content-wrapper">
+             
+        
+                <div id="dynamicLyricsTitle"></div>
+                <div id="dynamicLyricsBody"></div>
             </div>
+        
+            <img src="" alt="Secondary Artwork" id="secondaryImage" class="panel-image hidden">
         </div>
 
+        </div>
+        <div class="booklet-controls">
+            <button id="bookletPrevBtn" aria-label="Previous Page">&larr;</button>
+            <!-- <span class="booklet-label">Lyric Book</span> -->
+            <button id="bookletNextBtn" aria-label="Next Page">&rarr;</button>
+        </div>
         <audio id="audioPlayer"></audio>
 
         <div style="display:none;">
@@ -308,7 +314,7 @@
         target="_blank">
         <div id="mc_embed_signup_scroll">
 
-            <p>Please <strong>subscribe</strong> to our Radio Banter mailing list. We are not on social media platforms.</p>
+            <p>We are not on any 'major platforms'. Please <strong>subscribe</strong> to our mailing list. </p>
             <div class="mc-field-group">
                 <label for="mce-EMAIL" style="display:none">Email Address <span class="asterisk">*</span></label>
                 <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="" placeholder="Email Address">
@@ -346,7 +352,7 @@
     ];
     </script>
 
-    <script src="script.js"></script>
+    <script src="script.js?v2"></script>
 </body>
 
 </html>
