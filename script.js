@@ -270,4 +270,85 @@ loadTrack = function (index) {
     updatePlaylistVisuals();
   }
 };
-// (Rest of your existing GA event listeners go here...)
+
+audioPlayer.addEventListener("play", () => {
+  if (!hasLoggedStart) {
+    const track = mainTracks[currentTrack];
+    if (typeof gtag === "function") {
+      gtag("event", "audio_start", {
+        event_category: "Audio",
+        event_label: track.title,
+        song_title: track.title,
+        artist: "Radio Banter",
+      });
+    }
+    hasLoggedStart = true;
+  }
+});
+
+audioPlayer.addEventListener("timeupdate", () => {
+  if (!audioPlayer.duration) return;
+  const percent = Math.floor(
+    (audioPlayer.currentTime / audioPlayer.duration) * 100
+  );
+  const track = mainTracks[currentTrack];
+  const milestones = [10, 25, 50, 75, 90];
+
+  milestones.forEach((milestone) => {
+    if (percent >= milestone && !trackedMilestones.has(milestone)) {
+      trackedMilestones.add(milestone);
+      if (typeof gtag === "function") {
+        gtag("event", "audio_progress", {
+          event_category: "Audio",
+          event_label: track.title,
+          song_title: track.title,
+          percent_played: milestone + "%",
+          seconds_played: Math.round(audioPlayer.currentTime),
+        });
+      }
+    }
+  });
+});
+
+audioPlayer.addEventListener("ended", () => {
+  const track = mainTracks[currentTrack];
+  if (typeof gtag === "function") {
+    gtag("event", "audio_complete", {
+      event_category: "Audio",
+      event_label: track.title,
+      song_title: track.title,
+      duration_seconds: Math.round(audioPlayer.duration),
+    });
+  }
+});
+
+// GA: Download and Outbound Link tracking
+document.addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("download-link")) {
+    const trackTitle = mainTracks[currentTrack].title;
+    // Note: Logic slightly adjusted as the link is now inside the LI
+    if (typeof gtag === "function") {
+      gtag("event", "file_download", {
+        event_category: "Engagement",
+        event_label: trackTitle,
+        file_extension: "mp3",
+        file_name: trackTitle,
+      });
+    }
+  }
+
+  const link = e.target.closest("a");
+  if (
+    link &&
+    link.hostname !== window.location.hostname &&
+    !link.classList.contains("download-link")
+  ) {
+    if (typeof gtag === "function") {
+      gtag("event", "outbound_click", {
+        event_category: "Outbound",
+        event_label: link.href,
+        transport_type: "beacon",
+      });
+    }
+  }
+});
