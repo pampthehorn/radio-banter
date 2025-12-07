@@ -224,7 +224,7 @@ audioPlayer.addEventListener("ended", () => {
 function scrollToStageMobile() {
   if (window.innerWidth < 768) {
     const stage = document.getElementById("dynamicStage");
-    stage.scrollIntoView({ behavior: "smooth", block: "start" });
+    stage.scrollIntoView({ behavior: "instant", block: "start" });
   }
 }
 
