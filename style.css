@@ -14,6 +14,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -44,7 +45,7 @@ a:hover {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
-    border: 1px solid #222;
+    /* border: 1px solid #222; */
 }
 
 .stage-panel {
@@ -466,3 +467,6 @@ button:hover {
     color: #000 !important;
 }
 
+.no-invert {
+    filter: none !important;
+}

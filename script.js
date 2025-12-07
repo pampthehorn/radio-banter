@@ -40,6 +40,11 @@ function updateStageContent(trackIndex) {
     secondaryImage.src = "lily/instrumental2.jpg";
   } else {
     trackArtImage.src = track.image;
+    if (track.noInvert === true) {
+      trackArtImage.classList.add("no-invert");
+    } else {
+      trackArtImage.classList.remove("no-invert");
+    }
     secondaryImage.classList.add("hidden");
     lyricsContent.classList.remove("hidden");
     dynamicLyricsTitle.innerHTML = `<h2>${track.title}</h2>`;
@@ -216,14 +221,23 @@ audioPlayer.addEventListener("ended", () => {
   }
 });
 
+function scrollToStageMobile() {
+  if (window.innerWidth < 768) {
+    const stage = document.getElementById("dynamicStage");
+    stage.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 document.getElementById("bookletPrevBtn").addEventListener("click", () => {
   bookletIndex = (bookletIndex - 1 + mainTracks.length) % mainTracks.length;
   updateStageContent(bookletIndex);
+  scrollToStageMobile();
 });
 
 document.getElementById("bookletNextBtn").addEventListener("click", () => {
   bookletIndex = (bookletIndex + 1) % mainTracks.length;
   updateStageContent(bookletIndex);
+  scrollToStageMobile();
 });
 
 generatePlaylist();
@@ -264,17 +278,24 @@ function updateGalleryImage() {
   }, 150);
 }
 
-photoPrevBtn.addEventListener("click", () => {
+photoPrevBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   galleryIndex =
     (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
   updateGalleryImage();
 });
 
-photoNextBtn.addEventListener("click", () => {
+photoNextBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   galleryIndex = (galleryIndex + 1) % galleryImages.length;
   updateGalleryImage();
 });
 
+sliderImage.addEventListener("click", () => {
+  photoNextBtn.click();
+});
+
+sliderImage.style.cursor = "pointer";
 sliderImage.style.transition = "opacity 0.3s ease";
 
 audioPlayer.addEventListener("play", () => {
