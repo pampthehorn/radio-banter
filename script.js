@@ -11,7 +11,6 @@ const secondaryImage = document.getElementById("secondaryImage");
 const dynamicLyricsTitle = document.getElementById("dynamicLyricsTitle");
 const dynamicLyricsBody = document.getElementById("dynamicLyricsBody");
 
-// --- Wake Lock Functions ---
 async function requestWakeLock() {
   if ("wakeLock" in navigator) {
     try {
@@ -29,8 +28,6 @@ function releaseWakeLock() {
     });
   }
 }
-
-// --- UI Updates ---
 
 function updateStageContent(trackIndex) {
   if (trackIndex === undefined) trackIndex = currentTrack;
@@ -65,21 +62,22 @@ function updatePlaylistVisuals() {
 
     if (index === currentTrack) {
       item.classList.add("active");
-      // Swap Icon: Triangle (Play) vs Double Bars (Pause)
-      if (iconBtn)
-        iconBtn.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9654;";
+      if (iconBtn) {
+        // CHANGED: Use CSS spans instead of HTML entities
+        iconBtn.innerHTML = isPlaying
+          ? '<span class="css-icon-pause"></span>'
+          : '<span class="css-icon-play"></span>';
+      }
     } else {
       item.classList.remove("active");
-      if (iconBtn) iconBtn.innerHTML = "&#9654;"; // Always Play triangle for inactive tracks
+      // CHANGED: Use CSS span
+      if (iconBtn) iconBtn.innerHTML = '<span class="css-icon-play"></span>';
 
-      // Reset inactive tracks
       if (progressBar) progressBar.style.width = "0%";
       if (timeSpan) timeSpan.textContent = mainTracks[index].duration;
     }
   });
 }
-
-// --- Player Logic ---
 
 function loadTrack(index) {
   if (index >= 0 && index < mainTracks.length) {
@@ -90,7 +88,7 @@ function loadTrack(index) {
 
     updateStageContent(bookletIndex);
     audioPlayer.load();
-    updatePlaylistVisuals(); // Update icons immediately
+    updatePlaylistVisuals();
   }
 }
 
@@ -112,28 +110,22 @@ function formatTime(seconds) {
   return minutes + ":" + (secs < 10 ? "0" : "") + secs;
 }
 
-// --- Playlist Generation ---
-
 function createPlaylistItem(track, index) {
   const li = document.createElement("li");
 
-  // 1. Progress Bar (Background)
   const progressBar = document.createElement("div");
   progressBar.className = "track-progress-bar";
   li.appendChild(progressBar);
 
-  // 2. Content Wrapper
   const contentDiv = document.createElement("div");
   contentDiv.className = "playlist-item-content";
 
-  // Play/Pause Button (The Icon)
   const iconBtn = document.createElement("div");
   iconBtn.className = "play-icon-btn";
-  iconBtn.innerHTML = "&#9654;"; // Default Play Triangle
+  iconBtn.innerHTML = '<span class="css-icon-play"></span>';
 
-  // ICON CLICK LOGIC
   iconBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Stop bubble so we don't trigger scrub
+    e.stopPropagation();
     if (currentTrack === index) {
       if (audioPlayer.paused) playTrack();
       else pauseTrack();
@@ -144,30 +136,25 @@ function createPlaylistItem(track, index) {
   });
   contentDiv.appendChild(iconBtn);
 
-  // Track Title
   const titleText = document.createElement("span");
   titleText.textContent = track.title;
   contentDiv.appendChild(titleText);
 
-  // Timer
   const timeSpan = document.createElement("span");
   timeSpan.className = "track-time";
   timeSpan.textContent = track.duration;
   contentDiv.appendChild(timeSpan);
 
-  // Download Link
   const downloadLink = document.createElement("a");
   downloadLink.href = track.src;
   downloadLink.download = "";
   downloadLink.textContent = "DL";
   downloadLink.className = "download-link";
-  // Stop bubble so clicking download doesn't play/scrub
   downloadLink.addEventListener("click", (e) => e.stopPropagation());
   contentDiv.appendChild(downloadLink);
 
   li.appendChild(contentDiv);
 
-  // 3. Main LI Click (Scrubbing Logic)
   li.addEventListener("click", (e) => {
     const rect = li.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
@@ -175,13 +162,11 @@ function createPlaylistItem(track, index) {
     const percentage = clickX / width;
 
     if (currentTrack === index) {
-      // Scrub active track
       if (audioPlayer.duration) {
         audioPlayer.currentTime = percentage * audioPlayer.duration;
-        if (audioPlayer.paused) playTrack(); // Optional: Auto-play on scrub
+        if (audioPlayer.paused) playTrack();
       }
     } else {
-      // Clicked different track body -> Load and Play
       loadTrack(index);
       playTrack();
     }
@@ -202,20 +187,16 @@ function generatePlaylist() {
   });
 }
 
-// --- Audio Events ---
-
 audioPlayer.addEventListener("timeupdate", () => {
   if (audioPlayer.duration) {
     const items = playlistList.getElementsByTagName("li");
     const activeItem = items[currentTrack];
 
     if (activeItem) {
-      // Update Bar Width
       const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
       const progressBar = activeItem.querySelector(".track-progress-bar");
       if (progressBar) progressBar.style.width = percent + "%";
 
-      // Update Time Text (Rolling Timer)
       const timeSpan = activeItem.querySelector(".track-time");
       if (timeSpan) timeSpan.textContent = formatTime(audioPlayer.currentTime);
     }
@@ -235,7 +216,6 @@ audioPlayer.addEventListener("ended", () => {
   }
 });
 
-// Booklet Controls
 document.getElementById("bookletPrevBtn").addEventListener("click", () => {
   bookletIndex = (bookletIndex - 1 + mainTracks.length) % mainTracks.length;
   updateStageContent(bookletIndex);
@@ -246,12 +226,10 @@ document.getElementById("bookletNextBtn").addEventListener("click", () => {
   updateStageContent(bookletIndex);
 });
 
-// Initialize
 generatePlaylist();
 audioPlayer.src = mainTracks[0].src;
 updateStageContent(0);
 
-// --- GA Tracking (Kept simplified for brevity, works same as before) ---
 let hasLoggedStart = false;
 let trackedMilestones = new Set();
 const originalLoadTrack = loadTrack;
@@ -260,7 +238,6 @@ loadTrack = function (index) {
   hasLoggedStart = false;
   trackedMilestones.clear();
 
-  // Execute original logic manually to avoid recursion
   if (index >= 0 && index < mainTracks.length) {
     currentTrack = index;
     bookletIndex = index;
@@ -270,6 +247,35 @@ loadTrack = function (index) {
     updatePlaylistVisuals();
   }
 };
+
+let galleryIndex = 0;
+const sliderImage = document.getElementById("sliderImage");
+const photoPrevBtn = document.getElementById("photoPrevBtn");
+const photoNextBtn = document.getElementById("photoNextBtn");
+
+function updateGalleryImage() {
+  sliderImage.style.opacity = 0.5;
+
+  setTimeout(() => {
+    sliderImage.src = galleryImages[galleryIndex];
+    sliderImage.onload = () => {
+      sliderImage.style.opacity = 1;
+    };
+  }, 150);
+}
+
+photoPrevBtn.addEventListener("click", () => {
+  galleryIndex =
+    (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateGalleryImage();
+});
+
+photoNextBtn.addEventListener("click", () => {
+  galleryIndex = (galleryIndex + 1) % galleryImages.length;
+  updateGalleryImage();
+});
+
+sliderImage.style.transition = "opacity 0.3s ease";
 
 audioPlayer.addEventListener("play", () => {
   if (!hasLoggedStart) {
@@ -322,11 +328,9 @@ audioPlayer.addEventListener("ended", () => {
   }
 });
 
-// GA: Download and Outbound Link tracking
 document.addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("download-link")) {
     const trackTitle = mainTracks[currentTrack].title;
-    // Note: Logic slightly adjusted as the link is now inside the LI
     if (typeof gtag === "function") {
       gtag("event", "file_download", {
         event_category: "Engagement",

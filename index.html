@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Radio Banter | Performing artists | Glasgow, Scotland</title>
+    <title>Radio Banter - Rock Band in Glasgow</title>
     <meta name="description"
         content="Official website of music group Radio Banter from Glasgow, Scotland.">
     <meta name="keywords"
@@ -52,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap" rel="stylesheet">
     <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    <link href="style.css?v2" rel="stylesheet" type="text/css">
+    <link href="style.css?v4" rel="stylesheet" type="text/css">
 
     <script type="application/ld+json">
     {
@@ -123,8 +123,7 @@
                     <h1 style="display:none">Radio Banter</h1>
                     <img src="RadioBanterCDText.png" style="max-width:100%;width:120px">
                     <p>
-                        <strong>20251205</strong> Glasgow's Radio Banter debut album 'Radio Banter' now available on 10
-                        track CD in card slip & sleeve wallet containing 20-page lyric booklet, illustrated by local
+                        <strong>20251205</strong> Radio Banter debut album now available on 10-track CD in card slip & sleeve wallet containing 20-page lyric booklet, illustrated by Glasgow
                         artist & poet <a href='https://www.instagram.com/painepoetry/' target="_blank">Lily Paine</a>.
                     </p>
 
@@ -147,17 +146,13 @@
                         </form>
                     </div>
 
-                    <p>
-                        Engineered, mixed and mastered by <strong>Chris White</strong> (Nightshift) at Pillar Studio,
-                        Glasgow Southside.
-                    </p>
+            
                     <p>
                         Please join us on <strong>Thursday 8th January at Sharmanka Puppet Theatre</strong>, Trongate,
-                        Glasgow; we will perform music from the album live, and we will be joined by Lily Paine and The Chop.
-                        Tickets available here soon.
+                        Glasgow; we will perform our songs live, joined by Lily Paine and The Chop.
+                        Tickets available now from <a href='https://www.ticketsource.co.uk/sharmanka/t-mjojxeo' target="_blank">here</a>.
                     </p>
-                    <p><a href="mailto:radiobanternet@gmail.com">radiobanternet@gmail.com</a>
-                    </p>
+                
 
                 </div>
             </div>
@@ -299,13 +294,21 @@
                 <br />Rob Alexander <em>Vocals & Electric piano</em>
             </p>
 
-            <img src="ril_live_shot.jpg" alt="Radio Banter Live" class="full-width-image">
-
-            <p>Photograph of Radio Banter performing at Glad Cafe by <a
-                    href='https://www.instagram.com/remain_in_light_/' target="_blank">Baz</a></p>
+   
         </div>
 
+<div class="photo-slider-wrapper">
+    <img id="sliderImage" src="photos/radiobanter-pole.jpg" alt="Radio Banter Photo" class="full-width-image">
 
+    <div class="booklet-controls" style="justify-content: center; margin-top: 15px; margin-bottom: 10px;">
+        <button id="photoPrevBtn" aria-label="Previous Photo">&larr;</button>
+        <button id="photoNextBtn" aria-label="Next Photo">&rarr;</button>
+    </div>
+</div>
+
+<!-- <p style="text-align: center; font-size: 0.9em; color: #888;">
+    <em>Photos from the studio</em>
+</p> -->
 
 <div id="mc_embed_signup">
     <form
@@ -314,7 +317,7 @@
         target="_blank">
         <div id="mc_embed_signup_scroll">
 
-            <p>We are not on any 'major platforms'. Please <strong>subscribe</strong> to our mailing list. </p>
+            <p>Please <strong>subscribe</strong> to our mailing list. </p>
             <div class="mc-field-group">
                 <label for="mce-EMAIL" style="display:none">Email Address <span class="asterisk">*</span></label>
                 <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="" placeholder="Email Address">
@@ -333,11 +336,29 @@
         </div>
     </form>
 </div>
-        
+            <p><a href="mailto:radiobanternet@gmail.com">radiobanternet@gmail.com</a>
+            </p>
 
     </div>
 
     <script>
+
+    const galleryImages = [
+        "photos/radiobanter-pole.jpg",
+
+        "photos/rob-catman.jpeg",
+        "photos/waldo-guitar.jpeg",
+        "photos/sephi-caspycans.jpeg",
+        "photos/sephi-peace-studio.jpeg",
+        "photos/rob-thumbsup.jpeg",
+        "photos/sephi-sylvie.jpeg",
+        "photos/whipstaff-studio.jpeg",
+        "photos/chriswhite-banter.jpeg",
+                "ril_live_shot.jpg",
+            "photos/radiobanter-jump.jpg"
+
+    ];
+
    const mainTracks = [
         { title: "Nature nurture", duration: "4:45", src: "20250823masters/01 Nature Nurture.mp3", image: "lily/newscanscropped/Nature Nurture.png", lyricsId: "raw-lyrics-nature-nurture" },
         { title: "Growing in love", duration: "3:29", src: "20250823masters/02 Growing in Love.mp3", image: "lily/newscanscropped/Grown In Love.png", lyricsId: "raw-lyrics-growing-in-love" },
@@ -352,7 +373,9 @@
     ];
     </script>
 
-    <script src="script.js?v2"></script>
+    <script src="script.js?v4">
+
+    </script>
 </body>
 
 </html>
