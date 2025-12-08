@@ -3,6 +3,11 @@
     background: transparent !important;
 }
 
+html,
+body {
+    overscroll-behavior-x: none;
+}
+
 body {
     background-color: #000000;
     color: #ffffff;
@@ -14,6 +19,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+    width: 100%;
     overflow-x: hidden;
 }
 
