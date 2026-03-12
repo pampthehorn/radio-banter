@@ -475,3 +475,19 @@ button:hover {
 .no-invert {
     filter: none !important;
 }
+
+.old-news summary {
+    cursor: pointer;
+    color: #888;
+    font-size: 0.85em;
+    margin-bottom: 1em;
+    list-style: none;
+}
+
+.old-news summary::-webkit-details-marker {
+    display: none;
+}
+
+.old-news summary:hover {
+    color: #fff;
+}

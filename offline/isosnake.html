@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Isometric Snake Game</title>
+<style>
+  canvas {
+    background-color: white;
+  }
+</style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+<script>
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = 800;
+  canvas.height = 600;
+
+  const tileWidth = 40;
+  const tileHeight = 20;
+
+  const snake = [{ x: 5, y: 5 }];
+  const direction = { x: 1, y: 0 };
+  
+  function drawTile(x, y) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + tileWidth / 2, y + tileHeight / 2);
+    ctx.lineTo(x, y + tileHeight);
+    ctx.lineTo(x - tileWidth / 2, y + tileHeight / 2);
+    ctx.closePath();
+    ctx.fillStyle = '#79c879';
+    ctx.fill();
+    ctx.stroke();
+  }
+
+  function drawSnake() {
+    snake.forEach(segment => {
+      const isoX = canvas.width / 2 + (segment.x - segment.y) * tileWidth / 2;
+      const isoY = (segment.x + segment.y) * tileHeight / 2;
+      drawTile(isoX, isoY);
+    });
+  }
+
+  function updateSnake() {
+    const head = snake[0];
+    const newX = head.x + direction.x;
+    const newY = head.y + direction.y;
+
+    // Calculate effective boundaries based on the isometric grid
+    const maxX = Math.floor((canvas.width / 2) / (tileWidth / 2)) - 1;
+    const maxY = Math.floor(canvas.height / tileHeight) - 1;
+
+    // Wrap the snake around the canvas if it goes out of bounds
+    let wrappedX = newX;
+    let wrappedY = newY;
+
+    if (newX < 0) {
+        wrappedX = maxX - Math.abs(newX % maxX);
+    } else if (newX > maxX) {
+        wrappedX = newX % maxX;
+    }
+
+    if (newY < 0) {
+        wrappedY = maxY - Math.abs(newY % maxY);
+    } else if (newY > maxY) {
+        wrappedY = newY % maxY;
+    }
+
+    // Add new head based on possibly wrapped coordinates
+    snake.unshift({ x: wrappedX, y: wrappedY });
+    snake.pop(); // Remove tail
+}
+
+
+  function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    updateSnake();
+    drawSnake();
+    requestAnimationFrame(gameLoop);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'ArrowUp': direction.x = 0; direction.y = -1; break;
+      case 'ArrowDown': direction.x = 0; direction.y = 1; break;
+      case 'ArrowLeft': direction.x = -1; direction.y = 0; break;
+      case 'ArrowRight': direction.x = 1; direction.y = 0; break;
+    }
+  });
+
+  gameLoop();
+</script>
+</body>
+</html>

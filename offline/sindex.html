@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simple Domain Crawler</title>
+<style>
+  body {
+    font-family: Arial, sans-serif; 
+    margin:20px;
+  }
+  input[type="text"] {
+    width: 300px;
+    margin-right:10px;
+  }
+  button {
+    margin: 5px 0;
+  }
+  #status {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  #domain-list {
+    margin-top: 20px;
+  }
+  #domain-list li {
+    line-height: 1.5em;
+  }
+</style>
+</head>
+<body>
+<h1>Simple Domain Crawler</h1>
+<p>Enter a domain (e.g. <code>example.com</code>) and start the crawl. The crawler will fetch links from the homepage, extract unique domains, and show them. It will pause after every 100 discovered domains. Click "Resume" to continue the next batch of 100.</p>
+
+<input type="text" id="start-domain" placeholder="example.com"/>
+<button id="start-btn">Start Crawl</button>
+<button id="resume-btn" disabled>Resume</button>
+
+<div id="status"></div>
+<ol id="domain-list"></ol>
+
+<script>
+(async function() {
+    const startInput = document.getElementById('start-domain');
+    const startBtn = document.getElementById('start-btn');
+    const resumeBtn = document.getElementById('resume-btn');
+    const statusEl = document.getElementById('status');
+    const domainList = document.getElementById('domain-list');
+
+    let visitedDomains = new Set();
+    let queue = [];
+    let isCrawling = false;
+    let paused = false;
+    let batchCount = 0;
+    const BATCH_SIZE = 100;
+
+    startBtn.addEventListener('click', () => {
+        const domain = startInput.value.trim();
+        if(!domain) {
+            alert("Please enter a domain.");
+            return;
+        }
+        // Reset state for a new crawl
+        visitedDomains.clear();
+        queue = [domain];
+        domainList.innerHTML = "";
+        batchCount = 0;
+        isCrawling = true;
+        paused = false;
+        resumeBtn.disabled = true;
+        crawlNextDomain();
+    });
+
+    resumeBtn.addEventListener('click', () => {
+        paused = false;
+        resumeBtn.disabled = true;
+        crawlNextDomain();
+    });
+
+    async function crawlNextDomain() {
+        if (!isCrawling || paused) return;
+
+        const domain = queue.shift();
+        if (!domain) {
+            updateStatus("No more domains to crawl.");
+            isCrawling = false;
+            return;
+        }
+
+        if (!visitedDomains.has(domain)) {
+            visitedDomains.add(domain);
+            addDomainToUI(domain);
+            batchCount++;
+
+            // If we've hit the batch limit, pause and allow resume
+            if (batchCount % BATCH_SIZE === 0) {
+                updateStatus(`Paused after indexing ${visitedDomains.size} domains. Click "Resume" to continue.`);
+                paused = true;
+                resumeBtn.disabled = false;
+                return;
+            }
+
+            // Crawl the domain's homepage
+            await fetchDomainLinks(domain);
+        }
+
+        // Continue with next
+        setTimeout(crawlNextDomain, 0);
+    }
+
+    function addDomainToUI(domain) {
+        const li = document.createElement('li');
+        li.textContent = domain;
+        domainList.appendChild(li);
+        updateStatus(`Indexed ${visitedDomains.size} unique domains...`);
+    }
+
+    async function fetchDomainLinks(domain) {
+        const url = "http://" + domain + "/";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                // Try https if http fails
+                const httpsResponse = await fetch("https://" + domain + "/");
+                if (!httpsResponse.ok) throw new Error("Failed to fetch domain.");
+                const text = await httpsResponse.text();
+                extractDomains(text, "https://" + domain + "/");
+            } else {
+                const text = await response.text();
+                extractDomains(text, url);
+            }
+        } catch (e) {
+            console.warn("Failed to fetch or parse:", domain, e);
+        }
+    }
+
+    function extractDomains(html, baseUrl) {
+        // Create a DOM parser to extract links
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = doc.querySelectorAll('a[href]');
+        links.forEach(link => {
+            let href = link.getAttribute('href');
+            if (!href) return;
+            try {
+                // Resolve relative URLs
+                const absoluteUrl = new URL(href, baseUrl);
+                const host = absoluteUrl.hostname;
+                // We only want unique domains (no duplicates)
+                if (!visitedDomains.has(host) && !queue.includes(host)) {
+                    queue.push(host);
+                }
+            } catch (e) {
+                // Ignore invalid URLs
+            }
+        });
+    }
+
+    function updateStatus(msg) {
+        statusEl.textContent = msg;
+    }
+})();
+</script>
+</body>
+</html>

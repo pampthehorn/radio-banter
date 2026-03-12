@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Mining Game</title>
+<style>
+  canvas { background: #eee; display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+<script>
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 400;
+  canvas.height = 400;
+
+  const gridSize = 40;
+  const player = { x: 0, y: 0 };
+  const resources = [
+    { x: 3, y: 2, mined: false },
+    { x: 5, y: 5, mined: false },
+    { x: 7, y: 1, mined: false }
+  ];
+
+  function drawPlayer() {
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(player.x * gridSize, player.y * gridSize, gridSize, gridSize);
+  }
+
+  function drawResources() {
+    resources.forEach(resource => {
+      if (!resource.mined) {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(resource.x * gridSize, resource.y * gridSize, gridSize, gridSize);
+      }
+    });
+  }
+
+  function mineResource() {
+    resources.forEach(resource => {
+      if (resource.x === player.x && resource.y === player.y) {
+        resource.mined = true;
+      }
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawResources();
+    drawPlayer();
+    mineResource();
+  }
+
+  window.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'ArrowLeft': if (player.x > 0) player.x--; break;
+      case 'ArrowRight': if (player.x < canvas.width / gridSize - 1) player.x++; break;
+      case 'ArrowUp': if (player.y > 0) player.y--; break;
+      case 'ArrowDown': if (player.y < canvas.height / gridSize - 1) player.y++; break;
+    }
+    draw();
+  });
+
+  draw(); // initial draw
+</script>
+</body>
+</html>
