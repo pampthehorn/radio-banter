@@ -480,6 +480,7 @@ button:hover {
     cursor: pointer;
     color: #888;
     font-size: 0.85em;
+    margin-top: 1.5em;
     margin-bottom: 1em;
     list-style: none;
 }
