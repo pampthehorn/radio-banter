@@ -232,6 +232,30 @@ button:hover {
 }
 
 
+.album-downloads {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.album-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #999;
+    text-decoration: none;
+    font-size: 0.85em;
+    padding: 6px 14px;
+    border: 1px solid #333;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.album-download-btn:hover {
+    color: #fff;
+    border-color: #666;
+}
+
 .playlist {
     width: 100%;
     max-width: 1000px;
