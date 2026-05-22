@@ -160,6 +160,19 @@ a:hover {
     margin-bottom: 1.5em;
 }
 
+.text-content-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    filter: invert(1);
+}
+
+.text-content-wrapper mark a {
+    color: red;
+    text-decoration: underline;
+}
+
 .hidden {
     display: none !important;
 }
