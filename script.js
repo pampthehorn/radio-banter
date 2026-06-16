@@ -300,11 +300,13 @@ if (sliderImage && photoPrevBtn && photoNextBtn) {
   sliderImage.style.transition = "opacity 0.3s ease";
 }
 
+const waldoWalkonGroup = document.getElementById("waldoWalkonGroup");
 const waldoWalkon = document.getElementById("waldoWalkon");
 const waldoWalkonTrigger = document.getElementById("waldoWalkonTrigger");
 const waldoSoundBtn = document.getElementById("waldoSoundBtn");
 let waldoWalkonPlayed = false;
 let waldoAudioPrimed = false;
+let waldoAnimationFrame = null;
 
 document.addEventListener(
   "pointerdown",
@@ -314,31 +316,75 @@ document.addEventListener(
   { once: true }
 );
 
-function playWaldoWalkon() {
+function setWaldoProgress(progress) {
+  if (!waldoWalkonGroup) return;
+
+  const clamped = Math.max(0, Math.min(progress, 1));
+  const groupWidth = waldoWalkonGroup.offsetWidth || window.innerWidth * 0.4;
+  const startX = -groupWidth - window.innerWidth * 0.04;
+  const endX = window.innerWidth + window.innerWidth * 0.04;
+  const x = startX + (endX - startX) * clamped;
+  waldoWalkonGroup.style.transform = `translate3d(${x}px, 0, 0)`;
+}
+
+function stopWaldoWalkon() {
+  if (waldoAnimationFrame) {
+    cancelAnimationFrame(waldoAnimationFrame);
+    waldoAnimationFrame = null;
+  }
+
+  setWaldoProgress(1);
+  waldoWalkonGroup?.classList.remove("is-visible");
+  waldoWalkon.muted = false;
+  waldoSoundBtn?.classList.remove("is-visible");
+}
+
+function moveWaldoWithVideo() {
+  if (!waldoWalkon || !waldoWalkonGroup) return;
+
+  const duration = waldoWalkon.duration || 4.67;
+  setWaldoProgress(waldoWalkon.currentTime / duration);
+
+  if (!waldoWalkon.ended && !waldoWalkon.paused) {
+    waldoAnimationFrame = requestAnimationFrame(moveWaldoWithVideo);
+  }
+}
+
+async function playWaldoWalkon() {
   if (!waldoWalkon || waldoWalkonPlayed) return;
 
   waldoWalkonPlayed = true;
   waldoWalkon.currentTime = 0;
   waldoWalkon.muted = !waldoAudioPrimed;
   waldoWalkon.volume = 1;
-  waldoWalkon.style.visibility = "visible";
+  setWaldoProgress(0);
   audioPlayer.pause();
-  waldoWalkon.classList.add("is-visible");
-  waldoWalkon.play().catch(() => {
+
+  try {
+    await waldoWalkon.play();
+  } catch {
     waldoWalkon.muted = true;
-    waldoWalkon.play().catch(() => {
-      waldoWalkon.style.visibility = "hidden";
-      waldoWalkon.classList.remove("is-visible");
+    try {
+      await waldoWalkon.play();
+    } catch {
+      waldoWalkonPlayed = false;
+      waldoWalkonGroup?.classList.remove("is-visible");
       waldoSoundBtn?.classList.remove("is-visible");
-    });
+      return;
+    }
     waldoSoundBtn?.classList.add("is-visible");
-  });
+  }
+
+  waldoWalkonGroup?.classList.add("is-visible");
+  moveWaldoWithVideo();
+
   if (!waldoAudioPrimed) {
     waldoSoundBtn?.classList.add("is-visible");
   }
 }
 
 if (
+  waldoWalkonGroup &&
   waldoWalkon &&
   waldoWalkonTrigger &&
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -355,10 +401,18 @@ if (
   waldoObserver.observe(waldoWalkonTrigger);
 
   waldoWalkon.addEventListener("ended", () => {
-    waldoWalkon.style.visibility = "hidden";
-    waldoWalkon.muted = false;
-    waldoWalkon.classList.remove("is-visible");
-    waldoSoundBtn?.classList.remove("is-visible");
+    stopWaldoWalkon();
+  });
+
+  waldoWalkon.addEventListener("playing", () => {
+    moveWaldoWithVideo();
+  });
+
+  waldoWalkon.addEventListener("pause", () => {
+    if (!waldoWalkon.ended && waldoAnimationFrame) {
+      cancelAnimationFrame(waldoAnimationFrame);
+      waldoAnimationFrame = null;
+    }
   });
 
   waldoSoundBtn?.addEventListener("click", () => {
