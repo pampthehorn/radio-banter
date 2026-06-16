@@ -278,25 +278,98 @@ function updateGalleryImage() {
   }, 150);
 }
 
-photoPrevBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  galleryIndex =
-    (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
-  updateGalleryImage();
-});
+if (sliderImage && photoPrevBtn && photoNextBtn) {
+  photoPrevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    galleryIndex =
+      (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateGalleryImage();
+  });
 
-photoNextBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  galleryIndex = (galleryIndex + 1) % galleryImages.length;
-  updateGalleryImage();
-});
+  photoNextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    galleryIndex = (galleryIndex + 1) % galleryImages.length;
+    updateGalleryImage();
+  });
 
-sliderImage.addEventListener("click", () => {
-  photoNextBtn.click();
-});
+  sliderImage.addEventListener("click", () => {
+    photoNextBtn.click();
+  });
 
-sliderImage.style.cursor = "pointer";
-sliderImage.style.transition = "opacity 0.3s ease";
+  sliderImage.style.cursor = "pointer";
+  sliderImage.style.transition = "opacity 0.3s ease";
+}
+
+const waldoWalkon = document.getElementById("waldoWalkon");
+const waldoWalkonTrigger = document.getElementById("waldoWalkonTrigger");
+const waldoSoundBtn = document.getElementById("waldoSoundBtn");
+let waldoWalkonPlayed = false;
+let waldoAudioPrimed = false;
+
+document.addEventListener(
+  "pointerdown",
+  () => {
+    waldoAudioPrimed = true;
+  },
+  { once: true }
+);
+
+function playWaldoWalkon() {
+  if (!waldoWalkon || waldoWalkonPlayed) return;
+
+  waldoWalkonPlayed = true;
+  waldoWalkon.currentTime = 0;
+  waldoWalkon.muted = !waldoAudioPrimed;
+  waldoWalkon.volume = 1;
+  waldoWalkon.style.visibility = "visible";
+  audioPlayer.pause();
+  waldoWalkon.classList.add("is-visible");
+  waldoWalkon.play().catch(() => {
+    waldoWalkon.muted = true;
+    waldoWalkon.play().catch(() => {
+      waldoWalkon.style.visibility = "hidden";
+      waldoWalkon.classList.remove("is-visible");
+      waldoSoundBtn?.classList.remove("is-visible");
+    });
+    waldoSoundBtn?.classList.add("is-visible");
+  });
+  if (!waldoAudioPrimed) {
+    waldoSoundBtn?.classList.add("is-visible");
+  }
+}
+
+if (
+  waldoWalkon &&
+  waldoWalkonTrigger &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const waldoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) playWaldoWalkon();
+      });
+    },
+    { rootMargin: "0px 0px -40% 0px", threshold: 0 }
+  );
+
+  waldoObserver.observe(waldoWalkonTrigger);
+
+  waldoWalkon.addEventListener("ended", () => {
+    waldoWalkon.style.visibility = "hidden";
+    waldoWalkon.muted = false;
+    waldoWalkon.classList.remove("is-visible");
+    waldoSoundBtn?.classList.remove("is-visible");
+  });
+
+  waldoSoundBtn?.addEventListener("click", () => {
+    waldoWalkon.muted = false;
+    waldoWalkon.volume = 1;
+    waldoSoundBtn.classList.remove("is-visible");
+    waldoWalkon.play().catch(() => {
+      waldoSoundBtn.classList.add("is-visible");
+    });
+  });
+}
 
 audioPlayer.addEventListener("play", () => {
   if (!hasLoggedStart) {
