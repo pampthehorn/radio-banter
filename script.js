@@ -318,6 +318,8 @@ const waldoHoldStart = 2.25;
 const waldoSpeechStart = 2.65;
 const waldoSpeechEnd = 4.25;
 const waldoHoldEnd = 4.55;
+const waldoLandscapeExitStart = 3.55;
+const waldoLandscapeExitEnd = 4.48;
 const isTouchApple =
   /iPad|iPhone|iPod/.test(navigator.userAgent) ||
   (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -333,6 +335,24 @@ function getWaldoTravelDuration() {
   return window.matchMedia("(max-width: 767px)").matches
     ? waldoMobileTravelDuration
     : waldoDesktopTravelDuration;
+}
+
+function isShortLandscapeViewport() {
+  return window.innerWidth > window.innerHeight && window.innerHeight <= 500;
+}
+
+function getWaldoExitStart() {
+  return isShortLandscapeViewport() ? waldoLandscapeExitStart : waldoHoldEnd;
+}
+
+function getWaldoExitEnd() {
+  return isShortLandscapeViewport()
+    ? waldoLandscapeExitEnd
+    : getWaldoTravelDuration();
+}
+
+function getWaldoAnimationEnd() {
+  return Math.max(getWaldoExitEnd(), waldoWalkonDuration);
 }
 
 function updateWaldoSpeech(elapsed) {
@@ -393,15 +413,16 @@ function setWaldoPositionForElapsed(elapsed) {
   const startX = -groupWidth - window.innerWidth * 0.04;
   const centerX = (window.innerWidth - groupWidth) / 2;
   const endX = window.innerWidth + window.innerWidth * 0.04;
-  const travelDuration = getWaldoTravelDuration();
+  const exitStart = getWaldoExitStart();
+  const exitEnd = getWaldoExitEnd();
 
   let x = centerX;
   if (elapsed < waldoHoldStart) {
     const t = Math.max(0, Math.min(elapsed / waldoHoldStart, 1));
     x = startX + (centerX - startX) * t;
-  } else if (elapsed > waldoHoldEnd) {
-    const exitDuration = Math.max(travelDuration - waldoHoldEnd, 0.1);
-    const t = Math.max(0, Math.min((elapsed - waldoHoldEnd) / exitDuration, 1));
+  } else if (elapsed > exitStart) {
+    const exitDuration = Math.max(exitEnd - exitStart, 0.1);
+    const t = Math.max(0, Math.min((elapsed - exitStart) / exitDuration, 1));
     x = centerX + (endX - centerX) * t;
   }
 
@@ -418,7 +439,7 @@ function stopWaldoWalkon() {
     waldoMoveInterval = null;
   }
 
-  setWaldoPositionForElapsed(getWaldoTravelDuration());
+  setWaldoPositionForElapsed(getWaldoAnimationEnd());
   waldoWalkonGroup?.classList.remove("is-visible");
   waldoSpeechBubble?.classList.remove("is-visible");
   stopWaldoAudio();
@@ -443,7 +464,7 @@ function moveWaldoWithVideo() {
   setWaldoPositionForElapsed(elapsed);
   updateWaldoSpeech(elapsed);
 
-  if (elapsed < getWaldoTravelDuration()) {
+  if (elapsed < getWaldoAnimationEnd()) {
     waldoAnimationFrame = requestAnimationFrame(moveWaldoWithVideo);
   } else {
     stopWaldoWalkon();
@@ -455,7 +476,7 @@ function moveWaldoWithTimer() {
   setWaldoPositionForElapsed(elapsed);
   updateWaldoSpeech(elapsed);
 
-  if (elapsed < getWaldoTravelDuration()) {
+  if (elapsed < getWaldoAnimationEnd()) {
     waldoAnimationFrame = requestAnimationFrame(moveWaldoWithTimer);
   } else {
     stopWaldoWalkon();
