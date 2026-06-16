@@ -112,12 +112,15 @@
 
 <body>
     <div id="waldoWalkonGroup" class="waldo-walkon-group" aria-hidden="true">
-        <video id="waldoWalkon" class="waldo-walkon" playsinline preload="auto" poster="assets/waldo-walkon-poster.png">
+        <video id="waldoWalkon" class="waldo-walkon" playsinline muted preload="auto" poster="assets/waldo-walkon-poster.png">
             <source src="assets/waldo-walkon.webm" type="video/webm">
         </video>
         <img id="waldoWalkonFallback" class="waldo-walkon-fallback" alt="" decoding="async">
     </div>
     <div id="waldoSpeechBubble" class="waldo-speech-bubble" aria-hidden="true">join our newsletter!</div>
+    <audio id="waldoWalkonAudio" preload="auto">
+        <source src="assets/waldo-walkon.m4a?v1" type="audio/mp4">
+    </audio>
 
     <div class="content-wrapper">
 
@@ -412,7 +415,7 @@
     ];
     </script>
 
-    <script src="script.js?v27">
+    <script src="script.js?v30">
 
     </script>
 </body>
