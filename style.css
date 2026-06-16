@@ -59,7 +59,8 @@ a:hover {
     visibility: visible;
 }
 
-.waldo-walkon {
+.waldo-walkon,
+.waldo-walkon-fallback {
     display: block;
     width: auto;
     height: 100%;
@@ -67,6 +68,15 @@ a:hover {
     max-height: none;
     object-fit: contain;
     opacity: 1;
+}
+
+.waldo-walkon-fallback,
+.waldo-walkon-group.use-fallback .waldo-walkon {
+    display: none;
+}
+
+.waldo-walkon-group.use-fallback .waldo-walkon-fallback {
+    display: block;
 }
 
 .waldo-speech-bubble {
@@ -100,45 +110,6 @@ a:hover {
     transform: rotate(45deg);
 }
 
-.waldo-sound-btn {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 60;
-    display: none;
-    width: 46px;
-    height: 46px;
-    padding: 0;
-    margin: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.65);
-}
-
-.waldo-sound-btn.is-visible {
-    display: flex;
-}
-
-.waldo-sound-btn::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-right: 14px solid #fff;
-    transform: translateX(-4px);
-}
-
-.waldo-sound-btn::after {
-    content: "";
-    width: 10px;
-    height: 18px;
-    border: 2px solid #fff;
-    border-left: 0;
-    border-radius: 0 14px 14px 0;
-    transform: translateX(-1px);
-}
-
 #waldoWalkonTrigger {
     width: 1px;
     height: 1px;
@@ -159,10 +130,6 @@ a:hover {
         box-shadow: 3px 3px 0 #000000;
     }
 
-    .waldo-sound-btn {
-        right: 14px;
-        bottom: 14px;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
