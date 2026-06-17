@@ -360,6 +360,44 @@ function updateWaldoSpeech(elapsed) {
   );
 }
 
+function waitForWaldoVideoReady() {
+  if (!waldoWalkon || waldoWalkon.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    const cleanup = () => {
+      waldoWalkon.removeEventListener("loadeddata", handleReady);
+      waldoWalkon.removeEventListener("canplay", handleReady);
+      waldoWalkon.removeEventListener("error", handleError);
+    };
+    const handleReady = () => {
+      cleanup();
+      resolve();
+    };
+    const handleError = () => {
+      cleanup();
+      reject();
+    };
+
+    waldoWalkon.addEventListener("loadeddata", handleReady, { once: true });
+    waldoWalkon.addEventListener("canplay", handleReady, { once: true });
+    waldoWalkon.addEventListener("error", handleError, { once: true });
+    waldoWalkon.load();
+  });
+}
+
+function waitForWaldoFallbackReady() {
+  if (!waldoWalkonFallback || waldoWalkonFallback.complete) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    waldoWalkonFallback.addEventListener("load", resolve, { once: true });
+    waldoWalkonFallback.addEventListener("error", reject, { once: true });
+  });
+}
+
 function setWaldoProgress(progress) {
   if (!waldoWalkonGroup) return;
 
@@ -461,11 +499,21 @@ async function playWaldoWalkon() {
   audioPlayer.pause();
 
   if (useWaldoFallback) {
-    waldoWalkonGroup.classList.add("use-fallback", "is-visible");
+    waldoWalkonGroup.classList.add("use-fallback");
     if (waldoWalkonFallback) {
       waldoWalkonFallback.removeAttribute("src");
       waldoWalkonFallback.src = `assets/waldo-walkon.apng?v=21&t=${Date.now()}`;
     }
+
+    try {
+      await waitForWaldoFallbackReady();
+    } catch {
+      waldoWalkonPlayed = false;
+      waldoWalkonGroup?.classList.remove("use-fallback", "is-visible");
+      return;
+    }
+
+    waldoWalkonGroup.classList.add("is-visible");
     waldoAnimationStartedAt = performance.now();
     moveWaldoWithTimer();
     waldoMoveInterval = setInterval(moveWaldoWithTimer, 50);
@@ -476,9 +524,11 @@ async function playWaldoWalkon() {
   waldoWalkon.muted = true;
 
   try {
+    await waitForWaldoVideoReady();
     await waldoWalkon.play();
   } catch {
     try {
+      await waitForWaldoVideoReady();
       await waldoWalkon.play();
     } catch {
       waldoWalkonPlayed = false;
