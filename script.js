@@ -300,6 +300,259 @@ if (sliderImage && photoPrevBtn && photoNextBtn) {
   sliderImage.style.transition = "opacity 0.3s ease";
 }
 
+const waldoWalkonGroup = document.getElementById("waldoWalkonGroup");
+const waldoWalkon = document.getElementById("waldoWalkon");
+const waldoWalkonFallback = document.getElementById("waldoWalkonFallback");
+const waldoWalkonTrigger = document.getElementById("waldoWalkonTrigger");
+const waldoSpeechBubble = document.getElementById("waldoSpeechBubble");
+let waldoWalkonPlayed = false;
+let waldoAnimationFrame = null;
+let waldoMoveInterval = null;
+let waldoAnimationStartedAt = 0;
+const waldoWalkonDuration = 4.67;
+const waldoDesktopTravelDuration = 5.7;
+const waldoMobileTravelDuration = 6.8;
+const waldoHoldStart = 2.25;
+const waldoSpeechStart = 2.65;
+const waldoSpeechEnd = 4.25;
+const waldoHoldEnd = 4.55;
+const waldoLandscapeExitStart = 3.55;
+const waldoLandscapeExitEnd = 4.48;
+const isTouchApple =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const webmAlphaSupported =
+  waldoWalkon &&
+  waldoWalkon.canPlayType('video/webm; codecs="vp9"') !== "";
+const forceWaldoFallback = new URLSearchParams(window.location.search).has(
+  "waldoFallback"
+);
+const useWaldoFallback = forceWaldoFallback || isTouchApple || !webmAlphaSupported;
+
+function getWaldoTravelDuration() {
+  return window.matchMedia("(max-width: 767px)").matches
+    ? waldoMobileTravelDuration
+    : waldoDesktopTravelDuration;
+}
+
+function isShortLandscapeViewport() {
+  return window.innerWidth > window.innerHeight && window.innerHeight <= 500;
+}
+
+function getWaldoExitStart() {
+  return isShortLandscapeViewport() ? waldoLandscapeExitStart : waldoHoldEnd;
+}
+
+function getWaldoExitEnd() {
+  return isShortLandscapeViewport()
+    ? waldoLandscapeExitEnd
+    : getWaldoTravelDuration();
+}
+
+function getWaldoAnimationEnd() {
+  return Math.max(getWaldoExitEnd(), waldoWalkonDuration);
+}
+
+function updateWaldoSpeech(elapsed) {
+  waldoSpeechBubble?.classList.toggle(
+    "is-visible",
+    elapsed >= waldoSpeechStart && elapsed <= waldoSpeechEnd
+  );
+}
+
+function setWaldoProgress(progress) {
+  if (!waldoWalkonGroup) return;
+
+  const clamped = Math.max(0, Math.min(progress, 1));
+  const visibleMedia = useWaldoFallback ? waldoWalkonFallback : waldoWalkon;
+  const groupWidth =
+    visibleMedia?.getBoundingClientRect().width || window.innerWidth * 0.4;
+  const startX = -groupWidth - window.innerWidth * 0.04;
+  const endX = window.innerWidth + window.innerWidth * 0.04;
+  const x = startX + (endX - startX) * clamped;
+  waldoWalkonGroup.style.transform = `translate3d(${x}px, 0, 0)`;
+}
+
+function setWaldoPositionForElapsed(elapsed) {
+  if (!waldoWalkonGroup) return;
+
+  const visibleMedia = useWaldoFallback ? waldoWalkonFallback : waldoWalkon;
+  const groupWidth =
+    visibleMedia?.getBoundingClientRect().width || window.innerWidth * 0.4;
+  const startX = -groupWidth - window.innerWidth * 0.04;
+  const centerX = (window.innerWidth - groupWidth) / 2;
+  const endX = window.innerWidth + window.innerWidth * 0.04;
+  const exitStart = getWaldoExitStart();
+  const exitEnd = getWaldoExitEnd();
+
+  let x = centerX;
+  if (elapsed < waldoHoldStart) {
+    const t = Math.max(0, Math.min(elapsed / waldoHoldStart, 1));
+    x = startX + (centerX - startX) * t;
+  } else if (elapsed > exitStart) {
+    const exitDuration = Math.max(exitEnd - exitStart, 0.1);
+    const t = Math.max(0, Math.min((elapsed - exitStart) / exitDuration, 1));
+    x = centerX + (endX - centerX) * t;
+  }
+
+  waldoWalkonGroup.style.transform = `translate3d(${x}px, 0, 0)`;
+}
+
+function stopWaldoWalkon() {
+  if (waldoAnimationFrame) {
+    cancelAnimationFrame(waldoAnimationFrame);
+    waldoAnimationFrame = null;
+  }
+  if (waldoMoveInterval) {
+    clearInterval(waldoMoveInterval);
+    waldoMoveInterval = null;
+  }
+
+  setWaldoPositionForElapsed(getWaldoAnimationEnd());
+  waldoWalkonGroup?.classList.remove("is-visible");
+  waldoSpeechBubble?.classList.remove("is-visible");
+  if (waldoWalkon) waldoWalkon.muted = true;
+}
+
+function getWaldoElapsed() {
+  if (useWaldoFallback) {
+    return (performance.now() - waldoAnimationStartedAt) / 1000;
+  }
+
+  return Math.max(
+    waldoWalkon?.currentTime || 0,
+    (performance.now() - waldoAnimationStartedAt) / 1000
+  );
+}
+
+function moveWaldoWithVideo() {
+  if (!waldoWalkon || !waldoWalkonGroup) return;
+
+  const elapsed = getWaldoElapsed();
+  setWaldoPositionForElapsed(elapsed);
+  updateWaldoSpeech(elapsed);
+
+  if (elapsed < getWaldoAnimationEnd()) {
+    waldoAnimationFrame = requestAnimationFrame(moveWaldoWithVideo);
+  } else {
+    stopWaldoWalkon();
+  }
+}
+
+function moveWaldoWithTimer() {
+  const elapsed = (performance.now() - waldoAnimationStartedAt) / 1000;
+  setWaldoPositionForElapsed(elapsed);
+  updateWaldoSpeech(elapsed);
+
+  if (elapsed < getWaldoAnimationEnd()) {
+    waldoAnimationFrame = requestAnimationFrame(moveWaldoWithTimer);
+  } else {
+    stopWaldoWalkon();
+  }
+}
+
+async function playWaldoWalkon() {
+  if (!waldoWalkonGroup || waldoWalkonPlayed) return;
+
+  waldoWalkonPlayed = true;
+  setWaldoPositionForElapsed(0);
+  updateWaldoSpeech(0);
+  waldoAnimationStartedAt = performance.now();
+  audioPlayer.pause();
+
+  if (useWaldoFallback) {
+    waldoWalkonGroup.classList.add("use-fallback", "is-visible");
+    if (waldoWalkonFallback) {
+      waldoWalkonFallback.removeAttribute("src");
+      waldoWalkonFallback.src = `assets/waldo-walkon.apng?v=21&t=${Date.now()}`;
+    }
+    waldoAnimationStartedAt = performance.now();
+    moveWaldoWithTimer();
+    waldoMoveInterval = setInterval(moveWaldoWithTimer, 50);
+    return;
+  }
+
+  waldoWalkon.currentTime = 0;
+  waldoWalkon.muted = true;
+
+  try {
+    await waldoWalkon.play();
+  } catch {
+    try {
+      await waldoWalkon.play();
+    } catch {
+      waldoWalkonPlayed = false;
+      waldoWalkonGroup?.classList.remove("is-visible");
+      return;
+    }
+  }
+
+  waldoWalkonGroup?.classList.add("is-visible");
+  waldoAnimationStartedAt = performance.now();
+  setWaldoPositionForElapsed(0);
+  updateWaldoSpeech(0);
+  moveWaldoWithVideo();
+  waldoMoveInterval = setInterval(moveWaldoWithVideo, 50);
+}
+
+if (
+  waldoWalkonGroup &&
+  waldoWalkon &&
+  waldoWalkonTrigger &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  function checkWaldoTrigger() {
+    if (waldoWalkonPlayed) return;
+
+    const rect = waldoWalkonTrigger.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.6 && rect.bottom > 0) {
+      playWaldoWalkon();
+    }
+  }
+
+  const waldoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) playWaldoWalkon();
+      });
+    },
+    { rootMargin: "0px 0px -40% 0px", threshold: 0 }
+  );
+
+  waldoObserver.observe(waldoWalkonTrigger);
+  window.addEventListener("scroll", checkWaldoTrigger, { passive: true });
+  window.addEventListener("resize", checkWaldoTrigger);
+  window.addEventListener("load", checkWaldoTrigger);
+  setTimeout(checkWaldoTrigger, 300);
+
+  waldoWalkon.addEventListener("ended", () => {
+    moveWaldoWithVideo();
+  });
+
+  waldoWalkon.addEventListener("playing", () => {
+    moveWaldoWithVideo();
+    if (!waldoMoveInterval) {
+      waldoMoveInterval = setInterval(moveWaldoWithVideo, 50);
+    }
+  });
+
+  waldoWalkon.addEventListener("timeupdate", () => {
+    moveWaldoWithVideo();
+  });
+
+  waldoWalkon.addEventListener("pause", () => {
+    if (!waldoWalkon.ended && waldoAnimationFrame) {
+      cancelAnimationFrame(waldoAnimationFrame);
+      waldoAnimationFrame = null;
+    }
+    if (!waldoWalkon.ended && waldoMoveInterval) {
+      clearInterval(waldoMoveInterval);
+      waldoMoveInterval = null;
+    }
+  });
+
+}
+
 audioPlayer.addEventListener("play", () => {
   if (!hasLoggedStart) {
     const track = mainTracks[currentTrack];
