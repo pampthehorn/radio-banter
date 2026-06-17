@@ -302,12 +302,10 @@ if (sliderImage && photoPrevBtn && photoNextBtn) {
 
 const waldoWalkonGroup = document.getElementById("waldoWalkonGroup");
 const waldoWalkon = document.getElementById("waldoWalkon");
-const waldoWalkonAudio = document.getElementById("waldoWalkonAudio");
 const waldoWalkonFallback = document.getElementById("waldoWalkonFallback");
 const waldoWalkonTrigger = document.getElementById("waldoWalkonTrigger");
 const waldoSpeechBubble = document.getElementById("waldoSpeechBubble");
 let waldoWalkonPlayed = false;
-let waldoAudioPrimed = false;
 let waldoAnimationFrame = null;
 let waldoMoveInterval = null;
 let waldoAnimationStartedAt = 0;
@@ -362,35 +360,6 @@ function updateWaldoSpeech(elapsed) {
   );
 }
 
-document.addEventListener(
-  "pointerdown",
-  () => {
-    primeWaldoAudio();
-  },
-  { once: true }
-);
-
-function primeWaldoAudio() {
-  waldoAudioPrimed = true;
-  waldoWalkonAudio?.load();
-}
-
-function playWaldoAudio() {
-  if (!waldoWalkonAudio || !waldoAudioPrimed) return;
-
-  waldoWalkonAudio.pause();
-  waldoWalkonAudio.currentTime = 0;
-  waldoWalkonAudio.volume = 1;
-  waldoWalkonAudio.play().catch(() => {});
-}
-
-function stopWaldoAudio() {
-  if (!waldoWalkonAudio) return;
-
-  waldoWalkonAudio.pause();
-  waldoWalkonAudio.currentTime = 0;
-}
-
 function setWaldoProgress(progress) {
   if (!waldoWalkonGroup) return;
 
@@ -442,7 +411,6 @@ function stopWaldoWalkon() {
   setWaldoPositionForElapsed(getWaldoAnimationEnd());
   waldoWalkonGroup?.classList.remove("is-visible");
   waldoSpeechBubble?.classList.remove("is-visible");
-  stopWaldoAudio();
   if (waldoWalkon) waldoWalkon.muted = true;
 }
 
@@ -499,7 +467,6 @@ async function playWaldoWalkon() {
       waldoWalkonFallback.src = `assets/waldo-walkon.apng?v=21&t=${Date.now()}`;
     }
     waldoAnimationStartedAt = performance.now();
-    playWaldoAudio();
     moveWaldoWithTimer();
     waldoMoveInterval = setInterval(moveWaldoWithTimer, 50);
     return;
@@ -522,7 +489,6 @@ async function playWaldoWalkon() {
 
   waldoWalkonGroup?.classList.add("is-visible");
   waldoAnimationStartedAt = performance.now();
-  playWaldoAudio();
   setWaldoPositionForElapsed(0);
   updateWaldoSpeech(0);
   moveWaldoWithVideo();
@@ -588,8 +554,6 @@ if (
 }
 
 audioPlayer.addEventListener("play", () => {
-  waldoAudioPrimed = true;
-
   if (!hasLoggedStart) {
     const track = mainTracks[currentTrack];
     if (typeof gtag === "function") {
