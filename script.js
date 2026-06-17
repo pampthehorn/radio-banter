@@ -318,6 +318,7 @@ const waldoSpeechEnd = 4.25;
 const waldoHoldEnd = 4.55;
 const waldoLandscapeExitStart = 3.55;
 const waldoLandscapeExitEnd = 4.48;
+const waldoVideoStartThreshold = 0.08;
 const isTouchApple =
   /iPad|iPhone|iPod/.test(navigator.userAgent) ||
   (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -328,6 +329,7 @@ const forceWaldoFallback = new URLSearchParams(window.location.search).has(
   "waldoFallback"
 );
 const useWaldoFallback = forceWaldoFallback || isTouchApple || !webmAlphaSupported;
+let waldoUsingFallback = useWaldoFallback;
 
 function getWaldoTravelDuration() {
   return window.matchMedia("(max-width: 767px)").matches
@@ -398,11 +400,78 @@ function waitForWaldoFallbackReady() {
   });
 }
 
+function waitForWaldoVideoPlayback(timeout = 1600) {
+  if (
+    !waldoWalkon ||
+    (!waldoWalkon.paused && waldoWalkon.currentTime >= waldoVideoStartThreshold)
+  ) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve, reject) => {
+    const startedAt = performance.now();
+    let timeoutId = null;
+
+    const cleanup = () => {
+      clearTimeout(timeoutId);
+      waldoWalkon.removeEventListener("playing", checkPlayback);
+      waldoWalkon.removeEventListener("timeupdate", checkPlayback);
+      waldoWalkon.removeEventListener("error", handleError);
+    };
+    const checkPlayback = () => {
+      if (
+        !waldoWalkon.paused &&
+        waldoWalkon.currentTime >= waldoVideoStartThreshold
+      ) {
+        cleanup();
+        resolve();
+      } else if (performance.now() - startedAt >= timeout) {
+        cleanup();
+        reject();
+      }
+    };
+    const handleError = () => {
+      cleanup();
+      reject();
+    };
+
+    timeoutId = setTimeout(checkPlayback, timeout);
+    waldoWalkon.addEventListener("playing", checkPlayback);
+    waldoWalkon.addEventListener("timeupdate", checkPlayback);
+    waldoWalkon.addEventListener("error", handleError, { once: true });
+    checkPlayback();
+  });
+}
+
+async function startWaldoFallbackWalkon() {
+  waldoWalkon?.pause();
+  waldoUsingFallback = true;
+  waldoWalkonGroup?.classList.add("use-fallback");
+  if (waldoWalkonFallback) {
+    waldoWalkonFallback.removeAttribute("src");
+    waldoWalkonFallback.src = `assets/waldo-walkon.apng?v=21&t=${Date.now()}`;
+  }
+
+  try {
+    await waitForWaldoFallbackReady();
+  } catch {
+    waldoWalkonPlayed = false;
+    waldoWalkonGroup?.classList.remove("use-fallback", "is-visible");
+    return false;
+  }
+
+  waldoWalkonGroup?.classList.add("is-visible");
+  waldoAnimationStartedAt = performance.now();
+  moveWaldoWithTimer();
+  waldoMoveInterval = setInterval(moveWaldoWithTimer, 50);
+  return true;
+}
+
 function setWaldoProgress(progress) {
   if (!waldoWalkonGroup) return;
 
   const clamped = Math.max(0, Math.min(progress, 1));
-  const visibleMedia = useWaldoFallback ? waldoWalkonFallback : waldoWalkon;
+  const visibleMedia = waldoUsingFallback ? waldoWalkonFallback : waldoWalkon;
   const groupWidth =
     visibleMedia?.getBoundingClientRect().width || window.innerWidth * 0.4;
   const startX = -groupWidth - window.innerWidth * 0.04;
@@ -414,7 +483,7 @@ function setWaldoProgress(progress) {
 function setWaldoPositionForElapsed(elapsed) {
   if (!waldoWalkonGroup) return;
 
-  const visibleMedia = useWaldoFallback ? waldoWalkonFallback : waldoWalkon;
+  const visibleMedia = waldoUsingFallback ? waldoWalkonFallback : waldoWalkon;
   const groupWidth =
     visibleMedia?.getBoundingClientRect().width || window.innerWidth * 0.4;
   const startX = -groupWidth - window.innerWidth * 0.04;
@@ -457,10 +526,7 @@ function getWaldoElapsed() {
     return (performance.now() - waldoAnimationStartedAt) / 1000;
   }
 
-  return Math.max(
-    waldoWalkon?.currentTime || 0,
-    (performance.now() - waldoAnimationStartedAt) / 1000
-  );
+  return waldoWalkon?.currentTime || 0;
 }
 
 function moveWaldoWithVideo() {
@@ -493,30 +559,15 @@ async function playWaldoWalkon() {
   if (!waldoWalkonGroup || waldoWalkonPlayed) return;
 
   waldoWalkonPlayed = true;
+  waldoUsingFallback = useWaldoFallback;
+  waldoWalkonGroup?.classList.remove("use-fallback");
   setWaldoPositionForElapsed(0);
   updateWaldoSpeech(0);
   waldoAnimationStartedAt = performance.now();
   audioPlayer.pause();
 
   if (useWaldoFallback) {
-    waldoWalkonGroup.classList.add("use-fallback");
-    if (waldoWalkonFallback) {
-      waldoWalkonFallback.removeAttribute("src");
-      waldoWalkonFallback.src = `assets/waldo-walkon.apng?v=21&t=${Date.now()}`;
-    }
-
-    try {
-      await waitForWaldoFallbackReady();
-    } catch {
-      waldoWalkonPlayed = false;
-      waldoWalkonGroup?.classList.remove("use-fallback", "is-visible");
-      return;
-    }
-
-    waldoWalkonGroup.classList.add("is-visible");
-    waldoAnimationStartedAt = performance.now();
-    moveWaldoWithTimer();
-    waldoMoveInterval = setInterval(moveWaldoWithTimer, 50);
+    await startWaldoFallbackWalkon();
     return;
   }
 
@@ -526,15 +577,10 @@ async function playWaldoWalkon() {
   try {
     await waitForWaldoVideoReady();
     await waldoWalkon.play();
+    await waitForWaldoVideoPlayback();
   } catch {
-    try {
-      await waitForWaldoVideoReady();
-      await waldoWalkon.play();
-    } catch {
-      waldoWalkonPlayed = false;
-      waldoWalkonGroup?.classList.remove("is-visible");
-      return;
-    }
+    await startWaldoFallbackWalkon();
+    return;
   }
 
   waldoWalkonGroup?.classList.add("is-visible");
