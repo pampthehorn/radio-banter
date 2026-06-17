@@ -328,7 +328,7 @@ const webmAlphaSupported =
 const forceWaldoFallback = new URLSearchParams(window.location.search).has(
   "waldoFallback"
 );
-const useWaldoFallback = forceWaldoFallback || isTouchApple || !webmAlphaSupported;
+const useWaldoFallback = true;
 let waldoUsingFallback = useWaldoFallback;
 
 function getWaldoTravelDuration() {
