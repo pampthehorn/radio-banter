@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <title>Secret preview — Radio Banter</title>
+  <meta name="description" content="Private Radio Banter track preview.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&amp;display=swap" rel="stylesheet">
+  <link href="preview.css?v=4" rel="stylesheet">
+</head>
+<body>
+  <main class="preview-shell">
+    <header class="preview-header">
+      <p class="secret-label">Secret preview · August 2026</p>
+      <img class="wordmark" src="../RadioBanterCDText.png" alt="Radio Banter">
+    </header>
+
+    <section class="player" aria-label="New track player">
+      <div class="now-playing">
+        <div class="current-track">
+          <p class="small-label">Now playing</p>
+          <h2 id="currentTitle">AI</h2>
+          <p id="currentVersion" class="version">Master 1</p>
+        </div>
+
+        <div class="transport">
+          <button id="previousButton" class="skip-button" type="button">previous</button>
+          <button id="playButton" class="play-button" type="button" aria-label="Play AI">play</button>
+          <button id="nextButton" class="skip-button" type="button">next</button>
+        </div>
+
+        <div class="timeline">
+          <span id="elapsedTime" class="time">0:00</span>
+          <input id="scrubber" type="range" min="0" max="1000" value="0" aria-label="Track position">
+          <span id="totalTime" class="time">2:52</span>
+        </div>
+      </div>
+
+      <ol id="trackList" class="track-list">
+        <li class="is-current" data-track="0">
+          <button type="button" aria-label="Play AI">
+            <span class="track-number">01</span>
+            <span class="track-copy"><strong>AI</strong><small>Master 1</small></span>
+            <span class="track-time">2:52</span>
+            <span class="row-state" aria-hidden="true">play</span>
+          </button>
+        </li>
+        <li data-track="1">
+          <button type="button" aria-label="Play Viva Palestine">
+            <span class="track-number">02</span>
+            <span class="track-copy"><strong>Viva Palestine</strong><small>Master 1</small></span>
+            <span class="track-time">1:22</span>
+            <span class="row-state" aria-hidden="true">play</span>
+          </button>
+        </li>
+        <li data-track="2">
+          <button type="button" aria-label="Play Red Red Rose, mostly mono mix">
+            <span class="track-number">03</span>
+            <span class="track-copy"><strong>Red Red Rose</strong><small>Mostly mono mix</small></span>
+            <span class="track-time">2:17</span>
+            <span class="row-state" aria-hidden="true">play</span>
+          </button>
+        </li>
+        <li data-track="3">
+          <button type="button" aria-label="Play Red Red Rose, stereo drums mix">
+            <span class="track-number">04</span>
+            <span class="track-copy"><strong>Red Red Rose</strong><small>Stereo drums mix</small></span>
+            <span class="track-time">2:17</span>
+            <span class="row-state" aria-hidden="true">play</span>
+          </button>
+        </li>
+      </ol>
+
+      <audio id="audioPlayer" preload="metadata"></audio>
+    </section>
+
+  </main>
+
+  <script src="player.js?v=3"></script>
+</body>
+</html>
