@@ -16,12 +16,6 @@ const tracks = [
     version: "Mostly mono mix",
     src: "audio/red-red-rose-mostly-mono.mp3",
     duration: "2:17"
-  },
-  {
-    title: "Red Red Rose",
-    version: "Stereo drums mix",
-    src: "audio/red-red-rose-stereo-drums.mp3",
-    duration: "2:17"
   }
 ];
 
