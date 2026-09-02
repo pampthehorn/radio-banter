@@ -4,7 +4,7 @@ const albums = {
     artwork: "../lily/newscanscropped/Front Cover.png"
   },
   single: {
-    title: "Red Red Rose — Single",
+    title: "Up on Kingussie Avenue",
     artwork: "../lily/newscanscropped/Grown In Love - just heart.png"
   }
 };
@@ -20,9 +20,9 @@ const tracks = [
   { id: 8, title: "Instrumental", seconds: 160, duration: "2:40", albumId: "album", album: "Radio Banter", genre: "Scottish DIY", src: "../20250823masters/08 Instrumental.mp3" },
   { id: 9, title: "The Groove", seconds: 180, duration: "3:00", albumId: "album", album: "Radio Banter", genre: "Scottish DIY", src: "../20250823masters/09 The Groove.mp3" },
   { id: 10, title: "Financial Crash", seconds: 157, duration: "2:37", albumId: "album", album: "Radio Banter", genre: "Scottish DIY", src: "../20250823masters/10 Financial Crash.mp3" },
-  { id: 11, title: "AI", seconds: 172, duration: "2:52", albumId: "single", album: "Red Red Rose — Single", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/ai.mp3" },
-  { id: 12, title: "Viva Palestine", seconds: 82, duration: "1:22", albumId: "single", album: "Red Red Rose — Single", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/viva-palestine.mp3" },
-  { id: 13, title: "Red Red Rose", seconds: 137, duration: "2:17", albumId: "single", album: "Red Red Rose — Single", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/red-red-rose-mostly-mono.mp3" }
+  { id: 11, title: "AI", seconds: 172, duration: "2:52", albumId: "single", album: "Up on Kingussie Avenue", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/ai.mp3" },
+  { id: 12, title: "Viva Palestine", seconds: 82, duration: "1:22", albumId: "single", album: "Up on Kingussie Avenue", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/viva-palestine.mp3" },
+  { id: 13, title: "Red Red Rose", seconds: 137, duration: "2:17", albumId: "single", album: "Up on Kingussie Avenue", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/red-red-rose-mostly-mono.mp3" }
 ];
 
 const audio = document.querySelector("#audioPlayer");
