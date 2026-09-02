@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scotify — Radio Banter</title>
+  <meta name="description" content="Scotify: Radio Banter's debut album and Red Red Rose single in a lovingly old-fashioned music player.">
+  <meta property="og:type" content="music.album">
+  <meta property="og:title" content="Scotify — Radio Banter">
+  <meta property="og:description" content="The Radio Banter album and Red Red Rose single, all in one lovingly old-fashioned player.">
+  <meta property="og:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scotify — Radio Banter">
+  <meta name="twitter:description" content="The Radio Banter album and Red Red Rose single, all in one lovingly old-fashioned player.">
+  <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png">
+  <link rel="stylesheet" href="scotify.css?v=1">
+</head>
+<body>
+  <main class="scotify-window" aria-label="Scotify music player">
+    <header class="title-bar">
+      <span class="window-light" aria-hidden="true"></span>
+      <h1>Scotify</h1>
+      <span class="window-widget" aria-hidden="true"></span>
+    </header>
+
+    <section class="toolbar" aria-label="Playback controls">
+      <div class="transport-cluster">
+        <div class="transport-buttons">
+          <button id="previousButton" class="round-button skip-back" type="button" aria-label="Previous song"><span aria-hidden="true"></span></button>
+          <button id="playButton" class="round-button play-button" type="button" aria-label="Play"><span aria-hidden="true"></span></button>
+          <button id="nextButton" class="round-button skip-forward" type="button" aria-label="Next song"><span aria-hidden="true"></span></button>
+        </div>
+        <div class="volume-control">
+          <span aria-hidden="true">−</span>
+          <label class="visually-hidden" for="volumeSlider">Volume</label>
+          <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.8">
+          <span aria-hidden="true">+</span>
+        </div>
+      </div>
+
+      <div class="lcd-display" aria-live="polite">
+        <p id="displayTitle" class="display-title">Nature Nurture</p>
+        <p class="display-meta"><span id="displayArtist">Radio Banter</span> · <span id="elapsedTime">0:00</span> / <span id="totalTime">4:45</span></p>
+        <label class="visually-hidden" for="scrubber">Song position</label>
+        <input id="scrubber" type="range" min="0" max="1000" value="0">
+      </div>
+
+      <div class="library-tools">
+        <label class="visually-hidden" for="searchInput">Search songs</label>
+        <input id="searchInput" class="search-input" type="search" placeholder="Search" autocomplete="off">
+        <button id="browseButton" class="browse-button is-active" type="button" aria-pressed="true">
+          <span class="browse-orb" aria-hidden="true"></span>
+          <span>Browse</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="library-layout">
+      <aside class="source-sidebar" aria-label="Sources">
+        <h2>Source</h2>
+        <nav>
+          <button class="source-button is-selected" type="button" data-album="all">
+            <span class="source-glyph" aria-hidden="true">♫</span>
+            <span>Library</span>
+          </button>
+          <button class="source-button" type="button" data-album="album">
+            <img src="../lily/newscanscropped/Front Cover.png" alt="">
+            <span>Radio Banter</span>
+          </button>
+          <button class="source-button" type="button" data-album="single">
+            <img src="../lily/newscanscropped/Grown In Love - just heart.png" alt="">
+            <span>Red Red Rose</span>
+          </button>
+        </nav>
+
+        <div class="source-artwork" aria-hidden="true">
+          <img id="sourceArtwork" src="../lily/newscanscropped/Front Cover.png" alt="">
+        </div>
+      </aside>
+
+      <section class="library-main" aria-label="Music library">
+        <div id="browserPanel" class="browser-panel">
+          <section class="browser-column" aria-labelledby="artistHeading">
+            <h2 id="artistHeading">Artist</h2>
+            <button class="browser-choice is-selected" type="button" data-album="all">Radio Banter</button>
+          </section>
+          <section class="browser-column" aria-labelledby="albumHeading">
+            <h2 id="albumHeading">Album</h2>
+            <button class="browser-choice is-selected" type="button" data-album="all">All Albums</button>
+            <button class="browser-choice" type="button" data-album="album">Radio Banter</button>
+            <button class="browser-choice" type="button" data-album="single">Red Red Rose — Single</button>
+          </section>
+        </div>
+
+        <div class="track-table-wrap">
+          <table class="track-table">
+            <thead>
+              <tr>
+                <th class="playing-column"><span class="visually-hidden">Playing</span></th>
+                <th class="song-column" scope="col">Song</th>
+                <th class="time-column" scope="col">Time</th>
+                <th class="artist-column" scope="col">Artist</th>
+                <th class="album-column" scope="col">Album</th>
+                <th class="genre-column" scope="col">Genre</th>
+              </tr>
+            </thead>
+            <tbody id="trackTableBody"></tbody>
+          </table>
+          <p id="emptyMessage" class="empty-message" hidden>No tunes found. Try another search.</p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="status-bar">
+      <p id="statusText">13 songs, 37:40 total time</p>
+      <p class="status-joke">Made in Glasgow. No algorithm required.</p>
+    </footer>
+
+    <audio id="audioPlayer" preload="metadata"></audio>
+  </main>
+
+  <script src="scotify.js?v=1"></script>
+</body>
+</html>
