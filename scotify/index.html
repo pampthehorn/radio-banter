@@ -14,7 +14,7 @@
   <meta name="twitter:description" content="The Radio Banter album and Up on Kingussie Avenue single, all in one lovingly old-fashioned player.">
   <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
   <link rel="icon" type="image/png" href="../favicon-96x96.png">
-  <link rel="stylesheet" href="scotify.css?v=1">
+  <link rel="stylesheet" href="scotify.css?v=2">
 </head>
 <body>
   <main class="scotify-window" aria-label="Scotify music player">
@@ -40,8 +40,8 @@
       </div>
 
       <div class="lcd-display" aria-live="polite">
-        <p id="displayTitle" class="display-title">Nature Nurture</p>
-        <p class="display-meta"><span id="displayArtist">Radio Banter</span> · <span id="elapsedTime">0:00</span> / <span id="totalTime">4:45</span></p>
+        <p id="displayTitle" class="display-title">Choose a song</p>
+        <p class="display-meta"><span id="displayArtist">Radio Banter</span> · <span id="elapsedTime">0:00</span> / <span id="totalTime">0:00</span></p>
         <label class="visually-hidden" for="scrubber">Song position</label>
         <input id="scrubber" type="range" min="0" max="1000" value="0">
       </div>
@@ -49,10 +49,6 @@
       <div class="library-tools">
         <label class="visually-hidden" for="searchInput">Search songs</label>
         <input id="searchInput" class="search-input" type="search" placeholder="Search" autocomplete="off">
-        <button id="browseButton" class="browse-button is-active" type="button" aria-pressed="true">
-          <span class="browse-orb" aria-hidden="true"></span>
-          <span>Browse</span>
-        </button>
       </div>
     </section>
 
@@ -64,18 +60,20 @@
             <span class="source-glyph" aria-hidden="true">♫</span>
             <span>Library</span>
           </button>
+          <button class="source-button" type="button" data-album="single">
+            <img src="artwork/up-on-kingussie-avenue.jpg" alt="">
+            <span>Up on Kingussie Avenue</span>
+          </button>
           <button class="source-button" type="button" data-album="album">
             <img src="../lily/newscanscropped/Front Cover.png" alt="">
             <span>Radio Banter</span>
           </button>
-          <button class="source-button" type="button" data-album="single">
-            <img src="../lily/newscanscropped/Grown In Love - just heart.png" alt="">
-            <span>Up on Kingussie Avenue</span>
-          </button>
         </nav>
 
-        <div class="source-artwork" aria-hidden="true">
-          <img id="sourceArtwork" src="../lily/newscanscropped/Front Cover.png" alt="">
+        <div class="source-artwork">
+          <button id="artworkButton" class="artwork-button" type="button" aria-label="View Up on Kingussie Avenue artwork larger">
+            <img id="sourceArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
+          </button>
         </div>
       </aside>
 
@@ -88,8 +86,8 @@
           <section class="browser-column" aria-labelledby="albumHeading">
             <h2 id="albumHeading">Album</h2>
             <button class="browser-choice is-selected" type="button" data-album="all">All Albums</button>
-            <button class="browser-choice" type="button" data-album="album">Radio Banter</button>
             <button class="browser-choice" type="button" data-album="single">Up on Kingussie Avenue</button>
+            <button class="browser-choice" type="button" data-album="album">Radio Banter</button>
           </section>
         </div>
 
@@ -114,12 +112,19 @@
 
     <footer class="status-bar">
       <p id="statusText">13 songs, 37:40 total time</p>
-      <p class="status-joke">Made in Glasgow. No algorithm required.</p>
     </footer>
 
     <audio id="audioPlayer" preload="metadata"></audio>
   </main>
 
-  <script src="scotify.js?v=2"></script>
+  <dialog id="artworkDialog" class="artwork-dialog" aria-labelledby="artworkDialogTitle">
+    <div class="artwork-dialog-frame">
+      <h2 id="artworkDialogTitle" class="visually-hidden">Up on Kingussie Avenue artwork</h2>
+      <button id="closeArtworkButton" class="artwork-dialog-close" type="button" aria-label="Close larger artwork">×</button>
+      <img id="modalArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
+    </div>
+  </dialog>
+
+  <script src="scotify.js?v=3"></script>
 </body>
 </html>
