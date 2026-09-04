@@ -348,5 +348,4 @@ document.addEventListener("keydown", (event) => {
 
 audio.volume = Number(volumeSlider.value);
 updateFilterControls();
-renderTable();
-setArtwork(albums.single.artwork, `${albums.single.title} cover artwork`);
+loadTrack(0);
