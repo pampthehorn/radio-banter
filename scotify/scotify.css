@@ -81,20 +81,6 @@ button { color: inherit; }
   text-shadow: 0 1px #fff;
 }
 
-.window-light,
-.window-widget {
-  position: absolute;
-  top: 8px;
-  width: 12px;
-  height: 12px;
-  border: 1px solid #6f8796;
-  background: linear-gradient(135deg, #fff, #b8cbd7);
-  box-shadow: inset 0 0 0 1px #e3f0f7;
-}
-
-.window-light { left: 10px; border-radius: 50%; }
-.window-widget { right: 10px; }
-
 .toolbar {
   display: grid;
   grid-template-columns: minmax(220px, .75fr) minmax(330px, 1.15fr) minmax(220px, .75fr);
@@ -375,15 +361,12 @@ button { color: inherit; }
 }
 
 .browser-panel {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  display: block;
   min-height: 122px;
   border-bottom: 1px solid #7c929f;
 }
 
 .browser-panel[hidden] { display: none; }
-
-.browser-column + .browser-column { border-left: 1px solid #8ca1ae; }
 
 .browser-column {
   display: flex;
@@ -448,11 +431,9 @@ button { color: inherit; }
 }
 
 .track-table th:last-child { border-right: 0; }
-.playing-column { width: 28px; }
-.song-column { width: 32%; }
+.song-column { width: 43%; }
 .time-column { width: 60px; text-align: right !important; }
-.artist-column { width: 23%; }
-.album-column { width: 34%; }
+.album-column { width: auto; }
 
 .track-table td {
   height: 25px;
@@ -468,8 +449,6 @@ button { color: inherit; }
 .track-table tr { cursor: default; }
 .track-table tr:hover td { background: #dce8f8; }
 .track-table tr.is-selected td { background: var(--selection); color: #fff; text-shadow: 0 1px var(--selection-dark); }
-.track-table tr.is-playing .playing-cell::before { content: "♪"; }
-.playing-cell { padding-inline: 0 !important; text-align: center; }
 .time-cell { text-align: right; font-variant-numeric: tabular-nums; }
 
 .song-button {
@@ -626,7 +605,6 @@ button { color: inherit; }
   .artwork-button { width: 100%; }
   .browser-panel { min-height: 104px; }
   .track-table-wrap { min-height: 390px; }
-  .album-column { width: 32%; }
 }
 
 @media (max-width: 570px) {
@@ -639,10 +617,9 @@ button { color: inherit; }
   .library-tools { gap: 10px; }
   .source-button { grid-template-columns: 1fr; justify-items: center; gap: 1px; padding: 5px 3px; font-size: 10px; text-align: center; }
   .source-button img, .source-glyph { width: 25px; height: 25px; }
-  .browser-panel { grid-template-columns: .75fr 1.25fr; }
-  .track-table { min-width: 520px; }
-  .artist-column { width: 110px; }
-  .album-column { width: 150px; }
+  .track-table { min-width: 0; }
+  .song-column { width: 46%; }
+  .time-column { width: 54px; }
   .artwork-dialog-frame { padding: 32px 8px 8px; }
   .artwork-dialog img { max-width: 90vw; max-height: 78vh; }
   .lyrics-dialog-frame { padding: 32px 18px 30px; }

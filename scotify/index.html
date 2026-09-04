@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scotify — Radio Banter</title>
+  <title>Scotify - Radio Banter</title>
   <meta name="description" content="Scotify: Radio Banter's debut album and Up on Kingussie Avenue single in a lovingly old-fashioned music player.">
   <meta property="og:type" content="music.album">
   <meta property="og:title" content="Scotify — Radio Banter">
@@ -14,14 +14,12 @@
   <meta name="twitter:description" content="The Radio Banter album and Up on Kingussie Avenue single, all in one lovingly old-fashioned player.">
   <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
   <link rel="icon" type="image/png" href="../favicon-96x96.png">
-  <link rel="stylesheet" href="scotify.css?v=3">
+  <link rel="stylesheet" href="scotify.css?v=4">
 </head>
 <body>
   <main class="scotify-window" aria-label="Scotify music player">
     <header class="title-bar">
-      <span class="window-light" aria-hidden="true"></span>
-      <h1>Scotify</h1>
-      <span class="window-widget" aria-hidden="true"></span>
+      <h1>Scotify - Radio Banter</h1>
     </header>
 
     <section class="toolbar" aria-label="Playback controls">
@@ -80,10 +78,6 @@
 
       <section class="library-main" aria-label="Music library">
         <div id="browserPanel" class="browser-panel">
-          <section class="browser-column" aria-labelledby="artistHeading">
-            <h2 id="artistHeading">Artist</h2>
-            <button class="browser-choice is-selected" type="button" data-album="all">Radio Banter</button>
-          </section>
           <section class="browser-column" aria-labelledby="albumHeading">
             <h2 id="albumHeading">Album</h2>
             <button class="browser-choice is-selected" type="button" data-album="all">All Albums</button>
@@ -96,10 +90,8 @@
           <table class="track-table">
             <thead>
               <tr>
-                <th class="playing-column"><span class="visually-hidden">Playing</span></th>
                 <th class="song-column" scope="col">Song</th>
                 <th class="time-column" scope="col">Time</th>
-                <th class="artist-column" scope="col">Artist</th>
                 <th class="album-column" scope="col">Album</th>
               </tr>
             </thead>
@@ -134,6 +126,6 @@
     </div>
   </dialog>
 
-  <script src="scotify.js?v=5"></script>
+  <script src="scotify.js?v=6"></script>
 </body>
 </html>

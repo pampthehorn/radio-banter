@@ -143,18 +143,14 @@ function visibleIndexes() {
 
 function renderTable() {
   const indexes = visibleIndexes();
-  const isPlaying = !audio.paused;
 
   tableBody.innerHTML = indexes.map((index) => {
     const track = tracks[index];
     const selected = index === selectedIndex;
-    const playing = index === loadedIndex && isPlaying;
     return `
-      <tr data-index="${index}" class="${selected ? "is-selected" : ""} ${playing ? "is-playing" : ""}" aria-selected="${selected}">
-        <td class="playing-cell" aria-label="${playing ? "Playing" : ""}"></td>
+      <tr data-index="${index}" class="${selected ? "is-selected" : ""}" aria-selected="${selected}">
         <td><button class="song-button" type="button" data-index="${index}">${track.title}</button></td>
         <td class="time-cell">${track.duration}</td>
-        <td>Radio Banter</td>
         <td>${track.album}</td>
       </tr>`;
   }).join("");
