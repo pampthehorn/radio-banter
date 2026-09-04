@@ -10,6 +10,26 @@ const albums = {
 };
 
 const lyricsByTrackId = {
+  11: [
+    ["Did you write this in a prompt", "Have you made it with AI", "naw man, you saying I could, could I"],
+    ["When you say apparently", "Cos you heard it in a dream", "And you don't know what it means"],
+    ["When we're plagued by killer drones", "And we can't go on our phones", "And we can't be rolling stones"],
+    ["When we tried to save your jobs", "But the books were at a loss", "And we had to cut the costs"],
+    ["Did you write this in a prompt", "Have you made it with AI", "naw man, you saying I should, should I"]
+  ],
+  12: [
+    ["Viva viva Palestina, viva viva Palestine", "Viva viva Palestina, free free Palestine"],
+    ["From the river to the sea", "Palestinians should be free"],
+    ["1234, Occupation no more", "5678, Israel's a terror state"],
+    ["Netanyahu you can't hide", "You've committed genocide", "Keir Starmer you can't hide", "We've supplied a genocide"],
+    ["Shame on you Keir Starmer", "Shame on you Netanyahu"]
+  ],
+  13: [
+    ["Oh my love's like a red red rose", "Oh my love is like the melody that is sweetly played in tune"],
+    ["So fair art thou, my bonnie lass", "So deep in love am I", "I'll love thee still my dear, til the sea's gang dry"],
+    ["Til the sea's gang dry my dear", "And rocks will melt with the sun", "I'll love thee still my dear, til the sand's o' life shall run"],
+    ["So fair thee weel, my only love", "And Fair thee weel a while", "I'll come again my love", "Though it were 10,000 mile"]
+  ],
   1: [
     ["is it nature is it nurture", "this funky feeling that funky beat", "is it nature or is it nurture", "the reason for this rhythm in my feet", "is it nature or is it nurture", "people are so angry in the street", "is it nature or is it nurture", "people are just voting with their feet"],
     ["don't be rude, don't be rude"],
