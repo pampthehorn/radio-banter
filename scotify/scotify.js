@@ -9,6 +9,52 @@ const albums = {
   }
 };
 
+const lyricsByTrackId = {
+  1: [
+    ["is it nature is it nurture", "this funky feeling that funky beat", "is it nature or is it nurture", "the reason for this rhythm in my feet", "is it nature or is it nurture", "people are so angry in the street", "is it nature or is it nurture", "people are just voting with their feet"],
+    ["don't be rude, don't be rude"],
+    ["is it nature or is it nurture", "to argue with your mother's point of view", "is it nature or is it nurture", "to read beyond the headlines of the news"],
+    ["part of me felt we done too much", "part of me felt we never done enough"]
+  ],
+  2: [
+    ["Oh no what to do", "i've gone and grown feelings for you", "i'm gonna have to", "water them now, keep them fed", "pull the weeds from, from their bed", "give them sunshine, give them shade", "use a trowel, use a spade"],
+    ["aw man it's every day", "put my shoes on", "and it starts to rain", "let's see how it looks in an hour"],
+    ["it's not always", "the shoots will find their way", "it's not always", "the shrubs will see the day"],
+    ["oh no what to do", "i've grown in love with you"]
+  ],
+  3: [
+    ["people tell me", "because of my age", "i should rein it in", "i should pare it back", "people tell me people tell me people tell me"],
+    ["to look out of the window", "and what do you see", "the war is still raging", "there'll never be peace"]
+  ],
+  4: [
+    ["if we don't come off the gas that we emit", "and all we do are these carbon offsets", "is that really us playing our part", "is it wise to be so smart", "if we don't just stop oil", "the whole sea's gang come to a boil", "there'll be mammals washed up on our shores", "children seeking refuge at our doors", "and they'll be asking why do we only get our bit", "once you've taken all the good things out of it"],
+    ["if we don't stop ourselves", "we don't leave anybody else", "the chance to", "the opportunity", "not to"]
+  ],
+  5: [
+    ["oops nope well that’s unfortch’", "i forgot to pack the propane torch", "do you need a good bag from the bakery", "before telling us your tales of bravery", "stories of old from oh so many years ago", "isn’t hindsight a wonderful thing", "when one has found one’s flow"],
+    ["the realms in which we are being", "sometimes seeing is believing", "yet, how can one quell this emotional swell?", "please pass the magic potion,", "we can cancel out the spell", "only time will really tell", "could this be", "the end of an era?"]
+  ],
+  6: [
+    ["the moon lit a bed of freshly fell snow", "my family slept as i made them soup by the stove", "someone's knockin on my door"],
+    ["out there's a young man wearing old man's clothes", "he says he lives here and my love is his", "i send him walking in the snow man"],
+    ["i can't sleep so i go back outside", "where did he come from, which way did he go", "there are no footprints in the snow"]
+  ],
+  7: [
+    ["i feel so lazy doctor can you diagnose why", "i'll sing anything i got til it gets me a line"],
+    ["i feel so crazy lately are you loving me why", "i'll do anything for you papa you gave me my life"],
+    ["oh my god i am so tired", "even though i have slept for 12 hours", "often that is just what happens", "you oversleep and it makes you more tired", "you oversleep and it makes you more tired"],
+    ["jesus christ i am so hungry", "gonna go home now i've spent all my money"]
+  ],
+  9: [
+    ["you've got to get in to the groove", "that's the whole point of this song", "this song is so groovy", "they're making it in to a movie"],
+    ["so when i die", "there will be stars", "in the sky", "when i die", "you've got to get in to the groove"]
+  ],
+  10: [
+    ["it's all my fault", "i took the decision", "it's all because of me", "it's my responsibility"],
+    ["i need some inspiration", "to make a meal", "is there any point though", "when all you want's a pie"]
+  ]
+};
+
 const tracks = [
   { id: 11, title: "AI", seconds: 172, duration: "2:52", albumId: "single", album: "Up on Kingussie Avenue", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/ai.mp3", artwork: "artwork/up-on-kingussie-avenue.jpg" },
   { id: 12, title: "Viva Palestine", seconds: 82, duration: "1:22", albumId: "single", album: "Up on Kingussie Avenue", genre: "Scottish DIY", src: "../red-red-rose-preview/audio/viva-palestine.mp3", artwork: "artwork/up-on-kingussie-avenue.jpg" },
@@ -44,12 +90,18 @@ const artworkDialog = document.querySelector("#artworkDialog");
 const artworkDialogTitle = document.querySelector("#artworkDialogTitle");
 const modalArtwork = document.querySelector("#modalArtwork");
 const closeArtworkButton = document.querySelector("#closeArtworkButton");
+const lyricsButton = document.querySelector("#lyricsButton");
+const lyricsDialog = document.querySelector("#lyricsDialog");
+const lyricsTitle = document.querySelector("#lyricsTitle");
+const lyricsText = document.querySelector("#lyricsText");
+const closeLyricsButton = document.querySelector("#closeLyricsButton");
 const filterButtons = Array.from(document.querySelectorAll("[data-album]"));
 
 let selectedAlbum = "all";
 let selectedIndex = 0;
 let loadedIndex = -1;
 let searchTerm = "";
+let lyricsTrackIndex = -1;
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -84,7 +136,6 @@ function renderTable() {
         <td class="time-cell">${track.duration}</td>
         <td>Radio Banter</td>
         <td>${track.album}</td>
-        <td>${track.genre}</td>
       </tr>`;
   }).join("");
 
@@ -93,13 +144,40 @@ function renderTable() {
   statusText.textContent = `${indexes.length} ${indexes.length === 1 ? "song" : "songs"}, ${formatTime(totalSeconds)} total time`;
 }
 
-function setArtwork(src, label) {
+function updateLyricsLauncher(trackIndex) {
+  const track = tracks[trackIndex];
+  const hasLyrics = Boolean(track && lyricsByTrackId[track.id]?.length);
+  lyricsTrackIndex = hasLyrics ? trackIndex : -1;
+  lyricsButton.hidden = !hasLyrics;
+  if (hasLyrics) lyricsButton.setAttribute("aria-label", `View lyrics for ${track.title}`);
+}
+
+function setArtwork(src, label, trackIndex = -1) {
   sourceArtwork.src = src;
   sourceArtwork.alt = label;
   artworkButton.setAttribute("aria-label", `View ${label} larger`);
   modalArtwork.src = src;
   modalArtwork.alt = label;
   artworkDialogTitle.textContent = label;
+  updateLyricsLauncher(trackIndex);
+}
+
+function openLyrics() {
+  const track = tracks[lyricsTrackIndex];
+  const stanzas = track && lyricsByTrackId[track.id];
+  if (!track || !stanzas) return;
+
+  lyricsTitle.textContent = track.title;
+  const paragraphs = stanzas.map((stanza) => {
+    const paragraph = document.createElement("p");
+    stanza.forEach((line, index) => {
+      if (index) paragraph.append(document.createElement("br"));
+      paragraph.append(line);
+    });
+    return paragraph;
+  });
+  lyricsText.replaceChildren(...paragraphs);
+  lyricsDialog.showModal();
 }
 
 function updateRowSelection() {
@@ -125,7 +203,7 @@ function selectAlbum(albumId) {
 
   if (!audio.paused && loadedIndex >= 0) {
     const playingTrack = tracks[loadedIndex];
-    setArtwork(playingTrack.artwork, `${playingTrack.title} artwork`);
+    setArtwork(playingTrack.artwork, `${playingTrack.title} artwork`, loadedIndex);
     return;
   }
 
@@ -144,7 +222,7 @@ function loadTrack(index, shouldPlay = false) {
   totalTime.textContent = track.duration;
   elapsedTime.textContent = "0:00";
   scrubber.value = 0;
-  setArtwork(track.artwork, `${track.title} artwork`);
+  setArtwork(track.artwork, `${track.title} artwork`, index);
   updatePlaybackControls();
 
   if (shouldPlay) audio.play().catch(updatePlaybackControls);
@@ -188,7 +266,7 @@ tableBody.addEventListener("click", (event) => {
   if (!row) return;
   selectedIndex = Number(row.dataset.index);
   const track = tracks[selectedIndex];
-  setArtwork(track.artwork, `${track.title} artwork`);
+  setArtwork(track.artwork, `${track.title} artwork`, selectedIndex);
   updateRowSelection();
 });
 
@@ -218,7 +296,7 @@ searchInput.addEventListener("input", () => {
   renderTable();
   if (selectedIndex >= 0 && audio.paused) {
     const track = tracks[selectedIndex];
-    setArtwork(track.artwork, `${track.title} artwork`);
+    setArtwork(track.artwork, `${track.title} artwork`, selectedIndex);
   }
 });
 
@@ -226,6 +304,12 @@ artworkButton.addEventListener("click", () => artworkDialog.showModal());
 closeArtworkButton.addEventListener("click", () => artworkDialog.close());
 artworkDialog.addEventListener("click", (event) => {
   if (event.target === artworkDialog) artworkDialog.close();
+});
+
+lyricsButton.addEventListener("click", openLyrics);
+closeLyricsButton.addEventListener("click", () => lyricsDialog.close());
+lyricsDialog.addEventListener("click", (event) => {
+  if (event.target === lyricsDialog) lyricsDialog.close();
 });
 
 audio.addEventListener("play", updatePlaybackControls);

@@ -14,7 +14,7 @@
   <meta name="twitter:description" content="The Radio Banter album and Up on Kingussie Avenue single, all in one lovingly old-fashioned player.">
   <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
   <link rel="icon" type="image/png" href="../favicon-96x96.png">
-  <link rel="stylesheet" href="scotify.css?v=2">
+  <link rel="stylesheet" href="scotify.css?v=3">
 </head>
 <body>
   <main class="scotify-window" aria-label="Scotify music player">
@@ -74,6 +74,7 @@
           <button id="artworkButton" class="artwork-button" type="button" aria-label="View Up on Kingussie Avenue artwork larger">
             <img id="sourceArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
           </button>
+          <button id="lyricsButton" class="lyrics-button" type="button" hidden>Lyrics</button>
         </div>
       </aside>
 
@@ -100,7 +101,6 @@
                 <th class="time-column" scope="col">Time</th>
                 <th class="artist-column" scope="col">Artist</th>
                 <th class="album-column" scope="col">Album</th>
-                <th class="genre-column" scope="col">Genre</th>
               </tr>
             </thead>
             <tbody id="trackTableBody"></tbody>
@@ -120,11 +120,20 @@
   <dialog id="artworkDialog" class="artwork-dialog" aria-labelledby="artworkDialogTitle">
     <div class="artwork-dialog-frame">
       <h2 id="artworkDialogTitle" class="visually-hidden">Up on Kingussie Avenue artwork</h2>
-      <button id="closeArtworkButton" class="artwork-dialog-close" type="button" aria-label="Close larger artwork">×</button>
+      <button id="closeArtworkButton" class="modal-close" type="button" aria-label="Close larger artwork">×</button>
       <img id="modalArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
     </div>
   </dialog>
 
-  <script src="scotify.js?v=3"></script>
+  <dialog id="lyricsDialog" class="lyrics-dialog" aria-labelledby="lyricsTitle">
+    <div class="lyrics-dialog-frame">
+      <button id="closeLyricsButton" class="modal-close" type="button" aria-label="Close lyrics">×</button>
+      <p class="lyrics-kicker">Lyrics</p>
+      <h2 id="lyricsTitle"></h2>
+      <div id="lyricsText" class="lyrics-text"></div>
+    </div>
+  </dialog>
+
+  <script src="scotify.js?v=4"></script>
 </body>
 </html>
