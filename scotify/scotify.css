@@ -76,14 +76,23 @@ button { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 7px;
   margin: 0;
   line-height: 0;
 }
 
-.title-bar-logo {
+.title-bar-mark,
+.title-bar-wordmark {
   display: block;
   width: auto;
+}
+
+.title-bar-mark {
   height: 23px;
+}
+
+.title-bar-wordmark {
+  height: 16px;
 }
 
 .toolbar {
