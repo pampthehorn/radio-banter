@@ -1,417 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Radio Banter - DIY Rock Band, Glasgow</title>
-    <meta name="description"
-        content="Official website of music group Radio Banter from Glasgow, Scotland.">
-    <meta name="keywords"
-        content="Radio Banter, Glasgow Band, Scottish Music, DIY, Indie, Debut Album, Chris Wallace, Sephi Lock, Rob Alexander">
-    <meta name="author" content="Radio Banter">
-    <link rel="canonical" href="https://radiobanter.net/">
-
-    <meta property="og:type" content="music.album" />
-    <meta property="og:title" content="Radio Banter - Glasgow, Scotland" />
-    <meta property="og:description"
-        content="Glasgow's Radio Banter debut album. 10 tracks including Nature Nurture, Growing in Love, and The Groove." />
-    <meta property="og:url" content="https://radiobanter.net/" />
-    <meta property="og:site_name" content="Radio Banter" />
-    <meta property="og:image" content="https://radiobanter.net/lily/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_GB" />
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@pampthehorn">
-    <meta name="twitter:creator" content="@pampthehorn">
-    <meta name="twitter:title" content="Radio Banter - Glasgow, Scotland">
-    <meta name="twitter:description"
-        content="Glasgow's Radio Banter debut album. 10 tracks including Nature Nurture, Growing in Love, and The Groove.">
-    <meta name="twitter:image" content="https://radiobanter.net/lily/og-image.jpg">
-
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Radio Banter" />
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM424CEGCJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-MM424CEGCJ');
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap" rel="stylesheet">
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    <link href="style.css?v24" rel="stylesheet" type="text/css">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "MusicGroup",
-          "@id": "https://radiobanter.net/#band",
-          "name": "Radio Banter",
-          "url": "https://radiobanter.net",
-          "logo": "https://radiobanter.net/favicon-96x96.png",
-          "image": "https://radiobanter.net/ril_live_shot.jpg",
-          "sameAs": [
-            "https://www.instagram.com/pampthehorn/"
-          ],
-          "location": {
-            "@type": "Place",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Glasgow",
-              "addressRegion": "Scotland",
-              "addressCountry": "UK"
-            }
-          },
-          "member": [
-            { "@type": "Person", "name": "Chris Wallace", "roleName": "Drums & Vocals" },
-            { "@type": "Person", "name": "Sephi Lock", "roleName": "Bass Guitar" },
-            { "@type": "Person", "name": "Rob Alexander", "roleName": "Vocals & Electric Piano" }
-          ],
-          "album": { "@id": "https://radiobanter.net" }
-        },
-        {
-          "@type": "MusicAlbum",
-          "@id": "https://radiobanter.net",
-          "name": "Radio Banter",
-          "byArtist": { "@id": "https://radiobanter.net" },
-          "datePublished": "2025-12-04",
-          "numTracks": 10,
-          "image": "https://radiobanter.net/lily/band-cover.jpg",
-          "track": [
-            { "@type": "MusicRecording", "position": 1, "name": "Nature Nurture", "duration": "PT4M45S" },
-            { "@type": "MusicRecording", "position": 2, "name": "Growing in Love", "duration": "PT3M29S" },
-            { "@type": "MusicRecording", "position": 3, "name": "Harsh but Fair", "duration": "PT3M05S" },
-            { "@type": "MusicRecording", "position": 4, "name": "Richmond", "duration": "PT3M56S" },
-            { "@type": "MusicRecording", "position": 5, "name": "End of an Era", "duration": "PT2M35S" },
-            { "@type": "MusicRecording", "position": 6, "name": "Ghostie", "duration": "PT2M23S" },
-            { "@type": "MusicRecording", "position": 7, "name": "Doctor", "duration": "PT2M39S" },
-            { "@type": "MusicRecording", "position": 8, "name": "Instrumental", "duration": "PT2M40S" },
-            { "@type": "MusicRecording", "position": 9, "name": "The Groove", "duration": "PT3M00S" },
-            { "@type": "MusicRecording", "position": 10, "name": "Financial Crash", "duration": "PT2M37S" }
-          ]
-        }
-      ]
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radio Banter - DIY Rock Band, Glasgow</title>
+  <meta name="description" content="Official website of music group Radio Banter from Glasgow, Scotland.">
+  <meta name="keywords" content="Radio Banter, Glasgow Band, Scottish Music, DIY, Indie, Debut Album, Chris Wallace, Sephi Lock, Rob Alexander">
+  <meta name="author" content="Radio Banter">
+  <link rel="canonical" href="https://radiobanter.net/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Radio Banter - Glasgow, Scotland">
+  <meta property="og:description" content="Official website of music group Radio Banter from Glasgow, Scotland.">
+  <meta property="og:image" content="https://radiobanter.net/lily/og-image.jpg">
+  <meta property="og:url" content="https://radiobanter.net/">
+  <meta property="og:site_name" content="Radio Banter">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Radio Banter - Glasgow, Scotland">
+  <meta name="twitter:description" content="Official website of music group Radio Banter from Glasgow, Scotland.">
+  <meta name="twitter:image" content="https://radiobanter.net/lily/og-image.jpg">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Radio Banter">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site-nav.css?v=1">
+  <link rel="stylesheet" href="site-pages.css?v=1">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM424CEGCJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MM424CEGCJ');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "@id": "https://radiobanter.net/#band",
+    "name": "Radio Banter",
+    "url": "https://radiobanter.net/",
+    "logo": "https://radiobanter.net/favicon-96x96.png",
+    "image": "https://radiobanter.net/ril_live_shot.jpg",
+    "location": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Glasgow",
+        "addressRegion": "Scotland",
+        "addressCountry": "UK"
+      }
+    },
+    "member": [
+      {"@type": "Person", "name": "Chris Wallace", "roleName": "Drums & Vocals"},
+      {"@type": "Person", "name": "Sephi Lock", "roleName": "Bass Guitar"},
+      {"@type": "Person", "name": "Rob Alexander", "roleName": "Vocals & Electric Piano"}
+    ],
+    "album": {
+      "@type": "MusicAlbum",
+      "name": "Radio Banter",
+      "url": "https://radiobanter.net/scotify/",
+      "datePublished": "2025-12-04",
+      "numTracks": 10,
+      "image": "https://radiobanter.net/lily/newscanscropped/Front%20Cover.png"
     }
-    </script>
+  }
+  </script>
 </head>
-
 <body>
-    <div id="waldoWalkonGroup" class="waldo-walkon-group" aria-hidden="true">
-        <video id="waldoWalkon" class="waldo-walkon" playsinline muted preload="none"></video>
-        <img id="waldoWalkonFallback" class="waldo-walkon-fallback" alt="" decoding="async">
-    </div>
-    <div id="waldoSpeechBubble" class="waldo-speech-bubble" aria-hidden="true">join our newsletter!</div>
+  <nav class="site-tabs" aria-label="Main navigation">
+    <a href="/" aria-current="page"><span>News</span></a>
+    <a href="/scotify/"><span>Listen</span></a>
+    <a href="/newsletter.html"><span>Newsletter</span></a>
+  </nav>
+  <main class="page-content">
+    <h1 class="visually-hidden">Radio Banter</h1>
+    <img class="page-wordmark" src="RadioBanterCDText.png" alt="">
 
-    <div class="content-wrapper">
+    <section class="news-story" aria-label="Upcoming show">
+      <p>Radio Banter are supporting Ebby from Rotterdam on Wednesday 28th October 2026 at The Doublet, Glasgow.</p>
+      <p><mark><a href="https://tickets-scotland.com/whats-on/ebby-from-rotterdam" target="_blank" rel="noopener noreferrer">https://tickets-scotland.com/whats-on/ebby-from-rotterdam</a></mark></p>
+      <a class="gig-poster" href="https://tickets-scotland.com/whats-on/ebby-from-rotterdam" target="_blank" rel="noopener noreferrer">
+        <img src="posters/ebby-radio-banter-doublet-2026-10-28.webp" alt="Ebby and Radio Banter at The Doublet, Wednesday 28 October 2026">
+      </a>
+    </section>
 
-        <div class="split-stage">
-            <div class="stage-panel stage-left">
-                <img src="lily/newscanscropped/Front Cover.png" alt="Album Cover" class="panel-image">
-            </div>
+    <section class="cd-news" aria-label="CD album">
+      <p>Our CD album 'Radio Banter' is available from <a href="https://www.somegreatreward.scot/">Some Great Reward, Glasgow</a>; <a href="https://monorailmusic.com/product/radio-banter/" target="_blank" rel="noopener noreferrer">Monorail, Glasgow</a>; Europa Music, Stirling; and <a href="https://www.good-vibes.space/" target="_blank" rel="noopener noreferrer">Good Vibes, Edinburgh</a>!</p>
+      <p>10-track CD album produced by Chris White and hand made in Glasgow (by Spicey); eco cardboard case with laminate front/back/spine covers &amp; disc holder; signed by the band and artwork artist Lily Paine; unique hand labelled slow-burned discs; 20-page illustrated lyric booklet; plus 2 shiny stickers!</p>
+    </section>
 
-            <div class="stage-panel stage-right">
-                <div id="introContent" class="text-content-wrapper">
-                    <h1 style="display:none">Radio Banter</h1>
-                    <img src="RadioBanterCDText.png" style="max-width:100%;width:120px">
-                    <div class="news-item">
-                        <p>
-                            <strong>20261015</strong> We are playing The Doublet with Ebby on Wednesday 28th October.
-                        </p>
-                        <p>
-                            <mark><a href="https://tickets-scotland.com/whats-on/ebby-from-rotterdam" target="_blank" rel="noopener noreferrer">Tickets Scotland</a></mark>
-                        </p>
-                        <a href="https://tickets-scotland.com/whats-on/ebby-from-rotterdam" target="_blank" rel="noopener noreferrer">
-                            <img src="posters/ebby-radio-banter-doublet-2026-10-28.webp" class="no-invert" alt="Ebby and Radio Banter at The Doublet, Wednesday 28 October 2026"/>
-                        </a>
-                    </div>
-               
-
-<div>
-                <details class="old-news">
-                    <summary>old news</summary>
-                    <div class="news-item">
-                   
-                    <p>
-                       <mark>Please join us at THE DOUBLET BAR in GLASGOW WEST END in the evening of Thursday 4th June. <a href="https://tickets-scotland.com/events.html?event_method=viewevent&event_id=e6e3bfaa-2cf3-11f1-ae70-060035c00d11" target="_blank">£8 Tickets</a>/ or on the door</mark>
-                    </p>
-                    <img src="posters/radiobanter_robchurm_spiceycolin_doubletposter.jpg" alt="Radio Banter  / Rob Churm / Spicey Colin. Doublet Bar 4th June 2026"/>
-
-                    </div>
-                    <div class="news-item">
-                        <p>
-                            <strong>20251208</strong> Please join us on <strong>Thursday 8th January at Sharmanka Puppet
-                                Theatre</strong>, Trongate,
-                            Glasgow; We will play our songs live to celebrate the <strong>release of our debut album</strong>! Joined by
-                            Glasgow artist & poet <a href='https://www.instagram.com/painepoetry/' target="_blank">Lily Paine</a> and The Chop.
-                            <br /><br />Tickets available <a href='https://www.ticketsource.co.uk/sharmanka/t-mjojxeo'
-                                target="_blank">here</a>.
-                        </p>
-                    </div>
-                </details>
-               
-                </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <p>
-                Our CD album is available here now and in the<br />r e a l &nbsp; w o r l d 🌍 from <a
-                    href="https://www.somegreatreward.scot/">Some Great Reward, Glasgow</a>; <a
-                    href='https://monorailmusic.com/product/radio-banter/' target="_blank">Monorail, Glasgow</a>; Europa Music,
-                Stirling; and <a href='https://www.good-vibes.space/' target="_blank">Good Vibes, Edinburgh</a>!
-            </p>
-                    <p>
-                        10-track CD album produced by Chris White and hand made in Glasgow (by spicey); eco cardboard case with laminate
-                        front/back/spine covers & disc holder; signed by the band and artwork artist Lily Paine; unique hand labelled
-                        slow-burned discs; 20-page illustrated lyric booklet; plus 2 shiny stickers!
-                    </p>
-                    
-                    <!-- <div class="paypal-button-container">
-                        <form method="post" action="https://www.paypal.com/cgi-bin/webscr" class="paypal-button" target="_blank">
-                            <input name="business" type="hidden" value="pampthehorn@gmail.com">
-                            <input name="cmd" type="hidden" value="_xclick">
-                            <input name="item_name" type="hidden" value="Radio Banter - S/T Album CD">
-                            <input name="amount" type="hidden" value="5.00">
-                            <input name="currency_code" type="hidden" value="GBP">
-                            <input name="shipping" type="hidden" value="3.00">
-                            <input name="return" type="hidden" value="https://radiobanter.net">
-                    
-                            <button type="submit" name="submit" class="paypal-btn">
-                                Buy CD Now (£8 inc p&p)
-                            </button>
-                            <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" border="0">
-                        </form>
-                    </div> -->
-</div>
-
-
-        <div class="playlist" id="playlist">
-            <ul id="playlistList"></ul>
-        </div>
-
-        <div class="album-downloads">
-            <a href="https://cdn.radiobanter.net/radio-banter--mp3s.zip" class="album-download-btn" download>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download MP3s
-            </a>
-            <a href="https://cdn.radiobanter.net/radio-banter--wavs.zip" class="album-download-btn" download>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download WAVs
-            </a>
-        </div>
-
-        <div id="waldoWalkonTrigger" aria-hidden="true"></div>
-
-        <div id="dynamicStage" class="split-stage">
-            <div class="stage-panel stage-left">
-                <img src="" alt="Track Artwork" id="trackArtImage" class="panel-image">
-            </div>
-
-        <div class="stage-panel stage-right" id="lyricsPanelScroll">
-            <div id="lyricsContent" class="text-content-wrapper">
-             
-        
-                <div id="dynamicLyricsTitle"></div>
-                <div id="dynamicLyricsBody"></div>
-            </div>
-        
-            <img src="" alt="Secondary Artwork" id="secondaryImage" class="panel-image hidden">
-        </div>
-
-        </div>
-        <div class="booklet-controls">
-            <button id="bookletPrevBtn" aria-label="Previous Page">&larr;</button>
-            <!-- <span class="booklet-label">Lyric Book</span> -->
-            <button id="bookletNextBtn" aria-label="Next Page">&rarr;</button>
-        </div>
-        <audio id="audioPlayer"></audio>
-
-        <div style="display:none;">
-            <div id="raw-lyrics-nature-nurture">
-                <p>is it nature is it nurture<br>this funky feeling that funky beat<br>is it nature or is it
-                    nurture<br>the reason for this rhythm in my feet<br>is it nature or is it nurture<br>people are so
-                    angry in the street<br>is it nature or is it nurture<br>people are just voting with their feet</p>
-                <p>don't be rude, don't be rude</p>
-                <p>is it nature or is it nurture<br>to argue with your mother's point of view<br>is it nature or is it
-                    nurture<br>to read beyond the headlines of the news</p>
-                <p>part of me felt we done too much<br>part of me felt we never done enough</p>
-            </div>
-            <div id="raw-lyrics-growing-in-love">
-                <p>Oh no what to do<br>i've gone and grown feelings for you<br>i'm gonna have to<br>water them now, keep
-                    them fed<br>pull the weeds from, from their bed<br>give them sunshine, give them shade<br>use a
-                    trowel, use a spade</p>
-                <p>aw man it's every day<br>put my shoes on<br>and it starts to rain<br>let's see how it looks in an
-                    hour</p>
-                <p>it's not always<br>the shoots will find their way<br>it's not always<br>the shrubs will see the day
-                </p>
-                <p>oh no what to do<br>i've grown in love with you</p>
-            </div>
-            <div id="raw-lyrics-harsh-but-fair">
-                <p>people tell me<br>because of my age<br>i should rein it in<br>i should pare it back<br>people tell
-                    me people tell me people tell me</p>
-                <p>to look out of the window<br>and what do you see<br>the war is still raging<br>there'll never be
-                    peace</p>
-            </div>
-            <div id="raw-lyrics-richmond">
-                <p>if we don't come off the gas that we emit<br>and all we do are these carbon offsets<br>is that really
-                    us playing our part<br>is it wise to be so smart<br>if we don't just stop oil<br>the whole sea's
-                    gang come to a boil<br>there'll be mammals washed up on our shores<br>children seeking refuge at our
-                    doors<br>and they'll be asking why do we only get our bit<br>once you've taken all the good things
-                    out of it</p>
-                <p>if we don't stop ourselves<br>we don't leave anybody else<br>the chance to<br>the opportunity<br>not
-                    to</p>
-            </div>
-            <div id="raw-lyrics-end-of-an-era">
-                <p>oops nope well that’s unfortch’<br>i forgot to pack the propane torch<br>do you need a good bag from
-                    the bakery<br>before telling us your tales of bravery<br>stories of old from oh so many years
-                    ago<br>isn’t hindsight a wonderful thing<br>when one has found one’s flow</p>
-                <p>the realms in which we are being<br>sometimes seeing is believing<br>yet, how can one quell this
-                    emotional swell?<br>please pass the magic potion,<br>we can cancel out the spell<br>only time will
-                    really tell<br>could this be<br>the end of an era?</p>
-            </div>
-            <div id="raw-lyrics-ghostie">
-                <p>the moon lit a bed of freshly fell snow<br>my family slept as i made them soup by the
-                    stove<br>someone's knockin on my door</p>
-                <p>out there's a young man wearing old man's clothes<br>he says he lives here and my love is his<br>i
-                    send him walking in the snow man</p>
-                <p>i can't sleep so i go back outside<br>where did he come from, which way did he go<br>there are no
-                    footprints in the snow</p>
-            </div>
-            <div id="raw-lyrics-doctor">
-                <p>i feel so lazy doctor can you diagnose why<br>i'll sing anything i got til it gets me a line</p>
-                <p>i feel so crazy lately are you loving me why<br>i'll do anything for you papa you gave me my life</p>
-                <p>oh my god i am so tired<br>even though i have slept for 12 hours<br>often that is just what
-                    happens<br>you oversleep and it makes you more tired<br>you oversleep and it makes you more tired
-                </p>
-                <p>jesus christ i am so hungry<br>gonna go home now i've spent all my money</p>
-            </div>
-            <div id="raw-lyrics-instrumental">
-            </div>
-            <div id="raw-lyrics-the-groove">
-                <p>you've got to get in to the groove<br>that's the whole point of this song<br>this song is so
-                    groovy<br>they're making it in to a movie</p>
-                <p>so when i die<br>there will be stars<br>in the sky<br>when i die<br>you've got to get in to the
-                    groove</p>
-            </div>
-            <div id="raw-lyrics-financial-crash">
-                <p>it's all my fault<br>i took the decision<br>it's all because of me<br>it's my responsibility</p>
-                <p>i need some inspiration<br>to make a meal<br>is there any point though<br>when all you want's a pie
-                </p>
-            </div>
-        </div>
-
-
-        <div class="text-content-wrapper">
-            <p><em>Additional accordion (3), xaphoon (1&5), tongue drum (8) and penny whistle (9&10)
-                    by Rob Alexander; trombone (1), guitar (5) and bongos (9) by Chris Wallace;
-                    guitalele (6) and guitar (8) by Chris White.</em></p>
-            <p><em>Recorded throughout July 2025 at Pillar Studio, Glasgow, Scotland</em></p>
-            <p><em>Songs and music by Radio Banter </em></p>
-            <p><em>Engineering, mixing and mastering by Chris White</em></p>
-            <p><em>Artwork by Lily Paine</em></p>
-
-            <p><strong>Radio Banter</strong> are <br /> Chris Wallace <em>Drums & Vocals</em> <br />Sephi Lock <em>Bass
-                    guitar</em>
-                <br />Rob Alexander <em>Vocals & Electric piano</em>
-            </p>
-
-   
-        </div>
-
-<div class="photo-slider-wrapper">
-    <img id="sliderImage" src="ril_live_shot.jpg" alt="Radio Banter Photo" class="full-width-image">
-
-    <!-- <div class="booklet-controls" style="justify-content: center; margin-top: 15px; margin-bottom: 10px;">
-        <button id="photoPrevBtn" aria-label="Previous Photo">&larr;</button>
-        <button id="photoNextBtn" aria-label="Next Photo">&rarr;</button>
-    </div> -->
-</div>
-
-<!-- <p style="text-align: center; font-size: 0.9em; color: #888;">
-    <em>Photos from the studio</em>
-</p> -->
-
-<div id="mc_embed_signup">
-    <form
-        action="https://gmail.us15.list-manage.com/subscribe/post?u=7c63c18aba01af6bb7e677bc4&amp;id=b60110bcb4&amp;f_id=002c93e1f0"
-        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-
-            <p>please join our mailing list so we can reach you!</p>
-            <div class="mc-field-group">
-                <label for="mce-EMAIL" style="display:none">Email Address <span class="asterisk">*</span></label>
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value="" placeholder="Email Address">
-            </div>
-
-            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="b_7c63c18aba01af6bb7e677bc4_b60110bcb4" tabindex="-1" value="">
-            </div>
-
-            <div class="optionalParent">
-                <div class="clear foot">
-                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                </div>
-            </div>
-
-        </div>
-    </form>
-</div>
-            <p><a href="mailto:radiobanternet@gmail.com">radiobanternet@gmail.com</a>
-            </p>
-
-          <!-- <a href="https://www.ticketsource.co.uk/sharmanka/t-mjojxeo"><img src="posters/sharmanka-poster.jpg" alt="Sharmanka Gig Poster" class="full-width-image" style="margin-top:20px; margin-bottom:20px;"></a> -->
-    </div>
-
-    <script>
-
-    const galleryImages = [
-        "ril_live_shot.jpg"
-        // "photos/radiobanter-pole.jpg",
-        // "photos/rob-catman.jpeg",
-        // "photos/waldo-guitar.jpeg",
-        // "photos/sephi-caspycans.jpeg",
-        // "photos/sephi-peace-studio.jpeg",
-        // "photos/rob-thumbsup.jpeg",
-        // "photos/sephi-sylvie.jpeg",
-        // "photos/chriswhite-banter.jpeg",
-        // "photos/radiobanter-jump.jpg"
-    ];
-
-   const mainTracks = [
-        { title: "Nature nurture", duration: "4:45", src: "20250823masters/01 Nature Nurture.mp3", image: "lily/newscanscropped/Nature Nurture.png", lyricsId: "raw-lyrics-nature-nurture" },
-        { title: "Growing in love", duration: "3:29", src: "20250823masters/02 Growing in Love.mp3", image: "lily/newscanscropped/Grown In Love.png", lyricsId: "raw-lyrics-growing-in-love" },
-        { title: "Harsh but fair", duration: "3:05", src: "20250823masters/03 Harsh but Fair.mp3", image: "lily/newscanscropped/Harsh But Fair.png", lyricsId: "raw-lyrics-harsh-but-fair" },
-        { title: "Richmond", duration: "3:56", src: "20250823masters/04 Richmond.mp3", image: "lily/newscanscropped/Richmond.png", lyricsId: "raw-lyrics-richmond" },
-        { title: "End of an era", duration: "2:35", src: "20250823masters/05 End of an Era.mp3", image: "lily/newscanscropped/End Of An Era.png", lyricsId: "raw-lyrics-end-of-an-era" },
-        { title: "Ghostie", duration: "2:23", src: "20250823masters/06 Ghosty.mp3", image: "lily/newscanscropped/Ghostie-inverted.png", lyricsId: "raw-lyrics-ghostie", noInvert: true },
-        { title: "Doctor", duration: "2:39", src: "20250823masters/07 Doctor.mp3", image: "lily/newscanscropped/Doctor.png", lyricsId: "raw-lyrics-doctor" },
-        { title: "Instrumental", duration: "2:40", src: "20250823masters/08 Instrumental.mp3", image: "lily/newscanscropped/Instrumental 1.png", lyricsId: "raw-lyrics-instrumental" },
-        { title: "The groove", duration: "3:00", src: "20250823masters/09 The Groove.mp3", image: "lily/newscanscropped/The Groove-inverted.png", lyricsId: "raw-lyrics-the-groove",noInvert:true },
-        { title: "Financial crash", duration: "2:37", src: "20250823masters/10 Financial Crash.mp3", image: "lily/newscanscropped/Financial Crash.png", lyricsId: "raw-lyrics-financial-crash" }
-    ];
-    </script>
-
-    <script src="script.js?v36">
-
-    </script>
+    <section class="band-info" aria-label="The band">
+      <p><strong>Radio Banter</strong> are <br>Chris Wallace <em>Drums &amp; Vocals</em><br>Sephi Lock <em>Bass guitar</em><br>Rob Alexander <em>Vocals &amp; Electric piano</em></p>
+      <img class="band-photo" src="ril_live_shot.jpg" alt="Radio Banter">
+      <p><a href="mailto:radiobanternet@gmail.com">radiobanternet@gmail.com</a></p>
+    </section>
+  </main>
 </body>
-
 </html>

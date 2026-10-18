@@ -604,9 +604,28 @@ button { color: inherit; }
 .lyrics-text p { margin: 0 0 1.35em; }
 .lyrics-text p:last-child { margin-bottom: 0; }
 
+.album-info-text {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.album-info-text p { margin: 0 0 1em; }
+.album-info-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.album-info-downloads a {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid #78909f;
+  border-radius: 3px;
+  background: linear-gradient(#fff, #cfe1ec);
+  color: var(--ink);
+  text-decoration: none;
+}
+.album-info-downloads a:hover { background: #fff; }
+.album-info-downloads a:focus-visible { outline: 2px solid var(--focus); }
+
 @media (max-width: 860px) {
   body { padding: 0; background: #d8ebf5; }
-  .scotify-window { min-height: 100vh; border: 0; border-radius: 0; }
+  .scotify-window { min-height: calc(100vh - 45px); border: 0; border-radius: 0; }
   .toolbar { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
   .transport-cluster { grid-template-columns: auto minmax(120px, 1fr); align-items: center; gap: 18px; }
   .volume-control { width: min(220px, 100%); }

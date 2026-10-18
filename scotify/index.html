@@ -15,8 +15,14 @@
   <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
   <link rel="icon" type="image/png" href="../favicon-96x96.png">
   <link rel="stylesheet" href="scotify.css?v=6">
+  <link rel="stylesheet" href="../site-nav.css?v=1">
 </head>
 <body>
+  <nav class="site-tabs site-tabs--light" aria-label="Main navigation">
+    <a href="/"><span>News</span></a>
+    <a href="/scotify/" aria-current="page"><span>Listen</span></a>
+    <a href="/newsletter.html"><span>Newsletter</span></a>
+  </nav>
   <main class="scotify-window" aria-label="Scotify music player">
     <header class="title-bar">
       <h1>
@@ -77,6 +83,7 @@
             <img id="sourceArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
           </button>
           <button id="lyricsButton" class="lyrics-button" type="button" hidden>Lyrics</button>
+          <button id="albumInfoButton" class="lyrics-button" type="button">Album info</button>
         </div>
       </aside>
 
@@ -131,6 +138,25 @@
     </div>
   </dialog>
 
-  <script src="scotify.js?v=7"></script>
+  <dialog id="albumInfoDialog" class="lyrics-dialog album-info-dialog" aria-labelledby="albumInfoTitle">
+    <div class="lyrics-dialog-frame">
+      <button id="closeAlbumInfoButton" class="modal-close" type="button" aria-label="Close album info">×</button>
+      <p class="lyrics-kicker">Radio Banter</p>
+      <h2 id="albumInfoTitle">Album info</h2>
+      <div class="album-info-text">
+        <p><em>Additional accordion (3), xaphoon (1&amp;5), tongue drum (8) and penny whistle (9&amp;10) by Rob Alexander; trombone (1), guitar (5) and bongos (9) by Chris Wallace; guitalele (6) and guitar (8) by Chris White.</em></p>
+        <p><em>Recorded throughout July 2025 at Pillar Studio, Glasgow, Scotland</em></p>
+        <p><em>Songs and music by Radio Banter</em></p>
+        <p><em>Engineering, mixing and mastering by Chris White</em></p>
+        <p><em>Artwork by Lily Paine</em></p>
+        <div class="album-info-downloads">
+          <a href="https://cdn.radiobanter.net/radio-banter--mp3s.zip" download>Download MP3s</a>
+          <a href="https://cdn.radiobanter.net/radio-banter--wavs.zip" download>Download WAVs</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="scotify.js?v=9"></script>
 </body>
 </html>

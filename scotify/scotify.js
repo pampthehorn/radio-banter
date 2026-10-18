@@ -115,6 +115,9 @@ const lyricsDialog = document.querySelector("#lyricsDialog");
 const lyricsTitle = document.querySelector("#lyricsTitle");
 const lyricsText = document.querySelector("#lyricsText");
 const closeLyricsButton = document.querySelector("#closeLyricsButton");
+const albumInfoButton = document.querySelector("#albumInfoButton");
+const albumInfoDialog = document.querySelector("#albumInfoDialog");
+const closeAlbumInfoButton = document.querySelector("#closeAlbumInfoButton");
 const filterButtons = Array.from(document.querySelectorAll("[data-album]"));
 
 let selectedAlbum = "all";
@@ -223,6 +226,14 @@ function selectAlbum(albumId) {
     return;
   }
 
+  if (selectedIndex >= 0 && selectedIndex !== loadedIndex) {
+    const selectedTrack = tracks[selectedIndex];
+    displayTitle.textContent = selectedTrack.title;
+    totalTime.textContent = selectedTrack.duration;
+    elapsedTime.textContent = "0:00";
+    scrubber.value = 0;
+  }
+
   const release = albumId === "album" ? albums.album : albums.single;
   setArtwork(release.artwork, `${release.title} cover artwork`);
 }
@@ -326,6 +337,12 @@ lyricsButton.addEventListener("click", openLyrics);
 closeLyricsButton.addEventListener("click", () => lyricsDialog.close());
 lyricsDialog.addEventListener("click", (event) => {
   if (event.target === lyricsDialog) lyricsDialog.close();
+});
+
+albumInfoButton.addEventListener("click", () => albumInfoDialog.showModal());
+closeAlbumInfoButton.addEventListener("click", () => albumInfoDialog.close());
+albumInfoDialog.addEventListener("click", (event) => {
+  if (event.target === albumInfoDialog) albumInfoDialog.close();
 });
 
 audio.addEventListener("play", updatePlaybackControls);
