@@ -6,15 +6,15 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 16px 16px 48px;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   font-family: "Frank Ruhl Libre", Georgia, serif;
   font-size: 18px;
   line-height: 1.55;
 }
 
 a { color: inherit; text-underline-offset: .16em; }
-a:hover { color: #c8ddef; }
+a:hover { color: #555; }
 
 .visually-hidden {
   position: absolute;
@@ -39,15 +39,15 @@ a:hover { color: #c8ddef; }
   max-width: 100%;
   height: auto;
   margin: 12px 0 30px;
-  filter: invert(1);
+  filter: none;
 }
 
 .news-story p,
 .cd-news p,
 .band-info p { margin: 0 0 1em; }
 
-.news-story mark { background: #fff; color: #000; overflow-wrap: anywhere; }
-.news-story mark a { color: #9b0000; }
+.news-story mark { background: #eee; color: #000; overflow-wrap: anywhere; }
+.news-story mark a { color: #000; }
 
 .gig-poster {
   display: block;
@@ -76,20 +76,22 @@ a:hover { color: #c8ddef; }
   flex: 1 1 220px;
   min-width: 0;
   padding: 10px;
-  border: 1px solid #fff;
-  border-radius: 0;
-  font: inherit;
-}
-.newsletter-signup input[type="submit"] {
-  padding: 10px 18px;
-  border: 1px solid #fff;
+  border: 1px solid #555;
   border-radius: 0;
   background: #fff;
   color: #000;
   font: inherit;
+}
+.newsletter-signup input[type="submit"] {
+  padding: 10px 18px;
+  border: 1px solid #000;
+  border-radius: 0;
+  background: #000;
+  color: #fff;
+  font: inherit;
   cursor: pointer;
 }
-.newsletter-signup input[type="submit"]:hover { background: #d8ebf5; }
+.newsletter-signup input[type="submit"]:hover { background: #444; }
 .newsletter-archive p { margin: 0 0 1.25em; overflow-wrap: anywhere; }
 
 @media (max-width: 520px) {

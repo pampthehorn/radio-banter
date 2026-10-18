@@ -6,7 +6,7 @@
   overflow: hidden;
   border: 1px solid currentColor;
   border-radius: 4px;
-  color: #fff;
+  color: #111;
   font: 600 14px/1.2 "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
@@ -22,8 +22,8 @@
 .site-tabs a:hover,
 .site-tabs a[aria-current="page"] { background: currentColor; }
 .site-tabs a:hover span,
-.site-tabs a[aria-current="page"] span { color: #000; }
-.site-tabs a:focus-visible { outline: 2px solid #4f8db8; outline-offset: -3px; }
+.site-tabs a[aria-current="page"] span { color: #fff; }
+.site-tabs a:focus-visible { outline: 2px solid #555; outline-offset: -3px; }
 
 .site-tabs--light { color: #444; }
 .site-tabs--light a:hover span,
