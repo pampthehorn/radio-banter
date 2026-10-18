@@ -21,7 +21,7 @@ html { min-height: 100%; }
 body {
   min-height: 100vh;
   margin: 0;
-  padding: clamp(12px, 3vw, 34px);
+  padding: 16px clamp(12px, 3vw, 34px) clamp(12px, 3vw, 34px);
   background: #d8ebf5;
   color: var(--ink);
   font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -589,8 +589,8 @@ button { color: inherit; }
 .album-info-downloads a:focus-visible { outline: 2px solid var(--focus); }
 
 @media (max-width: 860px) {
-  body { padding: 0; background: #d8ebf5; }
-  .scotify-window { min-height: calc(100vh - 45px); border: 0; border-radius: 0; }
+  body { padding: 12px 0 0; background: #d8ebf5; }
+  .scotify-window { min-height: calc(100vh - 57px); border: 0; border-radius: 0; }
   .toolbar { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
   .transport-cluster { grid-template-columns: auto minmax(120px, 1fr); align-items: center; gap: 18px; }
   .volume-control { width: min(220px, 100%); }
