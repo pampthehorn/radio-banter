@@ -33,12 +33,12 @@
         <label for="newsletter-email">Email Address</label>
         <input id="newsletter-email" type="email" name="email" autocomplete="email" maxlength="254" required>
         <div data-newsletter-turnstile></div>
-        <input type="submit" value="Subscribe" disabled>
-        <p data-newsletter-status role="status" aria-live="polite"></p>
-        <p>Confirm your email to join. Unsubscribe using the link in any newsletter.</p>
+        <input type="submit" value="Subscribe">
+        <p data-newsletter-status role="status" aria-live="polite">Loading signup… If it does not load, please try again in a few minutes.</p>
+        <p>Click verify link in your email to join.</p>
         <noscript>Please enable JavaScript to complete the spam check.</noscript>
       </form>
-      <script src="https://lists.radiobanter.net/signup/widget.js" defer></script>
+      <script src="/newsletter-signup.js?v=2" defer></script>
     </section>
 
     <article class="newsletter-archive">
