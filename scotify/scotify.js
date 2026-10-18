@@ -1,3 +1,6 @@
+// Set to true when the single is released, then bump scotify.js?v= in index.html.
+const SHOW_UNRELEASED_SINGLE = false;
+
 const albums = {
   album: {
     title: "Radio Banter",
@@ -121,7 +124,7 @@ const closeAlbumInfoButton = document.querySelector("#closeAlbumInfoButton");
 const filterButtons = Array.from(document.querySelectorAll("[data-album]"));
 
 let selectedAlbum = "all";
-let selectedIndex = 0;
+let selectedIndex = SHOW_UNRELEASED_SINGLE ? 0 : tracks.findIndex((track) => track.albumId === "album");
 let loadedIndex = -1;
 let searchTerm = "";
 let lyricsTrackIndex = -1;
@@ -137,9 +140,10 @@ function visibleIndexes() {
   return tracks
     .map((track, index) => ({ track, index }))
     .filter(({ track }) => {
+      const isAvailable = SHOW_UNRELEASED_SINGLE || track.albumId !== "single";
       const matchesAlbum = selectedAlbum === "all" || track.albumId === selectedAlbum;
       const haystack = `${track.title} ${track.album} Radio Banter ${track.genre}`.toLowerCase();
-      return matchesAlbum && haystack.includes(searchTerm);
+      return isAvailable && matchesAlbum && haystack.includes(searchTerm);
     })
     .map(({ index }) => index);
 }
@@ -234,12 +238,12 @@ function selectAlbum(albumId) {
     scrubber.value = 0;
   }
 
-  const release = albumId === "album" ? albums.album : albums.single;
+  const release = albumId === "album" || !SHOW_UNRELEASED_SINGLE ? albums.album : albums.single;
   setArtwork(release.artwork, `${release.title} cover artwork`);
 }
 
 function loadTrack(index, shouldPlay = false) {
-  if (!tracks[index]) return;
+  if (!tracks[index] || (!SHOW_UNRELEASED_SINGLE && tracks[index].albumId === "single")) return;
   selectedIndex = index;
   loadedIndex = index;
   const track = tracks[index];
@@ -345,7 +349,13 @@ albumInfoDialog.addEventListener("click", (event) => {
   if (event.target === albumInfoDialog) albumInfoDialog.close();
 });
 
-audio.addEventListener("play", updatePlaybackControls);
+audio.addEventListener("play", () => {
+  updatePlaybackControls();
+  if (loadedIndex >= 0) {
+    const track = tracks[loadedIndex];
+    setArtwork(track.artwork, `${track.title} artwork`, loadedIndex);
+  }
+});
 audio.addEventListener("pause", updatePlaybackControls);
 audio.addEventListener("loadedmetadata", () => {
   totalTime.textContent = formatTime(audio.duration);
@@ -364,5 +374,13 @@ document.addEventListener("keydown", (event) => {
 });
 
 audio.volume = Number(volumeSlider.value);
+if (SHOW_UNRELEASED_SINGLE) {
+  document.querySelectorAll('[data-album="single"]').forEach((button) => {
+    button.hidden = false;
+    const image = button.querySelector("img[data-src]");
+    if (image) image.src = image.dataset.src;
+  });
+}
 updateFilterControls();
-loadTrack(0);
+loadTrack(selectedIndex);
+if (!SHOW_UNRELEASED_SINGLE) setArtwork(albums.album.artwork, "Radio Banter cover artwork");

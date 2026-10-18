@@ -14,7 +14,7 @@
   <meta name="twitter:description" content="Scotify - Radio Banter Music Player">
   <meta name="twitter:image" content="https://radiobanter.net/lily/newscanscropped/Front%20Cover.png">
   <link rel="icon" type="image/png" href="../favicon-96x96.png">
-  <link rel="stylesheet" href="scotify.css?v=10">
+  <link rel="stylesheet" href="scotify.css?v=11">
   <link rel="stylesheet" href="../site-nav.css?v=3">
 </head>
 <body>
@@ -41,8 +41,8 @@
       </div>
 
       <div class="lcd-display" aria-live="polite">
-        <p id="displayTitle" class="display-title">AI</p>
-        <p class="display-meta"><span id="displayArtist">Radio Banter</span> · <span id="elapsedTime">0:00</span> / <span id="totalTime">2:52</span></p>
+        <p id="displayTitle" class="display-title">Nature Nurture</p>
+        <p class="display-meta"><span id="displayArtist">Radio Banter</span> · <span id="elapsedTime">0:00</span> / <span id="totalTime">4:45</span></p>
         <label class="visually-hidden" for="scrubber">Song position</label>
         <input id="scrubber" type="range" min="0" max="1000" value="0">
       </div>
@@ -61,8 +61,8 @@
             <span class="source-glyph" aria-hidden="true">♫</span>
             <span>Library</span>
           </button>
-          <button class="source-button" type="button" data-album="single">
-            <img src="artwork/up-on-kingussie-avenue.jpg" alt="">
+          <button class="source-button" type="button" data-album="single" hidden>
+            <img data-src="artwork/up-on-kingussie-avenue.jpg" alt="">
             <span>Up on Kingussie Avenue</span>
           </button>
           <button class="source-button" type="button" data-album="album">
@@ -72,8 +72,8 @@
         </nav>
 
         <div class="source-artwork">
-          <button id="artworkButton" class="artwork-button" type="button" aria-label="View Up on Kingussie Avenue artwork larger">
-            <img id="sourceArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
+          <button id="artworkButton" class="artwork-button" type="button" aria-label="View Radio Banter cover artwork larger">
+            <img id="sourceArtwork" src="../lily/newscanscropped/Front Cover.png" alt="Radio Banter cover artwork">
           </button>
           <button id="lyricsButton" class="lyrics-button" type="button" hidden>Lyrics</button>
           <button id="albumInfoButton" class="lyrics-button" type="button">Album info</button>
@@ -85,7 +85,7 @@
           <section class="browser-column" aria-labelledby="albumHeading">
             <h2 id="albumHeading">Album</h2>
             <button class="browser-choice is-selected" type="button" data-album="all">All Albums</button>
-            <button class="browser-choice" type="button" data-album="single">Up on Kingussie Avenue</button>
+            <button class="browser-choice" type="button" data-album="single" hidden>Up on Kingussie Avenue</button>
             <button class="browser-choice" type="button" data-album="album">Radio Banter</button>
           </section>
         </div>
@@ -107,7 +107,7 @@
     </div>
 
     <footer class="status-bar">
-      <p id="statusText">13 songs, 37:40 total time</p>
+      <p id="statusText">10 songs, 31:09 total time</p>
     </footer>
 
     <audio id="audioPlayer" preload="metadata"></audio>
@@ -115,9 +115,9 @@
 
   <dialog id="artworkDialog" class="artwork-dialog" aria-labelledby="artworkDialogTitle">
     <div class="artwork-dialog-frame">
-      <h2 id="artworkDialogTitle" class="visually-hidden">Up on Kingussie Avenue artwork</h2>
+      <h2 id="artworkDialogTitle" class="visually-hidden">Radio Banter cover artwork</h2>
       <button id="closeArtworkButton" class="modal-close" type="button" aria-label="Close larger artwork">×</button>
-      <img id="modalArtwork" src="artwork/up-on-kingussie-avenue.jpg" alt="Up on Kingussie Avenue cover artwork">
+      <img id="modalArtwork" src="../lily/newscanscropped/Front Cover.png" alt="Radio Banter cover artwork">
       <p class="artwork-credit">artwork by Lily Paine</p>
     </div>
   </dialog>
@@ -150,6 +150,6 @@
     </div>
   </dialog>
 
-  <script src="scotify.js?v=9"></script>
+  <script src="scotify.js?v=10"></script>
 </body>
 </html>

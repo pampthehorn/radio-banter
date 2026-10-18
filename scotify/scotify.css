@@ -281,6 +281,8 @@ button { color: inherit; }
 .source-button:hover { background: #e5e5e5; }
 .source-button.is-selected { background: linear-gradient(#777, #555); color: #fff; text-shadow: 0 1px #333; }
 .source-button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.source-button[hidden],
+.browser-choice[hidden] { display: none; }
 
 .source-artwork {
   display: grid;
