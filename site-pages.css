@@ -42,6 +42,8 @@ a:hover { color: #555; }
   filter: none;
 }
 
+a.page-wordmark img { display: block; width: 100%; height: auto; }
+
 .news-story p,
 .cd-news p,
 .band-info p { margin: 0 0 1em; }
@@ -72,6 +74,7 @@ a:hover { color: #555; }
 .newsletter-signup p { margin: 0 0 16px; }
 .newsletter-signup form { display: flex; flex-wrap: wrap; gap: 8px; }
 .newsletter-signup label { width: 100%; }
+.newsletter-signup [data-newsletter-turnstile] { flex-basis: 100%; }
 .newsletter-signup input[type="email"] {
   flex: 1 1 220px;
   min-width: 0;
