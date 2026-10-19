@@ -1,0 +1,28 @@
+.history-page h1 { margin: 10px 0 12px; font-size: clamp(30px, 5vw, 42px); }
+.history-intro { max-width: 620px; margin: 0 0 12px; }
+.history-note { margin: 0 0 24px; color: #555; font-size: 16px; }
+.history-years { display: flex; gap: 24px; margin: 0 0 32px; }
+.history-year { scroll-margin-top: 20px; }
+.history-year > h2 { margin: 36px 0 0; padding-bottom: 12px; border-bottom: 1px solid #111; font-size: 28px; }
+.history-gig { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid #ccc; }
+.history-poster { align-self: start; }
+.history-poster img { display: block; width: 100%; height: auto; }
+.history-date { margin: 0 0 6px; font-size: 16px; }
+.history-gig h3 { margin: 0 0 12px; font-size: 23px; line-height: 1.25; }
+.history-details { margin: 0; }
+.history-details > div { margin-bottom: 10px; }
+.history-details dt { display: inline; font-weight: bold; }
+.history-details dd { display: inline; margin: 0; }
+.history-context { margin: 12px 0; }
+.history-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 0; font-size: 16px; }
+.history-footer { margin-top: 32px; }
+
+@media (max-width: 560px) {
+  .history-gig { grid-template-columns: 100px minmax(0, 1fr); gap: 16px; padding: 24px 0; }
+  .history-gig h3 { font-size: 21px; }
+}
+
+@media (max-width: 380px) {
+  .history-gig { grid-template-columns: 1fr; }
+  .history-poster { width: 150px; }
+}
