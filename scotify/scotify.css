@@ -601,11 +601,9 @@ button { color: inherit; }
   .search-input { width: min(320px, 75vw); }
   .library-layout { grid-template-columns: 1fr; }
   .source-sidebar { border-right: 0; border-bottom: 1px solid var(--edge-dark); }
-  .source-sidebar nav { grid-template-columns: repeat(3, 1fr); }
+  .source-sidebar nav { display: none; }
   .source-sidebar h2 { display: none; }
-  .source-button { justify-content: center; grid-template-columns: 22px auto; border-right: 1px solid #bbb; }
-  .source-button:last-child { border-right: 0; }
-  .source-artwork { grid-template-columns: min(128px, 34vw); place-items: center; justify-content: center; margin-top: 0; padding: 9px; }
+  .source-artwork { grid-template-columns: min(128px, 34vw); place-items: center; justify-content: center; margin-top: 0; padding: 9px; border-top: 0; }
   .artwork-button { width: 100%; }
   .browser-panel { min-height: 104px; }
   .track-table-wrap { min-height: 390px; }
@@ -618,8 +616,6 @@ button { color: inherit; }
   .round-button { width: 40px; height: 40px; }
   .play-button { width: 50px; height: 50px; }
   .library-tools { gap: 10px; }
-  .source-button { grid-template-columns: 1fr; justify-items: center; gap: 1px; padding: 5px 3px; font-size: 10px; text-align: center; }
-  .source-button img, .source-glyph { width: 25px; height: 25px; }
   .track-table { min-width: 0; }
   .song-column { width: 46%; }
   .time-column { width: 54px; }
