@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site-nav.css?v=3">
-  <link rel="stylesheet" href="site-pages.css?v=2">
+  <link rel="stylesheet" href="site-pages.css?v=3">
 </head>
 <body>
   <nav class="site-tabs" aria-label="Main navigation">
@@ -24,7 +24,7 @@
     <a href="/newsletter.html" aria-current="page"><span>Newsletter</span></a>
   </nav>
   <main class="page-content newsletter-page">
-    <img class="page-wordmark" src="RadioBanterCDText.png" alt="Radio Banter">
+    <a class="page-wordmark" href="/" aria-label="Radio Banter homepage"><img src="RadioBanterCDText.png" alt="Radio Banter"></a>
     <h1>Newsletter</h1>
     <section class="newsletter-signup" aria-labelledby="signup-heading">
       <h2 id="signup-heading" class="visually-hidden">Join the newsletter</h2>
@@ -32,8 +32,8 @@
       <form action="https://lists.radiobanter.net/signup" method="post" data-newsletter-form>
         <label for="newsletter-email">Email Address</label>
         <input id="newsletter-email" type="email" name="email" autocomplete="email" maxlength="254" required>
-        <div data-newsletter-turnstile></div>
         <input type="submit" value="Subscribe">
+        <div data-newsletter-turnstile></div>
         <p data-newsletter-status role="status" aria-live="polite">Loading signup… If it does not load, please try again in a few minutes.</p>
         <p>Click verify link in your email to join.</p>
         <noscript>Please enable JavaScript to complete the spam check.</noscript>
