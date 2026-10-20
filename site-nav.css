@@ -32,5 +32,5 @@
 
 @media (max-width: 380px) {
   .site-tabs { font-size: 13px; }
-  .site-tabs a { padding: 7px 11px; }
+  .site-tabs a { padding: 7px 7px; }
 }
