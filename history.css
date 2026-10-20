@@ -15,7 +15,8 @@
 .history-details dt { display: inline; font-weight: bold; }
 .history-details dd { display: inline; margin: 0; }
 .history-context { margin: 12px 0; }
-.history-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 16px 0 0; font-size: 16px; }
+/* Keep the archival source URLs in the markup without displaying link rows below gigs. */
+.history-links { display: none; }
 .history-footer { margin-top: 32px; }
 
 @media (max-width: 560px) {
