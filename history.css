@@ -17,6 +17,8 @@
 .history-context { margin: 12px 0; }
 /* Keep the archival source URLs in the markup without displaying link rows below gigs. */
 .history-links { display: none; }
+/* Retain historical ticket and timing details without showing them in the list. */
+.history-archive-detail { display: none; }
 .history-footer { margin-top: 32px; }
 
 @media (max-width: 560px) {
