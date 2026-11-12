@@ -65,6 +65,14 @@ a.page-wordmark img { display: block; width: 100%; height: auto; }
 }
 
 .cd-news { margin-bottom: 36px; }
+.cd-video {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin-bottom: 24px;
+  background: #000;
+}
 .band-photo { margin-bottom: 24px; }
 .band-info { padding-bottom: 30px; }
 
